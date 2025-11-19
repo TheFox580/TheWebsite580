@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAE Web - Tron</title>
+    <link rel="stylesheet" href="/index.css" />
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <h1>SAE Web - Tron</h1>
+    <div id="main_infos" class="main">
+      <div id="score">
+        <p>
+          <span class="p1_name">Player 1</span> :
+          <span id="p1_score">0</span> victory
+        </p>
+        <p>
+          <span class="p2_name">Player 2</span> :
+          <span id="p2_score">0</span> victory
+        </p>
+      </div>
+      <div id="canvas_div">
+        <div id="game_options">
+          <button id="start">Start</button>
+        </div>
+        <canvas id="canvas" width="800" height="590">
+          Votre navigateur ne prend pas en charge la balise canvas.
+        </canvas>
+      </div>
+    </div>
+    <div id="settings">
+      <h3>Settings</h3>
+      <div id="PlayerSettings">
+        <div id="P1_Settings">
+          <h4><span class="p1_name">Player 1</span> :</h4>
+
+          <div id="Name">
+            <label for="p1_name">Name : </label>
+            <input
+              type="text"
+              name="p1_name"
+              id="p1_name"
+              maxlength="20"
+              class="player_input_big"
+              value="Player 1"
+            />
+          </div>
+
+          <div id="Forward">
+            <label for="p1_forward">Forward : </label>
+            <input
+              type="text"
+              name="p1_forward"
+              id="p1_forward"
+              maxlength="1"
+              class="player_input"
+              value="z"
+            />
+          </div>
+
+          <div id="Left">
+            <label for="p1_left">Left : </label>
+            <input
+              type="text"
+              name="p1_left"
+              id="p1_left"
+              maxlength="1"
+              class="player_input"
+              value="q"
+            />
+          </div>
+
+          <div id="Down">
+            <label for="p1_down">Down : </label>
+            <input
+              type="text"
+              name="p1_down"
+              id="p1_down"
+              maxlength="1"
+              class="player_input"
+              value="w"
+            />
+          </div>
+
+          <div id="Right">
+            <label for="p1_right">Right : </label>
+            <input
+              type="text"
+              name="p1_right"
+              id="p1_right"
+              maxlength="1"
+              class="player_input"
+              value="d"
+            />
+          </div>
+
+          <div id="Jump">
+            <label for="p1_jump">Jump : </label>
+            <input
+              type="text"
+              name="p1_jump"
+              id="p1_jump"
+              maxlength="1"
+              class="player_input"
+              value="e"
+            />
+          </div>
+          <form id="p1_colour">
+            <input type="button" id="p1_blue" />
+            <input type="button" id="p1_red" disabled="true" />
+            <input type="button" id="p1_green" />
+            <input type="button" id="p1_orange" />
+          </form>
+        </div>
+        <div id="P2_Settings">
+          <h4><span class="p2_name">Player 2</span> :</h4>
+
+          <div id="Name">
+            <label for="p2_name">Name : </label>
+            <input
+              type="text"
+              name="p1_name"
+              id="p1_name"
+              maxlength="20"
+              class="player_input_big"
+              value="Player 2"
+            />
+          </div>
+
+          <div id="Forward">
+            <label for="p2_forward">Forward : </label>
+            <input
+              type="text"
+              name="p2_forward"
+              id="p2_forward"
+              maxlength="1"
+              class="player_input"
+              value="o"
+            />
+          </div>
+
+          <div id="Left">
+            <label for="p2_left">Left : </label>
+            <input
+              type="text"
+              name="p2_left"
+              id="p2_left"
+              maxlength="1"
+              class="player_input"
+              value="k"
+            />
+          </div>
+
+          <div id="Down">
+            <label for="p2_down">Down : </label>
+            <input
+              type="text"
+              name="p2_down"
+              id="p2_down"
+              maxlength="1"
+              class="player_input"
+              value=";"
+            />
+          </div>
+
+          <div id="Right">
+            <label for="p2_right">Right : </label>
+            <input
+              type="text"
+              name="p2_right"
+              id="p2_right"
+              maxlength="1"
+              class="player_input"
+              value="m"
+            />
+          </div>
+
+          <div id="Jump">
+            <label for="p2_jump">Jump : </label>
+            <input
+              type="text"
+              name="p2_jump"
+              id="p2_jump"
+              maxlength="1"
+              class="player_input"
+              value="p"
+            />
+          </div>
+          <form id="p2_colour">
+            <input type="button" id="p2_blue" disabled="true" />
+            <input type="button" id="p2_red" />
+            <input type="button" id="p2_green" />
+            <input type="button" id="p2_orange" />
+          </form>
+        </div>
+      </div>
+      <div id="save_div">
+        <button id="updateSettingsButton">Save Settings</button>
+      </div>
+    </div>
+  </body>
+</html>
