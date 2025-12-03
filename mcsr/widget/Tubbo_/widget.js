@@ -192,7 +192,7 @@ document.addEventListener(
     updateScores();
     setInterval(() => {
       updateScores();
-    }, 20 * 1000);
+    }, 5 * 1000);
   },
   false
 );
