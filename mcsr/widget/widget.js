@@ -143,6 +143,7 @@ async function updateScores() {
       if (json.eloRate === null) {
         let eloSpan = document.getElementById("elo");
         eloSpan.textContent = "No elo yet";
+        updateRank(-1);
       } else {
         startingElo = json.eloRate;
         currentElo = json.eloRate;
@@ -150,8 +151,6 @@ async function updateScores() {
         let eloSpan = document.getElementById("elo");
         eloSpan.textContent = currentElo + " elo";
         updateRank(json.eloRank);
-        //addElo(0);
-        //removeElo(0);
       }
     }
 
