@@ -179,16 +179,14 @@ async function updateScores() {
       updateRank(json.eloRank);
     }
   }
-
-  setTimeout(() => {
-    updateScores();
-  }, 20 * 1000);
 }
 
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    updateScores();
+    setInterval(() => {
+      updateScores();
+    }, 20 * 1000);
   },
   false
 );
