@@ -1,5 +1,5 @@
 function getRankByElo(elo) {
-  if (elo < 0) {
+  if (elo === null) {
     return "Unrated";
   } else if (elo < 400) {
     return "Coal 1";
@@ -111,22 +111,28 @@ function updatePlacement(wins, loss, draws) {
 }
 
 function updateRank(newRank) {
-  let rankSpan = document.getElementById("rankPlace");
   let rankImage = document.getElementById("rank");
-  let intervalId = setInterval(() => {
-    if (newRank === currentRank) {
-      clearInterval(intervalId);
-    } else if (newRank > currentRank) {
-      currentRank++;
-    } else if (newRank < currentRank) {
-      currentRank--;
-    }
+  if (newRank !== null) {
+    let rankSpan = document.getElementById("rankPlace");
+    let intervalId = setInterval(() => {
+      if (newRank === currentRank) {
+        clearInterval(intervalId);
+      } else if (newRank > currentRank) {
+        currentRank++;
+      } else if (newRank < currentRank) {
+        currentRank--;
+      }
 
-    rankSpan.textContent = currentRank;
+      rankSpan.textContent = currentRank;
+      rankImage.style.backgroundPosition = `${getOffsetByRank(
+        getRankByElo(currentElo)
+      )}rem 0px`;
+    }, 5);
+  } else {
     rankImage.style.backgroundPosition = `${getOffsetByRank(
-      getRankByElo(currentElo)
+      getRankByElo(null)
     )}rem 0px`;
-  }, 20);
+  }
 }
 
 async function updateScores() {
@@ -143,7 +149,7 @@ async function updateScores() {
       if (json.eloRate === null) {
         let eloSpan = document.getElementById("elo");
         eloSpan.textContent = "No elo yet";
-        updateRank(-1);
+        updateRank(null);
       } else {
         startingElo = json.eloRate;
         currentElo = json.eloRate;
@@ -157,10 +163,10 @@ async function updateScores() {
     if (last === 0) {
       last = json.timestamp.lastRanked;
     } else if (
-      last != json.timestamp.lastRanked ||
-      currentRank != json.eloRank
+      last !== json.timestamp.lastRanked ||
+      currentRank !== json.eloRank
     ) {
-      if (last != json.timestamp.lastRanked) {
+      if (last !== json.timestamp.lastRanked) {
         last = json.timestamp.lastRanked;
 
         let diff = json.eloRate - currentElo;
