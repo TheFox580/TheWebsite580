@@ -184,6 +184,7 @@ async function updateScores() {
 document.addEventListener(
   "DOMContentLoaded",
   () => {
+    updateScores();
     setInterval(() => {
       updateScores();
     }, 20 * 1000);
