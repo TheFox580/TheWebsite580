@@ -130,7 +130,16 @@ function updateRank(newRank) {
 }
 
 async function updateScores() {
-  const response = await fetch("https://api.mcsrranked.com/users/TheFox580");
+  const response = await fetch("https://api.mcsrranked.com/users/TheFox580", {
+    method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    headers: new Headers({
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    }),
+  });
   if (response.ok) {
     let json = await response.json();
     json = json.data;
