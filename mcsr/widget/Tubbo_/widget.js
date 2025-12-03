@@ -170,7 +170,7 @@ async function updateScores() {
           addElo(diff);
           updatePlacement(1, 0, 0);
         } else if (diff < 0) {
-          removeElo(Math.abs(elo));
+          removeElo(Math.abs(diff));
           updatePlacement(0, 1, 0);
         } else {
           updatePlacement(0, 0, 1);
