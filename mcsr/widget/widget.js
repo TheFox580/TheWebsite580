@@ -182,7 +182,7 @@ async function updateScores() {
 
   setTimeout(() => {
     updateScores();
-  }, 10 * 1000);
+  }, 20 * 1000);
 }
 
 document.addEventListener(
