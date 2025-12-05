@@ -35,6 +35,59 @@ function getRankByElo(elo) {
     return "Netherite";
   }
 }
+function getNextRank(currentRank) {
+  if (currentRank === "Unrated") {
+    return "TBD";
+  } else if (currentRank === "Coal 1") {
+    return "Coal 2";
+  } else if (currentRank === "Coal 2") {
+    return "Coal 3";
+  } else if (currentRank === "Coal 3") {
+    return "Iron 1";
+  } else if (currentRank === "Iron 1") {
+    return "Iron 2";
+  } else if (currentRank === "Iron 2") {
+    return "Iron 3";
+  } else if (currentRank === "Iron 3") {
+    return "Gold 1";
+  } else if (currentRank === "Gold 1") {
+    return "Gold 2";
+  } else if (currentRank === "Gold 2") {
+    return "Gold 3";
+  } else if (currentRank === "Gold 3") {
+    return "Emerald 1";
+  } else if (currentRank === "Emerald 1") {
+    return "Emerald 2";
+  } else if (currentRank === "Emerald 2") {
+    return "Emerald 3";
+  } else if (currentRank === "Emerald 3") {
+    return "Diamond 1";
+  } else if (currentRank === "Diamond 1") {
+    return "Diamond 2";
+  } else if (currentRank === "Diamond 2") {
+    return "Diamond 3";
+  } else if (currentRank === "Diamond 3") {
+    return "Netherite";
+  } else {
+    return "None";
+  }
+}
+
+function colorByRank(rank) {
+  if (rank.includes("Coal")) {
+    return "#444545";
+  } else if (rank.includes("Iron")) {
+    return "#A59C94";
+  } else if (rank.includes("Gold")) {
+    return "gold";
+  } else if (rank.includes("Emerald")) {
+    return "#50c85a";
+  } else if (rank.includes("Diamond")) {
+    return "#34ebc9";
+  } else {
+    return "lightred";
+  }
+}
 
 function getOffsetByRank(rank) {
   if (rank === "Unrated") {
@@ -112,6 +165,7 @@ function updatePlacement(wins, loss, draws) {
 
 function updateRank(newRank) {
   let rankImage = document.getElementById("rank");
+  let nextRankSpan = document.getElementById("nextRank");
   if (newRank !== null) {
     let rankSpan = document.getElementById("rankPlace");
     let intervalId = setInterval(() => {
@@ -124,6 +178,10 @@ function updateRank(newRank) {
       }
 
       rankSpan.textContent = currentRank;
+      nextRankSpan.textContent = `${getNextRank(getRankByElo(currentElo))}`;
+      nextRankSpan.style.color = colorByRank(
+        getNextRank(getRankByElo(currentElo))
+      );
       rankImage.style.backgroundPosition = `${getOffsetByRank(
         getRankByElo(currentElo)
       )}rem 0px`;
