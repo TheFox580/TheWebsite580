@@ -19,6 +19,9 @@ function timeToGo(s) {
 
   // Allow for previous times
   var sign = diff < 0 ? "-" : "";
+  if (diff < 0) {
+    return "Resets soon";
+  }
   diff = Math.abs(diff);
 
   // Get time components
@@ -27,10 +30,23 @@ function timeToGo(s) {
   var mins = ((diff % 3.6e6) / 6e4) | 0;
   var secs = Math.floor((diff % 6e4) / 1e3);
 
+  if (days > 0) {
+    // Return formatted string
+    return (
+      "Resets in " +
+      z(days) +
+      "d " +
+      z(hours) +
+      "h " +
+      z(mins) +
+      "m " +
+      z(secs) +
+      "s"
+    );
+  }
+
   // Return formatted string
-  return (
-    sign + z(days) + "d " + z(hours) + "h " + z(mins) + "m " + z(secs) + "s"
-  );
+  return "Resets in " + z(hours) + "h " + z(mins) + "m " + z(secs) + "s";
 }
 
 function formatAllLogsTimeToDate() {
@@ -71,18 +87,27 @@ function formatAllLogsWithPointsAndUsername() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function updateTime() {
   let time = document.getElementById("time");
-  time.textContent = `in ${timeToGo("2026-11-23T19:00:00Z")}`;
+  let endTime = isoToObj("2026-11-23T19:00:00Z");
 
+  let startTime = isoToObj("2025-11-23T19:00:00Z");
+
+  let totalTime = endTime - startTime;
+  console.log("Total Time: " + totalTime);
+
+  setInterval(() => {
+    time.textContent = `${timeToGo(endTime.toISOString())}`;
+    let timeLeft = endTime - new Date();
+    let color = Math.round((timeLeft / totalTime) * 255);
+    color = Math.max(0, color);
+    time.style.color = `rgb(255, ${color}, ${color})`;
+  }, 1000);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
   formatAllLogsTimeToDate();
   formatAllLogsWithPointsAndUsername();
 
-  //console.log(document.getElementById("point_modify_time").innerHTML);
-  //document.getElementById("point_modify_time").innerHTML =
-  //  "<strong>this is a test</strong>";
-
-  setInterval(() => {
-    time.textContent = `in ${timeToGo("2026-11-23T19:00:00Z")}`;
-  }, 1000);
+  updateTime();
 });
