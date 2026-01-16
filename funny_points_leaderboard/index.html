@@ -29,13 +29,13 @@
         text-decoration: underline;
       }
 
-      #title {
-        text-align: center;
-      }
-
       .stick {
         position: sticky;
         top: 0;
+      }
+
+      #title {
+        text-align: center;
       }
 
       #main-content {
@@ -44,7 +44,11 @@
         font-size: large;
         align-items: start;
         justify-content: center;
-        margin: 5%;
+      }
+
+      #main-content > div {
+        margin-left: 1%;
+        margin-right: 1%;
       }
 
       #leaderboard-all {
@@ -56,7 +60,6 @@
       }
 
       #leaderboard {
-        margin-top: 30px;
         margin-right: 50px;
         padding: 2%;
         font-size: larger;
@@ -71,8 +74,23 @@
         border-color: rgb(100, 100, 100);
       }
 
+      .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+        padding-bottom: 10px;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 80%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        top: 0;
+      }
+
       .logs-message {
-        margin-top: 30px;
+        margin-bottom: 30px;
         padding: 2%;
         font-size: large;
         background-color: rgb(70, 70, 70);
@@ -109,8 +127,8 @@
       #discord-message {
         border-radius: 10px;
         margin-top: 10px;
-        padding-top: 5px;
         padding-bottom: 5px;
+        padding-top: 5px;
         display: flex;
         flex-direction: column;
         width: 70%;
@@ -144,7 +162,7 @@
     </div>
     <div id="main-content">
       <div id="leaderboard-all" class="stick">
-        <h1>Leaderboard</h1>
+        <h1 class="title" style="width: 95%">Leaderboard</h1>
         <div id="leaderboard">
           <span id="placement" style="font-size: xx-large"
             ><span class="first"
@@ -165,23 +183,32 @@
           <span id="placement" style="font-size: 100%"
             >🏅<span class="username"> WubDub</span> - 2 points</span
           >
-          <span id="placement" style="font-size: 95%"
-            >4th. <span class="username">NotTooSwift</span> - 2 points</span
+          <span id="placement" style="font-size: 100%"
+            >🏅 <span class="username">NotTooSwift</span> - 2 points</span
           >
-          <span id="placement" style="font-size: 90%"
-            >4th. <span class="username">TheFox580</span> - 2 points</span
+          <span id="placement" style="font-size: 100%"
+            >🏅 <span class="username">TheFox580</span> - 2 points</span
           >
           <span id="placement" style="font-size: 85%"
             >7th. <span class="username">dolphinman_rl</span> - 1 point</span
           >
-          <span id="placement" style="font-size: 80%"
+          <span id="placement" style="font-size: 85%"
             >7th. <span class="username">KaNukei</span> - 1 point</span
           >
           <span id="placement" style="font-size: 75%"
             >9th. <span class="username">Chandiggitydog</span> - 0 points</span
           >
-          <span id="placement" style="font-size: 70%"
+          <span id="placement" style="font-size: 75%"
             >9th. <span class="username">Amy</span> - 0 points</span
+          >
+          <span id="placement" style="font-size: 75%"
+            >9th. <span class="username">JustColonial</span> - 0 points</span
+          >
+          <span id="placement" style="font-size: 75%"
+            >9th. <span class="username">Kokiri</span> - 0 points</span
+          >
+          <span id="placement" style="font-size: 75%"
+            >9th. <span class="username">Temprie</span> - 0 points</span
           >
 
           <span style="margin-top: 20px"
@@ -195,7 +222,7 @@
         </div>
       </div>
       <div id="logs-main" style="display: flex; flex-direction: column">
-        <h1>Logs</h1>
+        <h1 class="stick title">Logs</h1>
         <div
           id="pinkfluffyseal_2025-12-20T05:17:21.439Z_add_1"
           style="display: flex; flex-direction: column"
