@@ -94,7 +94,6 @@ function updateTime() {
   let startTime = isoToObj("2025-11-23T19:00:00Z");
 
   let totalTime = endTime - startTime;
-  console.log("Total Time: " + totalTime);
   time.textContent = `${timeToGo(endTime.toISOString())}`;
   let timeLeft = endTime - new Date();
   let color = Math.max(0, Math.round((timeLeft / totalTime) * 255));
