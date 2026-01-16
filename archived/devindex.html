@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home | TheFox580's website!</title>
-    <link href="./style/style_dev.css" rel="stylesheet" type="text/css" media="all">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link
+      href="./style/style_dev.css"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <link rel="icon" type="image/x-icon" href="../favicon.ico" />
   </head>
-  
+
   <body>
     <div id="head">
       <header>
         <h1>Welcome to TheFox580's great website (2024 download no virus) !</h1>
-        <br/>
+        <br />
       </header>
       <ul>
         <li>
@@ -29,22 +34,25 @@
         </li>
       </ul>
     </div>
-    <br/>
-    <br/>
+    <br />
+    <br />
     <div id="home">
       <ul>
         <li>
           <p>Welcome to my AMAZING website !</p>
-          <p>In here, you're able to check my links and the plugins I have created !</p>
+          <p>
+            In here, you're able to check my links and the plugins I have
+            created !
+          </p>
           <p>Go check out the pages with the links at the top.</p>
         </li>
       </ul>
     </div>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <div id="home">
       <ul>
         <li>
@@ -54,13 +62,17 @@
     </div>
 
     <script>
-        function colorHere(){
-            var hereElm = document.getElementById("here");
-            hereElm.style.textDecoration = "underline";
-            console.log('Text Decoration or of "You\'re here" element has been changed to underline')
-        }
-        window.onload = colorHere;
-    </script>
+      import { inject } from "@vercel/analytics";
+      inject();
 
+      function colorHere() {
+        var hereElm = document.getElementById("here");
+        hereElm.style.textDecoration = "underline";
+        console.log(
+          'Text Decoration or of "You\'re here" element has been changed to underline'
+        );
+      }
+      window.onload = colorHere;
+    </script>
   </body>
 </html>
