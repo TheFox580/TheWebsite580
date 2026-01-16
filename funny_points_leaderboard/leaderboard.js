@@ -25,7 +25,7 @@ function timeToGo(s) {
   var days = (diff / 8.64e7) | 0;
   var hours = ((diff % 8.64e7) / 3.6e6) | 0;
   var mins = ((diff % 3.6e6) / 6e4) | 0;
-  var secs = Math.round((diff % 6e4) / 1e3);
+  var secs = Math.floor((diff % 6e4) / 1e3);
 
   // Return formatted string
   return (
