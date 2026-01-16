@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goofy Gang's Funny Points</title>
+    <script src="/funny_points_leaderboard/leaderboard.js"></script>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cdn.discordapp.com/icons/1327430536494321807/77430b0256be4e0542bf751a87502cdc.webp?size=512"
+    />
+    <style>
+      html {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      a {
+        color: #00ff00;
+      }
+
+      a:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      #title {
+        text-align: center;
+      }
+
+      .stick {
+        position: sticky;
+        top: 0;
+      }
+
+      #main-content {
+        display: flex;
+        flex-direction: row;
+        font-size: large;
+        align-items: start;
+        justify-content: center;
+        margin: 5%;
+      }
+
+      #leaderboard-all {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+      }
+
+      #leaderboard {
+        margin-top: 30px;
+        margin-right: 50px;
+        padding: 2%;
+        font-size: larger;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        background-color: rgb(70, 70, 70);
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: rgb(100, 100, 100);
+      }
+
+      .logs-message {
+        margin-top: 30px;
+        padding: 2%;
+        font-size: large;
+        background-color: rgb(70, 70, 70);
+        border-radius: 5px;
+        border-style: solid;
+        border-width: 5px;
+        border-color: rgb(100, 100, 100);
+      }
+
+      .username:hover {
+        text-decoration: underline;
+      }
+
+      .first {
+        color: gold;
+      }
+
+      .second {
+        color: silver;
+      }
+
+      .third {
+        color: #cd7f32;
+      }
+
+      .added {
+        color: lime;
+      }
+
+      .removed {
+        color: red;
+      }
+
+      #discord-message {
+        border-radius: 10px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        background-color: #555555;
+        font-size: 125%;
+      }
+
+      #discord-message > span > img {
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="banner"
+      style="display: flex; align-items: center; justify-content: center"
+    >
+      <img
+        src="https://cdn.discordapp.com/banners/1327430536494321807/647f9e98426dbc09dd35dfb7e6e68fee.webp?size=1024"
+        alt="Goofy Gang Discord Server Banner"
+        style="width: 30%; border-radius: 10px"
+      />
+    </div>
+    <div id="title">
+      <h1>Goofy Gang's Funny Points Leaderboard</h1>
+      <h2>Resets <span id="time">on November 23rd</span></h2>
+    </div>
+    <div id="main-content">
+      <div id="leaderboard-all" class="stick">
+        <h1>Leaderboard</h1>
+        <div id="leaderboard">
+          <span id="placement" style="font-size: xx-large"
+            ><span class="first"
+              >1st. <span class="username">victoriaskyetv</span></span
+            >
+            - 5 points</span
+          >
+          <span id="placement" style="font-size: larger"
+            ><span class="second"
+              >2nd. <span class="username">pinkfluffyseal</span></span
+            >
+            - 4 points</span
+          >
+          <span id="placement" style="font-size: x-large"
+            ><span class="third">3rd. <span class="username">Oobie</span></span>
+            - 2.5 points</span
+          >
+          <span id="placement" style="font-size: 100%"
+            >4th.<span class="username"> WubDub</span> - 2 points</span
+          >
+          <span id="placement" style="font-size: 95%"
+            >5th. <span class="username">NotTooSwift</span> - 2 points</span
+          >
+          <span id="placement" style="font-size: 90%"
+            >6th. <span class="username">TheFox580</span> - 2 points</span
+          >
+          <span id="placement" style="font-size: 85%"
+            >7th. <span class="username">dolphinman_rl</span> - 1 point</span
+          >
+          <span id="placement" style="font-size: 80%"
+            >8th. <span class="username">KaNukei</span> - 1 point</span
+          >
+          <span id="placement" style="font-size: 75%"
+            >9th. <span class="username">Chandiggitydog</span> - 0 points</span
+          >
+          <span id="placement" style="font-size: 70%"
+            >10th. <span class="username">Amy</span> - 0 points</span
+          >
+
+          <span style="margin-top: 20px"
+            ><em
+              ><strong>RULE:</strong> Majority of the vc has to agree to give a
+              funny point. The majority of the vc can vote to take away a funny
+              point if need be.</em
+            >
+            Lock in.</span
+          >
+        </div>
+      </div>
+      <div id="logs-main" style="display: flex; flex-direction: column">
+        <h1>Logs</h1>
+        <div
+          id="pinkfluffyseal_2025-12-20T05:17:21.439Z_add_1"
+          style="display: flex; flex-direction: column"
+          class="logs-message"
+        >
+          <span id="timestamp">TIME HERE</span>
+          <span id="point_modify">whatever it'll change</span>
+          <div
+            id="context"
+            style="display: flex; flex-direction: column; margin-top: 20px"
+          >
+            <span>Context :</span>
+            <span>Watching Jake Paul fight Anthony Joshua</span>
+            <div id="discord-message">
+              <span>
+                <img
+                  style="width: 90%"
+                  src="https://c.tenor.com/0PnZLeWJPE8AAAAd/tenor.gif"
+                  alt="Fight Knock Out GIF"
+              /></span>
+              <span>pov ur jake paul</span>
+            </div>
+          </div>
+        </div>
+        <div
+          id="NotTooSwift_2026-01-01T01:15:52.905Z_add_1"
+          style="display: flex; flex-direction: column"
+          class="logs-message"
+        >
+          <span id="timestamp">TIME HERE</span>
+          <span id="point_modify">whatever it'll change</span>
+          <div
+            id="context"
+            style="display: flex; flex-direction: column; margin-top: 20px"
+          >
+            <span>Context :</span>
+            <span>Watching Stranger Things finale</span>
+            <div id="discord-message">
+              <span>WubDub: How much xp if Eleven dies?</span>
+              <span>NotTooSwift: 11</span>
+            </div>
+          </div>
+        </div>
+        <div
+          id="victoriaskyetv_2026-01-11T01:42:40.722Z_remove_1"
+          style="display: flex; flex-direction: column"
+          class="logs-message"
+        >
+          <span id="timestamp">TIME HERE</span>
+          <span id="point_modify">whatever it'll change</span>
+          <div
+            id="context"
+            style="display: flex; flex-direction: column; margin-top: 20px"
+          >
+            <span>Context :</span>
+            <span>Watching Hunger Games</span>
+            <div id="discord-message">
+              <span>Peeta (Movie): It's huge, it's incredible</span>
+              <span>victoriaskyetv: That's what she said</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
