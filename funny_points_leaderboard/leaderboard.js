@@ -95,12 +95,15 @@ function updateTime() {
 
   let totalTime = endTime - startTime;
   console.log("Total Time: " + totalTime);
+  time.textContent = `${timeToGo(endTime.toISOString())}`;
+  let timeLeft = endTime - new Date();
+  let color = Math.max(0, Math.round((timeLeft / totalTime) * 255));
+  time.style.color = `rgb(255, ${color}, ${color})`;
 
   setInterval(() => {
     time.textContent = `${timeToGo(endTime.toISOString())}`;
-    let timeLeft = endTime - new Date();
-    let color = Math.round((timeLeft / totalTime) * 255);
-    color = Math.max(0, color);
+    timeLeft = endTime - new Date();
+    color = Math.max(0, Math.round((timeLeft / totalTime) * 255));
     time.style.color = `rgb(255, ${color}, ${color})`;
   }, 1000);
 }
