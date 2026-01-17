@@ -80,9 +80,8 @@ function formatAllLogsWithPointsAndUsername() {
       let amount = div.id.split("_")[3];
       let sign = diff === "add" ? "+" : "-";
       let color_class = diff === "add" ? "added" : "removed";
-      div.children[
-        "point_modify"
-      ].innerHTML = `<strong class="${color_class}">${sign}${amount}</strong> to <strong>${user}</strong>`;
+      div.children["point_modify"].innerHTML =
+        `<strong class="${color_class}">${sign}${amount}</strong> to <strong>${user}</strong>`;
     }
   }
 }
@@ -107,9 +106,13 @@ function updateTime() {
   }, 1000);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  formatAllLogsTimeToDate();
-  formatAllLogsWithPointsAndUsername();
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+    formatAllLogsTimeToDate();
+    formatAllLogsWithPointsAndUsername();
 
-  updateTime();
-});
+    updateTime();
+  },
+  false,
+);
