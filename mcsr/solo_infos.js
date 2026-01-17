@@ -326,7 +326,6 @@ async function updateLast10Ranked(uuid) {
     }
 
     for (let i in listGamesHTML) {
-      console.log(json[i]);
       let resultInt = gameWonOrLost(json[i], uuid);
       let result = mapResultNumber[resultInt];
       let resultColor = mapResultColorNumber[resultInt];
@@ -364,7 +363,6 @@ async function updateSoloInfos() {
   if (response.ok) {
     let json = await response.json();
     json = json.data;
-    console.log(json);
 
     let uuid = json.uuid;
 
