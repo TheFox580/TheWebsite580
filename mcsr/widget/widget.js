@@ -180,15 +180,15 @@ function updateRank(newRank) {
       rankSpan.textContent = currentRank;
       nextRankSpan.textContent = `${getNextRank(getRankByElo(currentElo))}`;
       nextRankSpan.style.color = colorByRank(
-        getNextRank(getRankByElo(currentElo))
+        getNextRank(getRankByElo(currentElo)),
       );
       rankImage.style.backgroundPosition = `${getOffsetByRank(
-        getRankByElo(currentElo)
+        getRankByElo(currentElo),
       )}rem 0px`;
     }, 5);
   } else {
     rankImage.style.backgroundPosition = `${getOffsetByRank(
-      getRankByElo(null)
+      getRankByElo(null),
     )}rem 0px`;
   }
 }
@@ -201,7 +201,7 @@ async function updateScores() {
     console.log(json);
 
     let userHead = document.getElementById("userHead");
-    userHead.setAttribute("src", `https://minotar.net/avatar/${json.uuid}/75`);
+    userHead.setAttribute("src", `https://minotar.net/helm/${json.uuid}/75`);
 
     if (startingElo === 0) {
       if (json.eloRate === null) {
@@ -252,5 +252,5 @@ document.addEventListener(
       updateScores();
     }, 5 * 1000);
   },
-  false
+  false,
 );

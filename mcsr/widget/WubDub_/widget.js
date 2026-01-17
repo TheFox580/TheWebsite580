@@ -201,7 +201,7 @@ async function updateScores() {
     console.log(json);
 
     let userHead = document.getElementById("userHead");
-    userHead.setAttribute("src", `https://minotar.net/avatar/${json.uuid}/75`);
+    userHead.setAttribute("src", `https://minotar.net/helm/${json.uuid}/75`);
 
     if (startingElo === 0) {
       if (json.eloRate === null) {
