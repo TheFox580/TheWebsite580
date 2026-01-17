@@ -35,6 +35,7 @@ function getRankByElo(elo) {
     return "Netherite";
   }
 }
+
 function getNextRank(currentRank) {
   if (currentRank === "Unrated") {
     return "TBD";
