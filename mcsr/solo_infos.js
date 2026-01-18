@@ -232,6 +232,9 @@ async function updateLastGame(uuid) {
     let json = await response.json();
     json = json.data[0];
 
+    document.getElementById("last_match_played").innerHTML =
+      `<a href=https://mcsrranked.com/stats/TheFox580/${json.id} target="_blank">Last Match Played</a>`;
+
     let uuid_player = {};
 
     let players = json.players;
