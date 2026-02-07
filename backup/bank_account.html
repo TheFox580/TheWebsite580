@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bank Account</title>
+    <style>
+      html {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      #money {
+        color: #00ff00;
+        font-size: 200%;
+      }
+      h1 {
+        font-size: 500%;
+      }
+      p {
+        font-size: 300%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Your bank account :</h1>
+    <p>Money:<br /><span id="money">You're poor lmao</span></p>
+    <footer>
+      <script>
+        import { inject } from "@vercel/analytics";
+        inject();
+      </script>
+    </footer>
+  </body>
+</html>
