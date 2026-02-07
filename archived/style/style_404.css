@@ -1,0 +1,23 @@
+html, body, div{
+	background: #666666;
+  color: black;
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
+}
+
+a{
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: inherit;
+}
+
+h1 {
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: inherit;
+  text-decoration: underline;
+}

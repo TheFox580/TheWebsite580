@@ -1,0 +1,110 @@
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightgray;
+}
+
+canvas{
+    margin: 0% 10%;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+div{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.main{
+    width: 10%;
+    float: left;
+}
+
+#canvas_div{
+    width: 80%;
+    padding-left: 10%;
+    float: right;
+}
+
+
+#game_options{
+    width: 820px;
+    display: flex;
+    justify-content: center;
+}
+
+#settings{
+    text-align: center;
+    width: 40%;
+    float: right;
+    background-color: gray;
+    border-radius: 10px;
+}
+
+#PlayerSettings > div{
+    width: 50%;
+    float: left;
+}
+
+#PlayerSettings > div > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+.player_input{
+    text-align: center;
+    width: 15px;
+    height: 15px;
+}
+
+.player_input_big{
+    text-align: center;
+    width: 195px;
+    height: 15px;
+}
+
+#p1_colour {
+    margin-left: 25%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#p1_blue, #p2_blue{
+    background-color: #0000ff;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+
+
+#p1_red, #p2_red  {
+    background-color: #ff0000;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+#p1_green, #p2_green{
+    background-color: #00ff00;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+#p1_orange, #p2_orange {
+    background-color: #ff9900;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}

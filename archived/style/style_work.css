@@ -1,0 +1,171 @@
+html, body, div{
+	background: #666666;
+  font-family: Helvetica, sans-serif;
+}
+
+#head {
+  border-radius: 30px;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  margin: 0 10%;
+  padding: 0 10px;
+  border-color: #444444;
+  border-style: solid;
+  border-width: 5px 5px 5px 5px;
+  text-align: center;
+}
+
+#head ul {
+  border-radius: 0px 0px 20px 20px;
+  list-style-type: none;
+  padding: 0.5em 0;
+  margin: 0;
+  text-align: center;
+	background: #777777;
+}
+
+#head li {
+  font-weight: bold;
+  display: inline-block;
+  margin-right: 1.5em;
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+}
+
+#head li a {
+  color: #c0c0c0;
+  text-decoration: none;
+  background-color: inherit;
+}
+
+#head li a:hover{
+  color: #c0c0c0;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#Finished {
+  padding: 0 10px;
+  border-radius: 30px;
+  color: lime;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  margin: 0 20%;
+	background: #777777;
+  border-color: #444444;
+  border-style: solid;
+  border-width: 5px 5px 5px 5px;
+  text-align: center;
+}
+
+#Finished ul {
+  list-style-type: none;
+  padding: 0.5em 0;
+  margin: 0;
+}
+
+#Finished li {
+  font-weight: bold;
+  display: inline-block;
+}
+
+#Finished li p {
+  color: #53ec53;
+  text-decoration: none;
+  background-color: inherit;
+}
+
+#Finished li a {
+  color: #53ec53;
+  text-decoration: none;
+  background-color: inherit;
+}
+
+#Finished li a:hover{
+  color: #53ec53;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#In-The-Making {
+  padding: 0 10px;
+  border-radius: 30px;
+  color: darkorange;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  margin: 0 20%;
+	background: #777777;
+  border-color: #444444;
+  border-style: solid;
+  border-width: 5px 5px 5px 5px;
+  text-align: center;
+}
+
+#In-The-Making ul {
+  list-style-type: none;
+  padding: 0.5em 0;
+  margin: 0;
+}
+
+#In-The-Making li {
+  font-weight: bold;
+  display: inline-block;
+}
+
+#In-The-Making li p {
+  color: #eca753;
+  text-decoration: underline dotted;
+  background-color: inherit;
+}
+
+#In-The-Making li a {
+  color: #eca753;
+  text-decoration: underline dotted;
+  background-color: inherit;
+}
+
+#In-The-Making li a:hover{
+  color: #eca753;
+  font-weight: bold;
+  text-decoration: underline dotted;
+}
+
+#Not-Able-To-Share {
+  padding: 0 10px;
+  border-radius: 30px;
+  color: red;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  margin: 0 20%;
+	background: #777777;
+  border-color: #444444;
+  border-style: solid;
+  border-width: 5px 5px 5px 5px;
+  text-align: center;
+}
+
+#Not-Able-To-Share ul {
+  list-style-type: none;
+  padding: 0.5em 0;
+  margin: 0;
+}
+
+#Not-Able-To-Share li {
+  font-weight: bold;
+  display: inline-block;
+}
+
+#Not-Able-To-Share li p {
+  color: #ec5353;
+  background-color: inherit;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+body {
+  color: black;
+  font-family: Helvetica, sans-serif;
+}
