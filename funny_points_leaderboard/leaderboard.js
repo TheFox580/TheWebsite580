@@ -53,7 +53,7 @@ function formatAllLogsTimeToDate() {
   let logs = document.getElementById("logs-main");
   for (div of logs.children) {
     if (div.tagName === "DIV") {
-      let time = isoToObj(div.id.split("_")[1]);
+      let time = isoToObj(div.id.split("&")[1]);
       let diff = -time.getTimezoneOffset() / 60;
       let sign = diff < 0 ? "-" : "+";
       div.children["timestamp"].textContent =
@@ -75,9 +75,11 @@ function formatAllLogsWithPointsAndUsername() {
   let logs = document.getElementById("logs-main");
   for (div of logs.children) {
     if (div.tagName === "DIV") {
-      let user = div.id.split("_")[0];
-      let diff = div.id.split("_")[2];
-      let amount = div.id.split("_")[3];
+      let split = div.id.split("&");
+
+      let user = split[0];
+      let diff = split[2];
+      let amount = split[3];
       let sign = diff === "add" ? "+" : "-";
       let color_class = diff === "add" ? "added" : "removed";
       div.children["point_modify"].innerHTML =
