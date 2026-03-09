@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheFox580's Ranked Stats (Widget)</title>
+    <style>
+      html {
+        background-color: rgba(0, 0, 0, 0);
+      }
+    </style>
+    <script src="/mcsr/widget/widget.js"></script>
+  </head>
+  <body>
+    <div
+      id="box"
+      style="
+        background-color: black;
+        width: 400px;
+        height: 100px;
+        border-radius: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      "
+    >
+      <div
+        id="textsDiv"
+        style="display: flex; flex-direction: column; justify-content: center"
+      >
+        <div
+          id="infos"
+          style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <span
+            style="
+              color: gray;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: 15px;
+              margin-left: 10px;
+            "
+            >W/L/D:
+          </span>
+          <span
+            id="wins"
+            style="
+              color: gray;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: 15px;
+              margin-left: 10px;
+            "
+            >0/0/0</span
+          >
+          <span
+            style="
+              color: gray;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: 15px;
+              margin-left: 10px;
+            "
+            >| Ranked #</span
+          >
+          <span
+            id="rankPlace"
+            style="
+              color: gray;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: 15px;
+            "
+            >?</span
+          >
+        </div>
+        <div
+          id="eloDiv"
+          style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <div
+            id="rank"
+            style="
+              background-image: url('data:image/png;base64,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');
+              width: 1.25rem;
+              height: 1.25rem;
+              background-position: 0rem 0px;
+              background-size: cover;
+              background-repeat: no-repeat;
+              image-rendering: pixelated;
+              margin-top: 2.5px;
+            "
+          ></div>
+          <span
+            id="elo"
+            style="
+              color: white;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: 25px;
+              margin-right: 40px;
+              margin-left: 10px;
+            "
+          >
+            0 elo
+          </span>
+          <span
+            id="rate"
+            style="
+              color: gold;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: 25px;
+              font-weight: bold;
+            "
+            >+0</span
+          >
+        </div>
+        <div
+          id="nextRankDiv"
+          style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2px;
+          "
+        >
+          <span
+            style="
+              color: gray;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: 15px;
+            "
+            >Next Rank :</span
+          >
+          <span
+            id="nextRank"
+            style="
+              color: gray;
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              font-size: 15px;
+              margin-left: 5px;
+              font-weight: bold;
+            "
+            >TBD</span
+          >
+        </div>
+      </div>
+      <img
+        id="userHead"
+        style="margin-right: 30px; border-radius: 10px; align-self: center"
+        src="https://minotar.net/avatar/0/75"
+        alt="TheFox580's skin head"
+      />
+    </div>
+    <footer>
+      <script>
+        import { inject } from "@vercel/analytics";
+        inject();
+      </script>
+    </footer>
+  </body>
+</html>

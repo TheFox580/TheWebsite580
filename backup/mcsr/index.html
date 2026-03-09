@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCSR Menu</title>
+    <script src="/mcsr/solo_infos.js"></script>
+    <style>
+      html {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+      }
+      a {
+        color: #00ff00;
+      }
+      a:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-self: center;
+    "
+  >
+    <div
+      id="solo_perfs"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 20px;
+        border-radius: 20px;
+        background-color: gray;
+      "
+    >
+      <div
+        id="solo_perf_head"
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: center;
+          margin: 0px 20px;
+        "
+      >
+        <h1>Solo performances</h1>
+        <img
+          id="userHead"
+          style="margin-left: 20px; border-radius: 10px; align-self: center"
+          src="https://minotar.net/avatar/dc833b853cba4ebd8f4dfebc09f02422/75"
+          alt="TheFox580's skin head"
+        />
+      </div>
+      <div
+        id="solo_perf_infos"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          margin-top: 20px;
+          width: 100%;
+        "
+      >
+        <div
+          id="solo_perf_info_line_1"
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 5px;
+            border-width: 0px;
+            border-top-width: 3px;
+            border-color: #444;
+            border-style: solid;
+            margin-bottom: 0px;
+          "
+        >
+          <div
+            id="solo_perf_logins"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              align-items: start;
+              padding: 10px;
+              border-width: 0px;
+              border-right-width: 3px;
+              border-color: #666;
+              border-style: solid;
+            "
+          >
+            <h2 style="align-self: center">Login infos</h2>
+            <span>First logged in on <time id="first_join_time"></time></span>
+            <span>Last logged in on <time id="last_join_time"></time></span>
+            <span
+              >Last ranked game played on <time id="last_ranked_time"></time
+            ></span>
+          </div>
+          <div
+            id="solo_perf_important"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              align-items: start;
+              margin: 10px;
+            "
+          >
+            <h2 style="margin-top: 0px; align-self: center">
+              Elo / Rank Infos
+            </h2>
+            <span>Current Elo: <span id="eloRate"></span></span>
+            <span>Peak Elo: <span id="peakElo"></span></span>
+            <div
+              id="currentPlacementDiv"
+              style="
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                margin-top: 10px;
+              "
+            >
+              <span>Current rank:</span>
+              <div
+                id="currentRankLogo"
+                style="
+                  background-image: url(&quot;data:image/png;base64,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&quot;);
+                  width: 1.25rem;
+                  height: 1.25rem;
+                  background-position: 0rem 0px;
+                  background-size: cover;
+                  background-repeat: no-repeat;
+                  image-rendering: pixelated;
+                  margin-left: 2.5px;
+                "
+              ></div>
+              <span id="currentRankName" style="margin-left: 5px"></span>
+            </div>
+            <div
+              id="nextPlacementDiv"
+              style="
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <span>Next rank:</span>
+              <div
+                id="nextRankLogo"
+                style="
+                  background-image: url(&quot;data:image/png;base64,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&quot;);
+                  width: 1.25rem;
+                  height: 1.25rem;
+                  background-position: 0rem 0px;
+                  background-size: cover;
+                  background-repeat: no-repeat;
+                  image-rendering: pixelated;
+                  margin-left: 2.5px;
+                "
+              ></div>
+              <span id="nextRankName" style="margin-left: 5px"></span>
+            </div>
+            <span style="margin-top: 10px"
+              >Current Placement: <span id="eloRank"></span
+            ></span>
+          </div>
+        </div>
+        <div
+          id="solo_perf_info_line_2"
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            margin: 5px;
+            margin-top: 0px;
+            border-width: 0px;
+            border-top-width: 3px;
+            border-color: #444;
+            border-style: solid;
+          "
+        >
+          <div
+            id="lastMatch"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              align-items: start;
+              padding: 10px;
+              padding-right: 25px;
+              border-width: 0px;
+              border-right-width: 3px;
+              border-color: #666;
+              border-style: solid;
+            "
+          >
+            <h2 id="last_match_played" style="align-self: center">
+              Last Match Played
+            </h2>
+            <span id="last_match_players">Against </span>
+            <span>Played on <time id="last_match_time"></time></span>
+            <span
+              >Match
+              <span id="match_result" style="font-weight: bold"></span>
+              after
+              <span id="match_length"></span>
+            </span>
+            <span
+              >Elo diff: <span id="elo_diff" style="font-weight: bold"></span
+            ></span>
+
+            <span style="margin-top: 10px">Seed Types :</span>
+            <ul style="margin-top: 0px">
+              <li>Overworld: <span id="seed_overworld"></span></li>
+              <li>Nether: <span id="seed_nether"></span></li>
+            </ul>
+          </div>
+          <div
+            id="last_10_games"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              align-items: start;
+              margin: 10px;
+            "
+          >
+            <h2 style="margin-bottom: 0px; align-self: center">
+              Last 10 Ranked Games
+            </h2>
+            <ol style="padding-left: 30px">
+              <li style="margin: 5px"></li>
+              <li style="margin: 5px"></li>
+              <li style="margin: 5px"></li>
+              <li style="margin: 5px"></li>
+              <li style="margin: 5px"></li>
+              <li style="margin: 5px"></li>
+              <li style="margin: 5px"></li>
+              <li style="margin: 5px"></li>
+              <li style="margin: 5px"></li>
+              <li style="margin: 5px"></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="widget_access"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 20px;
+        border-radius: 20px;
+        background-color: gray;
+        height: 100%;
+      "
+    >
+      <h1 style="margin: 10px 20px 0px 20px">Stream Widgets</h1>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          margin: 0px 20px;
+        "
+      >
+        <a
+          href="/mcsr/widget"
+          target="_blank"
+          style="
+            font-size: 2em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+          "
+          >TheFox580's Widget
+          <img
+            id="userHead"
+            style="margin-left: 20px; border-radius: 5px; align-self: center"
+            src="https://minotar.net/avatar/dc833b853cba4ebd8f4dfebc09f02422/30"
+            alt="TheFox580's skin head"
+        /></a>
+        <p style="font-size: 1em">
+          To have you own stream widget, please
+          <a href="mailto:buisness.thefox580@gmail.com">concact me</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
