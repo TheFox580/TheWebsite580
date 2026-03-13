@@ -161,21 +161,47 @@ function getNextRank(currentRank) {
 }
 
 function getOffsetByRank(rank) {
-  if (rank === "Unrated") {
-    return 0;
-  } else if (rank.includes("Coal")) {
-    return -1.25;
+  if (rank.includes("Coal")) {
+    if (rank == "Coal 1") {
+      return [0, 0];
+    } else if (rank == "Coal 2") {
+      return [-1.40625, 0];
+    }
+    return [-2.8125, 0];
   } else if (rank.includes("Iron")) {
-    return -3.75;
+    if (rank == "Iron 1") {
+      return [-4.21875, 0];
+    }
+    if (rank == "Iron 2") {
+      return [-5.625, 0];
+    }
+    return [-7.03125, 0];
   } else if (rank.includes("Gold")) {
-    return -5;
-  } else if (rank.includes("Diamond")) {
-    return -6.25;
+    if (rank == "Gold 1") {
+      return [0, -1.40625];
+    } else if (rank == "Gold 2") {
+      return [-1.40625, -1.40625];
+    }
+    return [-2.8125, -1.40625];
   } else if (rank.includes("Emerald")) {
-    return -7.5;
-  } else {
-    return -8.75;
+    if (rank == "Emerald 1") {
+      return [-4.21875, -1.40625];
+    }
+    if (rank == "Emerald 2") {
+      return [-5.625, -1.40625];
+    }
+    return [-7.03125, -1.40625];
+  } else if (rank.includes("Diamond")) {
+    if (rank == "Diamond 1") {
+      return [0, -2.8125];
+    } else if (rank == "Diamond 2") {
+      return [-1.40625, -2.8125];
+    }
+    return [-2.8125, -2.8125];
+  } else if (rank == "Netherite") {
+    return [-4.21875, -2.8125];
   }
+  return [-5.625, -2.8125];
 }
 
 function updateElo(data) {
@@ -203,12 +229,14 @@ function updateElo(data) {
   peakHTML.textContent = peak;
   rankHTML.textContent = `#${rank}`;
 
+  let offset = getOffsetByRank(nextRankName);
+
   document.getElementById("currentRankLogo").style.backgroundPosition =
-    `${getOffsetByRank(rankName)}rem 0px`;
+    `${offset[0]}rem ${offset[1]}rem`;
   rankNameHTML.textContent = `${rankName}`;
 
   document.getElementById("nextRankLogo").style.backgroundPosition =
-    `${getOffsetByRank(nextRankName)}rem 0px`;
+    `${offset[0]}rem ${offset[1]}rem`;
   nextRankHTML.textContent = `${nextRankName}`;
 }
 
