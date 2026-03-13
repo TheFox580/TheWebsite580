@@ -243,22 +243,31 @@ async function updateLastGame(uuid) {
       .filter((player) => player.uuid !== uuid)
       .map((player) => player.nickname);
 
-    let lastMatchPlayers = document.getElementById("last_match_players");
+    otherPlayers = otherPlayers.length == 0 ? null : otherPlayers;
 
-    for (let player of players) {
-      uuid_player[player.uuid] = player.nickname;
-    }
+    if (otherPlayers != null) {
+      let lastMatchPlayers = document.getElementById("last_match_players");
 
-    for (let player of otherPlayers) {
-      let playerLink = document.createElement("a");
-      playerLink.href = `https://mcsrranked.com/stats/${player}`;
-      playerLink.target = "_blank";
-      playerLink.textContent = player;
-      lastMatchPlayers.append(playerLink);
-
-      if (player !== otherPlayers[otherPlayers.length - 1]) {
-        lastMatchPlayers.appendChild(document.createTextNode(", "));
+      for (let player of players) {
+        uuid_player[player.uuid] = player.nickname;
       }
+
+      for (let player of otherPlayers) {
+        let playerLink = document.createElement("a");
+        playerLink.href = `https://mcsrranked.com/stats/${player}`;
+        playerLink.target = "_blank";
+        playerLink.textContent = player;
+        lastMatchPlayers.append(playerLink);
+
+        if (player !== otherPlayers[otherPlayers.length - 1]) {
+          lastMatchPlayers.appendChild(document.createTextNode(", "));
+        }
+      }
+    } else {
+      let lastMatchPlayers = document.getElementById("last_match_players");
+      let none = document.createElement("span");
+      none.textContent = "None";
+      lastMatchPlayers.append(none);
     }
 
     let matchTime = new Date(json.date * 1000);
@@ -291,14 +300,16 @@ async function updateLastGame(uuid) {
     let mins = ((endTime % 3.6e6) / 6e4) | 0;
     let secs = Math.floor((endTime % 6e4) / 1e3);
 
-    document.getElementById("match_length").textContent = mins + ":" + secs;
+    document.getElementById("match_length").textContent = mins + ":" + z(secs);
 
-    let change = json.changes.filter((player) => player.uuid === uuid)[0]
-      .change;
+    let change =
+      json.changes.length == 0
+        ? null
+        : json.changes.filter((player) => player.uuid === uuid)[0].change;
     if (change != null) {
       change = change >= 0 ? "+" + change : "-" + change;
     } else {
-      change = "Placement Game | No elo was gained or lost";
+      change = "Placement / Private Game | No elo was gained or lost";
       resultColor = "aqua";
     }
 
