@@ -1,3 +1,18 @@
+let overworld_part = {
+  RUINED_PORTAL: "Ruined Portal",
+  SHIPWRECK: "Shipwreck",
+  VILLAGE: "Village",
+  DESERT_TEMPLE: "Desert Temple",
+  BURRIED_TREASURE: "Burried Treasure",
+};
+
+let nether_part = {
+  TREASURE: "Treasure",
+  BRIDGE: "Bridge",
+  STABLES: "Stables",
+  HOUSING: "Housing",
+};
+
 // Utility to add leading zero
 function z(n) {
   return (n < 10 ? "0" : "") + n;
@@ -345,10 +360,9 @@ async function updateLastGame(uuid) {
     document.getElementById("elo_diff").style.color = resultColor;
 
     document.getElementById("seed_overworld").textContent =
-      capitalizeFirstLetter(json.seed.overworld);
-    document.getElementById("seed_nether").textContent = capitalizeFirstLetter(
-      json.seed.nether,
-    );
+      overworld_part[json.seed.overworld];
+    document.getElementById("seed_nether").textContent =
+      nether_part[json.seed.nether];
   }
 }
 
