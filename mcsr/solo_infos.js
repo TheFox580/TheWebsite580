@@ -18,6 +18,13 @@ function z(n) {
   return (n < 10 ? "0" : "") + n;
 }
 
+function formatTime(time) {
+  let mins = ((time % 3.6e6) / 6e4) | 0;
+  let secs = Math.floor((time % 6e4) / 1e3);
+
+  return `${mins}:${z(secs)}`;
+}
+
 function capitalizeFirstLetter(val) {
   return (
     String(val).charAt(0).toUpperCase() + String(val).slice(1).toLowerCase()
@@ -338,12 +345,9 @@ async function updateLastGame(uuid) {
     document.getElementById("match_result").textContent = result;
     document.getElementById("match_result").style.color = resultColor;
 
-    let endTime = json.result.time;
+    let endTime = formatTime(json.result.time);
 
-    let mins = ((endTime % 3.6e6) / 6e4) | 0;
-    let secs = Math.floor((endTime % 6e4) / 1e3);
-
-    document.getElementById("match_length").textContent = mins + ":" + z(secs);
+    document.getElementById("match_length").textContent = endTime;
 
     let change =
       json.changes.length == 0
@@ -364,6 +368,28 @@ async function updateLastGame(uuid) {
     document.getElementById("seed_nether").textContent =
       nether_part[json.seed.nether];
   }
+}
+
+async function updatePB(json) {
+  let seasonPB =
+    json.statistics.season.bestTime.ranked != null
+      ? formatTime(json.statistics.season.bestTime.ranked)
+      : "No PB this season";
+  let allTimePB = formatTime(json.statistics.total.bestTime.ranked);
+
+  let seasonPBHTML = document.getElementById("seasonPB");
+  let allTimePBHTML = document.getElementById("allTimePB");
+
+  if ((seasonPB = allTimePB)) {
+    seasonPBHTML.parentElement.style.color = "gold";
+    allTimePBHTML.parentElement.style.color = "gold";
+
+    seasonPBHTML.parentElement.style.fontWeight = "bold";
+    allTimePBHTML.parentElement.style.fontWeight = "bold";
+  }
+
+  seasonPBHTML.textContent = seasonPB;
+  allTimePBHTML.textContent = allTimePB;
 }
 
 async function updateLast10Ranked(uuid) {
@@ -426,6 +452,7 @@ async function updateSoloInfos() {
     updateElo(json);
     updateLastGame(uuid);
     updateLast10Ranked(uuid);
+    updatePB(json);
   }
 }
 
