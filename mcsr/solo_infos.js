@@ -354,7 +354,7 @@ async function updateLastGame(uuid) {
         ? null
         : json.changes.filter((player) => player.uuid === uuid)[0].change;
     if (change != null) {
-      change = change >= 0 ? "+" + change : "-" + change;
+      change = change >= 0 ? "+" + change : "-" + Math.abs(change);
     } else {
       change = "Placement / Private Game | No elo was gained or lost";
       resultColor = "aqua";
