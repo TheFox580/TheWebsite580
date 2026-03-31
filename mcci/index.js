@@ -909,7 +909,7 @@ async function getData() {
       let catDiv = document.createElement("div");
       catDiv.id = `cosmetics_${category}_div`;
       catDiv.style.display = "grid";
-      catDiv.style.gridTemplateColumns = `repeat(${Math.min(4, cosmeticCount)}, 1fr)`;
+      catDiv.style.gridTemplateColumns = `repeat(${Math.min(3, cosmeticCount)}, 1fr)`;
       catDiv.style.gap = "10px";
       catDiv.style.gridAutoRows = "minmax(50px, auto)";
 
