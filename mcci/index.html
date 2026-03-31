@@ -26,6 +26,31 @@
       .grayscale {
         filter: grayscale(1);
       }
+
+      .unobtainable_fail {
+        color: darkred;
+        border-color: darkred;
+      }
+
+      .unobtainable_success {
+        color: green;
+        border-color: green;
+      }
+
+      .fail {
+        color: red;
+        border-color: red;
+      }
+
+      .ongoing {
+        color: orange;
+        border-color: orange;
+      }
+
+      .success {
+        color: lime;
+        border-color: lime;
+      }
     </style>
   </head>
   <body
@@ -683,6 +708,25 @@
         "
       >
         <h1>Badges</h1>
+        <h2 style="margin-top: 0px; margin-bottom: 0px">Color caption:</h2>
+        <p
+          style="
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+          "
+        >
+          <span class="unobtainable_fail"
+            >Not obtained and no longer obtainable</span
+          ><br /><span class="unobtainable_success"
+            >Obtained and no longer obtainable</span
+          ><br /><span class="fail">No obtained yet</span><br /><span
+            class="ongoing"
+            >Completing this badge</span
+          ><br /><span class="success">Completed this badge</span>
+        </p>
       </div>
     </div>
   </body>

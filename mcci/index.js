@@ -88,6 +88,41 @@ function formatInt(int) {
   return res.split("").reverse().join("");
 }
 
+function decimalToRoman(number) {
+  const RN = [
+    "I",
+    "IV",
+    "V",
+    "IX",
+    "X",
+    "XL",
+    "L",
+    "XC",
+    "C",
+    "CD",
+    "D",
+    "CM",
+    "M",
+  ];
+  const VRN = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000];
+  var div = 0;
+
+  var ind = RN.length - 1;
+  var retRN = "";
+
+  while (number > 0) {
+    div = Math.floor(number / VRN[ind]);
+    number = number % VRN[ind];
+
+    while (div--) {
+      retRN = retRN + RN[ind];
+    }
+    ind--;
+  }
+
+  return retRN;
+}
+
 async function getData() {
   const response = await fetch("/mcci/MCCI_Data_TheFox580.json");
   if (response.ok) {
@@ -110,7 +145,7 @@ async function getData() {
     crownImage.src = `https://islandcdn.themysterys.com/icons/crowns/${crownLevel10}.png`;
     crownImage.id = "crown_img";
     crownImage.alt = "TheFox580's crown level";
-    crownImage.style = "width: 1em; transform: translate(0, 2px)";
+    crownImage.style = "width: 1em; height: 1em; transform: translate(0, 2px)";
 
     document.getElementById("crown_level_info").appendChild(crownImage);
 
@@ -134,7 +169,7 @@ async function getData() {
     styleImage.src = `https://islandcdn.themysterys.com/icons/style_level/${styleLevel10}.png`;
     styleImage.id = "style_img";
     styleImage.alt = "TheFox580's style level";
-    styleImage.style = "width: 1em; transform: translate(0, 2px)";
+    styleImage.style = "width: 1em; height: 1em; transform: translate(0, 2px)";
 
     document.getElementById("style_level_info").appendChild(styleImage);
 
@@ -158,7 +193,8 @@ async function getData() {
     fishingImage.src = `https://islandcdn.themysterys.com/fishing/level/${fishingLevel10}.png`;
     fishingImage.id = "fishing_img";
     fishingImage.alt = "TheFox580's fishing level";
-    fishingImage.style = "width: 1em; transform: translate(0, 2px)";
+    fishingImage.style =
+      "width: 1em; height: 1em; transform: translate(0, 2px)";
 
     document.getElementById("fishing_level_info").appendChild(fishingImage);
 
@@ -190,7 +226,8 @@ async function getData() {
     factionImage.src = `https://islandcdn.themysterys.com/factions/${currentFaction.name.split("_")[0].toLowerCase()}/${factionPrestige30}.png`;
     factionImage.id = "faction_img";
     factionImage.alt = "TheFox580's faction level";
-    factionImage.style = "width: 1.5em; transform: translate(0, 2px)";
+    factionImage.style =
+      "width: 1.5em; height: 1em; transform: translate(0, 2px)";
 
     document.getElementById("faction_level_info").appendChild(factionImage);
 
@@ -259,7 +296,7 @@ async function getData() {
     headCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/hat/${headCosmetic.collection.toLowerCase()}/${headCosmetic.name.replaceAll(" ", "_")}.png`;
     headCosmeticImage.id = "head_cosmetic_img";
     headCosmeticImage.alt = `TheFox580's head cosmetic (${headCosmetic.name}`;
-    headCosmeticImage.style = "width: 3em";
+    headCosmeticImage.style = "width: 3em; height: 3em;";
 
     headCosmeticDiv.insertBefore(
       headCosmeticImage,
@@ -281,7 +318,7 @@ async function getData() {
     accessoryCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/accessory/${accessoryCosmetic.collection.toLowerCase()}/${accessoryCosmetic.name.replaceAll(" ", "_")}.png`;
     accessoryCosmeticImage.id = "accessory_cosmetic_img";
     accessoryCosmeticImage.alt = `TheFox580's accessory cosmetic (${accessoryCosmetic.name}`;
-    accessoryCosmeticImage.style = "width: 3em";
+    accessoryCosmeticImage.style = "width: 3em; height: 3em;";
 
     accessoryCosmeticDiv.insertBefore(
       accessoryCosmeticImage,
@@ -303,7 +340,7 @@ async function getData() {
     cloakCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/cloak/${cloakCosmetic.collection.toLowerCase()}/${cloakCosmetic.name.replaceAll(" ", "_")}.png`;
     cloakCosmeticImage.id = "cloak_cosmetic_img";
     cloakCosmeticImage.alt = `TheFox580's cloak cosmetic (${cloakCosmetic.name}`;
-    cloakCosmeticImage.style = "width: 3em";
+    cloakCosmeticImage.style = "width: 3em; height: 3em;";
 
     cloakCosmeticDiv.insertBefore(
       cloakCosmeticImage,
@@ -325,7 +362,7 @@ async function getData() {
     trailCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/trail/${trailCosmetic.collection.toLowerCase()}/${trailCosmetic.name.replaceAll(" ", "_")}.png`;
     trailCosmeticImage.id = "trail_cosmetic_img";
     trailCosmeticImage.alt = `TheFox580's trail cosmetic (${trailCosmetic.name}`;
-    trailCosmeticImage.style = "width: 3em";
+    trailCosmeticImage.style = "width: 3em; height: 3em;";
 
     trailCosmeticDiv.insertBefore(
       trailCosmeticImage,
@@ -347,7 +384,7 @@ async function getData() {
     auraCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/aura/${auraCosmetic.collection.toLowerCase()}/${auraCosmetic.name.replaceAll(" ", "_")}.png`;
     auraCosmeticImage.id = "aura_cosmetic_img";
     auraCosmeticImage.alt = `TheFox580's aura cosmetic (${auraCosmetic.name}`;
-    auraCosmeticImage.style = "width: 3em";
+    auraCosmeticImage.style = "width: 3em; height: 3em;";
 
     auraCosmeticDiv.insertBefore(
       auraCosmeticImage,
@@ -369,7 +406,7 @@ async function getData() {
     rodCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/rod/${rodCosmetic.collection.toLowerCase()}/${rodCosmetic.name.replaceAll(" ", "_")}.png`;
     rodCosmeticImage.id = "rod_cosmetic_img";
     rodCosmeticImage.alt = `TheFox580's rod cosmetic (${rodCosmetic.name}`;
-    rodCosmeticImage.style = "width: 3em";
+    rodCosmeticImage.style = "width: 3em; height: 3em;";
 
     rodCosmeticDiv.insertBefore(
       rodCosmeticImage,
@@ -597,7 +634,7 @@ async function getData() {
       let catDiv = document.createElement("div");
       catDiv.id = `badges_${key}_div`;
       catDiv.style.display = "grid";
-      catDiv.style.gridTemplateColumns = "repeat(3, 1fr)";
+      catDiv.style.gridTemplateColumns = "repeat(4, 1fr)";
       catDiv.style.gap = "10px";
       catDiv.style.gridAutoRows = "minmax(50px, auto)";
 
@@ -636,7 +673,6 @@ async function getData() {
         let badgeBox = document.createElement("div");
         badgeBox.id = `badge_${key}_${badge_former_name}`;
         badgeBox.style.display = "flex";
-        badgeBox.style.borderColor = "darkgray";
         badgeBox.style.borderRadius = "10px";
         badgeBox.style.borderStyle = "solid";
         badgeBox.style.padding = "10px";
@@ -646,7 +682,9 @@ async function getData() {
         badgeImage.id = `badge_${key}_${badge_former_name}_img`;
         badgeImage.alt = `TheFox580's ${badge.badge.name}`;
         badgeImage.style = "width: 3em";
-        badgeImage.style.filter = `grayscale(${stageCompleted === 0 ? 1 : 0})`;
+        if (stageCompleted === 0) {
+          badgeImage.classList.add("grayscale");
+        }
 
         badgeBox.appendChild(badgeImage);
 
@@ -660,13 +698,19 @@ async function getData() {
         let badgeName = document.createElement("span");
         badgeName.id = `badge_${key}_${badge_former_name}_name`;
         badgeName.style.fontWeight = "bold";
-        badgeName.textContent =
-          badge.badge.name.includes("Pass") ||
-          badge.badge.name.includes("Challenge") ||
-          (key === "general" && badge.badge.name.includes("Champion")) ||
-          badge.badge.name === "Squidtek Ambassador"
-            ? `${badge.badge.name} (Unobtainable)`
-            : badge.badge.name;
+        badgeName.style.color = "white";
+        badgeName.textContent = badge.badge.name;
+        if (
+          badgeName.textContent.includes("Pass") ||
+          badgeName.textContent.includes("Challenge") ||
+          key === "general"
+        ) {
+          badgeInfos.classList.add("unobtainable");
+        }
+
+        if (badge.stageProgress.length > 1 && stageCompleted > 0) {
+          badgeName.textContent += ` ${decimalToRoman(stageCompleted + 1)}`;
+        }
 
         badgeInfos.appendChild(badgeName);
 
@@ -677,26 +721,35 @@ async function getData() {
           stageCompleted === 0
             ? `0/${badge.stageProgress[0].progress.obtainable}`
             : `${badge.stageProgress[Math.min(badge.stageProgress.length - 1, stageCompleted)].progress.obtained} / ${badge.stageProgress[Math.min(badge.stageProgress.length - 1, stageCompleted)].progress.obtainable}`;
-        
-        if (stageCompleted === 0) {
-          badgeObtained.style.color = "red";
-          badgeBox.style.borderColor = badgeName.textContent.includes("Unobtainable") ? "darkred" : "red";
-        } else {
-          badgeObtained.style.color =
-            Math.min(badge.stageProgress.length - 1, stageCompleted) ===
-            stageCompleted
-              ? "orange"
-              : (badgeName.textContent.includes("Unobtainable") ? "green" : "lime");
-          badgeBox.style.borderColor =
-            Math.min(badge.stageProgress.length - 1, stageCompleted) ===
-            stageCompleted
-              ? "orange"
-              : (badgeName.textContent.includes("Unobtainable") ? "green" : "lime");
 
-          if (badgeObtained.style.color === "orange"){
-            let percentCompleted = Math.round((badge.stageProgress[stageCompleted].progress.obtained / badge.stageProgress[stageCompleted].progress.obtainable)*100)
-            badgeObtained.style.borderColor = `linear-gradient( to right, orange 0%, orange ${Math.max(0, percentCompleted-3)}%, orange ${Math.min(percentCompleted+2, 100)}%, darkgray 100% );`
+        if (stageCompleted === 0) {
+          if (badgeInfos.classList.contains("unobtainable")) {
+            badgeObtained.classList.add("unobtainable_fail");
+            badgeBox.classList.add("unobtainable_fail");
+          } else {
+            badgeObtained.classList.add("fail");
+            badgeBox.classList.add("fail");
           }
+        } else if (
+          Math.min(badge.stageProgress.length - 1, stageCompleted) ===
+          stageCompleted
+        ) {
+          badgeObtained.classList.add("ongoing");
+          badgeBox.classList.add("ongoing");
+          let percentCompleted =
+            Math.round(
+              (badge.stageProgress[stageCompleted].progress.obtained /
+                badge.stageProgress[stageCompleted].progress.obtainable) *
+                100 *
+                100,
+            ) / 100;
+          badgeObtained.textContent += ` (${percentCompleted}%)`;
+        } else if (badgeInfos.classList.contains("unobtainable")) {
+          badgeObtained.classList.add("unobtainable_success");
+          badgeBox.classList.add("unobtainable_success");
+        } else {
+          badgeObtained.classList.add("success");
+          badgeBox.classList.add("success");
         }
 
         badgeInfos.appendChild(badgeObtained);
