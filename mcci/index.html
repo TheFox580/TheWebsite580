@@ -31,9 +31,10 @@
   <body
     style="
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-evenly;
       align-self: center;
+      width: 100%;
     "
   >
     <div
@@ -58,13 +59,630 @@
           margin: 20px 20px 0px 20px;
         "
       >
-        <h1>MCCI Stats</h1>
+        <div
+          id="solo_main_info"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 0px 0px 20px 0px;
+          "
+        >
+          <h1 style="margin: 20px 0px 10px 0px">MCCI Stats</h1>
+          <img
+            id="rank_img"
+            src="#"
+            alt="TheFox580's rank"
+            style="width: 15em"
+          />
+        </div>
         <img
           id="userHead"
           style="margin-left: 20px; border-radius: 10px; align-self: center"
-          src="https://minotar.net/avatar/dc833b853cba4ebd8f4dfebc09f02422/75"
+          src="https://minotar.net/helm/dc833b853cba4ebd8f4dfebc09f02422/75"
           alt="TheFox580's skin head"
         />
+      </div>
+    </div>
+    <div
+      id="main_stats"
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          margin: 20px;
+          padding: 10px;
+          border-radius: 20px;
+          background-color: gray;
+          width: 30%;
+        "
+      >
+        <h1>Levels</h1>
+        <div
+          id="crown_level_div"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            margin: 0px 0px 20px 0px;
+            width: 90%;
+          "
+        >
+          <h2 id="crown_level_info">Crown Level :</h2>
+          <div
+            id="crown_backround_progress_bar"
+            style="
+              width: 100%;
+              background-color: black;
+              height: 10px;
+              border-radius: 10px;
+              border-color: darkgray;
+              border-width: 2px;
+              border-style: solid;
+            "
+          >
+            <div
+              id="crown_progress_bar"
+              style="
+                width: 0%;
+                background-color: black;
+                height: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+          </div>
+          <p id="crown_progress_text" style="font-weight: bold">0% to 0</p>
+        </div>
+        <div
+          id="style_level_div"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 90%;
+            margin: 0px 0px 20px 0px;
+          "
+        >
+          <h2 id="style_level_info">Style Level :</h2>
+          <div
+            id="style_backround_progress_bar"
+            style="
+              width: 100%;
+              background-color: black;
+              height: 10px;
+              border-radius: 10px;
+              border-color: darkgray;
+              border-width: 2px;
+              border-style: solid;
+            "
+          >
+            <div
+              id="style_progress_bar"
+              style="
+                width: 0%;
+                background-color: black;
+                height: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+          </div>
+          <p id="style_progress_text" style="font-weight: bold">0% to 0</p>
+        </div>
+        <div
+          id="fishing_level_div"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 90%;
+            margin: 0px 0px 20px 0px;
+          "
+        >
+          <h2 id="fishing_level_info">Fishing Level :</h2>
+          <div
+            id="fishing_backround_progress_bar"
+            style="
+              width: 100%;
+              background-color: black;
+              height: 10px;
+              border-radius: 10px;
+              border-color: darkgray;
+              border-width: 2px;
+              border-style: solid;
+            "
+          >
+            <div
+              id="fishing_progress_bar"
+              style="
+                width: 0%;
+                background-color: black;
+                height: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+          </div>
+          <p id="fishing_progress_text" style="font-weight: bold">0% to 0</p>
+        </div>
+        <div
+          id="faction_level_div"
+          style="
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 90%;
+            margin: 0px 0px 20px 0px;
+          "
+        >
+          <h2 id="faction_level_info">Faction Level :</h2>
+          <div
+            id="faction_backround_progress_bar"
+            style="
+              width: 100%;
+              background-color: black;
+              height: 10px;
+              border-radius: 10px;
+              border-color: darkgray;
+              border-width: 2px;
+              border-style: solid;
+            "
+          >
+            <div
+              id="faction_progress_bar"
+              style="
+                width: 0%;
+                background-color: black;
+                height: 10px;
+                border-radius: 5px;
+              "
+            ></div>
+          </div>
+          <p id="faction_progress_text" style="font-weight: bold">0% to 0</p>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          margin: 20px;
+          padding: 10px;
+          border-radius: 20px;
+          background-color: gray;
+          width: 20%;
+        "
+      >
+        <div id="trophies_div" style="display: flex; flex-direction: column">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              align-items: center;
+            "
+          >
+            <h1>Trophies</h1>
+          </div>
+          <div
+            id="all_trophies"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: start;
+              align-items: start;
+            "
+          ></div>
+          <div
+            id="overall_trophies"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: start;
+              align-items: center;
+              margin-bottom: 5px;
+            "
+          >
+            <img
+              src="https://islandcdn.themysterys.com/icons/trophies/yellow.png"
+              alt="Overall trophies logo"
+              style="width: 2em; margin-right: 5px"
+            />
+            <span id="overall_trophies_text" style="font-weight: bold"
+              >0 / 0 Overall Trophies</span
+            >
+          </div>
+          <div
+            id="style_trophies"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: start;
+              align-items: center;
+              margin-top: 5px;
+              margin-bottom: 5px;
+            "
+          >
+            <img
+              src="https://islandcdn.themysterys.com/icons/trophies/purple.png"
+              alt="Style trophies logo"
+              style="width: 2em; margin-right: 5px"
+            />
+            <span id="style_trophies_text" style="font-weight: bold"
+              >0 / 0 Style Trophies</span
+            >
+          </div>
+          <div
+            id="angler_trophies"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: start;
+              align-items: center;
+              margin-top: 5px;
+              margin-bottom: 5px;
+            "
+          >
+            <img
+              src="https://islandcdn.themysterys.com/icons/trophies/blue.png"
+              alt="Angler trophies logo"
+              style="width: 2em; margin-right: 5px"
+            />
+            <span id="angler_trophies_text" style="font-weight: bold"
+              >0 / 0 Angler Trophies</span
+            >
+          </div>
+          <div
+            id="skill_trophies"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: start;
+              align-items: center;
+              margin-top: 5px;
+              margin-bottom: 5px;
+            "
+          >
+            <img
+              src="https://islandcdn.themysterys.com/icons/trophies/red.png"
+              alt="Skill trophies logo"
+              style="width: 2em; margin-right: 5px"
+            />
+            <span id="skill_trophies_text" style="font-weight: bold"
+              >0 / 0 Skill Trophies</span
+            >
+          </div>
+          <div
+            id="bonus_trophies"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: start;
+              align-items: center;
+              margin-top: 5px;
+              margin-bottom: 10px;
+            "
+          >
+            <img
+              src="https://islandcdn.themysterys.com/icons/trophies/silver.png"
+              alt="Bonus trophies logo"
+              style="width: 2em; margin-right: 5px"
+            />
+            <span id="bonus_trophies_text" style="font-weight: bold"
+              >0 Bonus Trophies</span
+            >
+          </div>
+        </div>
+        <div id="currencies_div" style="display: flex; flex-direction: column">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              align-items: center;
+            "
+          >
+            <h1>Currencies</h1>
+          </div>
+          <div
+            id="all_currencies"
+            style="
+              display: flex;
+              flex-direction: column;
+              justify-content: start;
+              align-items: start;
+            "
+          >
+            <div
+              id="coins"
+              style="
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                margin-bottom: 5px;
+              "
+            >
+              <img
+                src="https://islandcdn.themysterys.com/icons/currency/coin.png"
+                alt="Coins logo"
+                style="width: 2em; margin-right: 5px"
+              />
+              <span id="coins_text" style="font-weight: bold">0 Coins</span>
+            </div>
+            <div
+              id="anglr_tokens"
+              style="
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                margin-bottom: 5px;
+              "
+            >
+              <img
+                src="https://islandcdn.themysterys.com/icons/currency/angler_token.png"
+                alt="A.N.G.L.R. Token logo"
+                style="width: 2em; margin-right: 5px"
+              />
+              <span id="anglr_token_text" style="font-weight: bold"
+                >0 A.N.G.L.R. Tokens</span
+              >
+            </div>
+            <div
+              id="royal_reputation"
+              style="
+                display: flex;
+                flex-direction: row;
+                justify-content: start;
+                align-items: center;
+                margin-bottom: 5px;
+              "
+            >
+              <img
+                src="https://islandcdn.themysterys.com/icons/currency/royal_reputation.png"
+                alt="Royal Reputation logo"
+                style="width: 2em; margin-right: 5px"
+              />
+              <span id="royal_reputation_text" style="font-weight: bold"
+                >0 / 0 Royal Reputation</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="cosmetics_on"
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          margin: 20px;
+          padding: 10px;
+          border-radius: 20px;
+          background-color: gray;
+          width: 100%;
+        "
+      >
+        <h1>Current Wardrobe</h1>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 10px;
+            grid-auto-rows: minmax(50px, auto);
+          "
+        >
+          <div
+            id="head_cosmetic"
+            style="
+              display: flex;
+              border-color: darkgray;
+              border-radius: 10px;
+              border-style: solid;
+              padding: 10px;
+            "
+          >
+            <div
+              id="head_cosmetic_infos"
+              style="display: flex; flex-direction: column; margin-left: 10px"
+            >
+              <span
+                id="head_cosmetic_name"
+                style="margin-bottom: 10px; font-weight: bold"
+              ></span>
+              <span id="head_cosmetic_rarity"></span>
+            </div>
+          </div>
+          <div
+            id="accessory_cosmetic"
+            style="
+              display: flex;
+              border-color: darkgray;
+              border-radius: 10px;
+              border-style: solid;
+              padding: 10px;
+            "
+          >
+            <div
+              id="accessory_cosmetic_infos"
+              style="display: flex; flex-direction: column; margin-left: 10px"
+            >
+              <span
+                id="accessory_cosmetic_name"
+                style="margin-bottom: 10px; font-weight: bold"
+              ></span>
+              <span id="accessory_cosmetic_rarity"></span>
+            </div>
+          </div>
+          <div
+            id="cloak_cosmetic"
+            style="
+              display: flex;
+              border-color: darkgray;
+              border-radius: 10px;
+              border-style: solid;
+              padding: 10px;
+            "
+          >
+            <div
+              id="cloak_cosmetic_infos"
+              style="display: flex; flex-direction: column; margin-left: 10px"
+            >
+              <span
+                id="cloak_cosmetic_name"
+                style="margin-bottom: 10px; font-weight: bold"
+              ></span>
+              <span id="cloak_cosmetic_rarity"></span>
+            </div>
+          </div>
+          <div
+            id="trail_cosmetic"
+            style="
+              display: flex;
+              border-color: darkgray;
+              border-radius: 10px;
+              border-style: solid;
+              padding: 10px;
+            "
+          >
+            <div
+              id="trail_cosmetic_infos"
+              style="display: flex; flex-direction: column; margin-left: 10px"
+            >
+              <span
+                id="trail_cosmetic_name"
+                style="margin-bottom: 10px; font-weight: bold"
+              ></span>
+              <span id="trail_cosmetic_rarity"></span>
+            </div>
+          </div>
+          <div
+            id="aura_cosmetic"
+            style="
+              display: flex;
+              border-color: darkgray;
+              border-radius: 10px;
+              border-style: solid;
+              padding: 10px;
+            "
+          >
+            <div
+              id="aura_cosmetic_infos"
+              style="display: flex; flex-direction: column; margin-left: 10px"
+            >
+              <span
+                id="aura_cosmetic_name"
+                style="margin-bottom: 10px; font-weight: bold"
+              ></span>
+              <span id="aura_cosmetic_rarity"></span>
+            </div>
+          </div>
+          <div
+            id="rod_cosmetic"
+            style="
+              display: flex;
+              border-color: darkgray;
+              border-radius: 10px;
+              border-style: solid;
+              padding: 10px;
+            "
+          >
+            <div
+              id="rod_cosmetic_infos"
+              style="display: flex; flex-direction: column; margin-left: 10px"
+            >
+              <span
+                id="rod_cosmetic_name"
+                style="margin-bottom: 10px; font-weight: bold"
+              ></span>
+              <span id="rod_cosmetic_rarity"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="social"
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          margin: 20px;
+          padding: 10px;
+          border-radius: 20px;
+          background-color: gray;
+          width: 100%;
+        "
+      >
+        <h1>Friends</h1>
+        <div
+          id="friends_div"
+          style="
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 10px;
+            grid-auto-rows: minmax(50px, auto);
+          "
+        ></div>
+      </div>
+    </div>
+    <div
+      id="badges"
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div
+        id="badges_to_add"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          margin: 20px;
+          padding: 10px;
+          border-radius: 20px;
+          background-color: gray;
+          width: 100%;
+        "
+      >
+        <h1>Badges</h1>
       </div>
     </div>
   </body>
