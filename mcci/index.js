@@ -677,7 +677,7 @@ async function getData() {
           stageCompleted === 0
             ? `0/${badge.stageProgress[0].progress.obtainable}`
             : `${badge.stageProgress[Math.min(badge.stageProgress.length - 1, stageCompleted)].progress.obtained} / ${badge.stageProgress[Math.min(badge.stageProgress.length - 1, stageCompleted)].progress.obtainable}`;
-
+        
         if (stageCompleted === 0) {
           badgeObtained.style.color = "red";
           badgeBox.style.borderColor = badgeName.textContent.includes("Unobtainable") ? "darkred" : "red";
@@ -692,6 +692,11 @@ async function getData() {
             stageCompleted
               ? "orange"
               : (badgeName.textContent.includes("Unobtainable") ? "green" : "lime");
+
+          if (badgeObtained.style.color === "orange"){
+            let percentCompleted = Math.round(badge.stageProgress[stageCompleted].progress.obtained / badge.stageProgress[stageCompleted].progress.obtainable)*100)
+            badgeObtained.style.borderColor = `linear-gradient( to right, orange 0%, orange ${Math.max(0, percentCompleted-3)}%, orange ${Math.min(percentCompleted+2, 100)}%, darkgray 100% );`
+          }
         }
 
         badgeInfos.appendChild(badgeObtained);
