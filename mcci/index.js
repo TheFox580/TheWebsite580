@@ -337,7 +337,7 @@ async function getData() {
     );
 
     document.getElementById("head_cosmetic_type").src =
-      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD"].includes(headCosmetic.type) ? "tooltip" : "rarity"}/${headCosmetic.type === "STANDARD" ? "head" : headCosmetic.type.toLowerCase()}.png`;
+      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(headCosmetic.type) ? "tooltip" : "rarity"}/${headCosmetic.type === "STANDARD" ? "head" : headCosmetic.type.toLowerCase()}.png`;
     document.getElementById("head_cosmetic_type").style =
       getRarityFormatting(
         headCosmetic.type === "STANDARD" ? "HEAD" : headCosmetic.type,
@@ -366,7 +366,7 @@ async function getData() {
       getRarityFormatting(accessoryCosmetic.rarity);
 
     document.getElementById("accessory_cosmetic_type").src =
-      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD"].includes(accessoryCosmetic.type) ? "tooltip" : "rarity"}/${accessoryCosmetic.type === "STANDARD" ? "accessory" : accessoryCosmetic.type.toLowerCase()}.png`;
+      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(accessoryCosmetic.type) ? "tooltip" : "rarity"}/${accessoryCosmetic.type === "STANDARD" ? "accessory" : accessoryCosmetic.type.toLowerCase()}.png`;
     document.getElementById("accessory_cosmetic_type").style =
       getRarityFormatting(
         accessoryCosmetic.type === "STANDARD"
@@ -397,7 +397,7 @@ async function getData() {
       getRarityFormatting(cloakCosmetic.rarity);
 
     document.getElementById("cloak_cosmetic_type").src =
-      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD"].includes(cloakCosmetic.type) ? "tooltip" : "rarity"}/${cloakCosmetic.type === "STANDARD" ? "cloak" : cloakCosmetic.type.toLowerCase()}.png`;
+      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(cloakCosmetic.type) ? "tooltip" : "rarity"}/${cloakCosmetic.type === "STANDARD" ? "cloak" : cloakCosmetic.type.toLowerCase()}.png`;
     document.getElementById("cloak_cosmetic_type").style =
       getRarityFormatting(
         cloakCosmetic.type === "STANDARD" ? "CLOAK" : cloakCosmetic.type,
@@ -426,7 +426,7 @@ async function getData() {
       getRarityFormatting(trailCosmetic.rarity);
 
     document.getElementById("trail_cosmetic_type").src =
-      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD"].includes(trailCosmetic.type) ? "tooltip" : "rarity"}/${trailCosmetic.type === "STANDARD" ? "trail" : trailCosmetic.type.toLowerCase()}.png`;
+      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(trailCosmetic.type) ? "tooltip" : "rarity"}/${trailCosmetic.type === "STANDARD" ? "trail" : trailCosmetic.type.toLowerCase()}.png`;
     document.getElementById("trail_cosmetic_type").style =
       getRarityFormatting(
         trailCosmetic.type === "STANDARD" ? "TRAIL" : trailCosmetic.type,
@@ -456,7 +456,7 @@ async function getData() {
     );
 
     document.getElementById("aura_cosmetic_type").src =
-      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD"].includes(auraCosmetic.type) ? "tooltip" : "rarity"}/${auraCosmetic.type === "STANDARD" ? "aura" : auraCosmetic.type.toLowerCase()}.png`;
+      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(auraCosmetic.type) ? "tooltip" : "rarity"}/${auraCosmetic.type === "STANDARD" ? "aura" : auraCosmetic.type.toLowerCase()}.png`;
     document.getElementById("aura_cosmetic_type").style =
       getRarityFormatting(
         auraCosmetic.type === "STANDARD" ? "AURA" : auraCosmetic.type,
@@ -485,7 +485,7 @@ async function getData() {
     );
 
     document.getElementById("rod_cosmetic_type").src =
-      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD"].includes(rodCosmetic.type) ? "tooltip" : "rarity"}/${rodCosmetic.type === "STANDARD" ? "rod" : rodCosmetic.type.toLowerCase()}.png`;
+      `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(rodCosmetic.type) ? "tooltip" : "rarity"}/${rodCosmetic.type === "STANDARD" ? "rod" : rodCosmetic.type.toLowerCase()}.png`;
     document.getElementById("rod_cosmetic_type").style =
       getRarityFormatting(
         rodCosmetic.type === "STANDARD" ? "ROD" : rodCosmetic.type,
@@ -913,6 +913,9 @@ async function getData() {
       catDiv.style.gap = "10px";
       catDiv.style.gridAutoRows = "minmax(50px, auto)";
 
+      cosmeticCount = 0;
+      let cosmeticOwned = 0;
+
       for (let cosmetic of cosmetics) {
         if (
           ![
@@ -929,6 +932,8 @@ async function getData() {
           ].includes(cosmetic.cosmetic.name)
         ) {
           if (category === cosmetic.cosmetic.category) {
+            cosmeticCount++;
+            cosmeticOwned += cosmetic.owned;
             let cosmetic_former_name = cosmetic.cosmetic.name.replaceAll(
               " ",
               "_",
@@ -976,6 +981,11 @@ async function getData() {
 
             cosmeticInfos.appendChild(cosmeticName);
 
+            let cosmeticTags = document.createElement("div");
+            cosmeticTags.id = `cosmetic_${category}_${cosmetic_former_name}_tags`;
+            cosmeticTags.style.display = "flex";
+            cosmeticTags.style.flexDirection = "row";
+
             let cosmeticObtained = document.createElement("img");
             cosmeticObtained.id = `cosmetic_${category}_${cosmetic_former_name}_rarity`;
             cosmeticObtained.src = `https://islandcdn.themysterys.com/icons/rarity/${cosmetic.cosmetic.rarity.toLowerCase()}.png`;
@@ -984,16 +994,65 @@ async function getData() {
               cosmetic.cosmetic.rarity,
             );
 
-            cosmeticInfos.appendChild(cosmeticObtained);
+            cosmeticTags.appendChild(cosmeticObtained);
+
+            let cosmeticType = document.createElement("img");
+            cosmeticType.id = `cosmetic_${category}_${cosmetic_former_name}_rarity`;
+            cosmeticType.src = `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(cosmetic.cosmetic.type) ? "tooltip" : "rarity"}/${cosmetic.cosmetic.type === "STANDARD" ? cosmetic_former_category : cosmetic.cosmetic.type.toLowerCase()}.png`;
+            cosmeticType.alt = `Type: ${cosmetic.cosmetic.type === "STANDARD" ? cosmetic_former_category : cosmetic.cosmetic.type}`;
+            cosmeticType.style =
+              getRarityFormatting(
+                cosmetic.cosmetic.type === "STANDARD"
+                  ? cosmetic_former_category
+                  : cosmetic.cosmetic.type,
+              ) + "; margin-left: 5px";
+
+            cosmeticTags.appendChild(cosmeticType);
+
+            cosmeticInfos.appendChild(cosmeticTags);
 
             cosmeticBox.appendChild(cosmeticInfos);
 
             catDiv.appendChild(cosmeticBox);
           }
-
-          document.getElementById("cosmetics_to_add").appendChild(catDiv);
         }
       }
+
+      let catProgressBackground = document.createElement("div");
+      catProgressBackground.id = `cosmetics_${category}_backround_progress_bar`;
+      catProgressBackground.style.width = "80%";
+      catProgressBackground.style.height = "10px";
+      catProgressBackground.style.borderRadius = "10px";
+      catProgressBackground.style.borderColor = "darkgray";
+      catProgressBackground.style.borderWidth = "2px";
+      catProgressBackground.style.borderStyle = "solid";
+      catProgressBackground.style.backgroundColor = "red";
+
+      let percentCompleted =
+        Math.round((cosmeticOwned / cosmeticCount) * 100 * 100) / 100;
+
+      let catProgress = document.createElement("div");
+      catProgress.id = `cosmetics_${category}_progress_bar`;
+      catProgress.style.width = `${percentCompleted}%`;
+      catProgress.style.backgroundColor = "lime";
+      catProgress.style.height = "10px";
+      catProgress.style.borderRadius = "5px 0px 0px 5px";
+
+      catProgressBackground.appendChild(catProgress);
+
+      document
+        .getElementById("cosmetics_to_add")
+        .appendChild(catProgressBackground);
+
+      let catProgressText = document.createElement("p");
+      catProgressText.id = `cosmetics_${category}_progress_text`;
+      catProgressText.style.fontWeight = "bold";
+      catProgressText.style.marginBottom = "30px";
+      catProgressText.textContent = `${cosmeticOwned} / ${cosmeticCount} (${percentCompleted}%)`;
+
+      document.getElementById("cosmetics_to_add").appendChild(catProgressText);
+
+      document.getElementById("cosmetics_to_add").appendChild(catDiv);
     }
   }
 }
