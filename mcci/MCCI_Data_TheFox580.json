@@ -55,7 +55,7 @@
     },
     "collections": {
         "currency": {
-            "coins": 4044544,
+            "coins": 4047728,
             "royalReputation": 280,
             "anglrTokens": 2996645
         },
@@ -64,37 +64,43 @@
                 "name": "Heart Wand (Trans)",
                 "category": "ACCESSORY",
                 "collection": "Legacy",
-                "rarity": "EPIC"
+                "rarity": "EPIC",
+                "type": "LEGACY"
             },
             {
                 "name": "Flower Crown (Ace)",
                 "category": "HAT",
                 "collection": "Legacy",
-                "rarity": "EPIC"
+                "rarity": "EPIC",
+                "type": "LEGACY"
             },
             {
                 "name": "Infernal Wings",
                 "category": "CLOAK",
                 "collection": "Gate",
-                "rarity": "MYTHIC"
+                "rarity": "MYTHIC",
+                "type": "STANDARD"
             },
             {
                 "name": "Rainbow",
                 "category": "TRAIL",
                 "collection": "Particle",
-                "rarity": "RARE"
+                "rarity": "RARE",
+                "type": "STANDARD"
             },
             {
                 "name": "Founder's Aura",
                 "category": "AURA",
                 "collection": "Legacy",
-                "rarity": "LEGENDARY"
+                "rarity": "LEGENDARY",
+                "type": "LEGACY"
             },
             {
                 "name": "Witch Rod",
                 "category": "ROD",
                 "collection": "Fishing",
-                "rarity": "EPIC"
+                "rarity": "EPIC",
+                "type": "STANDARD"
             }
         ],
         "cosmetics": [
@@ -278,7 +284,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "763"
+                    "globalNumberOwned": "764"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -322,7 +328,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Mystical Aquatic Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "655"
+                    "globalNumberOwned": "656"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -385,7 +391,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Explosive Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "995"
+                    "globalNumberOwned": "1000+"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -806,7 +812,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Explosive Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "821"
+                    "globalNumberOwned": "823"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -829,7 +835,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Explosive Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "720"
+                    "globalNumberOwned": "722"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -1046,7 +1052,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the current event's shop.",
                     "type": "LEGACY",
-                    "globalNumberOwned": "578"
+                    "globalNumberOwned": "598"
                 },
                 "owned": false
             },
@@ -1121,7 +1127,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "882"
+                    "globalNumberOwned": "886"
                 },
                 "owned": false
             },
@@ -1164,7 +1170,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cuckoo Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "757"
+                    "globalNumberOwned": "761"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -1186,7 +1192,7 @@
                     },
                     "obtainmentHint": "Obtained from the Season Variety 1 Cosmetic Crate.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "767"
+                    "globalNumberOwned": "770"
                 },
                 "owned": true,
                 "chromaPacks": [],
@@ -1267,7 +1273,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cuckoo Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "950"
+                    "globalNumberOwned": "953"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -1352,7 +1358,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cloudy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "880"
+                    "globalNumberOwned": "884"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -1547,7 +1553,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable during Sea Monsters Events from the Event Machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "854"
+                    "globalNumberOwned": "853"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -1632,7 +1638,7 @@
                     },
                     "obtainmentHint": "Obtained from the Season Variety 1 Cosmetic Crate.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "826"
+                    "globalNumberOwned": "830"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -1715,7 +1721,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Candy Factory Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "601"
+                    "globalNumberOwned": "602"
                 },
                 "owned": true,
                 "chromaPacks": [
@@ -2002,7 +2008,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Explosive Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "961"
+                    "globalNumberOwned": "965"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -2202,7 +2208,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "253"
+                    "globalNumberOwned": "254"
                 },
                 "owned": false
             },
@@ -2234,7 +2240,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "143"
+                    "globalNumberOwned": "144"
                 },
                 "owned": false
             },
@@ -2549,7 +2555,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "8"
+                    "globalNumberOwned": "9"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -2567,7 +2573,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable during Spirit Blossom Events from the Spirit Shop.",
                     "type": "LEGACY",
-                    "globalNumberOwned": "257"
+                    "globalNumberOwned": "268"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -2585,7 +2591,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "449"
+                    "globalNumberOwned": "459"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -2604,7 +2610,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "306"
+                    "globalNumberOwned": "317"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -2687,7 +2693,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "114"
+                    "globalNumberOwned": "122"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -2724,7 +2730,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "529"
+                    "globalNumberOwned": "530"
                 },
                 "owned": false
             },
@@ -2872,7 +2878,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "765"
+                    "globalNumberOwned": "766"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -3027,7 +3033,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "436"
+                    "globalNumberOwned": "449"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -3046,7 +3052,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "407"
+                    "globalNumberOwned": "421"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -3696,7 +3702,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "611"
+                    "globalNumberOwned": "613"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -3993,7 +3999,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "746"
+                    "globalNumberOwned": "747"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -4010,7 +4016,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from the Grand Auction.",
                     "type": "COLLECTOR",
-                    "globalNumberOwned": "16"
+                    "globalNumberOwned": "17"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -4185,7 +4191,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "733"
+                    "globalNumberOwned": "737"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -4367,7 +4373,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cloudy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "778"
+                    "globalNumberOwned": "779"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -4413,7 +4419,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cloudy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "890"
+                    "globalNumberOwned": "891"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -4489,7 +4495,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "732"
+                    "globalNumberOwned": "734"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -4743,7 +4749,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Ninja Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "801"
+                    "globalNumberOwned": "802"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -4829,7 +4835,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable during Winter Events from the Event Machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "281"
+                    "globalNumberOwned": "282"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -5248,7 +5254,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "675"
+                    "globalNumberOwned": "676"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -5290,7 +5296,7 @@
                     },
                     "obtainmentHint": "Obtained from the Season Variety 1 Cosmetic Crate.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "752"
+                    "globalNumberOwned": "756"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -5331,7 +5337,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "716"
+                    "globalNumberOwned": "720"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -5367,7 +5373,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "64"
+                    "globalNumberOwned": "65"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -5389,7 +5395,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Neon Galaxy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "671"
+                    "globalNumberOwned": "673"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -5453,7 +5459,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cuckoo Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "894"
+                    "globalNumberOwned": "897"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -5497,7 +5503,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cuckoo Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "907"
+                    "globalNumberOwned": "911"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -5584,7 +5590,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Slimy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "797"
+                    "globalNumberOwned": "800"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -5666,7 +5672,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "463"
+                    "globalNumberOwned": "464"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -5722,7 +5728,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "710"
+                    "globalNumberOwned": "713"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -5865,7 +5871,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Ninja Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "836"
+                    "globalNumberOwned": "843"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -6037,7 +6043,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Slimy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "744"
+                    "globalNumberOwned": "747"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -6141,7 +6147,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Candy Factory Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "692"
+                    "globalNumberOwned": "694"
                 },
                 "owned": true,
                 "chromaPacks": [
@@ -6302,7 +6308,7 @@
                     },
                     "obtainmentHint": "Obtained from the Season Variety 1 Cosmetic Crate.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "755"
+                    "globalNumberOwned": "757"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -6737,7 +6743,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cuckoo Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "693"
+                    "globalNumberOwned": "696"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -7110,7 +7116,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Neon Galaxy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "766"
+                    "globalNumberOwned": "768"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -7492,7 +7498,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cloudy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "997"
+                    "globalNumberOwned": "1000+"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -7585,7 +7591,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "361"
+                    "globalNumberOwned": "362"
                 },
                 "owned": false
             },
@@ -7619,7 +7625,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "361"
+                    "globalNumberOwned": "362"
                 },
                 "owned": false
             },
@@ -7636,7 +7642,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "361"
+                    "globalNumberOwned": "362"
                 },
                 "owned": false
             },
@@ -7719,7 +7725,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "617"
+                    "globalNumberOwned": "618"
                 },
                 "owned": false
             },
@@ -7770,7 +7776,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "496"
+                    "globalNumberOwned": "497"
                 },
                 "owned": false
             },
@@ -7787,7 +7793,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "314"
+                    "globalNumberOwned": "315"
                 },
                 "owned": false
             },
@@ -7821,7 +7827,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "711"
+                    "globalNumberOwned": "713"
                 },
                 "owned": false
             },
@@ -7889,7 +7895,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "405"
+                    "globalNumberOwned": "407"
                 },
                 "owned": false
             },
@@ -7906,7 +7912,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "340"
+                    "globalNumberOwned": "343"
                 },
                 "owned": false
             },
@@ -7940,7 +7946,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "66"
+                    "globalNumberOwned": "67"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -7962,7 +7968,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Limited Weapon Forge.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "154"
+                    "globalNumberOwned": "155"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -7984,7 +7990,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "203"
+                    "globalNumberOwned": "206"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -8032,7 +8038,7 @@
                     },
                     "obtainmentHint": "Obtained from the Arcane Gate, or very rarely from the Cosmetic Machine.",
                     "type": "ARCANE",
-                    "globalNumberOwned": "31"
+                    "globalNumberOwned": "32"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -8130,7 +8136,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "192"
+                    "globalNumberOwned": "200"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -8190,7 +8196,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "956"
+                    "globalNumberOwned": "958"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -8311,7 +8317,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "No longer obtainable other than by player trading.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "74"
+                    "globalNumberOwned": "73"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -8430,7 +8436,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "339"
+                    "globalNumberOwned": "351"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -8471,7 +8477,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable during Spirit Blossom Events from the Spirit Shop.",
                     "type": "LEGACY",
-                    "globalNumberOwned": "124"
+                    "globalNumberOwned": "133"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -8489,7 +8495,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "423"
+                    "globalNumberOwned": "436"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -8507,7 +8513,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "305"
+                    "globalNumberOwned": "318"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -8526,7 +8532,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the current event's shop.",
                     "type": "LEGACY",
-                    "globalNumberOwned": "557"
+                    "globalNumberOwned": "580"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -8544,7 +8550,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "56"
+                    "globalNumberOwned": "58"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -8955,7 +8961,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable during Winter Events from the Event Machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "401"
+                    "globalNumberOwned": "402"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9042,7 +9048,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "571"
+                    "globalNumberOwned": "573"
                 },
                 "owned": false
             },
@@ -9096,7 +9102,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "31"
+                    "globalNumberOwned": "32"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -9522,7 +9528,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "226"
+                    "globalNumberOwned": "231"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9566,7 +9572,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "94"
+                    "globalNumberOwned": "95"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9588,7 +9594,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "No longer obtainable other than by player trading.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "365"
+                    "globalNumberOwned": "364"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9610,7 +9616,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "117"
+                    "globalNumberOwned": "118"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9654,7 +9660,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "396"
+                    "globalNumberOwned": "394"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9676,7 +9682,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "195"
+                    "globalNumberOwned": "196"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9698,7 +9704,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "No longer obtainable other than by player trading.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "318"
+                    "globalNumberOwned": "317"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9720,7 +9726,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "397"
+                    "globalNumberOwned": "400"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9742,7 +9748,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "224"
+                    "globalNumberOwned": "229"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9764,7 +9770,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "149"
+                    "globalNumberOwned": "151"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9786,7 +9792,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "547"
+                    "globalNumberOwned": "546"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -9812,7 +9818,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "739"
+                    "globalNumberOwned": "740"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -9939,7 +9945,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "503"
+                    "globalNumberOwned": "504"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -9961,7 +9967,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "674"
+                    "globalNumberOwned": "675"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -10431,7 +10437,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop hidden somewhere on the island.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "837"
+                    "globalNumberOwned": "839"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -10448,7 +10454,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop hidden somewhere on the island.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "781"
+                    "globalNumberOwned": "783"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -10593,7 +10599,7 @@
                     },
                     "obtainmentHint": "Obtained from the Arcane Gate, or very rarely from the Cosmetic Machine.",
                     "type": "ARCANE",
-                    "globalNumberOwned": "53"
+                    "globalNumberOwned": "54"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -10615,7 +10621,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Neon Galaxy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "636"
+                    "globalNumberOwned": "638"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -10741,7 +10747,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "764"
+                    "globalNumberOwned": "766"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -10826,7 +10832,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Explosive Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "746"
+                    "globalNumberOwned": "747"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -11238,7 +11244,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the current event's shop.",
                     "type": "LEGACY",
-                    "globalNumberOwned": "460"
+                    "globalNumberOwned": "480"
                 },
                 "owned": false
             },
@@ -11255,7 +11261,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "275"
+                    "globalNumberOwned": "285"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -11461,7 +11467,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "317"
+                    "globalNumberOwned": "325"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -11521,7 +11527,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the current event's shop.",
                     "type": "LEGACY",
-                    "globalNumberOwned": "405"
+                    "globalNumberOwned": "424"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -11747,7 +11753,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "199"
+                    "globalNumberOwned": "200"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -11765,7 +11771,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "965"
+                    "globalNumberOwned": "966"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -11783,7 +11789,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "749"
+                    "globalNumberOwned": "753"
                 },
                 "owned": false
             },
@@ -11881,7 +11887,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cuckoo Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "742"
+                    "globalNumberOwned": "746"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -12210,7 +12216,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Slimy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "816"
+                    "globalNumberOwned": "818"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -12351,7 +12357,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "744"
+                    "globalNumberOwned": "745"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -12409,7 +12415,7 @@
                     },
                     "obtainmentHint": "Obtained from the Season Variety 1 Cosmetic Crate.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "866"
+                    "globalNumberOwned": "868"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -12476,7 +12482,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Arena Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "917"
+                    "globalNumberOwned": "919"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -12495,7 +12501,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "49"
+                    "globalNumberOwned": "50"
                 },
                 "owned": false
             },
@@ -12562,7 +12568,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Candy Factory Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "754"
+                    "globalNumberOwned": "757"
                 },
                 "owned": true,
                 "chromaPacks": [],
@@ -12585,7 +12591,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Candy Factory Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "642"
+                    "globalNumberOwned": "644"
                 },
                 "owned": true,
                 "chromaPacks": [],
@@ -12866,7 +12872,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cuckoo Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "986"
+                    "globalNumberOwned": "990"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -12907,7 +12913,7 @@
                     },
                     "obtainmentHint": "Obtained from the Season Variety 2 Cosmetic Crate.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "953"
+                    "globalNumberOwned": "956"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -12997,7 +13003,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "770"
+                    "globalNumberOwned": "771"
                 },
                 "owned": false
             },
@@ -13045,7 +13051,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "978"
+                    "globalNumberOwned": "979"
                 },
                 "owned": false
             },
@@ -13125,7 +13131,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "606"
+                    "globalNumberOwned": "607"
                 },
                 "owned": false
             },
@@ -13221,7 +13227,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "811"
+                    "globalNumberOwned": "813"
                 },
                 "owned": false
             },
@@ -13237,7 +13243,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "488"
+                    "globalNumberOwned": "489"
                 },
                 "owned": false
             },
@@ -13333,7 +13339,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "38"
+                    "globalNumberOwned": "39"
                 },
                 "owned": false
             },
@@ -13349,7 +13355,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "60"
+                    "globalNumberOwned": "61"
                 },
                 "owned": false
             },
@@ -13413,7 +13419,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from leveling up with the corresponding faction.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "72"
+                    "globalNumberOwned": "73"
                 },
                 "owned": false
             },
@@ -13496,7 +13502,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Arena Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "735"
+                    "globalNumberOwned": "736"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -13643,7 +13649,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable during Spirit Blossom Events from the Spirit Shop.",
                     "type": "LEGACY",
-                    "globalNumberOwned": "76"
+                    "globalNumberOwned": "82"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -13913,7 +13919,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "90"
+                    "globalNumberOwned": "93"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -13932,7 +13938,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "No longer obtainable other than by player trading.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "716"
+                    "globalNumberOwned": "717"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -14049,7 +14055,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in a secret sanctuary.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "38"
+                    "globalNumberOwned": "39"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -14384,7 +14390,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Slimy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "989"
+                    "globalNumberOwned": "992"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -14615,7 +14621,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "960"
+                    "globalNumberOwned": "962"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -14830,7 +14836,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Explosive Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "845"
+                    "globalNumberOwned": "846"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -15000,7 +15006,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "518"
+                    "globalNumberOwned": "519"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -15067,7 +15073,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Ninja Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "973"
+                    "globalNumberOwned": "980"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -15136,7 +15142,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Arena Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "777"
+                    "globalNumberOwned": "779"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -15213,7 +15219,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Explosive Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "681"
+                    "globalNumberOwned": "682"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -15282,7 +15288,7 @@
                     },
                     "obtainmentHint": "Obtained from the Season Variety 2 Cosmetic Crate.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "852"
+                    "globalNumberOwned": "854"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -15340,7 +15346,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "No longer obtainable other than by player trading.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "199"
+                    "globalNumberOwned": "198"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -15480,7 +15486,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Ninja Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "638"
+                    "globalNumberOwned": "640"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -15602,7 +15608,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Candy Factory Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "810"
+                    "globalNumberOwned": "813"
                 },
                 "owned": true,
                 "donationsMade": 0
@@ -15659,7 +15665,7 @@
                     "canBeDonated": true,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "414"
+                    "globalNumberOwned": "426"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -16007,7 +16013,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Mystical Aquatic Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "539"
+                    "globalNumberOwned": "541"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -16082,7 +16088,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "156"
+                    "globalNumberOwned": "157"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -16186,7 +16192,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Ninja Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "778"
+                    "globalNumberOwned": "780"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -16371,7 +16377,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "553"
+                    "globalNumberOwned": "554"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -16641,7 +16647,7 @@
                     },
                     "obtainmentHint": "Obtained from Treasure caught while fishing in the Barren Climate.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "668"
+                    "globalNumberOwned": "669"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -16680,7 +16686,7 @@
                     },
                     "obtainmentHint": "Obtained from the Season Variety 1 Cosmetic Crate.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "992"
+                    "globalNumberOwned": "995"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -16716,7 +16722,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "940"
+                    "globalNumberOwned": "941"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -16757,7 +16763,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "646"
+                    "globalNumberOwned": "648"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -16775,7 +16781,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "208"
+                    "globalNumberOwned": "210"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -17139,7 +17145,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in the Scavenger's Hideout.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "377"
+                    "globalNumberOwned": "378"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -17357,7 +17363,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "393"
+                    "globalNumberOwned": "394"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -17717,7 +17723,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Slimy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "789"
+                    "globalNumberOwned": "792"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -18167,7 +18173,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Neon Galaxy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "920"
+                    "globalNumberOwned": "921"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -18359,7 +18365,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "446"
+                    "globalNumberOwned": "448"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -18572,7 +18578,7 @@
                     },
                     "obtainmentHint": "Obtained from the Arcane Gate, or very rarely from the Cosmetic Machine.",
                     "type": "ARCANE",
-                    "globalNumberOwned": "48"
+                    "globalNumberOwned": "49"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -18752,7 +18758,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cuckoo Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "700"
+                    "globalNumberOwned": "703"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -18957,7 +18963,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Neon Galaxy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "797"
+                    "globalNumberOwned": "798"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19159,7 +19165,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cloudy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "991"
+                    "globalNumberOwned": "995"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -19403,7 +19409,7 @@
                     },
                     "obtainmentHint": "Obtained from the Cosmetic Machine and Exclusive Cloudy Cosmetic Crates.",
                     "type": "EXCLUSIVE",
-                    "globalNumberOwned": "724"
+                    "globalNumberOwned": "725"
                 },
                 "owned": false,
                 "donationsMade": 0
@@ -19509,7 +19515,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "279"
+                    "globalNumberOwned": "278"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19553,7 +19559,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Limited Weapon Forge.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "136"
+                    "globalNumberOwned": "140"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19575,7 +19581,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "605"
+                    "globalNumberOwned": "604"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19757,7 +19763,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the current event's shop.",
                     "type": "LEGACY",
-                    "globalNumberOwned": "653"
+                    "globalNumberOwned": "688"
                 },
                 "owned": false
             },
@@ -19831,7 +19837,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "126"
+                    "globalNumberOwned": "127"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19853,7 +19859,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "595"
+                    "globalNumberOwned": "596"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19875,7 +19881,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the current event's machine.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "168"
+                    "globalNumberOwned": "178"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19897,7 +19903,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "No longer obtainable other than by player trading.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "169"
+                    "globalNumberOwned": "170"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19919,7 +19925,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "394"
+                    "globalNumberOwned": "395"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19941,7 +19947,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "52"
+                    "globalNumberOwned": "53"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19963,7 +19969,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "130"
+                    "globalNumberOwned": "132"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -19985,7 +19991,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Rotating Weapon Forge or Premium Weapon Crates.",
                     "type": "PREMIUM",
-                    "globalNumberOwned": "328"
+                    "globalNumberOwned": "327"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -20007,7 +20013,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtainable from the Limited Weapon Forge.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "164"
+                    "globalNumberOwned": "165"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -20029,7 +20035,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "No longer obtainable other than by player trading.",
                     "type": "LIMITED",
-                    "globalNumberOwned": "318"
+                    "globalNumberOwned": "317"
                 },
                 "owned": false,
                 "chromaPacks": [],
@@ -20051,7 +20057,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "358"
+                    "globalNumberOwned": "359"
                 },
                 "owned": false
             },
@@ -20068,7 +20074,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "470"
+                    "globalNumberOwned": "472"
                 },
                 "owned": false
             },
@@ -20085,7 +20091,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "327"
+                    "globalNumberOwned": "329"
                 },
                 "owned": false
             },
@@ -20119,7 +20125,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "315"
+                    "globalNumberOwned": "316"
                 },
                 "owned": false
             },
@@ -20136,7 +20142,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "512"
+                    "globalNumberOwned": "513"
                 },
                 "owned": false
             },
@@ -20153,7 +20159,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "424"
+                    "globalNumberOwned": "425"
                 },
                 "owned": false
             },
@@ -20253,7 +20259,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "421"
+                    "globalNumberOwned": "423"
                 },
                 "owned": false
             },
@@ -20287,7 +20293,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "442"
+                    "globalNumberOwned": "443"
                 },
                 "owned": false
             },
@@ -20304,7 +20310,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "336"
+                    "globalNumberOwned": "337"
                 },
                 "owned": false
             },
@@ -20321,7 +20327,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "335"
+                    "globalNumberOwned": "336"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -20339,7 +20345,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "335"
+                    "globalNumberOwned": "336"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -20357,7 +20363,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "335"
+                    "globalNumberOwned": "336"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -20375,7 +20381,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop in Pose Fashion.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "335"
+                    "globalNumberOwned": "336"
                 },
                 "owned": false,
                 "chromaPacks": []
@@ -20546,7 +20552,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop hidden somewhere on the island.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "997"
+                    "globalNumberOwned": "1000"
                 },
                 "owned": true
             },
@@ -20563,7 +20569,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop hidden somewhere on the island.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "985"
+                    "globalNumberOwned": "988"
                 },
                 "owned": true
             },
@@ -20580,7 +20586,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop hidden somewhere on the island.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "943"
+                    "globalNumberOwned": "946"
                 },
                 "owned": true
             },
@@ -20614,7 +20620,7 @@
                     "canBeDonated": false,
                     "obtainmentHint": "Obtained from a shop hidden somewhere on the island.",
                     "type": "STANDARD",
-                    "globalNumberOwned": "969"
+                    "globalNumberOwned": "970"
                 },
                 "owned": true
             },
@@ -20775,10 +20781,10 @@
                     "lagre_sellingPrice": 200,
                     "massive_sellingPrice": 400,
                     "gargantuan_sellingPrice": 2000,
-                    "average_globalNumberCaught": "782",
-                    "lagre_globalNumberCaught": "778",
-                    "massive_globalNumberCaught": "758",
-                    "gargantuan_globalNumberCaught": "548"
+                    "average_globalNumberCaught": "783",
+                    "lagre_globalNumberCaught": "779",
+                    "massive_globalNumberCaught": "759",
+                    "gargantuan_globalNumberCaught": "549"
                 },
                 "weights": []
             },
@@ -20798,10 +20804,10 @@
                     "lagre_sellingPrice": 200,
                     "massive_sellingPrice": 400,
                     "gargantuan_sellingPrice": 2000,
-                    "average_globalNumberCaught": "784",
-                    "lagre_globalNumberCaught": "780",
-                    "massive_globalNumberCaught": "751",
-                    "gargantuan_globalNumberCaught": "527"
+                    "average_globalNumberCaught": "785",
+                    "lagre_globalNumberCaught": "781",
+                    "massive_globalNumberCaught": "753",
+                    "gargantuan_globalNumberCaught": "528"
                 },
                 "weights": []
             },
@@ -21021,9 +21027,9 @@
                     "lagre_sellingPrice": 200,
                     "massive_sellingPrice": 400,
                     "gargantuan_sellingPrice": 2000,
-                    "average_globalNumberCaught": "703",
-                    "lagre_globalNumberCaught": "703",
-                    "massive_globalNumberCaught": "693",
+                    "average_globalNumberCaught": "704",
+                    "lagre_globalNumberCaught": "704",
+                    "massive_globalNumberCaught": "694",
                     "gargantuan_globalNumberCaught": "597"
                 },
                 "weights": []
@@ -21044,10 +21050,10 @@
                     "lagre_sellingPrice": 200,
                     "massive_sellingPrice": 400,
                     "gargantuan_sellingPrice": 2000,
-                    "average_globalNumberCaught": "462",
-                    "lagre_globalNumberCaught": "462",
-                    "massive_globalNumberCaught": "454",
-                    "gargantuan_globalNumberCaught": "383"
+                    "average_globalNumberCaught": "463",
+                    "lagre_globalNumberCaught": "463",
+                    "massive_globalNumberCaught": "455",
+                    "gargantuan_globalNumberCaught": "384"
                 },
                 "weights": []
             },
@@ -21249,9 +21255,9 @@
                     "massive_sellingPrice": 400,
                     "gargantuan_sellingPrice": 2000,
                     "average_globalNumberCaught": "791",
-                    "lagre_globalNumberCaught": "789",
-                    "massive_globalNumberCaught": "783",
-                    "gargantuan_globalNumberCaught": "676"
+                    "lagre_globalNumberCaught": "790",
+                    "massive_globalNumberCaught": "785",
+                    "gargantuan_globalNumberCaught": "677"
                 },
                 "weights": []
             },
@@ -21271,8 +21277,8 @@
                     "lagre_sellingPrice": 200,
                     "massive_sellingPrice": 400,
                     "gargantuan_sellingPrice": 2000,
-                    "average_globalNumberCaught": "701",
-                    "lagre_globalNumberCaught": "700",
+                    "average_globalNumberCaught": "702",
+                    "lagre_globalNumberCaught": "701",
                     "massive_globalNumberCaught": "695",
                     "gargantuan_globalNumberCaught": "587"
                 },
@@ -21294,8 +21300,8 @@
                     "lagre_sellingPrice": 200,
                     "massive_sellingPrice": 400,
                     "gargantuan_sellingPrice": 2000,
-                    "average_globalNumberCaught": "464",
-                    "lagre_globalNumberCaught": "462",
+                    "average_globalNumberCaught": "465",
+                    "lagre_globalNumberCaught": "463",
                     "massive_globalNumberCaught": "456",
                     "gargantuan_globalNumberCaught": "384"
                 },
@@ -21320,7 +21326,7 @@
                     "average_globalNumberCaught": "10000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "519"
+                    "gargantuan_globalNumberCaught": "520"
                 },
                 "weights": []
             },
@@ -21403,7 +21409,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "419"
+                    "gargantuan_globalNumberCaught": "421"
                 },
                 "weights": []
             },
@@ -21426,7 +21432,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "352"
+                    "gargantuan_globalNumberCaught": "353"
                 },
                 "weights": []
             },
@@ -21469,10 +21475,10 @@
                     "lagre_sellingPrice": 600,
                     "massive_sellingPrice": 1200,
                     "gargantuan_sellingPrice": 6000,
-                    "average_globalNumberCaught": "774",
-                    "lagre_globalNumberCaught": "740",
-                    "massive_globalNumberCaught": "611",
-                    "gargantuan_globalNumberCaught": "230"
+                    "average_globalNumberCaught": "775",
+                    "lagre_globalNumberCaught": "743",
+                    "massive_globalNumberCaught": "612",
+                    "gargantuan_globalNumberCaught": "231"
                 },
                 "weights": []
             },
@@ -21492,10 +21498,10 @@
                     "lagre_sellingPrice": 600,
                     "massive_sellingPrice": 1200,
                     "gargantuan_sellingPrice": 6000,
-                    "average_globalNumberCaught": "686",
-                    "lagre_globalNumberCaught": "649",
+                    "average_globalNumberCaught": "687",
+                    "lagre_globalNumberCaught": "650",
                     "massive_globalNumberCaught": "537",
-                    "gargantuan_globalNumberCaught": "225"
+                    "gargantuan_globalNumberCaught": "226"
                 },
                 "weights": []
             },
@@ -21515,10 +21521,10 @@
                     "lagre_sellingPrice": 600,
                     "massive_sellingPrice": 1200,
                     "gargantuan_sellingPrice": 6000,
-                    "average_globalNumberCaught": "448",
+                    "average_globalNumberCaught": "449",
                     "lagre_globalNumberCaught": "428",
-                    "massive_globalNumberCaught": "375",
-                    "gargantuan_globalNumberCaught": "215"
+                    "massive_globalNumberCaught": "376",
+                    "gargantuan_globalNumberCaught": "216"
                 },
                 "weights": []
             },
@@ -21541,7 +21547,7 @@
                     "average_globalNumberCaught": "10000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "760"
+                    "gargantuan_globalNumberCaught": "763"
                 },
                 "weights": [
                     {
@@ -21577,7 +21583,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "514"
+                    "gargantuan_globalNumberCaught": "516"
                 },
                 "weights": []
             },
@@ -21597,10 +21603,10 @@
                     "lagre_sellingPrice": 600,
                     "massive_sellingPrice": 1200,
                     "gargantuan_sellingPrice": 6000,
-                    "average_globalNumberCaught": "764",
-                    "lagre_globalNumberCaught": "732",
-                    "massive_globalNumberCaught": "632",
-                    "gargantuan_globalNumberCaught": "289"
+                    "average_globalNumberCaught": "766",
+                    "lagre_globalNumberCaught": "733",
+                    "massive_globalNumberCaught": "633",
+                    "gargantuan_globalNumberCaught": "291"
                 },
                 "weights": []
             },
@@ -21738,10 +21744,10 @@
                     "lagre_sellingPrice": 400,
                     "massive_sellingPrice": 800,
                     "gargantuan_sellingPrice": 4000,
-                    "average_globalNumberCaught": "781",
-                    "lagre_globalNumberCaught": "781",
-                    "massive_globalNumberCaught": "745",
-                    "gargantuan_globalNumberCaught": "516"
+                    "average_globalNumberCaught": "782",
+                    "lagre_globalNumberCaught": "783",
+                    "massive_globalNumberCaught": "746",
+                    "gargantuan_globalNumberCaught": "517"
                 },
                 "weights": []
             },
@@ -21761,10 +21767,10 @@
                     "lagre_sellingPrice": 400,
                     "massive_sellingPrice": 800,
                     "gargantuan_sellingPrice": 4000,
-                    "average_globalNumberCaught": "785",
-                    "lagre_globalNumberCaught": "778",
-                    "massive_globalNumberCaught": "745",
-                    "gargantuan_globalNumberCaught": "513"
+                    "average_globalNumberCaught": "786",
+                    "lagre_globalNumberCaught": "779",
+                    "massive_globalNumberCaught": "746",
+                    "gargantuan_globalNumberCaught": "514"
                 },
                 "weights": []
             },
@@ -21962,8 +21968,8 @@
                     "massive_sellingPrice": 800,
                     "gargantuan_sellingPrice": 4000,
                     "average_globalNumberCaught": "792",
-                    "lagre_globalNumberCaught": "791",
-                    "massive_globalNumberCaught": "779",
+                    "lagre_globalNumberCaught": "792",
+                    "massive_globalNumberCaught": "780",
                     "gargantuan_globalNumberCaught": "641"
                 },
                 "weights": []
@@ -21984,9 +21990,9 @@
                     "lagre_sellingPrice": 400,
                     "massive_sellingPrice": 800,
                     "gargantuan_sellingPrice": 4000,
-                    "average_globalNumberCaught": "704",
-                    "lagre_globalNumberCaught": "702",
-                    "massive_globalNumberCaught": "692",
+                    "average_globalNumberCaught": "705",
+                    "lagre_globalNumberCaught": "703",
+                    "massive_globalNumberCaught": "694",
                     "gargantuan_globalNumberCaught": "543"
                 },
                 "weights": []
@@ -22007,10 +22013,10 @@
                     "lagre_sellingPrice": 400,
                     "massive_sellingPrice": 800,
                     "gargantuan_sellingPrice": 4000,
-                    "average_globalNumberCaught": "464",
-                    "lagre_globalNumberCaught": "464",
-                    "massive_globalNumberCaught": "459",
-                    "gargantuan_globalNumberCaught": "376"
+                    "average_globalNumberCaught": "466",
+                    "lagre_globalNumberCaught": "466",
+                    "massive_globalNumberCaught": "461",
+                    "gargantuan_globalNumberCaught": "378"
                 },
                 "weights": []
             },
@@ -22183,7 +22189,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "861"
+                    "gargantuan_globalNumberCaught": "863"
                 },
                 "weights": []
             },
@@ -22203,10 +22209,10 @@
                     "lagre_sellingPrice": 400,
                     "massive_sellingPrice": 800,
                     "gargantuan_sellingPrice": 4000,
-                    "average_globalNumberCaught": "791",
-                    "lagre_globalNumberCaught": "791",
-                    "massive_globalNumberCaught": "784",
-                    "gargantuan_globalNumberCaught": "634"
+                    "average_globalNumberCaught": "792",
+                    "lagre_globalNumberCaught": "792",
+                    "massive_globalNumberCaught": "785",
+                    "gargantuan_globalNumberCaught": "636"
                 },
                 "weights": []
             },
@@ -22226,10 +22232,10 @@
                     "lagre_sellingPrice": 400,
                     "massive_sellingPrice": 800,
                     "gargantuan_sellingPrice": 4000,
-                    "average_globalNumberCaught": "703",
-                    "lagre_globalNumberCaught": "702",
-                    "massive_globalNumberCaught": "690",
-                    "gargantuan_globalNumberCaught": "556"
+                    "average_globalNumberCaught": "704",
+                    "lagre_globalNumberCaught": "703",
+                    "massive_globalNumberCaught": "691",
+                    "gargantuan_globalNumberCaught": "557"
                 },
                 "weights": []
             },
@@ -22249,10 +22255,10 @@
                     "lagre_sellingPrice": 400,
                     "massive_sellingPrice": 800,
                     "gargantuan_sellingPrice": 4000,
-                    "average_globalNumberCaught": "465",
-                    "lagre_globalNumberCaught": "463",
-                    "massive_globalNumberCaught": "456",
-                    "gargantuan_globalNumberCaught": "375"
+                    "average_globalNumberCaught": "467",
+                    "lagre_globalNumberCaught": "465",
+                    "massive_globalNumberCaught": "457",
+                    "gargantuan_globalNumberCaught": "377"
                 },
                 "weights": []
             },
@@ -22298,7 +22304,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "368"
+                    "gargantuan_globalNumberCaught": "369"
                 },
                 "weights": [
                     {
@@ -22326,7 +22332,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "367"
+                    "gargantuan_globalNumberCaught": "370"
                 },
                 "weights": [
                     {
@@ -22398,7 +22404,7 @@
                     "massive_sellingPrice": 2400,
                     "gargantuan_sellingPrice": 12000,
                     "average_globalNumberCaught": "1000+",
-                    "lagre_globalNumberCaught": "976",
+                    "lagre_globalNumberCaught": "977",
                     "massive_globalNumberCaught": "775",
                     "gargantuan_globalNumberCaught": "302"
                 },
@@ -22420,10 +22426,10 @@
                     "lagre_sellingPrice": 1200,
                     "massive_sellingPrice": 2400,
                     "gargantuan_sellingPrice": 12000,
-                    "average_globalNumberCaught": "765",
-                    "lagre_globalNumberCaught": "742",
-                    "massive_globalNumberCaught": "620",
-                    "gargantuan_globalNumberCaught": "263"
+                    "average_globalNumberCaught": "766",
+                    "lagre_globalNumberCaught": "744",
+                    "massive_globalNumberCaught": "622",
+                    "gargantuan_globalNumberCaught": "264"
                 },
                 "weights": []
             },
@@ -22444,8 +22450,8 @@
                     "massive_sellingPrice": 2400,
                     "gargantuan_sellingPrice": 12000,
                     "average_globalNumberCaught": "681",
-                    "lagre_globalNumberCaught": "659",
-                    "massive_globalNumberCaught": "561",
+                    "lagre_globalNumberCaught": "660",
+                    "massive_globalNumberCaught": "563",
                     "gargantuan_globalNumberCaught": "269"
                 },
                 "weights": []
@@ -22466,8 +22472,8 @@
                     "lagre_sellingPrice": 1200,
                     "massive_sellingPrice": 2400,
                     "gargantuan_sellingPrice": 12000,
-                    "average_globalNumberCaught": "451",
-                    "lagre_globalNumberCaught": "442",
+                    "average_globalNumberCaught": "453",
+                    "lagre_globalNumberCaught": "443",
                     "massive_globalNumberCaught": "386",
                     "gargantuan_globalNumberCaught": "209"
                 },
@@ -22492,7 +22498,7 @@
                     "average_globalNumberCaught": "10000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "650"
+                    "gargantuan_globalNumberCaught": "651"
                 },
                 "weights": [
                     {
@@ -22528,7 +22534,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "458"
+                    "gargantuan_globalNumberCaught": "460"
                 },
                 "weights": []
             },
@@ -22548,10 +22554,10 @@
                     "lagre_sellingPrice": 1200,
                     "massive_sellingPrice": 2400,
                     "gargantuan_sellingPrice": 12000,
-                    "average_globalNumberCaught": "762",
-                    "lagre_globalNumberCaught": "738",
+                    "average_globalNumberCaught": "763",
+                    "lagre_globalNumberCaught": "740",
                     "massive_globalNumberCaught": "654",
-                    "gargantuan_globalNumberCaught": "330"
+                    "gargantuan_globalNumberCaught": "331"
                 },
                 "weights": []
             },
@@ -22638,7 +22644,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "817"
+                    "gargantuan_globalNumberCaught": "818"
                 },
                 "weights": []
             },
@@ -22661,7 +22667,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "816"
+                    "gargantuan_globalNumberCaught": "819"
                 },
                 "weights": []
             },
@@ -22681,9 +22687,9 @@
                     "lagre_sellingPrice": 800,
                     "massive_sellingPrice": 1600,
                     "gargantuan_sellingPrice": 8000,
-                    "average_globalNumberCaught": "780",
-                    "lagre_globalNumberCaught": "763",
-                    "massive_globalNumberCaught": "711",
+                    "average_globalNumberCaught": "781",
+                    "lagre_globalNumberCaught": "764",
+                    "massive_globalNumberCaught": "712",
                     "gargantuan_globalNumberCaught": "381"
                 },
                 "weights": []
@@ -22704,8 +22710,8 @@
                     "lagre_sellingPrice": 800,
                     "massive_sellingPrice": 1600,
                     "gargantuan_sellingPrice": 8000,
-                    "average_globalNumberCaught": "776",
-                    "lagre_globalNumberCaught": "768",
+                    "average_globalNumberCaught": "777",
+                    "lagre_globalNumberCaught": "769",
                     "massive_globalNumberCaught": "715",
                     "gargantuan_globalNumberCaught": "392"
                 },
@@ -22857,7 +22863,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "1000"
+                    "gargantuan_globalNumberCaught": "1000+"
                 },
                 "weights": []
             },
@@ -22880,7 +22886,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "702"
+                    "gargantuan_globalNumberCaught": "704"
                 },
                 "weights": []
             },
@@ -22900,10 +22906,10 @@
                     "lagre_sellingPrice": 800,
                     "massive_sellingPrice": 1600,
                     "gargantuan_sellingPrice": 8000,
-                    "average_globalNumberCaught": "790",
-                    "lagre_globalNumberCaught": "785",
-                    "massive_globalNumberCaught": "768",
-                    "gargantuan_globalNumberCaught": "502"
+                    "average_globalNumberCaught": "791",
+                    "lagre_globalNumberCaught": "787",
+                    "massive_globalNumberCaught": "769",
+                    "gargantuan_globalNumberCaught": "505"
                 },
                 "weights": []
             },
@@ -22923,8 +22929,8 @@
                     "lagre_sellingPrice": 800,
                     "massive_sellingPrice": 1600,
                     "gargantuan_sellingPrice": 8000,
-                    "average_globalNumberCaught": "704",
-                    "lagre_globalNumberCaught": "698",
+                    "average_globalNumberCaught": "705",
+                    "lagre_globalNumberCaught": "699",
                     "massive_globalNumberCaught": "683",
                     "gargantuan_globalNumberCaught": "449"
                 },
@@ -22946,9 +22952,9 @@
                     "lagre_sellingPrice": 800,
                     "massive_sellingPrice": 1600,
                     "gargantuan_sellingPrice": 8000,
-                    "average_globalNumberCaught": "464",
-                    "lagre_globalNumberCaught": "464",
-                    "massive_globalNumberCaught": "448",
+                    "average_globalNumberCaught": "466",
+                    "lagre_globalNumberCaught": "466",
+                    "massive_globalNumberCaught": "450",
                     "gargantuan_globalNumberCaught": "313"
                 },
                 "weights": []
@@ -23122,7 +23128,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "674"
+                    "gargantuan_globalNumberCaught": "675"
                 },
                 "weights": []
             },
@@ -23142,9 +23148,9 @@
                     "lagre_sellingPrice": 800,
                     "massive_sellingPrice": 1600,
                     "gargantuan_sellingPrice": 8000,
-                    "average_globalNumberCaught": "790",
-                    "lagre_globalNumberCaught": "787",
-                    "massive_globalNumberCaught": "775",
+                    "average_globalNumberCaught": "791",
+                    "lagre_globalNumberCaught": "790",
+                    "massive_globalNumberCaught": "776",
                     "gargantuan_globalNumberCaught": "530"
                 },
                 "weights": []
@@ -23165,10 +23171,10 @@
                     "lagre_sellingPrice": 800,
                     "massive_sellingPrice": 1600,
                     "gargantuan_sellingPrice": 8000,
-                    "average_globalNumberCaught": "701",
-                    "lagre_globalNumberCaught": "702",
+                    "average_globalNumberCaught": "702",
+                    "lagre_globalNumberCaught": "703",
                     "massive_globalNumberCaught": "675",
-                    "gargantuan_globalNumberCaught": "444"
+                    "gargantuan_globalNumberCaught": "445"
                 },
                 "weights": []
             },
@@ -23188,8 +23194,8 @@
                     "lagre_sellingPrice": 800,
                     "massive_sellingPrice": 1600,
                     "gargantuan_sellingPrice": 8000,
-                    "average_globalNumberCaught": "464",
-                    "lagre_globalNumberCaught": "463",
+                    "average_globalNumberCaught": "466",
+                    "lagre_globalNumberCaught": "465",
                     "massive_globalNumberCaught": "449",
                     "gargantuan_globalNumberCaught": "308"
                 },
@@ -23237,7 +23243,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "228"
+                    "gargantuan_globalNumberCaught": "229"
                 },
                 "weights": []
             },
@@ -23283,7 +23289,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "992",
-                    "gargantuan_globalNumberCaught": "217"
+                    "gargantuan_globalNumberCaught": "219"
                 },
                 "weights": []
             },
@@ -23327,9 +23333,9 @@
                     "massive_sellingPrice": 4800,
                     "gargantuan_sellingPrice": 24000,
                     "average_globalNumberCaught": "1000+",
-                    "lagre_globalNumberCaught": "902",
+                    "lagre_globalNumberCaught": "905",
                     "massive_globalNumberCaught": "612",
-                    "gargantuan_globalNumberCaught": "170"
+                    "gargantuan_globalNumberCaught": "172"
                 },
                 "weights": []
             },
@@ -23349,8 +23355,8 @@
                     "lagre_sellingPrice": 2400,
                     "massive_sellingPrice": 4800,
                     "gargantuan_sellingPrice": 24000,
-                    "average_globalNumberCaught": "748",
-                    "lagre_globalNumberCaught": "699",
+                    "average_globalNumberCaught": "750",
+                    "lagre_globalNumberCaught": "700",
                     "massive_globalNumberCaught": "517",
                     "gargantuan_globalNumberCaught": "171"
                 },
@@ -23372,10 +23378,10 @@
                     "lagre_sellingPrice": 2400,
                     "massive_sellingPrice": 4800,
                     "gargantuan_sellingPrice": 24000,
-                    "average_globalNumberCaught": "660",
+                    "average_globalNumberCaught": "661",
                     "lagre_globalNumberCaught": "631",
                     "massive_globalNumberCaught": "471",
-                    "gargantuan_globalNumberCaught": "155"
+                    "gargantuan_globalNumberCaught": "156"
                 },
                 "weights": []
             },
@@ -23397,8 +23403,8 @@
                     "gargantuan_sellingPrice": 24000,
                     "average_globalNumberCaught": "431",
                     "lagre_globalNumberCaught": "430",
-                    "massive_globalNumberCaught": "333",
-                    "gargantuan_globalNumberCaught": "129"
+                    "massive_globalNumberCaught": "335",
+                    "gargantuan_globalNumberCaught": "130"
                 },
                 "weights": []
             },
@@ -23421,7 +23427,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "379"
+                    "gargantuan_globalNumberCaught": "380"
                 },
                 "weights": [
                     {
@@ -23473,10 +23479,10 @@
                     "lagre_sellingPrice": 2400,
                     "massive_sellingPrice": 4800,
                     "gargantuan_sellingPrice": 24000,
-                    "average_globalNumberCaught": "742",
-                    "lagre_globalNumberCaught": "698",
-                    "massive_globalNumberCaught": "570",
-                    "gargantuan_globalNumberCaught": "227"
+                    "average_globalNumberCaught": "745",
+                    "lagre_globalNumberCaught": "702",
+                    "massive_globalNumberCaught": "572",
+                    "gargantuan_globalNumberCaught": "229"
                 },
                 "weights": []
             },
@@ -23563,7 +23569,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "724"
+                    "gargantuan_globalNumberCaught": "725"
                 },
                 "weights": []
             },
@@ -23606,9 +23612,9 @@
                     "lagre_sellingPrice": 2000,
                     "massive_sellingPrice": 4000,
                     "gargantuan_sellingPrice": 20000,
-                    "average_globalNumberCaught": "777",
-                    "lagre_globalNumberCaught": "761",
-                    "massive_globalNumberCaught": "702",
+                    "average_globalNumberCaught": "779",
+                    "lagre_globalNumberCaught": "762",
+                    "massive_globalNumberCaught": "704",
                     "gargantuan_globalNumberCaught": "383"
                 },
                 "weights": []
@@ -23629,9 +23635,9 @@
                     "lagre_sellingPrice": 2000,
                     "massive_sellingPrice": 4000,
                     "gargantuan_sellingPrice": 20000,
-                    "average_globalNumberCaught": "779",
-                    "lagre_globalNumberCaught": "763",
-                    "massive_globalNumberCaught": "707",
+                    "average_globalNumberCaught": "780",
+                    "lagre_globalNumberCaught": "765",
+                    "massive_globalNumberCaught": "708",
                     "gargantuan_globalNumberCaught": "363"
                 },
                 "weights": []
@@ -23801,7 +23807,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "647"
+                    "gargantuan_globalNumberCaught": "648"
                 },
                 "weights": []
             },
@@ -23822,9 +23828,9 @@
                     "massive_sellingPrice": 4000,
                     "gargantuan_sellingPrice": 20000,
                     "average_globalNumberCaught": "791",
-                    "lagre_globalNumberCaught": "784",
-                    "massive_globalNumberCaught": "767",
-                    "gargantuan_globalNumberCaught": "480"
+                    "lagre_globalNumberCaught": "786",
+                    "massive_globalNumberCaught": "768",
+                    "gargantuan_globalNumberCaught": "481"
                 },
                 "weights": []
             },
@@ -23844,10 +23850,10 @@
                     "lagre_sellingPrice": 2000,
                     "massive_sellingPrice": 4000,
                     "gargantuan_sellingPrice": 20000,
-                    "average_globalNumberCaught": "703",
-                    "lagre_globalNumberCaught": "699",
-                    "massive_globalNumberCaught": "675",
-                    "gargantuan_globalNumberCaught": "426"
+                    "average_globalNumberCaught": "704",
+                    "lagre_globalNumberCaught": "700",
+                    "massive_globalNumberCaught": "677",
+                    "gargantuan_globalNumberCaught": "427"
                 },
                 "weights": []
             },
@@ -23867,8 +23873,8 @@
                     "lagre_sellingPrice": 2000,
                     "massive_sellingPrice": 4000,
                     "gargantuan_sellingPrice": 20000,
-                    "average_globalNumberCaught": "465",
-                    "lagre_globalNumberCaught": "464",
+                    "average_globalNumberCaught": "467",
+                    "lagre_globalNumberCaught": "466",
                     "massive_globalNumberCaught": "449",
                     "gargantuan_globalNumberCaught": "299"
                 },
@@ -24035,7 +24041,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "633"
+                    "gargantuan_globalNumberCaught": "634"
                 },
                 "weights": []
             },
@@ -24056,9 +24062,9 @@
                     "massive_sellingPrice": 4000,
                     "gargantuan_sellingPrice": 20000,
                     "average_globalNumberCaught": "792",
-                    "lagre_globalNumberCaught": "787",
-                    "massive_globalNumberCaught": "768",
-                    "gargantuan_globalNumberCaught": "475"
+                    "lagre_globalNumberCaught": "788",
+                    "massive_globalNumberCaught": "769",
+                    "gargantuan_globalNumberCaught": "476"
                 },
                 "weights": []
             },
@@ -24078,10 +24084,10 @@
                     "lagre_sellingPrice": 2000,
                     "massive_sellingPrice": 4000,
                     "gargantuan_sellingPrice": 20000,
-                    "average_globalNumberCaught": "699",
-                    "lagre_globalNumberCaught": "699",
-                    "massive_globalNumberCaught": "674",
-                    "gargantuan_globalNumberCaught": "429"
+                    "average_globalNumberCaught": "700",
+                    "lagre_globalNumberCaught": "700",
+                    "massive_globalNumberCaught": "675",
+                    "gargantuan_globalNumberCaught": "430"
                 },
                 "weights": []
             },
@@ -24101,8 +24107,8 @@
                     "lagre_sellingPrice": 2000,
                     "massive_sellingPrice": 4000,
                     "gargantuan_sellingPrice": 20000,
-                    "average_globalNumberCaught": "463",
-                    "lagre_globalNumberCaught": "462",
+                    "average_globalNumberCaught": "466",
+                    "lagre_globalNumberCaught": "463",
                     "massive_globalNumberCaught": "449",
                     "gargantuan_globalNumberCaught": "304"
                 },
@@ -24149,8 +24155,8 @@
                     "gargantuan_sellingPrice": 60000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "massive_globalNumberCaught": "904",
-                    "gargantuan_globalNumberCaught": "236"
+                    "massive_globalNumberCaught": "905",
+                    "gargantuan_globalNumberCaught": "237"
                 },
                 "weights": [
                     {
@@ -24178,7 +24184,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "963",
-                    "gargantuan_globalNumberCaught": "198"
+                    "gargantuan_globalNumberCaught": "199"
                 },
                 "weights": []
             },
@@ -24200,7 +24206,7 @@
                     "gargantuan_sellingPrice": 60000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "massive_globalNumberCaught": "875",
+                    "massive_globalNumberCaught": "876",
                     "gargantuan_globalNumberCaught": "198"
                 },
                 "weights": []
@@ -24223,8 +24229,8 @@
                     "gargantuan_sellingPrice": 60000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "massive_globalNumberCaught": "707",
-                    "gargantuan_globalNumberCaught": "190"
+                    "massive_globalNumberCaught": "708",
+                    "gargantuan_globalNumberCaught": "192"
                 },
                 "weights": []
             },
@@ -24245,7 +24251,7 @@
                     "massive_sellingPrice": 12000,
                     "gargantuan_sellingPrice": 60000,
                     "average_globalNumberCaught": "1000+",
-                    "lagre_globalNumberCaught": "877",
+                    "lagre_globalNumberCaught": "879",
                     "massive_globalNumberCaught": "593",
                     "gargantuan_globalNumberCaught": "176"
                 },
@@ -24267,10 +24273,10 @@
                     "lagre_sellingPrice": 6000,
                     "massive_sellingPrice": 12000,
                     "gargantuan_sellingPrice": 60000,
-                    "average_globalNumberCaught": "734",
-                    "lagre_globalNumberCaught": "686",
+                    "average_globalNumberCaught": "735",
+                    "lagre_globalNumberCaught": "688",
                     "massive_globalNumberCaught": "498",
-                    "gargantuan_globalNumberCaught": "174"
+                    "gargantuan_globalNumberCaught": "175"
                 },
                 "weights": []
             },
@@ -24290,10 +24296,10 @@
                     "lagre_sellingPrice": 6000,
                     "massive_sellingPrice": 12000,
                     "gargantuan_sellingPrice": 60000,
-                    "average_globalNumberCaught": "656",
-                    "lagre_globalNumberCaught": "604",
+                    "average_globalNumberCaught": "657",
+                    "lagre_globalNumberCaught": "605",
                     "massive_globalNumberCaught": "456",
-                    "gargantuan_globalNumberCaught": "164"
+                    "gargantuan_globalNumberCaught": "165"
                 },
                 "weights": []
             },
@@ -24313,10 +24319,10 @@
                     "lagre_sellingPrice": 6000,
                     "massive_sellingPrice": 12000,
                     "gargantuan_sellingPrice": 60000,
-                    "average_globalNumberCaught": "440",
-                    "lagre_globalNumberCaught": "421",
-                    "massive_globalNumberCaught": "356",
-                    "gargantuan_globalNumberCaught": "143"
+                    "average_globalNumberCaught": "441",
+                    "lagre_globalNumberCaught": "422",
+                    "massive_globalNumberCaught": "358",
+                    "gargantuan_globalNumberCaught": "145"
                 },
                 "weights": []
             },
@@ -24339,7 +24345,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "305"
+                    "gargantuan_globalNumberCaught": "306"
                 },
                 "weights": []
             },
@@ -24382,9 +24388,9 @@
                     "lagre_sellingPrice": 6000,
                     "massive_sellingPrice": 12000,
                     "gargantuan_sellingPrice": 60000,
-                    "average_globalNumberCaught": "744",
-                    "lagre_globalNumberCaught": "690",
-                    "massive_globalNumberCaught": "536",
+                    "average_globalNumberCaught": "746",
+                    "lagre_globalNumberCaught": "693",
+                    "massive_globalNumberCaught": "540",
                     "gargantuan_globalNumberCaught": "202"
                 },
                 "weights": []
@@ -24511,8 +24517,8 @@
                     "lagre_sellingPrice": 4000,
                     "massive_sellingPrice": 8000,
                     "gargantuan_sellingPrice": 40000,
-                    "average_globalNumberCaught": "752",
-                    "lagre_globalNumberCaught": "708",
+                    "average_globalNumberCaught": "753",
+                    "lagre_globalNumberCaught": "709",
                     "massive_globalNumberCaught": "559",
                     "gargantuan_globalNumberCaught": "236"
                 },
@@ -24534,10 +24540,10 @@
                     "lagre_sellingPrice": 4000,
                     "massive_sellingPrice": 8000,
                     "gargantuan_sellingPrice": 40000,
-                    "average_globalNumberCaught": "755",
+                    "average_globalNumberCaught": "756",
                     "lagre_globalNumberCaught": "702",
                     "massive_globalNumberCaught": "583",
-                    "gargantuan_globalNumberCaught": "223"
+                    "gargantuan_globalNumberCaught": "224"
                 },
                 "weights": []
             },
@@ -24588,7 +24594,7 @@
                     "average_globalNumberCaught": "10000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "701"
+                    "gargantuan_globalNumberCaught": "702"
                 },
                 "weights": [
                     {
@@ -24652,7 +24658,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "603"
+                    "gargantuan_globalNumberCaught": "604"
                 },
                 "weights": []
             },
@@ -24675,7 +24681,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "424"
+                    "gargantuan_globalNumberCaught": "426"
                 },
                 "weights": []
             },
@@ -24698,7 +24704,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "910",
-                    "gargantuan_globalNumberCaught": "317"
+                    "gargantuan_globalNumberCaught": "319"
                 },
                 "weights": []
             },
@@ -24718,9 +24724,9 @@
                     "lagre_sellingPrice": 4000,
                     "massive_sellingPrice": 8000,
                     "gargantuan_sellingPrice": 40000,
-                    "average_globalNumberCaught": "785",
-                    "lagre_globalNumberCaught": "766",
-                    "massive_globalNumberCaught": "662",
+                    "average_globalNumberCaught": "787",
+                    "lagre_globalNumberCaught": "767",
+                    "massive_globalNumberCaught": "664",
                     "gargantuan_globalNumberCaught": "272"
                 },
                 "weights": []
@@ -24741,8 +24747,8 @@
                     "lagre_sellingPrice": 4000,
                     "massive_sellingPrice": 8000,
                     "gargantuan_sellingPrice": 40000,
-                    "average_globalNumberCaught": "696",
-                    "lagre_globalNumberCaught": "674",
+                    "average_globalNumberCaught": "698",
+                    "lagre_globalNumberCaught": "676",
                     "massive_globalNumberCaught": "598",
                     "gargantuan_globalNumberCaught": "234"
                 },
@@ -24764,9 +24770,9 @@
                     "lagre_sellingPrice": 4000,
                     "massive_sellingPrice": 8000,
                     "gargantuan_sellingPrice": 40000,
-                    "average_globalNumberCaught": "459",
-                    "lagre_globalNumberCaught": "445",
-                    "massive_globalNumberCaught": "402",
+                    "average_globalNumberCaught": "460",
+                    "lagre_globalNumberCaught": "447",
+                    "massive_globalNumberCaught": "403",
                     "gargantuan_globalNumberCaught": "188"
                 },
                 "weights": []
@@ -24790,7 +24796,7 @@
                     "average_globalNumberCaught": "10000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "757"
+                    "gargantuan_globalNumberCaught": "759"
                 },
                 "weights": [
                     {
@@ -24905,7 +24911,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "404"
+                    "gargantuan_globalNumberCaught": "405"
                 },
                 "weights": []
             },
@@ -24927,7 +24933,7 @@
                     "gargantuan_sellingPrice": 40000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "massive_globalNumberCaught": "886",
+                    "massive_globalNumberCaught": "888",
                     "gargantuan_globalNumberCaught": "304"
                 },
                 "weights": []
@@ -24948,9 +24954,9 @@
                     "lagre_sellingPrice": 4000,
                     "massive_sellingPrice": 8000,
                     "gargantuan_sellingPrice": 40000,
-                    "average_globalNumberCaught": "782",
-                    "lagre_globalNumberCaught": "773",
-                    "massive_globalNumberCaught": "670",
+                    "average_globalNumberCaught": "784",
+                    "lagre_globalNumberCaught": "775",
+                    "massive_globalNumberCaught": "671",
                     "gargantuan_globalNumberCaught": "240"
                 },
                 "weights": []
@@ -24971,9 +24977,9 @@
                     "lagre_sellingPrice": 4000,
                     "massive_sellingPrice": 8000,
                     "gargantuan_sellingPrice": 40000,
-                    "average_globalNumberCaught": "695",
+                    "average_globalNumberCaught": "696",
                     "lagre_globalNumberCaught": "676",
-                    "massive_globalNumberCaught": "578",
+                    "massive_globalNumberCaught": "579",
                     "gargantuan_globalNumberCaught": "233"
                 },
                 "weights": []
@@ -24994,8 +25000,8 @@
                     "lagre_sellingPrice": 4000,
                     "massive_sellingPrice": 8000,
                     "gargantuan_sellingPrice": 40000,
-                    "average_globalNumberCaught": "455",
-                    "lagre_globalNumberCaught": "453",
+                    "average_globalNumberCaught": "456",
+                    "lagre_globalNumberCaught": "454",
                     "massive_globalNumberCaught": "399",
                     "gargantuan_globalNumberCaught": "188"
                 },
@@ -25064,9 +25070,9 @@
                     "massive_sellingPrice": 24000,
                     "gargantuan_sellingPrice": 120000,
                     "average_globalNumberCaught": "1000+",
-                    "lagre_globalNumberCaught": "969",
-                    "massive_globalNumberCaught": "464",
-                    "gargantuan_globalNumberCaught": "121"
+                    "lagre_globalNumberCaught": "970",
+                    "massive_globalNumberCaught": "465",
+                    "gargantuan_globalNumberCaught": "122"
                 },
                 "weights": []
             },
@@ -25110,7 +25116,7 @@
                     "massive_sellingPrice": 24000,
                     "gargantuan_sellingPrice": 120000,
                     "average_globalNumberCaught": "1000+",
-                    "lagre_globalNumberCaught": "766",
+                    "lagre_globalNumberCaught": "767",
                     "massive_globalNumberCaught": "403",
                     "gargantuan_globalNumberCaught": "124"
                 },
@@ -25133,8 +25139,8 @@
                     "massive_sellingPrice": 24000,
                     "gargantuan_sellingPrice": 120000,
                     "average_globalNumberCaught": "822",
-                    "lagre_globalNumberCaught": "673",
-                    "massive_globalNumberCaught": "385",
+                    "lagre_globalNumberCaught": "675",
+                    "massive_globalNumberCaught": "386",
                     "gargantuan_globalNumberCaught": "114"
                 },
                 "weights": []
@@ -25155,7 +25161,7 @@
                     "lagre_sellingPrice": 12000,
                     "massive_sellingPrice": 24000,
                     "gargantuan_sellingPrice": 120000,
-                    "average_globalNumberCaught": "644",
+                    "average_globalNumberCaught": "645",
                     "lagre_globalNumberCaught": "548",
                     "massive_globalNumberCaught": "345",
                     "gargantuan_globalNumberCaught": "106"
@@ -25202,7 +25208,7 @@
                     "massive_sellingPrice": 24000,
                     "gargantuan_sellingPrice": 120000,
                     "average_globalNumberCaught": "392",
-                    "lagre_globalNumberCaught": "366",
+                    "lagre_globalNumberCaught": "367",
                     "massive_globalNumberCaught": "276",
                     "gargantuan_globalNumberCaught": "100"
                 },
@@ -25226,7 +25232,7 @@
                     "gargantuan_sellingPrice": 120000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "massive_globalNumberCaught": "683",
+                    "massive_globalNumberCaught": "685",
                     "gargantuan_globalNumberCaught": "189"
                 },
                 "weights": []
@@ -25270,8 +25276,8 @@
                     "lagre_sellingPrice": 12000,
                     "massive_sellingPrice": 24000,
                     "gargantuan_sellingPrice": 120000,
-                    "average_globalNumberCaught": "653",
-                    "lagre_globalNumberCaught": "580",
+                    "average_globalNumberCaught": "655",
+                    "lagre_globalNumberCaught": "581",
                     "massive_globalNumberCaught": "390",
                     "gargantuan_globalNumberCaught": "143"
                 },
@@ -25295,7 +25301,7 @@
                     "gargantuan_sellingPrice": 100000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "massive_globalNumberCaught": "705",
+                    "massive_globalNumberCaught": "707",
                     "gargantuan_globalNumberCaught": "116"
                 },
                 "weights": [
@@ -25323,7 +25329,7 @@
                     "gargantuan_sellingPrice": 100000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "massive_globalNumberCaught": "676",
+                    "massive_globalNumberCaught": "678",
                     "gargantuan_globalNumberCaught": "114"
                 },
                 "weights": []
@@ -25391,7 +25397,7 @@
                     "massive_sellingPrice": 20000,
                     "gargantuan_sellingPrice": 100000,
                     "average_globalNumberCaught": "620",
-                    "lagre_globalNumberCaught": "538",
+                    "lagre_globalNumberCaught": "540",
                     "massive_globalNumberCaught": "299",
                     "gargantuan_globalNumberCaught": "81"
                 },
@@ -25413,8 +25419,8 @@
                     "lagre_sellingPrice": 10000,
                     "massive_sellingPrice": 20000,
                     "gargantuan_sellingPrice": 100000,
-                    "average_globalNumberCaught": "631",
-                    "lagre_globalNumberCaught": "535",
+                    "average_globalNumberCaught": "632",
+                    "lagre_globalNumberCaught": "537",
                     "massive_globalNumberCaught": "312",
                     "gargantuan_globalNumberCaught": "82"
                 },
@@ -25462,7 +25468,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "185"
+                    "gargantuan_globalNumberCaught": "186"
                 },
                 "weights": []
             },
@@ -25539,7 +25545,7 @@
                     "gargantuan_sellingPrice": 100000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "massive_globalNumberCaught": "649",
+                    "massive_globalNumberCaught": "651",
                     "gargantuan_globalNumberCaught": "135"
                 },
                 "weights": []
@@ -25562,7 +25568,7 @@
                     "gargantuan_sellingPrice": 100000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "864",
-                    "massive_globalNumberCaught": "481",
+                    "massive_globalNumberCaught": "483",
                     "gargantuan_globalNumberCaught": "96"
                 },
                 "weights": []
@@ -25583,7 +25589,7 @@
                     "lagre_sellingPrice": 10000,
                     "massive_sellingPrice": 20000,
                     "gargantuan_sellingPrice": 100000,
-                    "average_globalNumberCaught": "730",
+                    "average_globalNumberCaught": "733",
                     "lagre_globalNumberCaught": "639",
                     "massive_globalNumberCaught": "371",
                     "gargantuan_globalNumberCaught": "83"
@@ -25606,10 +25612,10 @@
                     "lagre_sellingPrice": 10000,
                     "massive_sellingPrice": 20000,
                     "gargantuan_sellingPrice": 100000,
-                    "average_globalNumberCaught": "642",
-                    "lagre_globalNumberCaught": "553",
-                    "massive_globalNumberCaught": "334",
-                    "gargantuan_globalNumberCaught": "77"
+                    "average_globalNumberCaught": "644",
+                    "lagre_globalNumberCaught": "556",
+                    "massive_globalNumberCaught": "335",
+                    "gargantuan_globalNumberCaught": "78"
                 },
                 "weights": []
             },
@@ -25629,10 +25635,10 @@
                     "lagre_sellingPrice": 10000,
                     "massive_sellingPrice": 20000,
                     "gargantuan_sellingPrice": 100000,
-                    "average_globalNumberCaught": "422",
-                    "lagre_globalNumberCaught": "378",
+                    "average_globalNumberCaught": "423",
+                    "lagre_globalNumberCaught": "379",
                     "massive_globalNumberCaught": "251",
-                    "gargantuan_globalNumberCaught": "53"
+                    "gargantuan_globalNumberCaught": "55"
                 },
                 "weights": []
             },
@@ -25734,7 +25740,7 @@
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
                     "massive_globalNumberCaught": "1000+",
-                    "gargantuan_globalNumberCaught": "159"
+                    "gargantuan_globalNumberCaught": "160"
                 },
                 "weights": []
             },
@@ -25756,7 +25762,7 @@
                     "gargantuan_sellingPrice": 100000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "massive_globalNumberCaught": "604",
+                    "massive_globalNumberCaught": "605",
                     "gargantuan_globalNumberCaught": "129"
                 },
                 "weights": []
@@ -25800,9 +25806,9 @@
                     "lagre_sellingPrice": 10000,
                     "massive_sellingPrice": 20000,
                     "gargantuan_sellingPrice": 100000,
-                    "average_globalNumberCaught": "728",
-                    "lagre_globalNumberCaught": "633",
-                    "massive_globalNumberCaught": "349",
+                    "average_globalNumberCaught": "729",
+                    "lagre_globalNumberCaught": "635",
+                    "massive_globalNumberCaught": "351",
                     "gargantuan_globalNumberCaught": "84"
                 },
                 "weights": []
@@ -25824,9 +25830,9 @@
                     "massive_sellingPrice": 20000,
                     "gargantuan_sellingPrice": 100000,
                     "average_globalNumberCaught": "637",
-                    "lagre_globalNumberCaught": "563",
-                    "massive_globalNumberCaught": "347",
-                    "gargantuan_globalNumberCaught": "73"
+                    "lagre_globalNumberCaught": "565",
+                    "massive_globalNumberCaught": "348",
+                    "gargantuan_globalNumberCaught": "74"
                 },
                 "weights": []
             },
@@ -25846,8 +25852,8 @@
                     "lagre_sellingPrice": 10000,
                     "massive_sellingPrice": 20000,
                     "gargantuan_sellingPrice": 100000,
-                    "average_globalNumberCaught": "417",
-                    "lagre_globalNumberCaught": "385",
+                    "average_globalNumberCaught": "418",
+                    "lagre_globalNumberCaught": "386",
                     "massive_globalNumberCaught": "256",
                     "gargantuan_globalNumberCaught": "62"
                 },
@@ -25869,10 +25875,10 @@
                     "lagre_sellingPrice": 30000,
                     "massive_sellingPrice": 60000,
                     "gargantuan_sellingPrice": 300000,
-                    "average_globalNumberCaught": "781",
-                    "lagre_globalNumberCaught": "457",
-                    "massive_globalNumberCaught": "198",
-                    "gargantuan_globalNumberCaught": "48"
+                    "average_globalNumberCaught": "783",
+                    "lagre_globalNumberCaught": "459",
+                    "massive_globalNumberCaught": "199",
+                    "gargantuan_globalNumberCaught": "49"
                 },
                 "weights": []
             },
@@ -25894,7 +25900,7 @@
                     "gargantuan_sellingPrice": 300000,
                     "average_globalNumberCaught": "690",
                     "lagre_globalNumberCaught": "374",
-                    "massive_globalNumberCaught": "191",
+                    "massive_globalNumberCaught": "192",
                     "gargantuan_globalNumberCaught": "51"
                 },
                 "weights": []
@@ -25917,7 +25923,7 @@
                     "gargantuan_sellingPrice": 300000,
                     "average_globalNumberCaught": "707",
                     "lagre_globalNumberCaught": "393",
-                    "massive_globalNumberCaught": "165",
+                    "massive_globalNumberCaught": "166",
                     "gargantuan_globalNumberCaught": "47"
                 },
                 "weights": []
@@ -25938,10 +25944,10 @@
                     "lagre_sellingPrice": 30000,
                     "massive_sellingPrice": 60000,
                     "gargantuan_sellingPrice": 300000,
-                    "average_globalNumberCaught": "620",
-                    "lagre_globalNumberCaught": "388",
+                    "average_globalNumberCaught": "621",
+                    "lagre_globalNumberCaught": "389",
                     "massive_globalNumberCaught": "169",
-                    "gargantuan_globalNumberCaught": "53"
+                    "gargantuan_globalNumberCaught": "54"
                 },
                 "weights": []
             },
@@ -26007,9 +26013,9 @@
                     "lagre_sellingPrice": 30000,
                     "massive_sellingPrice": 60000,
                     "gargantuan_sellingPrice": 300000,
-                    "average_globalNumberCaught": "401",
+                    "average_globalNumberCaught": "403",
                     "lagre_globalNumberCaught": "322",
-                    "massive_globalNumberCaught": "163",
+                    "massive_globalNumberCaught": "164",
                     "gargantuan_globalNumberCaught": "46"
                 },
                 "weights": []
@@ -26031,7 +26037,7 @@
                     "massive_sellingPrice": 60000,
                     "gargantuan_sellingPrice": 300000,
                     "average_globalNumberCaught": "386",
-                    "lagre_globalNumberCaught": "308",
+                    "lagre_globalNumberCaught": "309",
                     "massive_globalNumberCaught": "150",
                     "gargantuan_globalNumberCaught": "35"
                 },
@@ -26053,7 +26059,7 @@
                     "lagre_sellingPrice": 30000,
                     "massive_sellingPrice": 60000,
                     "gargantuan_sellingPrice": 300000,
-                    "average_globalNumberCaught": "283",
+                    "average_globalNumberCaught": "284",
                     "lagre_globalNumberCaught": "251",
                     "massive_globalNumberCaught": "153",
                     "gargantuan_globalNumberCaught": "40"
@@ -26077,8 +26083,8 @@
                     "massive_sellingPrice": 60000,
                     "gargantuan_sellingPrice": 300000,
                     "average_globalNumberCaught": "1000+",
-                    "lagre_globalNumberCaught": "598",
-                    "massive_globalNumberCaught": "269",
+                    "lagre_globalNumberCaught": "599",
+                    "massive_globalNumberCaught": "270",
                     "gargantuan_globalNumberCaught": "68"
                 },
                 "weights": []
@@ -26100,9 +26106,9 @@
                     "massive_sellingPrice": 60000,
                     "gargantuan_sellingPrice": 300000,
                     "average_globalNumberCaught": "782",
-                    "lagre_globalNumberCaught": "517",
+                    "lagre_globalNumberCaught": "518",
                     "massive_globalNumberCaught": "238",
-                    "gargantuan_globalNumberCaught": "62"
+                    "gargantuan_globalNumberCaught": "64"
                 },
                 "weights": []
             },
@@ -26124,7 +26130,7 @@
                     "gargantuan_sellingPrice": 300000,
                     "average_globalNumberCaught": "454",
                     "lagre_globalNumberCaught": "339",
-                    "massive_globalNumberCaught": "189",
+                    "massive_globalNumberCaught": "190",
                     "gargantuan_globalNumberCaught": "68"
                 },
                 "weights": []
@@ -26302,9 +26308,9 @@
                     "average_sellingPrice": 100,
                     "lagre_sellingPrice": 500,
                     "colossal_sellingPrice": 2500,
-                    "average_globalNumberCaught": "787",
-                    "lagre_globalNumberCaught": "787",
-                    "colossal_globalNumberCaught": "776"
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "789",
+                    "colossal_globalNumberCaught": "778"
                 },
                 "weights": []
             },
@@ -26322,9 +26328,9 @@
                     "average_sellingPrice": 100,
                     "lagre_sellingPrice": 500,
                     "colossal_sellingPrice": 2500,
-                    "average_globalNumberCaught": "788",
-                    "lagre_globalNumberCaught": "787",
-                    "colossal_globalNumberCaught": "769"
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "789",
+                    "colossal_globalNumberCaught": "771"
                 },
                 "weights": []
             },
@@ -26342,9 +26348,9 @@
                     "average_sellingPrice": 100,
                     "lagre_sellingPrice": 500,
                     "colossal_sellingPrice": 2500,
-                    "average_globalNumberCaught": "787",
-                    "lagre_globalNumberCaught": "787",
-                    "colossal_globalNumberCaught": "772"
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "788",
+                    "colossal_globalNumberCaught": "774"
                 },
                 "weights": []
             },
@@ -26521,9 +26527,9 @@
                     "average_sellingPrice": 150,
                     "lagre_sellingPrice": 750,
                     "colossal_sellingPrice": 3750,
-                    "average_globalNumberCaught": "787",
-                    "lagre_globalNumberCaught": "784",
-                    "colossal_globalNumberCaught": "738"
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "785",
+                    "colossal_globalNumberCaught": "739"
                 },
                 "weights": []
             },
@@ -26541,9 +26547,9 @@
                     "average_sellingPrice": 150,
                     "lagre_sellingPrice": 750,
                     "colossal_sellingPrice": 3750,
-                    "average_globalNumberCaught": "787",
-                    "lagre_globalNumberCaught": "784",
-                    "colossal_globalNumberCaught": "734"
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "786",
+                    "colossal_globalNumberCaught": "736"
                 },
                 "weights": []
             },
@@ -26561,9 +26567,9 @@
                     "average_sellingPrice": 150,
                     "lagre_sellingPrice": 750,
                     "colossal_sellingPrice": 3750,
-                    "average_globalNumberCaught": "788",
+                    "average_globalNumberCaught": "789",
                     "lagre_globalNumberCaught": "781",
-                    "colossal_globalNumberCaught": "739"
+                    "colossal_globalNumberCaught": "740"
                 },
                 "weights": []
             },
@@ -26687,9 +26693,9 @@
                     "average_sellingPrice": 300,
                     "lagre_sellingPrice": 1500,
                     "colossal_sellingPrice": 7500,
-                    "average_globalNumberCaught": "787",
-                    "lagre_globalNumberCaught": "782",
-                    "colossal_globalNumberCaught": "727"
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "786",
+                    "colossal_globalNumberCaught": "730"
                 },
                 "weights": []
             },
@@ -26707,8 +26713,8 @@
                     "average_sellingPrice": 300,
                     "lagre_sellingPrice": 1500,
                     "colossal_sellingPrice": 7500,
-                    "average_globalNumberCaught": "787",
-                    "lagre_globalNumberCaught": "781",
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "783",
                     "colossal_globalNumberCaught": "735"
                 },
                 "weights": []
@@ -26833,9 +26839,9 @@
                     "average_sellingPrice": 1000,
                     "lagre_sellingPrice": 5000,
                     "colossal_sellingPrice": 25000,
-                    "average_globalNumberCaught": "787",
-                    "lagre_globalNumberCaught": "783",
-                    "colossal_globalNumberCaught": "714"
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "785",
+                    "colossal_globalNumberCaught": "715"
                 },
                 "weights": []
             },
@@ -26853,9 +26859,9 @@
                     "average_sellingPrice": 1000,
                     "lagre_sellingPrice": 5000,
                     "colossal_sellingPrice": 25000,
-                    "average_globalNumberCaught": "787",
-                    "lagre_globalNumberCaught": "780",
-                    "colossal_globalNumberCaught": "724"
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "782",
+                    "colossal_globalNumberCaught": "726"
                 },
                 "weights": []
             },
@@ -26971,9 +26977,9 @@
                     "average_sellingPrice": 2000,
                     "lagre_sellingPrice": 10000,
                     "colossal_sellingPrice": 50000,
-                    "average_globalNumberCaught": "787",
-                    "lagre_globalNumberCaught": "769",
-                    "colossal_globalNumberCaught": "626"
+                    "average_globalNumberCaught": "789",
+                    "lagre_globalNumberCaught": "771",
+                    "colossal_globalNumberCaught": "627"
                 },
                 "weights": []
             },
@@ -26991,8 +26997,8 @@
                     "average_sellingPrice": 2000,
                     "lagre_sellingPrice": 10000,
                     "colossal_sellingPrice": 50000,
-                    "average_globalNumberCaught": "785",
-                    "lagre_globalNumberCaught": "774",
+                    "average_globalNumberCaught": "787",
+                    "lagre_globalNumberCaught": "776",
                     "colossal_globalNumberCaught": "616"
                 },
                 "weights": []
@@ -27013,7 +27019,7 @@
                     "colossal_sellingPrice": 125000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "colossal_globalNumberCaught": "860"
+                    "colossal_globalNumberCaught": "862"
                 },
                 "weights": [
                     {
@@ -27042,7 +27048,7 @@
                     "colossal_sellingPrice": 125000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "colossal_globalNumberCaught": "886"
+                    "colossal_globalNumberCaught": "888"
                 },
                 "weights": [
                     {
@@ -27071,7 +27077,7 @@
                     "colossal_sellingPrice": 125000,
                     "average_globalNumberCaught": "1000+",
                     "lagre_globalNumberCaught": "1000+",
-                    "colossal_globalNumberCaught": "820"
+                    "colossal_globalNumberCaught": "822"
                 },
                 "weights": []
             },
@@ -27109,9 +27115,9 @@
                     "average_sellingPrice": 5000,
                     "lagre_sellingPrice": 25000,
                     "colossal_sellingPrice": 125000,
-                    "average_globalNumberCaught": "778",
-                    "lagre_globalNumberCaught": "718",
-                    "colossal_globalNumberCaught": "393"
+                    "average_globalNumberCaught": "781",
+                    "lagre_globalNumberCaught": "721",
+                    "colossal_globalNumberCaught": "395"
                 },
                 "weights": []
             },
@@ -27129,8 +27135,8 @@
                     "average_sellingPrice": 5000,
                     "lagre_sellingPrice": 25000,
                     "colossal_sellingPrice": 125000,
-                    "average_globalNumberCaught": "777",
-                    "lagre_globalNumberCaught": "729",
+                    "average_globalNumberCaught": "779",
+                    "lagre_globalNumberCaught": "730",
                     "colossal_globalNumberCaught": "398"
                 },
                 "weights": []
@@ -27209,7 +27215,7 @@
                 "uuid": "eea28257-85f1-472c-ac0a-6a085af2a201",
                 "username": "fatratlive",
                 "status": {
-                    "online": true
+                    "online": false
                 }
             },
             {
@@ -27307,7 +27313,7 @@
                 "uuid": "af5c243a-0dfc-4eca-a1d0-6c62ecbae10a",
                 "username": "ThatDarkPhoenix",
                 "status": {
-                    "online": false
+                    "online": true
                 }
             },
             {
@@ -27677,14 +27683,14 @@
                 "name": "Exclusive Cosmetic Core",
                 "rarity": "EPIC"
             },
-            "amount": 10
+            "amount": 11
         },
         {
             "asset": {
                 "name": "Standard Cosmetic Core",
                 "rarity": "UNCOMMON"
             },
-            "amount": 15
+            "amount": 7
         },
         {
             "asset": {
@@ -27692,6 +27698,139 @@
                 "rarity": "UNCOMMON"
             },
             "amount": 27
+        },
+        {
+            "asset": {
+                "name": "Claw Crab",
+                "rarity": "COMMON"
+            },
+            "amount": 34
+        },
+        {
+            "asset": {
+                "name": "Mossy Crab",
+                "rarity": "COMMON"
+            },
+            "amount": 44
+        },
+        {
+            "asset": {
+                "name": "Mossy Crab",
+                "rarity": "COMMON"
+            },
+            "amount": 1
+        },
+        {
+            "asset": {
+                "name": "Mud Crab",
+                "rarity": "COMMON"
+            },
+            "amount": 28
+        },
+        {
+            "asset": {
+                "name": "Mud Crab",
+                "rarity": "COMMON"
+            },
+            "amount": 1
+        },
+        {
+            "asset": {
+                "name": "Mud Crab",
+                "rarity": "COMMON"
+            },
+            "amount": 6
+        },
+        {
+            "asset": {
+                "name": "Boulder Crab",
+                "rarity": "EPIC"
+            },
+            "amount": 4
+        },
+        {
+            "asset": {
+                "name": "Fungal Crab",
+                "rarity": "EPIC"
+            },
+            "amount": 4
+        },
+        {
+            "asset": {
+                "name": "Thorny Crab",
+                "rarity": "LEGENDARY"
+            },
+            "amount": 1
+        },
+        {
+            "asset": {
+                "name": "Vampire Crab",
+                "rarity": "LEGENDARY"
+            },
+            "amount": 2
+        },
+        {
+            "asset": {
+                "name": "Runic Crab",
+                "rarity": "MYTHIC"
+            },
+            "amount": 1
+        },
+        {
+            "asset": {
+                "name": "Boxer Crab",
+                "rarity": "RARE"
+            },
+            "amount": 10
+        },
+        {
+            "asset": {
+                "name": "Peekytoe Crab",
+                "rarity": "RARE"
+            },
+            "amount": 4
+        },
+        {
+            "asset": {
+                "name": "Peekytoe Crab",
+                "rarity": "RARE"
+            },
+            "amount": 1
+        },
+        {
+            "asset": {
+                "name": "Orange Crab",
+                "rarity": "UNCOMMON"
+            },
+            "amount": 7
+        },
+        {
+            "asset": {
+                "name": "Floral Crab",
+                "rarity": "UNCOMMON"
+            },
+            "amount": 11
+        },
+        {
+            "asset": {
+                "name": "Floral Crab",
+                "rarity": "UNCOMMON"
+            },
+            "amount": 1
+        },
+        {
+            "asset": {
+                "name": "Cremini Crab",
+                "rarity": "UNCOMMON"
+            },
+            "amount": 7
+        },
+        {
+            "asset": {
+                "name": "Cremini Crab",
+                "rarity": "UNCOMMON"
+            },
+            "amount": 1
         },
         {
             "asset": {
@@ -27705,7 +27844,7 @@
                 "name": "Green Leaf",
                 "rarity": "UNCOMMON"
             },
-            "amount": 28
+            "amount": 31
         },
         {
             "asset": {
@@ -27915,21 +28054,21 @@
                 "name": "Common Bait",
                 "rarity": "COMMON"
             },
-            "amount": 38
+            "amount": 48
         },
         {
             "asset": {
                 "name": "Epic Bait",
                 "rarity": "EPIC"
             },
-            "amount": 45
+            "amount": 5
         },
         {
             "asset": {
                 "name": "Legendary Bait",
                 "rarity": "LEGENDARY"
             },
-            "amount": 110
+            "amount": 120
         },
         {
             "asset": {
@@ -27943,28 +28082,21 @@
                 "name": "Rare Bait",
                 "rarity": "RARE"
             },
-            "amount": 54
+            "amount": 14
         },
         {
             "asset": {
                 "name": "Uncommon Bait",
                 "rarity": "UNCOMMON"
             },
-            "amount": 29
-        },
-        {
-            "asset": {
-                "name": "Common Line",
-                "rarity": "COMMON"
-            },
-            "amount": 4
+            "amount": 44
         },
         {
             "asset": {
                 "name": "Epic Line",
                 "rarity": "EPIC"
             },
-            "amount": 1
+            "amount": 2
         },
         {
             "asset": {
@@ -27985,7 +28117,7 @@
                 "name": "Uncommon Line",
                 "rarity": "UNCOMMON"
             },
-            "amount": 2
+            "amount": 4
         },
         {
             "asset": {
@@ -28083,7 +28215,7 @@
                 "name": "Bland Water",
                 "rarity": "COMMON"
             },
-            "amount": 5
+            "amount": 7
         },
         {
             "asset": {
@@ -28104,21 +28236,21 @@
                 "name": "Polished Pearl",
                 "rarity": "RARE"
             },
-            "amount": 6
+            "amount": 1
         },
         {
             "asset": {
                 "name": "Pristine Pearl",
                 "rarity": "EPIC"
             },
-            "amount": 5
+            "amount": 6
         },
         {
             "asset": {
                 "name": "Rough Pearl",
                 "rarity": "COMMON"
             },
-            "amount": 28
+            "amount": 8
         },
         {
             "asset": {
@@ -28136,31 +28268,31 @@
         },
         {
             "asset": {
+                "name": "Rare Power Shard",
+                "rarity": "RARE"
+            },
+            "amount": 1
+        },
+        {
+            "asset": {
                 "name": "Uncommon Power Shard",
                 "rarity": "UNCOMMON"
             },
-            "amount": 10
+            "amount": 11
         },
         {
             "asset": {
                 "name": "Glimmering Spirit",
                 "rarity": "UNCOMMON"
             },
-            "amount": 9
-        },
-        {
-            "asset": {
-                "name": "Greedy Spirit",
-                "rarity": "UNCOMMON"
-            },
-            "amount": 7
+            "amount": 2
         },
         {
             "asset": {
                 "name": "Lucky Spirit",
                 "rarity": "UNCOMMON"
             },
-            "amount": 8
+            "amount": 1
         },
         {
             "asset": {
@@ -28174,14 +28306,21 @@
                 "name": "Refined Glimmering Spirit",
                 "rarity": "EPIC"
             },
-            "amount": 14
+            "amount": 15
         },
         {
             "asset": {
                 "name": "Refined Greedy Spirit",
                 "rarity": "EPIC"
             },
-            "amount": 14
+            "amount": 15
+        },
+        {
+            "asset": {
+                "name": "Refined Lucky Spirit",
+                "rarity": "EPIC"
+            },
+            "amount": 1
         },
         {
             "asset": {
@@ -28196,6 +28335,13 @@
                 "rarity": "UNCOMMON"
             },
             "amount": 6
+        },
+        {
+            "asset": {
+                "name": "Wise Spirit",
+                "rarity": "UNCOMMON"
+            },
+            "amount": 1
         },
         {
             "asset": {
@@ -28251,14 +28397,14 @@
                 "name": "Rare Quest Scroll",
                 "rarity": "RARE"
             },
-            "amount": 1
+            "amount": 3
         },
         {
             "asset": {
                 "name": "Uncommon Quest Scroll",
                 "rarity": "UNCOMMON"
             },
-            "amount": 1
+            "amount": 2
         },
         {
             "asset": {
@@ -28272,7 +28418,7 @@
                 "name": "Daily Challenge Ticket",
                 "rarity": "UNCOMMON"
             },
-            "amount": 45
+            "amount": 46
         },
         {
             "asset": {
@@ -28397,11 +28543,11 @@
             "levelData": {
                 "level": 112,
                 "nextLevelProgress": {
-                    "obtained": 3760,
+                    "obtained": 4264,
                     "obtainable": 14000
                 }
             },
-            "totalExperience": 626760
+            "totalExperience": 627264
         }
     ],
     "quests": [
@@ -28418,7 +28564,7 @@
                 },
                 {
                     "progress": {
-                        "obtained": 0,
+                        "obtained": 1,
                         "obtainable": 5
                     }
                 },
@@ -28433,25 +28579,25 @@
         },
         {
             "type": "DAILY",
-            "rarity": "COMMON",
+            "rarity": "RARE",
             "boost": "NONE",
             "tasks": [
                 {
                     "progress": {
                         "obtained": 0,
+                        "obtainable": 60
+                    }
+                },
+                {
+                    "progress": {
+                        "obtained": 0,
+                        "obtainable": 5
+                    }
+                },
+                {
+                    "progress": {
+                        "obtained": 0,
                         "obtainable": 1
-                    }
-                },
-                {
-                    "progress": {
-                        "obtained": 0,
-                        "obtainable": 2000
-                    }
-                },
-                {
-                    "progress": {
-                        "obtained": 0,
-                        "obtainable": 2
                     }
                 }
             ],
@@ -28464,20 +28610,20 @@
             "tasks": [
                 {
                     "progress": {
-                        "obtained": 0,
-                        "obtainable": 48
-                    }
-                },
-                {
-                    "progress": {
-                        "obtained": 0,
+                        "obtained": 1,
                         "obtainable": 8
                     }
                 },
                 {
                     "progress": {
                         "obtained": 0,
-                        "obtainable": 8
+                        "obtainable": 12
+                    }
+                },
+                {
+                    "progress": {
+                        "obtained": 0,
+                        "obtainable": 12
                     }
                 }
             ],
@@ -29109,70 +29255,70 @@
                 {
                     "stage": 1,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 3
                     }
                 },
                 {
                     "stage": 2,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 7
                     }
                 },
                 {
                     "stage": 3,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 15
                     }
                 },
                 {
                     "stage": 4,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 30
                     }
                 },
                 {
                     "stage": 5,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 60
                     }
                 },
                 {
                     "stage": 6,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 100
                     }
                 },
                 {
                     "stage": 7,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 175
                     }
                 },
                 {
                     "stage": 8,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 300
                     }
                 },
                 {
                     "stage": 9,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 450
                     }
                 },
                 {
                     "stage": 10,
                     "progress": {
-                        "obtained": 101,
+                        "obtained": 102,
                         "obtainable": 600
                     }
                 }
@@ -29238,70 +29384,70 @@
                 {
                     "stage": 1,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 2000
                     }
                 },
                 {
                     "stage": 2,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 6000
                     }
                 },
                 {
                     "stage": 3,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 15000
                     }
                 },
                 {
                     "stage": 4,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 30000
                     }
                 },
                 {
                     "stage": 5,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 60000
                     }
                 },
                 {
                     "stage": 6,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 100000
                     }
                 },
                 {
                     "stage": 7,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 150000
                     }
                 },
                 {
                     "stage": 8,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 500000
                     }
                 },
                 {
                     "stage": 9,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 1000000
                     }
                 },
                 {
                     "stage": 10,
                     "progress": {
-                        "obtained": 219591,
+                        "obtained": 219747,
                         "obtainable": 1500000
                     }
                 }
@@ -29352,49 +29498,49 @@
                 {
                     "stage": 1,
                     "progress": {
-                        "obtained": 21003,
+                        "obtained": 21012,
                         "obtainable": 1000
                     }
                 },
                 {
                     "stage": 2,
                     "progress": {
-                        "obtained": 21003,
+                        "obtained": 21012,
                         "obtainable": 3000
                     }
                 },
                 {
                     "stage": 3,
                     "progress": {
-                        "obtained": 21003,
+                        "obtained": 21012,
                         "obtainable": 7000
                     }
                 },
                 {
                     "stage": 4,
                     "progress": {
-                        "obtained": 21003,
+                        "obtained": 21012,
                         "obtainable": 15000
                     }
                 },
                 {
                     "stage": 5,
                     "progress": {
-                        "obtained": 21003,
+                        "obtained": 21012,
                         "obtainable": 25000
                     }
                 },
                 {
                     "stage": 6,
                     "progress": {
-                        "obtained": 21003,
+                        "obtained": 21012,
                         "obtainable": 45000
                     }
                 },
                 {
                     "stage": 7,
                     "progress": {
-                        "obtained": 21003,
+                        "obtained": 21012,
                         "obtainable": 80000
                     }
                 }
@@ -29574,49 +29720,49 @@
                 {
                     "stage": 1,
                     "progress": {
-                        "obtained": 285,
+                        "obtained": 286,
                         "obtainable": 10
                     }
                 },
                 {
                     "stage": 2,
                     "progress": {
-                        "obtained": 285,
+                        "obtained": 286,
                         "obtainable": 30
                     }
                 },
                 {
                     "stage": 3,
                     "progress": {
-                        "obtained": 285,
+                        "obtained": 286,
                         "obtainable": 75
                     }
                 },
                 {
                     "stage": 4,
                     "progress": {
-                        "obtained": 285,
+                        "obtained": 286,
                         "obtainable": 150
                     }
                 },
                 {
                     "stage": 5,
                     "progress": {
-                        "obtained": 285,
+                        "obtained": 286,
                         "obtainable": 275
                     }
                 },
                 {
                     "stage": 6,
                     "progress": {
-                        "obtained": 285,
+                        "obtained": 286,
                         "obtainable": 450
                     }
                 },
                 {
                     "stage": 7,
                     "progress": {
-                        "obtained": 285,
+                        "obtained": 286,
                         "obtainable": 800
                     }
                 }
@@ -29667,49 +29813,49 @@
                 {
                     "stage": 1,
                     "progress": {
-                        "obtained": 248,
+                        "obtained": 249,
                         "obtainable": 15
                     }
                 },
                 {
                     "stage": 2,
                     "progress": {
-                        "obtained": 248,
+                        "obtained": 249,
                         "obtainable": 50
                     }
                 },
                 {
                     "stage": 3,
                     "progress": {
-                        "obtained": 248,
+                        "obtained": 249,
                         "obtainable": 100
                     }
                 },
                 {
                     "stage": 4,
                     "progress": {
-                        "obtained": 248,
+                        "obtained": 249,
                         "obtainable": 200
                     }
                 },
                 {
                     "stage": 5,
                     "progress": {
-                        "obtained": 248,
+                        "obtained": 249,
                         "obtainable": 375
                     }
                 },
                 {
                     "stage": 6,
                     "progress": {
-                        "obtained": 248,
+                        "obtained": 249,
                         "obtainable": 650
                     }
                 },
                 {
                     "stage": 7,
                     "progress": {
-                        "obtained": 248,
+                        "obtained": 249,
                         "obtainable": 1100
                     }
                 }
@@ -30413,28 +30559,7 @@
         },
         {
             "badge": {
-                "name": "Master Frog Challenge",
-                "stages": [
-                    {
-                        "stage": 1,
-                        "trophies": 0,
-                        "bonusTrophies": 100
-                    }
-                ]
-            },
-            "stageProgress": [
-                {
-                    "stage": 1,
-                    "progress": {
-                        "obtained": 0,
-                        "obtainable": 1
-                    }
-                }
-            ]
-        },
-        {
-            "badge": {
-                "name": "Raiders Challenge",
+                "name": "Eggcellent Challenge",
                 "stages": [
                     {
                         "stage": 1,
@@ -30476,7 +30601,28 @@
         },
         {
             "badge": {
-                "name": "Eggcellent Challenge",
+                "name": "Raiders Challenge",
+                "stages": [
+                    {
+                        "stage": 1,
+                        "trophies": 0,
+                        "bonusTrophies": 100
+                    }
+                ]
+            },
+            "stageProgress": [
+                {
+                    "stage": 1,
+                    "progress": {
+                        "obtained": 0,
+                        "obtainable": 1
+                    }
+                }
+            ]
+        },
+        {
+            "badge": {
+                "name": "Master Frog Challenge",
                 "stages": [
                     {
                         "stage": 1,
@@ -30539,28 +30685,7 @@
         },
         {
             "badge": {
-                "name": "Master Frog Pass",
-                "stages": [
-                    {
-                        "stage": 1,
-                        "trophies": 0,
-                        "bonusTrophies": 250
-                    }
-                ]
-            },
-            "stageProgress": [
-                {
-                    "stage": 1,
-                    "progress": {
-                        "obtained": 1,
-                        "obtainable": 1
-                    }
-                }
-            ]
-        },
-        {
-            "badge": {
-                "name": "Raiders Pass",
+                "name": "Eggcellent Pass",
                 "stages": [
                     {
                         "stage": 1,
@@ -30602,7 +30727,28 @@
         },
         {
             "badge": {
-                "name": "Eggcellent Pass",
+                "name": "Raiders Pass",
+                "stages": [
+                    {
+                        "stage": 1,
+                        "trophies": 0,
+                        "bonusTrophies": 250
+                    }
+                ]
+            },
+            "stageProgress": [
+                {
+                    "stage": 1,
+                    "progress": {
+                        "obtained": 1,
+                        "obtainable": 1
+                    }
+                }
+            ]
+        },
+        {
+            "badge": {
+                "name": "Master Frog Pass",
                 "stages": [
                     {
                         "stage": 1,
@@ -30665,28 +30811,7 @@
         },
         {
             "badge": {
-                "name": "Cherry Blossom Challenge",
-                "stages": [
-                    {
-                        "stage": 1,
-                        "trophies": 0,
-                        "bonusTrophies": 100
-                    }
-                ]
-            },
-            "stageProgress": [
-                {
-                    "stage": 1,
-                    "progress": {
-                        "obtained": 0,
-                        "obtainable": 1
-                    }
-                }
-            ]
-        },
-        {
-            "badge": {
-                "name": "Knights Challenge",
+                "name": "Roadworks Challenge",
                 "stages": [
                     {
                         "stage": 1,
@@ -30728,7 +30853,28 @@
         },
         {
             "badge": {
-                "name": "Roadworks Challenge",
+                "name": "Knights Challenge",
+                "stages": [
+                    {
+                        "stage": 1,
+                        "trophies": 0,
+                        "bonusTrophies": 100
+                    }
+                ]
+            },
+            "stageProgress": [
+                {
+                    "stage": 1,
+                    "progress": {
+                        "obtained": 0,
+                        "obtainable": 1
+                    }
+                }
+            ]
+        },
+        {
+            "badge": {
+                "name": "Cherry Blossom Challenge",
                 "stages": [
                     {
                         "stage": 1,
@@ -30791,7 +30937,28 @@
         },
         {
             "badge": {
-                "name": "Cherry Blossom Pass",
+                "name": "Roadworks Pass",
+                "stages": [
+                    {
+                        "stage": 1,
+                        "trophies": 0,
+                        "bonusTrophies": 250
+                    }
+                ]
+            },
+            "stageProgress": [
+                {
+                    "stage": 1,
+                    "progress": {
+                        "obtained": 0,
+                        "obtainable": 1
+                    }
+                }
+            ]
+        },
+        {
+            "badge": {
+                "name": "Nuclear Pass",
                 "stages": [
                     {
                         "stage": 1,
@@ -30833,28 +31000,7 @@
         },
         {
             "badge": {
-                "name": "Nuclear Pass",
-                "stages": [
-                    {
-                        "stage": 1,
-                        "trophies": 0,
-                        "bonusTrophies": 250
-                    }
-                ]
-            },
-            "stageProgress": [
-                {
-                    "stage": 1,
-                    "progress": {
-                        "obtained": 0,
-                        "obtainable": 1
-                    }
-                }
-            ]
-        },
-        {
-            "badge": {
-                "name": "Roadworks Pass",
+                "name": "Cherry Blossom Pass",
                 "stages": [
                     {
                         "stage": 1,
@@ -31002,49 +31148,49 @@
                 {
                     "stage": 1,
                     "progress": {
-                        "obtained": 4338,
+                        "obtained": 4344,
                         "obtainable": 100
                     }
                 },
                 {
                     "stage": 2,
                     "progress": {
-                        "obtained": 4338,
+                        "obtained": 4344,
                         "obtainable": 350
                     }
                 },
                 {
                     "stage": 3,
                     "progress": {
-                        "obtained": 4338,
+                        "obtained": 4344,
                         "obtainable": 800
                     }
                 },
                 {
                     "stage": 4,
                     "progress": {
-                        "obtained": 4338,
+                        "obtained": 4344,
                         "obtainable": 1750
                     }
                 },
                 {
                     "stage": 5,
                     "progress": {
-                        "obtained": 4338,
+                        "obtained": 4344,
                         "obtainable": 3000
                     }
                 },
                 {
                     "stage": 6,
                     "progress": {
-                        "obtained": 4338,
+                        "obtained": 4344,
                         "obtainable": 5000
                     }
                 },
                 {
                     "stage": 7,
                     "progress": {
-                        "obtained": 4338,
+                        "obtained": 4344,
                         "obtainable": 8000
                     }
                 }
