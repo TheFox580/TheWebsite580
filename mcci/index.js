@@ -680,14 +680,14 @@ async function getData() {
 
         if (stageCompleted === 0) {
           badgeObtained.style.color = "red";
-          badgeBox.style.color = "red";
+          badgeBox.style.borderColor = badgeName.textContent.includes("Unobtainable") ? "darkred" : "red";
         } else {
           badgeObtained.style.color =
             Math.min(badge.stageProgress.length - 1, stageCompleted) ===
             stageCompleted
               ? "orange"
               : "lime";
-          badgeBox.style.color =
+          badgeBox.style.borderColor =
             Math.min(badge.stageProgress.length - 1, stageCompleted) ===
             stageCompleted
               ? "orange"
