@@ -686,12 +686,12 @@ async function getData() {
             Math.min(badge.stageProgress.length - 1, stageCompleted) ===
             stageCompleted
               ? "orange"
-              : "lime";
+              : (badgeName.textContent.includes("Unobtainable") ? "green" : "lime");
           badgeBox.style.borderColor =
             Math.min(badge.stageProgress.length - 1, stageCompleted) ===
             stageCompleted
               ? "orange"
-              : "lime";
+              : (badgeName.textContent.includes("Unobtainable") ? "green" : "lime";
         }
 
         badgeInfos.appendChild(badgeObtained);
