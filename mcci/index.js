@@ -691,7 +691,7 @@ async function getData() {
             Math.min(badge.stageProgress.length - 1, stageCompleted) ===
             stageCompleted
               ? "orange"
-              : (badgeName.textContent.includes("Unobtainable") ? "green" : "lime";
+              : (badgeName.textContent.includes("Unobtainable") ? "green" : "lime");
         }
 
         badgeInfos.appendChild(badgeObtained);
