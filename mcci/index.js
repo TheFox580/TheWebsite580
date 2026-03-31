@@ -670,9 +670,25 @@ async function getData() {
           }
         }
 
+        let percentCompleted = Math.min(
+          Math.round(
+            (badge.stageProgress[
+              Math.min(badge.stageProgress.length - 1, stageCompleted)
+            ].progress.obtained /
+              badge.stageProgress[
+                Math.min(badge.stageProgress.length - 1, stageCompleted)
+              ].progress.obtainable) *
+              100 *
+              100,
+          ) / 100,
+          100,
+        );
+
         let badgeBox = document.createElement("div");
         badgeBox.id = `badge_${key}_${badge_former_name}`;
         badgeBox.style.display = "flex";
+        badgeBox.style.flexDirection = "row";
+        badgeBox.style.alignItems = "center";
         badgeBox.style.borderRadius = "10px";
         badgeBox.style.borderStyle = "solid";
         badgeBox.style.padding = "10px";
@@ -681,7 +697,7 @@ async function getData() {
         badgeImage.src = `https://islandcdn.themysterys.com/badges/${key}/${badge_former_name}.png`;
         badgeImage.id = `badge_${key}_${badge_former_name}_img`;
         badgeImage.alt = `TheFox580's ${badge.badge.name}`;
-        badgeImage.style = "width: 3em";
+        badgeImage.style = "width: 3em; height: 3em;";
         if (stageCompleted === 0) {
           badgeImage.classList.add("grayscale");
         }
@@ -709,7 +725,7 @@ async function getData() {
         }
 
         if (badge.stageProgress.length > 1 && stageCompleted > 0) {
-          badgeName.textContent += ` ${decimalToRoman(stageCompleted + 1)}`;
+          badgeName.textContent += ` ${decimalToRoman(Math.min(badge.stageProgress.length, stageCompleted + 1))}`;
         }
 
         badgeInfos.appendChild(badgeName);
@@ -719,8 +735,8 @@ async function getData() {
         badgeObtained.style.fontWeight = "bold";
         badgeObtained.textContent =
           stageCompleted === 0
-            ? `0/${badge.stageProgress[0].progress.obtainable}`
-            : `${badge.stageProgress[Math.min(badge.stageProgress.length - 1, stageCompleted)].progress.obtained} / ${badge.stageProgress[Math.min(badge.stageProgress.length - 1, stageCompleted)].progress.obtainable}`;
+            ? `0/${formatInt(badge.stageProgress[0].progress.obtainable)}`
+            : `${formatInt(badge.stageProgress[Math.min(badge.stageProgress.length - 1, stageCompleted)].progress.obtained)} / ${formatInt(badge.stageProgress[Math.min(badge.stageProgress.length - 1, stageCompleted)].progress.obtainable)}`;
 
         if (stageCompleted === 0) {
           if (badgeInfos.classList.contains("unobtainable")) {
@@ -736,13 +752,6 @@ async function getData() {
         ) {
           badgeObtained.classList.add("ongoing");
           badgeBox.classList.add("ongoing");
-          let percentCompleted =
-            Math.round(
-              (badge.stageProgress[stageCompleted].progress.obtained /
-                badge.stageProgress[stageCompleted].progress.obtainable) *
-                100 *
-                100,
-            ) / 100;
           badgeObtained.textContent += ` (${percentCompleted}%)`;
         } else if (badgeInfos.classList.contains("unobtainable")) {
           badgeObtained.classList.add("unobtainable_success");
@@ -753,6 +762,29 @@ async function getData() {
         }
 
         badgeInfos.appendChild(badgeObtained);
+
+        let badgeProgressBackground = document.createElement("div");
+        badgeProgressBackground.id = `badge_${key}_${badge_former_name}_backround_progress_bar`;
+        badgeProgressBackground.style.width = "100%";
+        badgeProgressBackground.style.height = "10px";
+        badgeProgressBackground.style.borderRadius = "10px";
+        badgeProgressBackground.style.borderColor = "darkgray";
+        badgeProgressBackground.style.borderWidth = "2px";
+        badgeProgressBackground.style.borderStyle = "solid";
+        badgeProgressBackground.style.backgroundColor = "black";
+
+        let badgeProgress = document.createElement("div");
+        badgeProgress.id = `badge_${key}_${badge_former_name}_progress_bar`;
+        badgeProgress.style.width = `${percentCompleted}%`;
+        badgeProgress.style.backgroundColor = getComputedStyle(
+          document.querySelector(`.${badgeBox.classList[0]}`),
+        ).color;
+        badgeProgress.style.height = "10px";
+        badgeProgress.style.borderRadius = "5px";
+
+        badgeProgressBackground.appendChild(badgeProgress);
+
+        badgeInfos.appendChild(badgeProgressBackground);
 
         badgeBox.appendChild(badgeInfos);
 
