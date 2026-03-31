@@ -665,7 +665,8 @@ async function getData() {
         badgeName.style.fontWeight = "bold";
         badgeName.textContent =
           badge.badge.name.includes("Pass") ||
-          badge.badge.name.includes("Challenge")
+          badge.badge.name.includes("Challenge") ||
+          (key === "general" && badge.badge.name.includes("Champion"))
             ? `${badge.badge.name} (Unobtainable)`
             : badge.badge.name;
 
