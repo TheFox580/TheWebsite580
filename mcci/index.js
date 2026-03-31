@@ -11,12 +11,15 @@ let RANKS = {
 };
 
 let RARITY = {
-  COMMON: "#808080",
-  UNCOMMON: "#009900",
-  RARE: "#3333ff",
-  EPIC: "#9933ff",
-  LEGENDARY: "#ff6600",
-  MYTHIC: "#990000",
+  COMMON: "#879696",
+  UNCOMMON: "#0b9400",
+  RARE: "#0050b7",
+  EPIC: "#a033ea",
+  LEGENDARY: "#f87c00",
+  MYTHIC: "#b62626",
+  COLLECTOR: "#facf2e",
+  EXCLUSIVE: "#ff8a8e",
+  ARCANE: "#7d81df",
 };
 
 let LEVEL_COLOR = {
@@ -72,6 +75,23 @@ let GAME_NAMES = {
   general: "General",
 };
 
+let COSMETIC_CATEGORY = {
+  HAT: "Hat",
+  HAIR: "Hair",
+  ACCESSORY: "Accessory",
+  AURA: "Aura",
+  TRAIL: "Trail",
+  CLOAK: "Cloak",
+  ROD: "Rod",
+  SWORD: "Sword",
+  BOW: "Bow",
+  CROSSBOW: "Crossbow",
+  HEAVY_CROSSBOW: "Heavy Crossbow",
+  SHORTBOW: "Shortbow",
+  DAGGER: "Dagger",
+  AXE: "Axe",
+};
+
 let MAX_ROYAL_REP = 22380;
 
 function formatInt(int) {
@@ -121,6 +141,23 @@ function decimalToRoman(number) {
   }
 
   return retRN;
+}
+
+function getRankFormatting(rank) {
+  switch (rank) {
+    case "COMMON":
+      return "width: 4.5em; height: 1em;";
+    case "UNCOMMON":
+      return "width: 6em; height: 1em;";
+    case "RARE":
+      return "width: 3em; height: 1em;";
+    case "EPIC":
+      return "width: 3em; height: 1em;";
+    case "LEGENDARY":
+      return "width: 6em; height: 1em;";
+    case "MYTHIC":
+      return "width: 4.5em; height: 1em;";
+  }
 }
 
 async function getData() {
@@ -306,10 +343,11 @@ async function getData() {
     document.getElementById("head_cosmetic_name").textContent =
       headCosmetic.name;
 
-    document.getElementById("head_cosmetic_rarity").textContent =
-      headCosmetic.rarity;
-    document.getElementById("head_cosmetic_rarity").style.color =
-      RARITY[headCosmetic.rarity];
+    document.getElementById("head_cosmetic_rarity").src =
+      `https://islandcdn.themysterys.com/icons/rarity/${accessoryCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("head_cosmetic_rarity").style = getRankFormatting(
+      accessoryCosmetic.rarity,
+    );
 
     let accessoryCosmeticDiv = document.getElementById("accessory_cosmetic");
     accessoryCosmeticDiv.style.borderColor = RARITY[accessoryCosmetic.rarity];
@@ -328,10 +366,10 @@ async function getData() {
     document.getElementById("accessory_cosmetic_name").textContent =
       accessoryCosmetic.name;
 
-    document.getElementById("accessory_cosmetic_rarity").textContent =
-      accessoryCosmetic.rarity;
-    document.getElementById("accessory_cosmetic_rarity").style.color =
-      RARITY[accessoryCosmetic.rarity];
+    document.getElementById("accessory_cosmetic_rarity").src =
+      `https://islandcdn.themysterys.com/icons/rarity/${accessoryCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("accessory_cosmetic_rarity").style =
+      getRankFormatting(accessoryCosmetic.rarity);
 
     let cloakCosmeticDiv = document.getElementById("cloak_cosmetic");
     cloakCosmeticDiv.style.borderColor = RARITY[cloakCosmetic.rarity];
@@ -350,10 +388,11 @@ async function getData() {
     document.getElementById("cloak_cosmetic_name").textContent =
       cloakCosmetic.name;
 
-    document.getElementById("cloak_cosmetic_rarity").textContent =
-      cloakCosmetic.rarity;
-    document.getElementById("cloak_cosmetic_rarity").style.color =
-      RARITY[cloakCosmetic.rarity];
+    document.getElementById("cloak_cosmetic_rarity").src =
+      `https://islandcdn.themysterys.com/icons/rarity/${cloakCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("cloak_cosmetic_rarity").style = getRankFormatting(
+      cloakCosmetic.rarity,
+    );
 
     let trailCosmeticDiv = document.getElementById("trail_cosmetic");
     trailCosmeticDiv.style.borderColor = RARITY[trailCosmetic.rarity];
@@ -372,10 +411,11 @@ async function getData() {
     document.getElementById("trail_cosmetic_name").textContent =
       trailCosmetic.name;
 
-    document.getElementById("trail_cosmetic_rarity").textContent =
-      trailCosmetic.rarity;
-    document.getElementById("trail_cosmetic_rarity").style.color =
-      RARITY[trailCosmetic.rarity];
+    document.getElementById("trail_cosmetic_rarity").src =
+      `https://islandcdn.themysterys.com/icons/rarity/${trailCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("trail_cosmetic_rarity").style = getRankFormatting(
+      trailCosmetic.rarity,
+    );
 
     let auraCosmeticDiv = document.getElementById("aura_cosmetic");
     auraCosmeticDiv.style.borderColor = RARITY[auraCosmetic.rarity];
@@ -394,10 +434,11 @@ async function getData() {
     document.getElementById("aura_cosmetic_name").textContent =
       auraCosmetic.name;
 
-    document.getElementById("aura_cosmetic_rarity").textContent =
-      auraCosmetic.rarity;
-    document.getElementById("aura_cosmetic_rarity").style.color =
-      RARITY[auraCosmetic.rarity];
+    document.getElementById("aura_cosmetic_rarity").src =
+      `https://islandcdn.themysterys.com/icons/rarity/${auraCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("aura_cosmetic_rarity").style = getRankFormatting(
+      auraCosmetic.rarity,
+    );
 
     let rodCosmeticDiv = document.getElementById("rod_cosmetic");
     rodCosmeticDiv.style.borderColor = RARITY[rodCosmetic.rarity];
@@ -415,10 +456,11 @@ async function getData() {
 
     document.getElementById("rod_cosmetic_name").textContent = rodCosmetic.name;
 
-    document.getElementById("rod_cosmetic_rarity").textContent =
-      rodCosmetic.rarity;
-    document.getElementById("rod_cosmetic_rarity").style.color =
-      RARITY[rodCosmetic.rarity];
+    document.getElementById("rod_cosmetic_rarity").src =
+      `https://islandcdn.themysterys.com/icons/rarity/${rodCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("rod_cosmetic_rarity").style = getRankFormatting(
+      rodCosmetic.rarity,
+    );
 
     let friends = data.social.friends;
     let friendsDiv = document.getElementById("friends_div");
@@ -725,7 +767,7 @@ async function getData() {
         }
 
         if (badge.stageProgress.length > 1 && stageCompleted > 0) {
-          badgeName.textContent += ` ${decimalToRoman(Math.min(badge.stageProgress.length, stageCompleted + 1))}`;
+          badgeName.textContent += ` ${decimalToRoman(Math.min(badge.stageProgress.length, stageCompleted + 1))} / ${decimalToRoman(badge.stageProgress.length)}`;
         }
 
         badgeInfos.appendChild(badgeName);
@@ -792,6 +834,125 @@ async function getData() {
       }
 
       document.getElementById("badges_to_add").appendChild(catDiv);
+    }
+
+    let cosmetics = data.collections.cosmetics;
+
+    for (let category of Object.keys(COSMETIC_CATEGORY)) {
+      let catNameH2 = document.createElement("h2");
+      catNameH2.id = `cosmetics_${category}`;
+      catNameH2.textContent = COSMETIC_CATEGORY[category];
+
+      document.getElementById("cosmetics_to_add").appendChild(catNameH2);
+
+      let cosmeticCount = 0;
+
+      for (let cosmetic of cosmetics) {
+        if (
+          ![
+            "Blossom Wisp Helmet",
+            "Forest Spirit Bulb",
+            "Noxstache",
+            "Floral Staff",
+            "Forest Spirit Friend",
+            "Hand Fan (Blossom Wisp)",
+            "Blossom Wisp Jar",
+            "Forest Spirit Wings",
+            "Blossom Blade",
+            "Mechanical Axe",
+          ].includes(cosmetic.cosmetic.name)
+        )
+          cosmeticCount += cosmetic.cosmetic.category === category;
+      }
+
+      let catDiv = document.createElement("div");
+      catDiv.id = `cosmetics_${category}_div`;
+      catDiv.style.display = "grid";
+      catDiv.style.gridTemplateColumns = `repeat(${Math.min(4, cosmeticCount)}, 1fr)`;
+      catDiv.style.gap = "10px";
+      catDiv.style.gridAutoRows = "minmax(50px, auto)";
+
+      for (let cosmetic of cosmetics) {
+        if (
+          ![
+            "Blossom Wisp Helmet",
+            "Forest Spirit Bulb",
+            "Noxstache",
+            "Floral Staff",
+            "Forest Spirit Friend",
+            "Hand Fan (Blossom Wisp)",
+            "Blossom Wisp Jar",
+            "Forest Spirit Wings",
+            "Blossom Blade",
+            "Mechanical Axe",
+          ].includes(cosmetic.cosmetic.name)
+        ) {
+          if (category === cosmetic.cosmetic.category) {
+            let cosmetic_former_name = cosmetic.cosmetic.name.replaceAll(
+              " ",
+              "_",
+            );
+            let cosmetic_former_collection = cosmetic.cosmetic.collection
+              .replaceAll(" ", "_")
+              .toLowerCase();
+            let cosmetic_former_category = cosmetic.cosmetic.category
+              .replaceAll(" ", "_")
+              .toLowerCase();
+
+            let cosmeticBox = document.createElement("div");
+            cosmeticBox.id = `badge_${category}_${cosmetic_former_name}`;
+            cosmeticBox.style.display = "flex";
+            cosmeticBox.style.flexDirection = "row";
+            cosmeticBox.style.alignItems = "center";
+            cosmeticBox.style.borderColor = RARITY[cosmetic.cosmetic.rarity];
+            cosmeticBox.style.borderRadius = "10px";
+            cosmeticBox.style.borderStyle = "solid";
+            cosmeticBox.style.padding = "10px";
+
+            let cosmeticImage = document.createElement("img");
+            cosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/${cosmetic_former_category}/${cosmetic_former_collection}/${cosmetic_former_name}.png`;
+            cosmeticImage.id = `badge_${category}_${cosmetic_former_name}_img`;
+            cosmeticImage.alt = `TheFox580's ${cosmetic.cosmetic.name}`;
+            cosmeticImage.style = "width: 3em; height: 3em;";
+            if (!cosmetic.owned) {
+              cosmeticImage.classList.add("grayscale");
+            }
+
+            cosmeticBox.appendChild(cosmeticImage);
+
+            let cosmeticInfos = document.createElement("div");
+            cosmeticInfos.id = `cosmetic_${category}_${cosmetic_former_name}_infos`;
+            cosmeticInfos.style.display = "flex";
+            cosmeticInfos.style.flexDirection = "column";
+            cosmeticInfos.style.marginLeft = "10px";
+            cosmeticInfos.style.justifyContent = "center";
+
+            let cosmeticName = document.createElement("span");
+            cosmeticName.id = `cosmetic_${category}_${cosmetic_former_name}_name`;
+            cosmeticName.style.fontWeight = "bold";
+            cosmeticName.style.color = "white";
+            cosmeticName.textContent = cosmetic.cosmetic.name;
+
+            cosmeticInfos.appendChild(cosmeticName);
+
+            let cosmeticObtained = document.createElement("img");
+            cosmeticObtained.id = `cosmetic_${category}_${cosmetic_former_name}_rarity`;
+            cosmeticObtained.src = `https://islandcdn.themysterys.com/icons/rarity/${cosmetic.cosmetic.rarity.toLowerCase()}.png`;
+            cosmeticObtained.alt = `Rarity: ${cosmetic.cosmetic.rarity}`;
+            cosmeticObtained.style = getRankFormatting(
+              cosmetic.cosmetic.rarity,
+            );
+
+            cosmeticInfos.appendChild(cosmeticObtained);
+
+            cosmeticBox.appendChild(cosmeticInfos);
+
+            catDiv.appendChild(cosmeticBox);
+          }
+
+          document.getElementById("cosmetics_to_add").appendChild(catDiv);
+        }
+      }
     }
   }
 }
