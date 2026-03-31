@@ -400,6 +400,7 @@ async function getData() {
       friendImage.id = `friend_${friend.uuid}_img`;
       friendImage.alt = `${friend.username}'s head`;
       friendImage.style.width = "3em";
+      friendImage.style.borderRadius = "10px";
 
       friendBox.appendChild(friendImage);
 
