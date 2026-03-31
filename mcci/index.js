@@ -89,7 +89,7 @@ function formatInt(int) {
 }
 
 async function getData() {
-  const response = await fetch("./MCCI_Data_TheFox580.json");
+  const response = await fetch("/mcci/MCCI_Data_TheFox580.json");
   if (response.ok) {
     let data = await response.json();
 
