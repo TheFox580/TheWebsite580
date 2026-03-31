@@ -876,6 +876,9 @@ async function getData() {
     document.getElementById("cosmetics_progress_bar").style.width =
       `${Math.round((cosmeticOwned / cosmetics.length) * 100 * 100) / 100}%`;
 
+    document.getElementById("cosmetics_progress_text").textContent =
+      `${cosmeticOwned} / ${cosmetics.length} (${Math.round((cosmeticOwned / cosmetics.length) * 100 * 100) / 100}%)`;
+
     for (let category of Object.keys(COSMETIC_CATEGORY)) {
       let catNameH2 = document.createElement("h2");
       catNameH2.id = `cosmetics_${category}`;
