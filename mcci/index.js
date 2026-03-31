@@ -666,7 +666,8 @@ async function getData() {
         badgeName.textContent =
           badge.badge.name.includes("Pass") ||
           badge.badge.name.includes("Challenge") ||
-          (key === "general" && badge.badge.name.includes("Champion"))
+          (key === "general" && badge.badge.name.includes("Champion")) ||
+          badge.badge.name === "Squidtek Ambassador"
             ? `${badge.badge.name} (Unobtainable)`
             : badge.badge.name;
 
