@@ -588,7 +588,6 @@ async function getData() {
     });
 
     for (const [key, value] of Object.entries(badges_sorted)) {
-      console.log("Creating category for " + key);
       let catNameH2 = document.createElement("h2");
       catNameH2.id = `badges_${key}`;
       catNameH2.textContent = GAME_NAMES[key];
@@ -603,8 +602,6 @@ async function getData() {
       catDiv.style.gridAutoRows = "minmax(50px, auto)";
 
       for (let badge of value) {
-        console.log(badge);
-
         let badge_former_name = badge.badge.name
           .toLowerCase()
           .replaceAll(" ", "_");
