@@ -92,6 +92,22 @@ let COSMETIC_CATEGORY = {
   AXE: "Axe",
 };
 
+let LURES = {
+  Elusive: "Strong",
+  Wayfinder: "Wise",
+  Pearl: "Glimmering",
+  Treasure: "Greedy",
+  Spirit: "Lucky",
+};
+
+let TRASH = {
+  "Rusted Can": "COMMON",
+  "Tangled Kelp": "UNCOMMON",
+  "Lost Shoe": "RARE",
+  "Royal Residue": "EPIC",
+  "Forgotten Crown": "LEGENDARY",
+};
+
 let MAX_ROYAL_REP = 22380;
 
 function formatInt(int) {
@@ -147,6 +163,17 @@ function getRarityFormatting(rank) {
   return `width: ${0.75 * rank.length}em; height: 1em;`;
 }
 
+function imageError() {
+  this.src = "https://islandcdn.themysterys.com/icons/misc/legacy.png";
+}
+
+function isFish(fish_to_find, fish_collection) {
+  for (let fish of fish_collection) {
+    if (fish.fish.name === fish_to_find) return true;
+  }
+  return false;
+}
+
 async function getData() {
   const response = await fetch("/mcci/MCCI_Data_TheFox580.json");
   if (response.ok) {
@@ -156,6 +183,7 @@ async function getData() {
 
     document.getElementById("rank_img").src =
       `https://islandcdn.themysterys.com/ranks_long/${data.ranks[0].toLowerCase()}.png`;
+    document.getElementById("rank_img").onerror = imageError;
 
     document.getElementById("crown_level_info").textContent +=
       " " + data.crownLevel.levelData.level + " ";
@@ -167,6 +195,7 @@ async function getData() {
 
     let crownImage = document.createElement("img");
     crownImage.src = `https://islandcdn.themysterys.com/icons/crowns/${crownLevel10}.png`;
+    crownImage.onerror = imageError;
     crownImage.id = "crown_img";
     crownImage.alt = "TheFox580's crown level";
     crownImage.style = "width: 1em; height: 1em; transform: translate(0, 2px)";
@@ -191,6 +220,7 @@ async function getData() {
 
     let styleImage = document.createElement("img");
     styleImage.src = `https://islandcdn.themysterys.com/icons/style_level/${styleLevel10}.png`;
+    styleImage.onerror = imageError;
     styleImage.id = "style_img";
     styleImage.alt = "TheFox580's style level";
     styleImage.style = "width: 1em; height: 1em; transform: translate(0, 2px)";
@@ -215,6 +245,7 @@ async function getData() {
 
     let fishingImage = document.createElement("img");
     fishingImage.src = `https://islandcdn.themysterys.com/fishing/level/${fishingLevel10}.png`;
+    fishingImage.onerror = imageError;
     fishingImage.id = "fishing_img";
     fishingImage.alt = "TheFox580's fishing level";
     fishingImage.style =
@@ -248,6 +279,7 @@ async function getData() {
 
     let factionImage = document.createElement("img");
     factionImage.src = `https://islandcdn.themysterys.com/factions/${currentFaction.name.split("_")[0].toLowerCase()}/${factionPrestige30}.png`;
+    factionImage.onerror = imageError;
     factionImage.id = "faction_img";
     factionImage.alt = "TheFox580's faction level";
     factionImage.style =
@@ -318,6 +350,7 @@ async function getData() {
 
     let headCosmeticImage = document.createElement("img");
     headCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/hat/${headCosmetic.collection.toLowerCase()}/${headCosmetic.name.replaceAll(" ", "_")}.png`;
+    headCosmeticImage.onerror = imageError;
     headCosmeticImage.id = "head_cosmetic_img";
     headCosmeticImage.alt = `TheFox580's head cosmetic (${headCosmetic.name}`;
     headCosmeticImage.style = "width: 3em; height: 3em;";
@@ -332,12 +365,14 @@ async function getData() {
 
     document.getElementById("head_cosmetic_rarity").src =
       `https://islandcdn.themysterys.com/icons/rarity/${headCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("head_cosmetic_rarity").onerror = imageError;
     document.getElementById("head_cosmetic_rarity").style = getRarityFormatting(
       headCosmetic.rarity,
     );
 
     document.getElementById("head_cosmetic_type").src =
       `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(headCosmetic.type) ? "tooltip" : "rarity"}/${headCosmetic.type === "STANDARD" ? "head" : headCosmetic.type.toLowerCase()}.png`;
+    document.getElementById("head_cosmetic_type").onerror = imageError;
     document.getElementById("head_cosmetic_type").style =
       getRarityFormatting(
         headCosmetic.type === "STANDARD" ? "HEAD" : headCosmetic.type,
@@ -348,6 +383,7 @@ async function getData() {
 
     let accessoryCosmeticImage = document.createElement("img");
     accessoryCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/accessory/${accessoryCosmetic.collection.toLowerCase()}/${accessoryCosmetic.name.replaceAll(" ", "_")}.png`;
+    accessoryCosmeticImage.onerror = imageError;
     accessoryCosmeticImage.id = "accessory_cosmetic_img";
     accessoryCosmeticImage.alt = `TheFox580's accessory cosmetic (${accessoryCosmetic.name}`;
     accessoryCosmeticImage.style = "width: 3em; height: 3em;";
@@ -362,11 +398,15 @@ async function getData() {
 
     document.getElementById("accessory_cosmetic_rarity").src =
       `https://islandcdn.themysterys.com/icons/rarity/${accessoryCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("accessory_cosmetic_rarity").onerror = imageError;
+
     document.getElementById("accessory_cosmetic_rarity").style =
       getRarityFormatting(accessoryCosmetic.rarity);
 
     document.getElementById("accessory_cosmetic_type").src =
       `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(accessoryCosmetic.type) ? "tooltip" : "rarity"}/${accessoryCosmetic.type === "STANDARD" ? "accessory" : accessoryCosmetic.type.toLowerCase()}.png`;
+    document.getElementById("accessory_cosmetic_type").onerror = imageError;
+
     document.getElementById("accessory_cosmetic_type").style =
       getRarityFormatting(
         accessoryCosmetic.type === "STANDARD"
@@ -379,6 +419,7 @@ async function getData() {
 
     let cloakCosmeticImage = document.createElement("img");
     cloakCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/cloak/${cloakCosmetic.collection.toLowerCase()}/${cloakCosmetic.name.replaceAll(" ", "_")}.png`;
+    cloakCosmeticImage.onerror = imageError;
     cloakCosmeticImage.id = "cloak_cosmetic_img";
     cloakCosmeticImage.alt = `TheFox580's cloak cosmetic (${cloakCosmetic.name}`;
     cloakCosmeticImage.style = "width: 3em; height: 3em;";
@@ -393,11 +434,15 @@ async function getData() {
 
     document.getElementById("cloak_cosmetic_rarity").src =
       `https://islandcdn.themysterys.com/icons/rarity/${cloakCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("cloak_cosmetic_rarity").onerror = imageError;
+
     document.getElementById("cloak_cosmetic_rarity").style =
       getRarityFormatting(cloakCosmetic.rarity);
 
     document.getElementById("cloak_cosmetic_type").src =
       `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(cloakCosmetic.type) ? "tooltip" : "rarity"}/${cloakCosmetic.type === "STANDARD" ? "cloak" : cloakCosmetic.type.toLowerCase()}.png`;
+    document.getElementById("cloak_cosmetic_type").onerror = imageError;
+
     document.getElementById("cloak_cosmetic_type").style =
       getRarityFormatting(
         cloakCosmetic.type === "STANDARD" ? "CLOAK" : cloakCosmetic.type,
@@ -408,6 +453,7 @@ async function getData() {
 
     let trailCosmeticImage = document.createElement("img");
     trailCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/trail/${trailCosmetic.collection.toLowerCase()}/${trailCosmetic.name.replaceAll(" ", "_")}.png`;
+    trailCosmeticImage.onerror = imageError;
     trailCosmeticImage.id = "trail_cosmetic_img";
     trailCosmeticImage.alt = `TheFox580's trail cosmetic (${trailCosmetic.name}`;
     trailCosmeticImage.style = "width: 3em; height: 3em;";
@@ -422,11 +468,14 @@ async function getData() {
 
     document.getElementById("trail_cosmetic_rarity").src =
       `https://islandcdn.themysterys.com/icons/rarity/${trailCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("trail_cosmetic_rarity").onerror = imageError;
+
     document.getElementById("trail_cosmetic_rarity").style =
       getRarityFormatting(trailCosmetic.rarity);
 
     document.getElementById("trail_cosmetic_type").src =
       `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(trailCosmetic.type) ? "tooltip" : "rarity"}/${trailCosmetic.type === "STANDARD" ? "trail" : trailCosmetic.type.toLowerCase()}.png`;
+    document.getElementById("trail_cosmetic_type").onerror = imageError;
     document.getElementById("trail_cosmetic_type").style =
       getRarityFormatting(
         trailCosmetic.type === "STANDARD" ? "TRAIL" : trailCosmetic.type,
@@ -437,6 +486,7 @@ async function getData() {
 
     let auraCosmeticImage = document.createElement("img");
     auraCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/aura/${auraCosmetic.collection.toLowerCase()}/${auraCosmetic.name.replaceAll(" ", "_")}.png`;
+    auraCosmeticImage.onerror = imageError;
     auraCosmeticImage.id = "aura_cosmetic_img";
     auraCosmeticImage.alt = `TheFox580's aura cosmetic (${auraCosmetic.name}`;
     auraCosmeticImage.style = "width: 3em; height: 3em;";
@@ -451,12 +501,14 @@ async function getData() {
 
     document.getElementById("aura_cosmetic_rarity").src =
       `https://islandcdn.themysterys.com/icons/rarity/${auraCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("aura_cosmetic_rarity").onerror = imageError;
     document.getElementById("aura_cosmetic_rarity").style = getRarityFormatting(
       auraCosmetic.rarity,
     );
 
     document.getElementById("aura_cosmetic_type").src =
       `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(auraCosmetic.type) ? "tooltip" : "rarity"}/${auraCosmetic.type === "STANDARD" ? "aura" : auraCosmetic.type.toLowerCase()}.png`;
+    document.getElementById("aura_cosmetic_type").onerror = imageError;
     document.getElementById("aura_cosmetic_type").style =
       getRarityFormatting(
         auraCosmetic.type === "STANDARD" ? "AURA" : auraCosmetic.type,
@@ -467,6 +519,7 @@ async function getData() {
 
     let rodCosmeticImage = document.createElement("img");
     rodCosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/rod/${rodCosmetic.collection.toLowerCase()}/${rodCosmetic.name.replaceAll(" ", "_")}.png`;
+    rodCosmeticImage.onerror = imageError;
     rodCosmeticImage.id = "rod_cosmetic_img";
     rodCosmeticImage.alt = `TheFox580's rod cosmetic (${rodCosmetic.name}`;
     rodCosmeticImage.style = "width: 3em; height: 3em;";
@@ -480,12 +533,14 @@ async function getData() {
 
     document.getElementById("rod_cosmetic_rarity").src =
       `https://islandcdn.themysterys.com/icons/rarity/${rodCosmetic.rarity.toLowerCase()}.png`;
+    document.getElementById("rod_cosmetic_rarity").onerror = imageError;
     document.getElementById("rod_cosmetic_rarity").style = getRarityFormatting(
       rodCosmetic.rarity,
     );
 
     document.getElementById("rod_cosmetic_type").src =
       `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(rodCosmetic.type) ? "tooltip" : "rarity"}/${rodCosmetic.type === "STANDARD" ? "rod" : rodCosmetic.type.toLowerCase()}.png`;
+    document.getElementById("rod_cosmetic_type").onerror = imageError;
     document.getElementById("rod_cosmetic_type").style =
       getRarityFormatting(
         rodCosmetic.type === "STANDARD" ? "ROD" : rodCosmetic.type,
@@ -505,6 +560,7 @@ async function getData() {
 
       let friendImage = document.createElement("img");
       friendImage.src = `https://minotar.net/helm/${friend.uuid.replaceAll("-", "")}/75`;
+      friendImage.onerror = imageError;
       friendImage.id = `friend_${friend.uuid}_img`;
       friendImage.alt = `${friend.username}'s head`;
       friendImage.style.width = "3em";
@@ -766,6 +822,7 @@ async function getData() {
 
         let badgeImage = document.createElement("img");
         badgeImage.src = `https://islandcdn.themysterys.com/badges/${key}/${badge_former_name}.png`;
+        badgeImage.onerror = imageError;
         badgeImage.id = `badge_${key}_${badge_former_name}_img`;
         badgeImage.alt = `TheFox580's ${badge.badge.name}`;
         badgeImage.style = "width: 3em; height: 3em;";
@@ -889,21 +946,7 @@ async function getData() {
       let cosmeticCount = 0;
 
       for (let cosmetic of cosmetics) {
-        if (
-          ![
-            "Blossom Wisp Helmet",
-            "Forest Spirit Bulb",
-            "Noxstache",
-            "Floral Staff",
-            "Forest Spirit Friend",
-            "Hand Fan (Blossom Wisp)",
-            "Blossom Wisp Jar",
-            "Forest Spirit Wings",
-            "Blossom Blade",
-            "Mechanical Axe",
-          ].includes(cosmetic.cosmetic.name)
-        )
-          cosmeticCount += cosmetic.cosmetic.category === category;
+        cosmeticCount += cosmetic.cosmetic.category === category;
       }
 
       let catDiv = document.createElement("div");
@@ -917,104 +960,94 @@ async function getData() {
       let cosmeticOwned = 0;
 
       for (let cosmetic of cosmetics) {
-        if (
-          ![
-            "Blossom Wisp Helmet",
-            "Forest Spirit Bulb",
-            "Noxstache",
-            "Floral Staff",
-            "Forest Spirit Friend",
-            "Hand Fan (Blossom Wisp)",
-            "Blossom Wisp Jar",
-            "Forest Spirit Wings",
-            "Blossom Blade",
-            "Mechanical Axe",
-          ].includes(cosmetic.cosmetic.name)
-        ) {
-          if (category === cosmetic.cosmetic.category) {
-            cosmeticCount++;
-            cosmeticOwned += cosmetic.owned;
-            let cosmetic_former_name = cosmetic.cosmetic.name.replaceAll(
-              " ",
-              "_",
-            );
-            let cosmetic_former_collection = cosmetic.cosmetic.collection
-              .replaceAll(" ", "_")
-              .toLowerCase();
-            let cosmetic_former_category = cosmetic.cosmetic.category
-              .replaceAll(" ", "_")
-              .toLowerCase();
+        if (category === cosmetic.cosmetic.category) {
+          cosmeticCount++;
+          cosmeticOwned += cosmetic.owned;
+          let cosmetic_former_name = cosmetic.cosmetic.name.replaceAll(
+            " ",
+            "_",
+          );
+          let cosmetic_former_collection = cosmetic.cosmetic.collection
+            .replaceAll(" ", "_")
+            .toLowerCase();
+          let cosmetic_former_category = cosmetic.cosmetic.category
+            .replaceAll(" ", "_")
+            .toLowerCase();
 
-            let cosmeticBox = document.createElement("div");
-            cosmeticBox.id = `badge_${category}_${cosmetic_former_name}`;
-            cosmeticBox.style.display = "flex";
-            cosmeticBox.style.flexDirection = "row";
-            cosmeticBox.style.alignItems = "center";
-            cosmeticBox.style.borderColor = RARITY[cosmetic.cosmetic.rarity];
-            cosmeticBox.style.borderRadius = "10px";
-            cosmeticBox.style.borderStyle = "solid";
-            cosmeticBox.style.padding = "10px";
+          let cosmeticBox = document.createElement("div");
+          cosmeticBox.id = `badge_${category}_${cosmetic_former_name}`;
+          cosmeticBox.style.display = "flex";
+          cosmeticBox.style.flexDirection = "row";
+          cosmeticBox.style.alignItems = "center";
+          cosmeticBox.style.borderColor = RARITY[cosmetic.cosmetic.rarity];
+          cosmeticBox.style.borderRadius = "10px";
+          cosmeticBox.style.borderStyle = "solid";
+          cosmeticBox.style.padding = "10px";
 
-            let cosmeticImage = document.createElement("img");
-            cosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/${cosmetic_former_category}/${cosmetic_former_collection}/${cosmetic_former_name}.png`;
-            cosmeticImage.id = `badge_${category}_${cosmetic_former_name}_img`;
-            cosmeticImage.alt = `TheFox580's ${cosmetic.cosmetic.name}`;
-            cosmeticImage.style = "width: 3em; height: 3em;";
-            if (!cosmetic.owned) {
-              cosmeticImage.classList.add("grayscale");
-            }
-
-            cosmeticBox.appendChild(cosmeticImage);
-
-            let cosmeticInfos = document.createElement("div");
-            cosmeticInfos.id = `cosmetic_${category}_${cosmetic_former_name}_infos`;
-            cosmeticInfos.style.display = "flex";
-            cosmeticInfos.style.flexDirection = "column";
-            cosmeticInfos.style.marginLeft = "10px";
-            cosmeticInfos.style.justifyContent = "center";
-
-            let cosmeticName = document.createElement("span");
-            cosmeticName.id = `cosmetic_${category}_${cosmetic_former_name}_name`;
-            cosmeticName.style.fontWeight = "bold";
-            cosmeticName.style.color = "white";
-            cosmeticName.textContent = cosmetic.cosmetic.name;
-
-            cosmeticInfos.appendChild(cosmeticName);
-
-            let cosmeticTags = document.createElement("div");
-            cosmeticTags.id = `cosmetic_${category}_${cosmetic_former_name}_tags`;
-            cosmeticTags.style.display = "flex";
-            cosmeticTags.style.flexDirection = "row";
-
-            let cosmeticObtained = document.createElement("img");
-            cosmeticObtained.id = `cosmetic_${category}_${cosmetic_former_name}_rarity`;
-            cosmeticObtained.src = `https://islandcdn.themysterys.com/icons/rarity/${cosmetic.cosmetic.rarity.toLowerCase()}.png`;
-            cosmeticObtained.alt = `Rarity: ${cosmetic.cosmetic.rarity}`;
-            cosmeticObtained.style = getRarityFormatting(
-              cosmetic.cosmetic.rarity,
-            );
-
-            cosmeticTags.appendChild(cosmeticObtained);
-
-            let cosmeticType = document.createElement("img");
-            cosmeticType.id = `cosmetic_${category}_${cosmetic_former_name}_rarity`;
-            cosmeticType.src = `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(cosmetic.cosmetic.type) ? "tooltip" : "rarity"}/${cosmetic.cosmetic.type === "STANDARD" ? cosmetic_former_category : cosmetic.cosmetic.type.toLowerCase()}.png`;
-            cosmeticType.alt = `Type: ${cosmetic.cosmetic.type === "STANDARD" ? cosmetic_former_category : cosmetic.cosmetic.type}`;
-            cosmeticType.style =
-              getRarityFormatting(
-                cosmetic.cosmetic.type === "STANDARD"
-                  ? cosmetic_former_category
-                  : cosmetic.cosmetic.type,
-              ) + "; margin-left: 5px";
-
-            cosmeticTags.appendChild(cosmeticType);
-
-            cosmeticInfos.appendChild(cosmeticTags);
-
-            cosmeticBox.appendChild(cosmeticInfos);
-
-            catDiv.appendChild(cosmeticBox);
+          let cosmeticImage = document.createElement("img");
+          cosmeticImage.src = `https://islandcdn.themysterys.com/cosmetics/${cosmetic_former_category}/${cosmetic_former_collection}/${cosmetic_former_name}.png`;
+          cosmeticImage.onerror = imageError;
+          cosmeticImage.id = `badge_${category}_${cosmetic_former_name}_img`;
+          cosmeticImage.alt = cosmetic.owned
+            ? `Obtained ${cosmetic.cosmetic.name}`
+            : `Unobtained ${cosmetic.cosmetic.name}`;
+          cosmeticImage.style = "width: 3em; height: 3em;";
+          if (!cosmetic.owned) {
+            cosmeticImage.classList.add("grayscale");
           }
+
+          cosmeticBox.appendChild(cosmeticImage);
+
+          let cosmeticInfos = document.createElement("div");
+          cosmeticInfos.id = `cosmetic_${category}_${cosmetic_former_name}_infos`;
+          cosmeticInfos.style.display = "flex";
+          cosmeticInfos.style.flexDirection = "column";
+          cosmeticInfos.style.marginLeft = "10px";
+          cosmeticInfos.style.justifyContent = "center";
+
+          let cosmeticName = document.createElement("span");
+          cosmeticName.id = `cosmetic_${category}_${cosmetic_former_name}_name`;
+          cosmeticName.style.fontWeight = "bold";
+          cosmeticName.style.color = "white";
+          cosmeticName.textContent = cosmetic.cosmetic.name;
+
+          cosmeticInfos.appendChild(cosmeticName);
+
+          let cosmeticTags = document.createElement("div");
+          cosmeticTags.id = `cosmetic_${category}_${cosmetic_former_name}_tags`;
+          cosmeticTags.style.display = "flex";
+          cosmeticTags.style.flexDirection = "row";
+
+          let cosmeticObtained = document.createElement("img");
+          cosmeticObtained.id = `cosmetic_${category}_${cosmetic_former_name}_rarity`;
+          cosmeticObtained.src = `https://islandcdn.themysterys.com/icons/rarity/${cosmetic.cosmetic.rarity.toLowerCase()}.png`;
+          cosmeticObtained.onerror = imageError;
+          cosmeticObtained.alt = `Rarity: ${cosmetic.cosmetic.rarity}`;
+          cosmeticObtained.style = getRarityFormatting(
+            cosmetic.cosmetic.rarity,
+          );
+
+          cosmeticTags.appendChild(cosmeticObtained);
+
+          let cosmeticType = document.createElement("img");
+          cosmeticType.id = `cosmetic_${category}_${cosmetic_former_name}_rarity`;
+          cosmeticType.src = `https://islandcdn.themysterys.com/icons/${["LEGACY", "STANDARD", "PREMIUM"].includes(cosmetic.cosmetic.type) ? "tooltip" : "rarity"}/${cosmetic.cosmetic.type === "STANDARD" ? cosmetic_former_category : cosmetic.cosmetic.type.toLowerCase()}.png`;
+          cosmeticType.onerror = imageError;
+          cosmeticType.alt = `Type: ${cosmetic.cosmetic.type === "STANDARD" ? cosmetic_former_category : cosmetic.cosmetic.type}`;
+          cosmeticType.style =
+            getRarityFormatting(
+              cosmetic.cosmetic.type === "STANDARD"
+                ? cosmetic_former_category
+                : cosmetic.cosmetic.type,
+            ) + "; margin-left: 5px";
+
+          cosmeticTags.appendChild(cosmeticType);
+
+          cosmeticInfos.appendChild(cosmeticTags);
+
+          cosmeticBox.appendChild(cosmeticInfos);
+
+          catDiv.appendChild(cosmeticBox);
         }
       }
 
@@ -1054,6 +1087,164 @@ async function getData() {
 
       document.getElementById("cosmetics_to_add").appendChild(catDiv);
     }
+
+    let infinibag = data.infinibag;
+    let infinibagDiv = document.getElementById("infinibag_div");
+
+    for (let item of infinibag) {
+      let imgLink = "https://islandcdn.themysterys.com/";
+      if (
+        item.asset.name.includes("Augment") ||
+        item.asset.name.includes("A.N.G.L.R.") ||
+        item.asset.name.includes("Amulet") ||
+        item.asset.name.includes("Bait") ||
+        item.asset.name.includes("Line") ||
+        item.asset.name.includes("Pearl") ||
+        item.asset.name == "Refined Cluster Spirit" ||
+        [
+          "Tangled Kelp",
+          "Lost Shoe",
+          "Rusted Can",
+          "Royal Residue",
+          "Forgotten Crown",
+        ].includes(item.asset.name) ||
+        [
+          "Glimmering Spirit",
+          "Lucky Spirit",
+          "Wise Spirit",
+          "Greedy Spirit",
+          "Strong Spirit",
+        ].includes(item.asset.name) ||
+        [
+          "Refined Glimmering Spirit",
+          "Refined Lucky Spirit",
+          "Refined Wise Spirit",
+          "Refined Greedy Spirit",
+          "Refined Strong Spirit",
+        ].includes(item.asset.name) ||
+        isFish(item.asset.name, data.collections.fish)
+      ) {
+        imgLink += "fishing/";
+        if (isFish(item.asset.name, data.collections.fish)) {
+          let itemToCheck = item.asset.name;
+          for (let fish of data.collections.fish) {
+            if (item.asset.name === fish.fish.name) {
+              itemToCheck = fish.fish;
+              break;
+            }
+          }
+          imgLink += `fish/${itemToCheck.collection.replaceAll(" ", "_").toLowerCase()}/${itemToCheck.name.replaceAll(" ", "_").toLowerCase()}.png`;
+        } else {
+          if (item.asset.name.includes("Bait")) {
+            imgLink += `perks/baits/${item.asset.name.split(" ")[0].toLowerCase()}.png`;
+          } else if (item.asset.name.includes("Augment")) {
+            imgLink += `perks/${item.asset.name.split(" ")[1].toLowerCase()}s/${item.asset.name.split(" ")[0].toLowerCase()}.png`;
+          } else if (item.asset.name.includes("Lure")) {
+            imgLink += `perks/lures/${LURES[item.asset.name.split(" ")[1]].toLowerCase()}.png`;
+          } else if (item.asset.name.includes("Line")) {
+            imgLink += `perks/lines/${item.asset.name.split(" ")[0].toLowerCase()}.png`;
+          } else if (item.asset.name.includes("Spirit")) {
+            if (item.asset.name.split(" ")[0] === "Refined") {
+              imgLink += `icons/spirits/${item.asset.name.replace(" Spirit", "").replaceAll(" ", "_").toLowerCase()}.png`;
+            } else {
+              imgLink += `icons/spirits/${item.asset.name.split(" ")[0].toLowerCase()}.png`;
+            }
+          } else if (item.asset.name.includes("Pearl")) {
+            imgLink += `icons/pearls/${item.asset.name.split(" ")[0].toLowerCase()}.${item.asset.name.split(" ")[0].toLowerCase() === "pristine" ? "webp" : "png"}`;
+          } else if (item.asset.name.includes("Amulet")) {
+            imgLink += `icons/amulet/${item.asset.name.split(" ")[0].toLowerCase()}.webp`;
+          } else if (!item.asset.name.includes("A.N.G.L.R.")) {
+            imgLink += `icons/trash/${TRASH[item.asset.name].toLowerCase()}.png`;
+          }
+        }
+      } else {
+        imgLink += "icons/";
+        if (item.asset.name.includes("Blueprint")) {
+          imgLink += "blueprint/cosmetic_";
+          let itemToCheck = item.asset.name
+            .replace("Blueprint: ", "")
+            .replace(" Token", "");
+          for (let cosmetic of cosmetics) {
+            if (cosmetic.cosmetic.name === itemToCheck) {
+              itemToCheck = cosmetic.cosmetic;
+              break;
+            }
+          }
+          if (itemToCheck.type === "EXCLUSIVE") {
+            imgLink += "exclusive_";
+          }
+          imgLink += itemToCheck.rarity.toLowerCase() + ".png";
+        } else if (item.asset.name.includes("Core")) {
+          imgLink += `core/${item.asset.name.replace(" Cosmetic Core", "").toLowerCase()}.png`;
+        } else if (
+          item.asset.name.includes("Leaf") ||
+          item.asset.name.includes("Bug")
+        ) {
+          imgLink += `events/spirit_blossom/${item.asset.name.replaceAll(" ", "_").toLowerCase()}.png`;
+        } else if (
+          item.asset.name === "Snowflake" ||
+          item.asset.name === "Candy Cane"
+        ) {
+          imgLink += `events/winter/${item.asset.name.replaceAll(" ", "_").toLowerCase()}.png`;
+        } else if (
+          ["Ancient Spirit", "Spooky Spirit"].includes(item.asset.name) ||
+          item.asset.name.includes("Candy")
+        ) {
+          imgLink += `events/halloween/${item.asset.name.replaceAll(" ", "_").toLowerCase()}.png`;
+        } else if (item.asset.name.includes("Scroll")) {
+          imgLink += `quest_scroll/${item.asset.name.split(" ")[0].toLowerCase()}.png`;
+        } else if (item.asset.name === "Daily Challenge Ticket") {
+          imgLink += `misc/daily_challenge_ticket.png`;
+        } else if (item.asset.name.includes("MCC+")) {
+          imgLink += `misc/mcc_plus.png`;
+        } else if (item.asset.name.includes("Token")) {
+          imgLink += `quest_token/${item.asset.name.replace(" Token", "").replace("Task ", "").toLowerCase()}.png`;
+        } else if (item.asset.name.includes("Cluster")) {
+          imgLink += `material/cluster_${item.asset.name.split(" ")[0].replaceAll(" ", "_").toLowerCase()}.png`;
+        } else {
+          imgLink += `material/${item.asset.name.replaceAll(" ", "_").toLowerCase()}.png`;
+        }
+      }
+
+      console.log(imgLink);
+
+      let itemBox = document.createElement("div");
+      itemBox.id = `item_${item.asset.name.replaceAll(" ", "_")}`;
+      itemBox.style.display = "flex";
+      itemBox.style.borderColor = RARITY[item.asset.rarity];
+      itemBox.style.borderRadius = "10px";
+      itemBox.style.borderStyle = "solid";
+      itemBox.style.padding = "10px";
+
+      let itemImage = document.createElement("img");
+      itemImage.src = imgLink;
+      itemImage.onerror = imageError;
+      itemImage.id = `item_${item.asset.name.replaceAll(" ", "_")}_img`;
+      itemImage.alt = item.asset.name;
+      itemImage.style.width = "3em";
+
+      itemBox.appendChild(itemImage);
+
+      let itemInfos = document.createElement("div");
+      itemInfos.id = `item_${item.asset.name.replaceAll(" ", "_")}_infos`;
+      itemInfos.style.display = "flex";
+      itemInfos.style.flexDirection = "column";
+      itemInfos.style.marginLeft = "10px";
+      itemInfos.style.justifyContent = "center";
+
+      let itemText = document.createElement("span");
+      itemText.id = `item_${item.asset.name.replaceAll(" ", "_")}_text`;
+      itemText.style.fontWeight = "bold";
+      itemText.textContent = item.asset.name;
+
+      itemInfos.appendChild(itemText);
+
+      itemBox.appendChild(itemInfos);
+
+      infinibagDiv.appendChild(itemBox);
+    }
+  } else {
+    console.log("File not found.");
   }
 }
 
