@@ -1206,8 +1206,6 @@ async function getData() {
         }
       }
 
-      console.log(imgLink);
-
       let itemBox = document.createElement("div");
       itemBox.id = `item_${item.asset.name.replaceAll(" ", "_")}`;
       itemBox.style.display = "flex";
