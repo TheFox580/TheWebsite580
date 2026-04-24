@@ -1,0 +1,7 @@
+.env
+.vercel
+/js
+/node_modules
+/test
+package-lock.json
+package.json

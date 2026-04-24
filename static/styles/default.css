@@ -1,0 +1,16 @@
+html {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+a {
+  color: #00ff00;
+}
+a:hover {
+  text-decoration: underline;
+}
