@@ -4,24 +4,17 @@
     import { onMount } from "svelte";
     import type { MCSRData } from "$lib/interfaces/mcsr/MCSRData";
 
-    const { data, user } = $props<{
+    const { data } = $props<{
         data: PageData;
-        user: string;
     }>();
 
-    let win = $state(0);
-    let loss = $state(0);
-    let draw = $state(0);
-
-    let ranked = $state(0);
-    let elo = $state(0);
-    let diff = $state(0);
-    let rank = $state("");
-    let nextRank = $state("");
+    const usableData: MCSRData = data.data.data;
 
     onMount(() => {
         const interval = setInterval(() => {
-            invalidate(`https://api.mcsrranked.com/users/${user}`);
+            invalidate(
+                `https://api.mcsrranked.com/users/${usableData.nickname}`,
+            );
 
             updatePage();
         }, 20 * 1000);
@@ -29,7 +22,14 @@
         return () => clearInterval(interval);
     });
 
-    const usableData: MCSRData = data.data.data;
+    let win = $state(0);
+    let loss = $state(0);
+    let draw = $state(0);
+
+    let ranked = $state(usableData.eloRank ? usableData.eloRank : 0);
+    let elo = $state(usableData.eloRate ? usableData.eloRate : 0);
+    let rank = $state(getRankByElo(elo));
+    let nextRank = $state(getNextRank(rank));
 
     function getRankByElo(elo: number): string {
         if (elo === null) {
@@ -152,15 +152,54 @@
     }
 
     let startingElo = usableData.eloRate ? usableData.eloRate : 0;
-    let lastGameTime = null;
+    let lastGameTime: number | null = null;
+
+    function updateElo(newElo: number) {
+        let eloInterval = setInterval(() => {
+            if (elo === newElo) {
+                clearInterval(eloInterval);
+            } else if (elo < newElo) {
+                elo++;
+            } else {
+                elo--;
+            }
+            rank = getRankByElo(elo);
+            nextRank = getNextRank(rank);
+        });
+    }
+
+    function updateRanked(newRanked: number) {
+        let rankedInterval = setInterval(() => {
+            if (ranked === newRanked) {
+                clearInterval(ranked);
+            } else if (ranked < newRanked) {
+                ranked++;
+            } else {
+                ranked--;
+            }
+        });
+    }
 
     function updatePage() {
         console.log(usableData);
-        ranked = usableData.eloRank ? usableData.eloRank : 0;
-        elo = usableData.eloRate ? usableData.eloRate : 0;
 
-        rank = getRankByElo(elo);
-        nextRank = getNextRank(rank);
+        if (!lastGameTime) {
+            lastGameTime = usableData.timestamp.lastRanked;
+        } else if (lastGameTime != usableData.timestamp.lastRanked) {
+            let diff: number =
+                (usableData.eloRank ? usableData.eloRank : 0) - elo;
+
+            if (diff > 0) {
+                win++;
+            } else if (diff < 0) {
+                loss++;
+            } else {
+                draw++;
+            }
+        }
+
+        updateRanked(usableData.eloRank ? usableData.eloRank : 0);
+        updateElo(usableData.eloRate ? usableData.eloRate : 0);
     }
 
     updatePage();
@@ -170,7 +209,9 @@
     <link rel="stylesheet" href="/styles/mcsr/widget.css" />
 </svelte:head>
 
-<div class="flex flex-row justify-around bg-black w-100 h-25 rounded-[40px]">
+<div
+    class="flex flex-row justify-around bg-black w-100 h-25 rounded-[40px] m-5"
+>
     <div class="flex flex-col justify-center">
         <div class="flex flex-row items-center justify-center">
             <span class="text-neutral-400 ml-2.5 text-base font-sans"
@@ -194,7 +235,13 @@
             <span class="text-white ml-2.5 mr-10 text-2xl font-sans"
                 >{elo} elo</span
             >
-            <span class="text-yellow-300 text-2xl font-bold">+0</span>
+            <span
+                class="text-{startingElo < elo
+                    ? 'green-400'
+                    : startingElo > elo
+                      ? 'red-600'
+                      : 'yellow-300'} text-2xl font-bold">+0</span
+            >
         </div>
         <div class="flex flex-row items-center justify-center mt-0.5">
             <span class="text-neutral-400 ml-2.5 text-base font-sans"
@@ -208,3 +255,17 @@
         alt="{usableData.nickname}'s skin head"
     />
 </div>
+
+<style>
+    .text-yellow-300 {
+        color: oklch(90.5% 0.182 98.111);
+    }
+
+    .text-green-400 {
+        color: oklch(79.2% 0.209 151.711);
+    }
+
+    .text-red-600 {
+        color: oklch(57.7% 0.245 27.325);
+    }
+</style>
