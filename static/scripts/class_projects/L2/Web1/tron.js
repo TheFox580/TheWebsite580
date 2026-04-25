@@ -51,7 +51,7 @@ class Player {
     jumpKey = "e",
     name = "Player",
     color = new Color(0, 0, 0),
-    position = [0, 0]
+    position = [0, 0],
   ) {
     this.#upKey = upKey;
     this.#leftKey = leftKey;
@@ -161,7 +161,7 @@ class Player {
     this.color = new Color(
       parseInt(colour[0]),
       parseInt(colour[1]),
-      parseInt(colour[2])
+      parseInt(colour[2]),
     );
   }
 }
@@ -250,7 +250,7 @@ function drawPlayerRect(player, ctx) {
     player.getCurrentPosition().x * 10,
     player.getCurrentPosition().y * 10,
     10,
-    10
+    10,
   );
 }
 
@@ -262,7 +262,7 @@ let player1 = new Player(
   "e",
   "Player 1",
   new Color(0, 0, 255),
-  [1, 28]
+  [1, 28],
 );
 let player2 = new Player(
   "o",
@@ -272,7 +272,7 @@ let player2 = new Player(
   "p",
   "Player 2",
   new Color(255, 0, 0),
-  [1, 30]
+  [1, 30],
 );
 
 var playerList = [player1, player2];
@@ -296,7 +296,7 @@ document.addEventListener(
           player2.addDirection(newDir);
         }
       },
-      false
+      false,
     );
 
     let startButton = document.getElementById("start");
@@ -311,11 +311,11 @@ document.addEventListener(
         startButton.setAttribute("disabled", "true");
         window.requestAnimationFrame(drawCanvas);
       },
-      false
+      false,
     );
 
     let updatePLayerSettingsButton = document.getElementById(
-      "updateSettingsButton"
+      "updateSettingsButton",
     );
 
     updatePLayerSettingsButton.addEventListener(
@@ -329,32 +329,32 @@ document.addEventListener(
 
               player.newKey(
                 Direction.UP,
-                playerSetting.children["Forward"].children[1].value
+                playerSetting.children["Forward"].children[1].value,
               );
 
               player.newKey(
                 Direction.DOWN,
-                playerSetting.children["Down"].children[1].value
+                playerSetting.children["Down"].children[1].value,
               );
 
               player.newKey(
                 Direction.LEFT,
-                playerSetting.children["Left"].children[1].value
+                playerSetting.children["Left"].children[1].value,
               );
 
               player.newKey(
                 Direction.RIGHT,
-                playerSetting.children["Right"].children[1].value
+                playerSetting.children["Right"].children[1].value,
               );
 
               player.newKey(
                 Direction.JUMP,
-                playerSetting.children["Jump"].children[1].value
+                playerSetting.children["Jump"].children[1].value,
               );
 
               player.name = playerSetting.children["Name"].children[1].value;
               for (playerName of document.getElementsByClassName(
-                "p" + playerSetting.id[1] + "_name"
+                "p" + playerSetting.id[1] + "_name",
               )) {
                 playerName.textContent = player.name;
               }
@@ -362,7 +362,7 @@ document.addEventListener(
           }
         }
       },
-      false
+      false,
     );
 
     let p1_coulour = document.getElementById("p1_colour");
@@ -397,5 +397,5 @@ document.addEventListener(
       });
     }
   },
-  false
+  false,
 );
