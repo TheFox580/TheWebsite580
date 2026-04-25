@@ -70,8 +70,6 @@
     }, 1000);
 
     const usableData: Point[] = data.points;
-
-    console.log(usableData);
 </script>
 
 <svelte:head>

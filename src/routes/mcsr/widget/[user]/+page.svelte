@@ -181,8 +181,6 @@
     }
 
     function updatePage() {
-        console.log(usableData);
-
         if (!lastGameTime) {
             lastGameTime = usableData.timestamp.lastRanked;
         } else if (lastGameTime != usableData.timestamp.lastRanked) {
