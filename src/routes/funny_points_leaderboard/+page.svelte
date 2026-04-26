@@ -2,26 +2,26 @@
     import DiscordMessage from "$lib/components/funny_points_leaderboard/DiscordMessage.svelte";
     import type { PageData } from "./$types";
     import type { Point } from "$lib/interfaces/funny_points_leaderboard/Point";
+    import type { SeasonDate } from "$lib/interfaces/funny_points_leaderboard/Date";
+    import type { Score } from "$lib/interfaces/funny_points_leaderboard/Score";
 
     const { data } = $props<{
         data: PageData;
     }>();
 
+    const points: Point[] = data.points;
+    const players: Score[] = data.players;
+    const date: SeasonDate = data.date;
+
+    console.log(players);
+
     function z(n: number): string {
         return (n < 10 ? "0" : "") + n;
     }
-    function isoToObj(s: string): Date {
-        var b = s.split(/[-TZ:]/i);
 
-        var b1 = +b[1];
-
-        return new Date(Date.UTC(+b[0], --b1, +b[2], +b[3], +b[4], +b[5]));
-    }
-
-    function timeToGo(s: string): string {
+    function timeToGo(date: Date): string {
         // Convert string to date object
-        var d = isoToObj(s);
-        var diff = d.getTime() - new Date().getTime();
+        var diff = date.getTime() - new Date().getTime();
 
         // Allow for previous times
         var sign = diff < 0 ? "-" : "";
@@ -55,26 +55,66 @@
         return "Resets in " + z(hours) + "h " + z(mins) + "m " + z(secs) + "s";
     }
 
-    let reset = $state(timeToGo("2026-11-23T19:00:00Z"));
+    function getFontSize(placement: number) {
+        switch (placement) {
+            case 1:
+                return "xx-large";
+            case 2:
+                return "larger";
+            case 3:
+                return "x-large";
+            default:
+                return `${100 - (placement - 4) * 5}%`;
+        }
+    }
 
-    let endTime = isoToObj("2026-11-23T19:00:00Z");
-    let startTime = isoToObj("2025-11-23T19:00:00Z");
+    function getPlacementClass(placement: number) {
+        switch (placement) {
+            case 1:
+                return "first";
+            case 2:
+                return "second";
+            case 3:
+                return "third";
+            default:
+                return "";
+        }
+    }
+
+    function getPlacementText(placement: number) {
+        switch (placement) {
+            case 1:
+                return "🥇";
+            case 2:
+                return "🥈";
+            case 3:
+                return "🥉";
+            case 4:
+                return "🏅";
+            default:
+                return `${placement}th.`;
+        }
+    }
+
+    let endTime = date.end_time;
+    let startTime = date.start_time;
+
     let totalTime = endTime.getTime() - startTime.getTime();
     let timeLeft = endTime.getTime() - new Date().getTime();
     let notRedColor = $state(
         Math.max(0, Math.round((timeLeft / totalTime) * 255)),
     );
 
-    setInterval(() => {
-        reset = timeToGo("2026-11-23T19:00:00Z");
-    }, 1000);
+    let reset = $state(timeToGo(endTime));
 
-    const usableData: Point[] = data.points;
+    setInterval(() => {
+        reset = timeToGo(endTime);
+    }, 1000);
 </script>
 
 <svelte:head>
     <link rel="stylesheet" href="/styles/default.css" />
-    <title>Goofy Gang's Funny Points Leaderboard | Season 1</title>
+    <title>Goofy Gang's Funny Points Leaderboard | Season {date.season}</title>
     <link
         rel="icon"
         href="https://cdn.discordapp.com/icons/1327430536494321807/a6703551a7b3a2597461905182707145.webp?size=512"
@@ -91,7 +131,7 @@
 
 <div id="title">
     <h1 class="font-bold text-3xl mt-5 mb-2.5">
-        Goofy Gang's Funny Points Leaderboard
+        Goofy Gang's Funny Points Leaderboard | Season {date.season}
     </h1>
     <h2
         id="time"
@@ -107,54 +147,18 @@
             Leaderboard
         </h1>
         <div id="leaderboard">
-            <span id="placement" class="text-[xx-large]">
-                <span class="first"
-                    >🥇 <span class="username">victoriaskyetv</span></span
+            {#each players as player, index}
+                <span
+                    id="placement"
+                    style="font-size: {getFontSize(index + 1)}"
                 >
-                - 5 points</span
-            >
-            <span id="placement" class="text-[larger]"
-                ><span class="second"
-                    >🥈 <span class="username">pinkfluffyseal</span></span
+                    <span id={player.name} class={getPlacementClass(index + 1)}
+                        >{getPlacementText(index + 1)}
+                        <span class="username">{player.name}</span></span
+                    >
+                    - {player.score} point{player.score === 1 ? "" : "s"}</span
                 >
-                - 4 points</span
-            >
-            <span id="placement" class="text-[larger]"
-                ><span class="second"
-                    >🥈 <span class="username">TheFox580</span></span
-                >
-                - 4 points</span
-            >
-            <span id="placement" class="text-[100%]"
-                >🏅 <span class="username">Oobie</span> - 2.5 points</span
-            >
-            <span id="placement" class="text-[95%]"
-                >5th. <span class="username">WubDub</span> - 2 points</span
-            >
-            <span id="placement" class="text-[95%]"
-                >5th. <span class="username">NotTooSwift</span> - 2 points</span
-            >
-            <span id="placement" class="text-[95%]"
-                >5th. <span class="username">dolphinman_rl</span> - 2 point</span
-            >
-            <span id="placement" class="text-[80%]"
-                >8th. <span class="username">KaNukei</span> - 1 point</span
-            >
-            <span id="placement" class="text-[80%]"
-                >8th. <span class="username">Chandiggitydog</span> - 1 point</span
-            >
-            <span id="placement" class="text-[70%]"
-                >10th. <span class="username">Amy</span> - 0 points</span
-            >
-            <span id="placement" class="text-[70%]"
-                >10th. <span class="username">JustColonial</span> - 0 points</span
-            >
-            <span id="placement" class="text-[70%]"
-                >10th. <span class="username">Kokiri</span> - 0 points</span
-            >
-            <span id="placement" class="text-[70%]"
-                >10th. <span class="username">Temprie</span> - 0 points</span
-            >
+            {/each}
 
             <span class="mt-4"
                 ><em
@@ -168,42 +172,49 @@
     </div>
     <div id="logs-main" class="flex flex-col">
         <h1 class="stick font-bold text-3xl mt-5 mb-2.5 w-full title">Logs</h1>
-        {#each usableData as point}
-            <div class="flex flex-col logs-message">
-                <span
-                    >{point.date.toDateString()} at {z(
-                        point.date.getHours(),
-                    )}:{z(point.date.getMinutes())}:{z(point.date.getSeconds())} UTC{-point.date.getTimezoneOffset() /
-                        60 <
-                    0
-                        ? ""
-                        : "+"}{-point.date.getTimezoneOffset() / 60}</span
-                ><span>
+        {#if points.length === 0}
+            <h1 class="font-bold text-3xl">No logs has been found</h1>
+        {:else}
+            {#each points as point}
+                <div class="flex flex-col logs-message">
                     <span
-                        class="{point.diff > -0
-                            ? 'added'
-                            : 'removed'} font-bold"
-                        >{point.diff > -0 ? "+" : ""}{point.diff} point{Math.abs(
-                            point.diff,
-                        ) > 1
-                            ? "s"
-                            : ""}</span
+                        >{point.date.toDateString()} at {z(
+                            point.date.getHours(),
+                        )}:{z(point.date.getMinutes())}:{z(
+                            point.date.getSeconds(),
+                        )} UTC{-point.date.getTimezoneOffset() / 60 < 0
+                            ? ""
+                            : "+"}{-point.date.getTimezoneOffset() / 60}</span
+                    ><span>
+                        <span
+                            class="{point.diff > -0
+                                ? 'added'
+                                : 'removed'} font-bold"
+                            >{point.diff > -0 ? "+" : ""}{point.diff} point{Math.abs(
+                                point.diff,
+                            ) > 1
+                                ? "s"
+                                : ""}</span
+                        >
+                        to
+                        <a href="#{point.username}" style="color: white"
+                            >{point.username}</a
+                        ></span
                     >
-                    to {point.username}</span
-                >
-                <div class="flex flex-col mt-4">
-                    <span>Context :</span>
-                    <span>{point.context}</span>
+                    <div class="flex flex-col mt-4">
+                        <span>Context :</span>
+                        <span>{point.context}</span>
+                    </div>
+                    <DiscordMessage
+                        hasImage={point.message.hasImage}
+                        src={point.message.src}
+                        alt={point.message.alt}
+                        customClass={point.message.customClass}
+                        messageList={point.message.messageList}
+                    ></DiscordMessage>
                 </div>
-                <DiscordMessage
-                    hasImage={point.message.hasImage}
-                    src={point.message.src}
-                    alt={point.message.alt}
-                    customClass={point.message.customClass}
-                    messageList={point.message.messageList}
-                ></DiscordMessage>
-            </div>
-        {/each}
+            {/each}
+        {/if}
     </div>
 </div>
 
