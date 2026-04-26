@@ -141,7 +141,7 @@
 </div>
 <div id="main-content">
     <div id="leaderboard-all" class="stick w-screen">
-        <h1 class="font-bold text-3xl mt-5 mb-2.5 self-center title">
+        <h1 class="stick font-bold text-3xl mt-5 mb-2.5 self-center title">
             Leaderboard
         </h1>
         <div id="leaderboard">

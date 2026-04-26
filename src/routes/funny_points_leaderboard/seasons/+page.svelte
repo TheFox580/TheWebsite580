@@ -27,7 +27,10 @@
                     href={season.id === seasons.length
                         ? "/funny_points_leaderboard"
                         : `/funny_points_leaderboard/${season.url_name}`}
-                    class="text-4xl">{season.name}</a
+                    class="text-4xl"
+                    >{season.name}{season.id === seasons.length
+                        ? " (Current Season)"
+                        : ""}</a
                 >
             </li>
         {/each}
