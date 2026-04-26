@@ -13,8 +13,6 @@
     const players: Score[] = data.players;
     const date: SeasonDate = data.date;
 
-    console.log(players);
-
     function z(n: number): string {
         return (n < 10 ? "0" : "") + n;
     }
