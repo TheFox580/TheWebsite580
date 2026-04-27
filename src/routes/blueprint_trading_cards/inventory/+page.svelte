@@ -55,7 +55,13 @@
             <h1 class="text-5xl font-bold text-center text-white mb-20">
                 {inv.name}'s invetory:
             </h1>
-            <div class="w-full grid grid-cols-4 gap-2.5 auto-rows-auto">
+            <div
+                style="grid-template-columns: repeat({Math.min(
+                    4,
+                    inv.cards.length,
+                )}, minmax(0, 1fr));"
+                class="w-full grid gap-2.5 auto-rows-auto"
+            >
                 {#if inv.cards.length}
                     {#each inv.cards as card}
                         <h2 class="text-3xl text-center text-white">
