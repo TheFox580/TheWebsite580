@@ -39,4 +39,5 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
     signIn: "/api/twitch/signin",
     signOut: "/api/twitch/signout",
   },
+  trustHost: true,
 });
