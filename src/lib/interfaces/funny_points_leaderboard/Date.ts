@@ -5,9 +5,6 @@ export interface SeasonDate {
   start_time: Date;
   end_time: Date;
 }
-export interface SeasonDateDB {
+export interface SeasonDateDB extends SeasonDate {
   _id: ObjectId;
-  season: number;
-  start_time: Date;
-  end_time: Date;
 }

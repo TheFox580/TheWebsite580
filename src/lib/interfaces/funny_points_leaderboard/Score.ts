@@ -10,8 +10,6 @@ export interface Scores {
   scores: Score[];
 }
 
-export interface ScoresDB {
+export interface ScoresDB extends Scores {
   _id: ObjectId;
-  season: number;
-  scores: Score[];
 }

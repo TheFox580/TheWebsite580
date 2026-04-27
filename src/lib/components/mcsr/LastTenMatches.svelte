@@ -65,6 +65,7 @@
                     >
                     against
                     <a
+                        class="cursor-pointer"
                         href="https://mcsrranked.com/stats/{game.players
                             .filter((player) => player.uuid !== uuid)
                             .map((player) => player.nickname)[0]}"

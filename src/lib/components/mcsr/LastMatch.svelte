@@ -82,7 +82,9 @@
             Waiting to receive data...
         </h2>
     {:then json}
-        <h2 class="text-center self-center mb-4 text-2xl font-bold">
+        <h2
+            class="text-center self-center mb-4 text-2xl font-bold cursor-pointer"
+        >
             <a
                 href="https://mcsrranked.com/stats/TheFox580/{json[0].id}"
                 target="_blank">Last Match Played</a
@@ -90,7 +92,9 @@
         </h2>
         <span
             >Against {#each json[0].players.filter((player) => player.uuid != uuid) as player}
-                <a href="https://mcsrranked.com/stats/{player.nickname}"
+                <a
+                    class="cursor-pointer"
+                    href="https://mcsrranked.com/stats/{player.nickname}"
                     >{`${player.nickname}`}</a
                 >{#if player != json[0].players[json[0].players.length - 1]}
                     {", "}

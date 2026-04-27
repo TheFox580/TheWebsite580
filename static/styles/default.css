@@ -1,16 +1,18 @@
 html {
-  background-color: #000000;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
 
 a {
-  color: #00ff00;
+    color: #00ff00;
+    cursor: pointer;
 }
+
 a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }

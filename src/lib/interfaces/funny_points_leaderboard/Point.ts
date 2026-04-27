@@ -9,11 +9,6 @@ export interface Point {
   message: DiscordMessage;
 }
 
-export interface PointDB {
+export interface PointDB extends Point {
   _id: ObjectId;
-  username: string;
-  context: string;
-  date: Date;
-  diff: number;
-  message: DiscordMessage;
 }

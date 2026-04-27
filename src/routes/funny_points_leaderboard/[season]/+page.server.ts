@@ -9,6 +9,7 @@ import type {
 import type { Season } from "$lib/interfaces/funny_points_leaderboard/Season";
 import type {
   Score,
+  Scores,
   ScoresDB,
 } from "$lib/interfaces/funny_points_leaderboard/Score";
 import type { PageServerLoad } from "./$types";
@@ -48,7 +49,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
     const db = client.db("funny_points_leaderboard");
 
-    const date_collection = db.collection<SeasonDateDB>("dates");
+    const date_collection = db.collection<SeasonDate>("dates");
 
     const date_result = await date_collection.findOne<SeasonDateDB>({
       season: season.id,
@@ -60,7 +61,7 @@ export const load: PageServerLoad = async ({ params }) => {
       date = (({ _id, ...object }) => object)(date_result);
     }
 
-    const players_collection = db.collection<ScoresDB>("scores");
+    const players_collection = db.collection<Scores>("scores");
 
     const players_result = await players_collection.findOne<ScoresDB>({
       season: season.id,
@@ -74,7 +75,7 @@ export const load: PageServerLoad = async ({ params }) => {
       );
     }
 
-    const points_collection = db.collection<PointDB>(season.url_name);
+    const points_collection = db.collection<Point>(season.url_name);
 
     const points_result = await points_collection
       .find<PointDB>({})
@@ -85,7 +86,7 @@ export const load: PageServerLoad = async ({ params }) => {
       console.log("No points found.");
     } else {
       for (let elm of points_result) {
-        let point: Point = (({ _id, ...object }) => object)(elm);
+        let point = (({ _id, ...object }) => object)(elm);
         points.push(point);
       }
     }
