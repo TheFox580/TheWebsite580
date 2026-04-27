@@ -12,7 +12,7 @@ import type {
   ScoresDB,
 } from "$lib/interfaces/funny_points_leaderboard/Score";
 import type { PageServerLoad } from "./$types";
-import { MONGO_DB_USERNAME, MONGO_DB_PASSWORD } from "$env/static/private";
+import { MONGO_DB_URL } from "$env/static/private";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { getSeasons } from "$lib/functions/funny_points_leaderboard/GetSeasons";
 
@@ -27,22 +27,19 @@ export const load: PageServerLoad = async () => {
     end_time: new Date("0-0-0T00:00:00Z"),
   };
 
-  let client = new MongoClient(
-    `mongodb+srv://${MONGO_DB_USERNAME}:${MONGO_DB_PASSWORD}@funny-points-leaderboar.pjwbel5.mongodb.net/?appName=funny-points-leaderboard`,
-    {
-      serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-      },
+  let client = new MongoClient(MONGO_DB_URL, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
     },
-  );
+  });
   try {
     await client.connect();
 
-    const db = client.db("seasons");
+    const db = client.db("funny_points_leaderboard");
 
-    const date_collection = db.collection<SeasonDateDB>("Dates");
+    const date_collection = db.collection<SeasonDateDB>("dates");
 
     const date_result = await date_collection.findOne<SeasonDateDB>({
       season: last_season.id,
@@ -54,7 +51,7 @@ export const load: PageServerLoad = async () => {
       date = (({ _id, ...object }) => object)(date_result);
     }
 
-    const players_collection = db.collection<ScoresDB>("Scores");
+    const players_collection = db.collection<ScoresDB>("scores");
 
     const players_result = await players_collection.findOne<ScoresDB>({
       season: last_season.id,
@@ -68,7 +65,7 @@ export const load: PageServerLoad = async () => {
       );
     }
 
-    const points_collection = db.collection<PointDB>(last_season.name);
+    const points_collection = db.collection<PointDB>(last_season.url_name);
 
     const points_result = await points_collection
       .find<PointDB>({})
