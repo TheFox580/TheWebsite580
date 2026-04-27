@@ -2,12 +2,14 @@
     import { SignOut } from "@auth/sveltekit/components";
     import type { PageData } from "./$types";
     import type { Inventory } from "$lib/interfaces/blueprint_trading_cards/Inventory";
+    import type { Card } from "$lib/interfaces/blueprint_trading_cards/Card";
 
     const { data } = $props<{
         data: PageData;
     }>();
 
     const inv = <Inventory>data.inv;
+    const cards = <Card[]>data.cards;
 </script>
 
 <svelte:head>
@@ -57,7 +59,9 @@
                 {#if inv.cards.length}
                     {#each inv.cards as card}
                         <h2 class="text-3xl text-center text-white">
-                            Card: {card.name}
+                            Card: {cards.find(
+                                (toFind) => toFind.id === card.card_id,
+                            )?.name}
                         </h2>
                     {/each}
                 {:else}
