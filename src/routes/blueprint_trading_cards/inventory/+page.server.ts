@@ -93,7 +93,7 @@ export const load: PageServerLoad = async ({ locals }) => {
         cards: [],
       });
     } else {
-      inv = (({ _id, ...object }) => object)(inv_result);
+      inv = structuredClone((({ _id, ...object }) => object)(inv_result));
     }
   } finally {
     client.close();
