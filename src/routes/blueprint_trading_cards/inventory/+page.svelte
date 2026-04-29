@@ -53,7 +53,7 @@
             </a>
         {:else}
             <h1 class="text-5xl font-bold text-center text-white mb-20">
-                {inv.name}'s invetory:
+                {inv.name}'s inventory:
             </h1>
             <div
                 style="grid-template-columns: repeat({Math.min(
