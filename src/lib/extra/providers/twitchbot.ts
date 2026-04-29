@@ -2,7 +2,6 @@ import type { OIDCConfig, OIDCUserConfig } from "@auth/sveltekit/providers";
 import {
   AUTH_TWITCH_BOT_ID,
   AUTH_TWITCH_BOT_SECRET,
-  AUTH_URL,
 } from "$env/static/private";
 
 export interface TwitchBotProfile extends Record<string, any> {
