@@ -8,11 +8,7 @@ import type {
   Card,
   CardDB,
 } from "$lib/interfaces/blueprint_trading_cards/Card";
-import {
-  MONGO_DB_URL,
-  AUTH_TWITCH_ID,
-  AUTH_TWITCH_SECRET,
-} from "$env/static/private";
+import { MONGO_DB_URL } from "$env/static/private";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ locals }) => {
@@ -24,29 +20,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
   const name = session.user.name ? session.user.name : "Unknown";
 
-  const twitchTokenRequest = await fetch(
-    `https://id.twitch.tv/oauth2/token?client_id=${AUTH_TWITCH_ID}&client_secret=${AUTH_TWITCH_SECRET}&grant_type=client_credentials`,
-    {
-      method: "POST",
-    },
-  );
-  const twitchTokenResponse = await twitchTokenRequest.json();
-
-  const twitchUserRequest = await fetch(
-    `https://api.twitch.tv/helix/users?login=${name}`,
-    {
-      headers: {
-        Authorization: `Bearer ${twitchTokenResponse.access_token}`,
-        "Client-Id": AUTH_TWITCH_ID,
-      },
-    },
-  );
-
-  const twitchUserResponse = await twitchUserRequest.json();
-
-  const user_id = twitchUserResponse.data[0].id
-    ? twitchUserResponse.data[0].id
-    : "0";
+  const user_id = session.providerAccountId;
 
   let inv: Inventory = { user_id, name, cards: [] };
   let cards: Card[] = [];
