@@ -1,23 +1,27 @@
 <script lang="ts">
-    import type { PageData } from "./$types";
-    import { invalidate } from "$app/navigation";
-    import { onMount } from "svelte";
     import type { MCSRData } from "$lib/interfaces/mcsr/MCSRData";
+    import type { PageData } from "./$types";
+    import { createQuery, QueryClientProvider } from "@tanstack/svelte-query";
+    import { onMount } from "svelte";
 
     const { data } = $props<{
         data: PageData;
     }>();
 
-    const usableData: MCSRData = data.data.data;
+    let query = createQuery(() => ({
+        queryKey: ["apiData"],
+        queryFn: async () => {
+            return (
+                await fetch(`https://api.mcsrranked.com/users/${data.user}`)
+            ).json();
+        },
+        refetchInterval: 20 * 1000,
+    }));
+
+    let usableData: MCSRData = query.data.data;
 
     onMount(() => {
-        const interval = setInterval(() => {
-            invalidate(
-                `https://api.mcsrranked.com/users/${usableData.nickname}`,
-            );
-
-            updatePage();
-        }, 20 * 1000);
+        let interval = setInterval(() => updatePage(), 500);
 
         return () => clearInterval(interval);
     });
@@ -26,13 +30,16 @@
     let loss = $state(0);
     let draw = $state(0);
 
-    let ranked = $state(usableData.eloRank ? usableData.eloRank : 0);
-    let elo = $state(usableData.eloRate ? usableData.eloRate : 0);
-    let rank = $state(getRankByElo(elo));
-    let nextRank = $state(getNextRank(rank));
+    let ranked = $state(0);
+    let elo = $state(0);
+    let rank = $state("Coal 1");
+    let nextRank = $state("Coal 2");
+
+    let startingElo = $state(0);
+    let lastGameTime: number | null = null;
 
     function getRankByElo(elo: number): string {
-        if (elo === null) {
+        if (elo === 0) {
             return "Unrated";
         } else if (elo < 400) {
             return "Coal 1";
@@ -151,9 +158,6 @@
         return [-5.625, -2.8125];
     }
 
-    let startingElo = usableData.eloRate ? usableData.eloRate : 0;
-    let lastGameTime: number | null = null;
-
     function updateElo(newElo: number) {
         let eloInterval = setInterval(() => {
             if (elo === newElo) {
@@ -165,27 +169,39 @@
             }
             rank = getRankByElo(elo);
             nextRank = getNextRank(rank);
-        });
+        }, 10);
     }
 
     function updateRanked(newRanked: number) {
         let rankedInterval = setInterval(() => {
             if (ranked === newRanked) {
-                clearInterval(ranked);
+                clearInterval(rankedInterval);
             } else if (ranked < newRanked) {
                 ranked++;
             } else {
                 ranked--;
             }
-        });
+        }, 10);
     }
 
     function updatePage() {
+        usableData = query.data.data;
         if (!lastGameTime) {
+            ranked = usableData.eloRank ? usableData.eloRank : 0;
+            elo = usableData.eloRate ? usableData.eloRate : 0;
+            rank = getRankByElo(elo);
+            nextRank = getNextRank(rank);
+
+            startingElo = usableData.eloRate ? usableData.eloRate : 0;
             lastGameTime = usableData.timestamp.lastRanked;
-        } else if (lastGameTime != usableData.timestamp.lastRanked) {
+        } else if (lastGameTime < usableData.timestamp.lastRanked) {
+            lastGameTime = usableData.timestamp.lastRanked;
             let diff: number =
-                (usableData.eloRank ? usableData.eloRank : 0) - elo;
+                (usableData.eloRate ? usableData.eloRate : 0) - elo;
+
+            console.log(usableData.eloRate ? usableData.eloRate : 0);
+            console.log(elo);
+            console.log(diff);
 
             if (diff > 0) {
                 win++;
@@ -207,52 +223,63 @@
     <link rel="stylesheet" href="/styles/mcsr/widget.css" />
 </svelte:head>
 
-<div
-    class="flex flex-row justify-around bg-black w-100 h-25 rounded-[40px] m-5"
->
-    <div class="flex flex-col justify-center">
-        <div class="flex flex-row items-center justify-center">
-            <span class="text-neutral-400 ml-2.5 text-base font-sans"
-                >W/L/D: {win}/{loss}/{draw} | Ranked #{ranked}
-            </span>
+{#if query.isPending}
+    Loading...
+{:else if query.error}
+    Oops!
+{:else}
+    <div
+        class="flex flex-row justify-around bg-black w-100 h-25 rounded-[40px] m-5"
+    >
+        <div class="flex flex-col justify-center">
+            <div class="flex flex-row items-center justify-center">
+                <span class="text-neutral-400 ml-2.5 text-base font-sans"
+                    >W/L/D: {win}/{loss}/{draw} | Ranked #{ranked === 0
+                        ? "?"
+                        : ranked}
+                </span>
+            </div>
+            <div class="flex flex-row items-center justify-center">
+                <div
+                    class="bg-no-repeat mt-[2.5px]"
+                    style="
+                      background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAAAtCAMAAAAZUYxJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACxUExURZuwsqjEtiQuNYCPmS0/Pll3bmdyf4CZkhsZK9zq5cfYyhMhHUdMWf///zhBSQ8EFPrqLs332rJkEffEMQ1mPpDbr+KRBG3bg//3nf/6rVnWVQg/PHYzDPTGPR+oOwp/VErt2U8ocgpbYCDFtahkvDQaUQAAANX/9hiblxgNKy0bSRYWFqH76Nt/0IhOoz09PSzg2AoADx0JOg5HPlU3d0YpdSYmJhuJkfeq4jUlTwAAAOYMmYwAAAA7dFJOU/////////////////////////////////////////////////////////////////////////////8AocQ7HgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIDUuMS4xMYoIFs4AAAO7SURBVFhHpZQNU+JIEIYlhOCtxoV8EJf1MBA+BRR3Fffy/3/YvdPTM+lOpTiq7q3Cmcein2qaDjf1NbnuXZwen64o4JOjsR/0+WYT8snROAgH9nKVOgoivlHCgZJpHAKHdGN1ECmZRpiVOxxKVw/oZoA06NQ30tUHihG0MBz0RJ/oEmj7RARadRD1o1u6mfQJvayF4eCvb73BHRMmS8jzlcjqfnTfqCNCPwKN4fBbjOqhdQ89UqMKSR3cR/fBg3PfMPKsWhj2UDt0bfc80nwV2oLbh8aMNgmbrhWGgyFqh6Hr2iF3LZDVwUMgZk3YzFojqr2ZhkvYzNojf8zvwXd7ofSBYiVaeIf1cmY0Skg9mwh06lupbmEElHt95/fDpAeUe+2R1bUytzFSZrQt1S1E2/wZrlL35TwQZW6j33Gnvpzr3sVx07muaMTnVRnz6dQJnxyNaZLyzSbjk6Mxz3J7YXWSKpnGCXDCd5OskLICWPAdadCpR9KVAkWfCrOsznK82H4BrTp5/CHcI0I/X43ZNIvzIpv+/E8ktalNJ0/miqSMttGJR55JFo+LacGqwiMNQSHUSZL+iB9HafJEco2pwL/Bmakdz1BNco25wBzqZJQ+jlA7SScJZBoxCIEj01RejMf583Q6g0zjWOGYuh6lqE0mrmuJ6Nqj7Xo2Hef588x1LRFdezRdI4npybRMwaYR+lkzulnPnk2tBQyX0c26QbshT9hcZ8ZKEDYbohDf/gy1zn0Brbp+8vthkgLlXkvMftam0s7jIjq1aBrROAHKp9H3SCmA9vGjNMjqWpnbmMrPgEgzojHHN0hx6sv5X798l1PyyZnzeTlOveCTo7FaVHyr6+W8nq/wWjIjaz5bYfViI2Vb4JbviEQyL3cvwr3ed7utehEf4sZdEfohSLTm46twr/dv3W5So7Y8+b5LRh6CQms+Ll/ff/HE1/s4jjvdRm262mwO29/0n61HGkIL56vXI9wfn3CbwPx2fut0Q72Iy83hUFblF7k1Yhoe0ffL7sOYl5+rHbnX+/PbeX+Ozx3um3px2Jwq1G6rk5FpLBWWL7vV5+vxz/HP6oPc1ryO6S8bfUzXqN5ut6dTZbtWWAmkruFeHlcf/4iuu8121gf0VH5ZM4brkGetkNzezO5OM6nrxdeprOykkYqRt0/hvH5537HZbUj3pFld/64aM9aN0D+AErHXv9531nzVXsMtzBgC0D1+iETrFmbj7jQ7dS3NiEb6Bjnklma4+WzFqS+n9ctnv8HLqet/AeFM0AfYldt3AAAAAElFTkSuQmCC&quot;);
+                      width: 1.40625rem;
+                      height: 1.40625rem;
+                      background-position: {getOffsetByRank(
+                        rank,
+                    )[0]}rem {getOffsetByRank(rank)[1]}rem;
+                      background-size: 8.4375rem 4.21875rem;
+                      image-rendering: pixelated;
+                    "
+                ></div>
+                <span class="text-white ml-2.5 mr-10 text-2xl font-sans"
+                    >{elo === 0 ? "?" : elo} elo</span
+                >
+                <span
+                    class="text-{startingElo < elo
+                        ? 'green-400'
+                        : startingElo > elo
+                          ? 'red-600'
+                          : 'yellow-300'} text-2xl font-bold"
+                    >{startingElo <= elo ? "+" : "-"}{Math.abs(
+                        elo - startingElo,
+                    )}</span
+                >
+            </div>
+            <div class="flex flex-row items-center justify-center mt-0.5">
+                <span class="text-neutral-400 ml-2.5 text-base font-sans"
+                    >Next Rank: <span class="font-bold">{nextRank}</span></span
+                >
+            </div>
         </div>
-        <div class="flex flex-row items-center justify-center">
-            <div
-                class="bg-no-repeat mt-[2.5px]"
-                style="
-                  background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAAAtCAMAAAAZUYxJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACxUExURZuwsqjEtiQuNYCPmS0/Pll3bmdyf4CZkhsZK9zq5cfYyhMhHUdMWf///zhBSQ8EFPrqLs332rJkEffEMQ1mPpDbr+KRBG3bg//3nf/6rVnWVQg/PHYzDPTGPR+oOwp/VErt2U8ocgpbYCDFtahkvDQaUQAAANX/9hiblxgNKy0bSRYWFqH76Nt/0IhOoz09PSzg2AoADx0JOg5HPlU3d0YpdSYmJhuJkfeq4jUlTwAAAOYMmYwAAAA7dFJOU/////////////////////////////////////////////////////////////////////////////8AocQ7HgAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIDUuMS4xMYoIFs4AAAO7SURBVFhHpZQNU+JIEIYlhOCtxoV8EJf1MBA+BRR3Fffy/3/YvdPTM+lOpTiq7q3Cmcein2qaDjf1NbnuXZwen64o4JOjsR/0+WYT8snROAgH9nKVOgoivlHCgZJpHAKHdGN1ECmZRpiVOxxKVw/oZoA06NQ30tUHihG0MBz0RJ/oEmj7RARadRD1o1u6mfQJvayF4eCvb73BHRMmS8jzlcjqfnTfqCNCPwKN4fBbjOqhdQ89UqMKSR3cR/fBg3PfMPKsWhj2UDt0bfc80nwV2oLbh8aMNgmbrhWGgyFqh6Hr2iF3LZDVwUMgZk3YzFojqr2ZhkvYzNojf8zvwXd7ofSBYiVaeIf1cmY0Skg9mwh06lupbmEElHt95/fDpAeUe+2R1bUytzFSZrQt1S1E2/wZrlL35TwQZW6j33Gnvpzr3sVx07muaMTnVRnz6dQJnxyNaZLyzSbjk6Mxz3J7YXWSKpnGCXDCd5OskLICWPAdadCpR9KVAkWfCrOsznK82H4BrTp5/CHcI0I/X43ZNIvzIpv+/E8ktalNJ0/miqSMttGJR55JFo+LacGqwiMNQSHUSZL+iB9HafJEco2pwL/Bmakdz1BNco25wBzqZJQ+jlA7SScJZBoxCIEj01RejMf583Q6g0zjWOGYuh6lqE0mrmuJ6Nqj7Xo2Hef588x1LRFdezRdI4npybRMwaYR+lkzulnPnk2tBQyX0c26QbshT9hcZ8ZKEDYbohDf/gy1zn0Brbp+8vthkgLlXkvMftam0s7jIjq1aBrROAHKp9H3SCmA9vGjNMjqWpnbmMrPgEgzojHHN0hx6sv5X798l1PyyZnzeTlOveCTo7FaVHyr6+W8nq/wWjIjaz5bYfViI2Vb4JbviEQyL3cvwr3ed7utehEf4sZdEfohSLTm46twr/dv3W5So7Y8+b5LRh6CQms+Ll/ff/HE1/s4jjvdRm262mwO29/0n61HGkIL56vXI9wfn3CbwPx2fut0Q72Iy83hUFblF7k1Yhoe0ffL7sOYl5+rHbnX+/PbeX+Ozx3um3px2Jwq1G6rk5FpLBWWL7vV5+vxz/HP6oPc1ryO6S8bfUzXqN5ut6dTZbtWWAmkruFeHlcf/4iuu8121gf0VH5ZM4brkGetkNzezO5OM6nrxdeprOykkYqRt0/hvH5537HZbUj3pFld/64aM9aN0D+AErHXv9531nzVXsMtzBgC0D1+iETrFmbj7jQ7dS3NiEb6Bjnklma4+WzFqS+n9ctnv8HLqet/AeFM0AfYldt3AAAAAElFTkSuQmCC&quot;);
-                  width: 1.40625rem;
-                  height: 1.40625rem;
-                  background-position: {getOffsetByRank(
-                    rank,
-                )[0]}rem {getOffsetByRank(rank)[1]}rem;
-                  background-size: 8.4375rem 4.21875rem;
-                  image-rendering: pixelated;
-                "
-            ></div>
-            <span class="text-white ml-2.5 mr-10 text-2xl font-sans"
-                >{elo} elo</span
-            >
-            <span
-                class="text-{startingElo < elo
-                    ? 'green-400'
-                    : startingElo > elo
-                      ? 'red-600'
-                      : 'yellow-300'} text-2xl font-bold">+0</span
-            >
-        </div>
-        <div class="flex flex-row items-center justify-center mt-0.5">
-            <span class="text-neutral-400 ml-2.5 text-base font-sans"
-                >Next Rank: <span class="font-bold">{nextRank}</span></span
-            >
-        </div>
+        <img
+            class="mr-7.5 rounded-xl self-center w-[5em]"
+            src="https://minotar.net/helm/{query.data.data.uuid}/75"
+            alt="{query.data.data.nickname}'s skin head"
+        />
     </div>
-    <img
-        class="mr-7.5 rounded-xl self-center w-[5em]"
-        src="https://minotar.net/helm/{usableData.uuid}/75"
-        alt="{usableData.nickname}'s skin head"
-    />
-</div>
+{/if}
 
 <style>
     .text-yellow-300 {
