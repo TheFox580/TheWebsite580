@@ -1,5 +1,6 @@
 <script lang="ts">
     import { SignOut } from "@auth/sveltekit/components";
+    import CardComp from "$lib/components/blueprint_trading_cards/CardComp.svelte";
     import type { PageData } from "./$types";
     import type { Inventory } from "$lib/interfaces/blueprint_trading_cards/Inventory";
     import type { Card } from "$lib/interfaces/blueprint_trading_cards/Card";
@@ -64,11 +65,11 @@
             >
                 {#if inv.cards.length}
                     {#each inv.cards as card}
-                        <h2 class="text-3xl text-center text-white">
-                            Card: {cards.find(
+                        <CardComp
+                            card={cards.find(
                                 (toFind) => toFind.id === card.card_id,
-                            )?.name}
-                        </h2>
+                            )}
+                        ></CardComp>
                     {/each}
                 {:else}
                     <h2 class="text-3xl text-center text-white">
