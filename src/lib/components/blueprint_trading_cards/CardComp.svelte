@@ -6,7 +6,7 @@
 </script>
 
 <div
-    class="w-1/5 flex flex-col items-center justify-evenly bg-blue-950 rounded-2xl border-gray-700 border-5 ml-3"
+    class="w-4/5 flex flex-col items-center justify-evenly bg-blue-950 rounded-2xl border-gray-700 border-5 ml-3"
 >
     <img
         src="/img/blueprint_trading_cards/cards/{card.file_name}"
