@@ -47,8 +47,10 @@
             category="fishing"
             icon="level"
         ></LevelProgress>
-        <FactionProgress data={faction} username={data.username}
-        ></FactionProgress>
+        {#if faction}
+            <FactionProgress data={faction} username={data.username}
+            ></FactionProgress>
+        {/if}
     </div>
 
     <div

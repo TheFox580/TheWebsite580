@@ -125,7 +125,16 @@
             } else if (data.asset.name.includes("Crab")) {
                 postCategoryURL += `fish/crab_collection/${data.asset.name.replaceAll(" ", "_").toLowerCase()}.png`;
             } else if (data.asset.name.includes("Lure")) {
-                postCategoryURL += `perks/lures/${LURES.filter((lure) => lure.type === data.asset.name.split(" ")[1])[0].name.toLowerCase()}.png`;
+                console.log(data.asset.name);
+                console.log(
+                    LURES.filter(
+                        (lure) => lure.type === data.asset.name.split(" ")[1],
+                    ),
+                );
+                let lure = LURES.filter(
+                    (lure) => lure.type === data.asset.name.split(" ")[1],
+                )[0];
+                postCategoryURL += `perks/lures/${(lure ? lure : { name: "" }).name.toLowerCase()}.png`;
             } else if (data.asset.name.includes("Line")) {
                 postCategoryURL += `perks/lines/${data.asset.name.split(" ")[0].toLowerCase()}.png`;
             } else if (data.asset.name.includes("Spirit")) {
