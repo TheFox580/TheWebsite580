@@ -4,13 +4,16 @@
 </svelte:head>
 
 <div class="flex flex-col justify-center items-center my-20 text-2xl">
-    <h1 class="font-bold text-5xl mb-20">Hey, you're here !</h1>
-    <p>Welcome on my website...</p>
-    <p>It is currently going under some renovation, come back later !</p>
-    <p>
-        If you want to check out the old (bad) version, you can
-        <a href="/archived">click here <strong>↗</strong></a>
-    </p>
+    <div class="w-6/10 text-center">
+        <h1 class="font-bold text-5xl mb-20">Hey, you're here !</h1>
+        <p>Welcome on my website...</p>
+        <p>It is currently going under some renovation, come back later !</p>
+        <p>
+            If you want to check out the old (bad) (and broken, even though I
+            tried fixing it as best as i could) version, you can
+            <a href="/archived">click here <strong>↗</strong></a>
+        </p>
+    </div>
 </div>
 <div class="flex flex-col justify-center items-center my-20 text-2xl">
     <h2 class="text-3xl">
@@ -20,11 +23,15 @@
         >
         statistics.
     </h2>
+    <h3 class="text-2xl mt-5">
+        To get you own widget, enter <code class="bg-neutral-600 rounded"
+            >/mcsr/widget/[your username]</code
+        > at the end of the URL.
+    </h3>
 </div>
 <div class="flex flex-col justify-center items-center my-20 text-2xl">
     <h2 class="text-3xl">
-        <a href="/mcci/TheFox580">Click here <strong>↗</strong></a> to get to
-        my
+        <a href="/mcci/TheFox580">Click here <strong>↗</strong></a> to get to my
         <a href="http://mccisland.net" target="_blank"
             >MCC Island <strong>↗</strong></a
         >
