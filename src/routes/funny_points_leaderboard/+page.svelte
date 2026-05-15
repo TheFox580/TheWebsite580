@@ -34,23 +34,8 @@
         var mins = ((diff % 3.6e6) / 6e4) | 0;
         var secs = Math.floor((diff % 6e4) / 1e3);
 
-        if (days > 0) {
-            // Return formatted string
-            return (
-                "Resets in " +
-                z(days) +
-                "d " +
-                z(hours) +
-                "h " +
-                z(mins) +
-                "m " +
-                z(secs) +
-                "s"
-            );
-        }
-
         // Return formatted string
-        return "Resets in " + z(hours) + "h " + z(mins) + "m " + z(secs) + "s";
+        return `Ends in ${days > 0 ? z(days) + "d" : ""} ${z(hours)}h ${z(mins)}m ${z(secs)}s`;
     }
 
     function getFontSize(placement: number) {
@@ -106,6 +91,7 @@
     let reset = $state(timeToGo(endTime));
 
     setInterval(() => {
+        timeLeft = endTime.getTime() - new Date().getTime();
         reset = timeToGo(endTime);
     }, 1000);
 </script>

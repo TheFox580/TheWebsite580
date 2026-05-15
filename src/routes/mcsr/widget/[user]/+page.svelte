@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { MCSRData } from "$lib/interfaces/mcsr/MCSRData";
     import type { PageData } from "./$types";
-    import { createQuery, QueryClientProvider } from "@tanstack/svelte-query";
+    import { createQuery } from "@tanstack/svelte-query";
     import { onMount } from "svelte";
 
     const { data } = $props<{

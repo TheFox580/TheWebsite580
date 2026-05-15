@@ -2,6 +2,7 @@
     import type { MCSRData } from "$lib/interfaces/mcsr/MCSRData";
     import { format } from "vitest/internal/browser";
     import Rank from "./Rank.svelte";
+    import { onMount } from "svelte";
 
     const { data } = $props<{
         data: MCSRData;
@@ -95,56 +96,74 @@
     }
 
     let usableData: MCSRData = <MCSRData>data;
+
+    let currentSeason: number = $state(0);
+
+    onMount(async () => {
+        const res = await (
+            await fetch("https://api.mcsrranked.com/leaderboard")
+        ).json();
+
+        currentSeason = res.data.season.number;
+    });
 </script>
 
 <div class="flex flex-col justify-evenly items-start m-2.5">
-    <h2 class="text-center self-center mb-4 text-2xl font-bold">
-        Elo / Rank Infos
-    </h2>
-    <span
-        class={(usableData.eloRate ? usableData.eloRate : 0) >=
-        usableData.seasonResult.highest
-            ? "text-amber-400 font-bold"
-            : ""}
-        >Current Elo: {usableData.eloRate ? usableData.eloRate : "???"}</span
-    >
-    <span
-        class={(usableData.eloRate ? usableData.eloRate : 0) >=
-        usableData.seasonResult.highest
-            ? "text-amber-400 font-bold"
-            : ""}>Peak Elo: {usableData.seasonResult.highest}</span
-    >
-    <span class="mt-2.5">Current Placement: #{usableData.eloRank}</span>
-    <div class="flex flex-col justify-center items-start mt-2.5">
-        <Rank
-            text="Current Rank"
-            rank={getRankByElo(usableData.eloRate ? usableData.eloRate : 0)}
-        ></Rank>
-        <Rank
-            text="Next Rank"
-            rank={getNextRank(
-                getRankByElo(usableData.eloRate ? usableData.eloRate : 0),
-            )}
-        ></Rank>
-    </div>
-    <div class="flex flex-col mt-2.5">
+    {#if currentSeason !== 0}
+        <h2 class="text-center self-center mb-4 text-2xl font-bold">
+            Season {currentSeason} Elo / Rank Infos
+        </h2>
         <span
-            class={usableData.statistics.season.bestTime.ranked >=
-            usableData.statistics.total.bestTime.ranked
+            class={(usableData.eloRate ? usableData.eloRate : 0) >=
+            usableData.seasonResult.highest
                 ? "text-amber-400 font-bold"
                 : ""}
-            >Current Season PB: {usableData.statistics.season.bestTime.ranked
-                ? formatTime(usableData.statistics.season.bestTime.ranked)
-                : "No PB this season"}</span
+            >Current Elo: {usableData.eloRate
+                ? usableData.eloRate
+                : "???"}</span
         >
         <span
-            class={usableData.statistics.season.bestTime.ranked >=
-            usableData.statistics.total.bestTime.ranked
+            class={(usableData.eloRate ? usableData.eloRate : 0) >=
+            usableData.seasonResult.highest
                 ? "text-amber-400 font-bold"
-                : ""}
-            >All-Time PB: {usableData.statistics.total.bestTime.ranked
-                ? formatTime(usableData.statistics.total.bestTime.ranked)
-                : "No PB this season"}</span
+                : ""}>Peak Elo: {usableData.seasonResult.highest}</span
         >
-    </div>
+        <span class="mt-2.5">Current Placement: #{usableData.eloRank}</span>
+        <div class="flex flex-col justify-center items-start mt-2.5">
+            <Rank
+                text="Current Rank"
+                rank={getRankByElo(usableData.eloRate ? usableData.eloRate : 0)}
+            ></Rank>
+            <Rank
+                text="Next Rank"
+                rank={getNextRank(
+                    getRankByElo(usableData.eloRate ? usableData.eloRate : 0),
+                )}
+            ></Rank>
+        </div>
+        <div class="flex flex-col mt-2.5">
+            <span
+                class={usableData.statistics.season.bestTime.ranked >=
+                usableData.statistics.total.bestTime.ranked
+                    ? "text-amber-400 font-bold"
+                    : ""}
+                >Season PB: {usableData.statistics.season.bestTime.ranked
+                    ? formatTime(usableData.statistics.season.bestTime.ranked)
+                    : "No PB this season"}</span
+            >
+            <span
+                class={usableData.statistics.season.bestTime.ranked >=
+                usableData.statistics.total.bestTime.ranked
+                    ? "text-amber-400 font-bold"
+                    : ""}
+                >All-Time PB: {usableData.statistics.total.bestTime.ranked
+                    ? formatTime(usableData.statistics.total.bestTime.ranked)
+                    : "No PB this season"}</span
+            >
+        </div>
+    {:else}
+        <h2 class="text-center self-center mb-4 text-2xl font-bold">
+            Loading Elo / Rank Infos...
+        </h2>
+    {/if}
 </div>
