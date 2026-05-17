@@ -32,16 +32,21 @@
             login_status = true;
             error_message = undefined;
             client
-                .login(`${host}:${port}`, username, "", {
-                    slotData: false,
-                    password: password ? password : "",
-                    tags: ["TextClient", "Tracker", "TheWebsite580"],
-                    version: {
-                        build: 0,
-                        major: 1,
-                        minor: 0,
+                .login(
+                    `ws${["archipelago.gg", "archipelago.today"].includes(host) ? "s" : ""}://${host}:${port}`,
+                    username,
+                    "",
+                    {
+                        slotData: false,
+                        password: password ? password : "",
+                        tags: ["TextClient", "Tracker", "TheWebsite580"],
+                        version: {
+                            build: 0,
+                            major: 1,
+                            minor: 0,
+                        },
                     },
-                })
+                )
                 .catch((message) => (error_message = message));
         } else {
             if (host === "") {
@@ -169,6 +174,11 @@
             {#if error_message}
                 <h1 class="text-4xl text-red-600">An error has occured</h1>
                 <h2 class="text-2xl text-red-600">{error_message}</h2>
+                {#if error_message.includes("SecurityError: The operation is insecure.")}
+                    <h3 class="text-2xl text-orange-600">
+                        This may be due to logging in to an unsecure connection
+                    </h3>
+                {/if}
                 <button
                     title="Go Back"
                     class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mt-2"
