@@ -194,11 +194,8 @@
                         This may be due to logging in to an unsecure connection.
                     </h3>
                     <h3 class="text-2xl text-orange-600 text-center">
-                        In <code>about:code</code>, set
-                        <code>network.websocket.allowInsecureFromHTTPS</code>
-                        to <code>true</code>
+                        or that the room may be offline / changed port.
                     </h3>
-                {/if}
                 <button
                     title="Go Back"
                     class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mt-2"
