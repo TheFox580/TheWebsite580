@@ -172,11 +172,20 @@
     <div class="flex w-screen h-screen items-center justify-center">
         <div class="flex flex-col items-center justify-center">
             {#if error_message}
-                <h1 class="text-4xl text-red-600">An error has occured</h1>
-                <h2 class="text-2xl text-red-600">{error_message}</h2>
+                <h1 class="text-4xl text-red-600 text-center">
+                    An error has occured
+                </h1>
+                <h2 class="text-2xl text-red-600 text-center">
+                    {error_message}
+                </h2>
                 {#if error_message.includes("SecurityError: The operation is insecure.")}
-                    <h3 class="text-2xl text-orange-600">
-                        This may be due to logging in to an unsecure connection
+                    <h3 class="text-2xl text-orange-600 text-center">
+                        This may be due to logging in to an unsecure connection.
+                    </h3>
+                    <h3 class="text-2xl text-orange-600 text-center">
+                        In <code>about:code</code>, set
+                        <code>network.websocket.allowInsecureFromHTTPS</code>
+                        to <code>true</code>
                     </h3>
                 {/if}
                 <button
