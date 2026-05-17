@@ -1,5 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
+    import { error } from "@sveltejs/kit";
     import { Client } from "archipelago.js";
 
     const client = new Client();
@@ -81,6 +82,13 @@
                 goto("/archipelago/tracker/" + tracker_link);
             }
         }
+    }
+
+    function getErrorMessage(message: string): boolean {
+        console.log(message);
+        console.log(message.split(":")[0]);
+
+        return true;
     }
 
     function sendMessage() {
@@ -181,7 +189,7 @@
                 <h2 class="text-2xl text-red-600 text-center">
                     {error_message}
                 </h2>
-                {#if error_message.split(":")[0] === "SecurityError"}
+                {#if getErrorMessage(error_message)}
                     <h3 class="text-2xl text-orange-600 text-center">
                         This may be due to logging in to an unsecure connection.
                     </h3>
