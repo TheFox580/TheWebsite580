@@ -89,6 +89,7 @@
             total={data.levelData.nextLevelProgress.obtainable}
             background_color="black"
             foreground_color={getColor()}
+            bar_height={5}
         ></ProgressBar>
         <p class="font-bold">
             {lw}% to Level {data.levelData.level + 1} ({formatInt(

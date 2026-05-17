@@ -153,6 +153,7 @@
             ].progress.obtainable}
             background_color="black"
             foreground_color={badgeColor}
+            bar_height={3}
         ></ProgressBar>
     </div>
 </div>

@@ -35,6 +35,7 @@
         total={data.cosmetics.length}
         background_color="red"
         foreground_color="lime"
+        bar_height={3}
     ></ProgressBar>
     <p class="font-bold">
         {formatInt(cosmeticOwned)} / {formatInt(data.cosmetics.length)}* ({Math.round(
