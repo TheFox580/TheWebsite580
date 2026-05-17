@@ -88,7 +88,7 @@
         console.log(message);
         console.log(message.split(":")[0]);
 
-        return true;
+        return false;
     }
 
     function sendMessage() {
