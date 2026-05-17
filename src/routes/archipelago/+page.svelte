@@ -31,6 +31,9 @@
         if (host !== "" && port !== "" && username !== "") {
             login_status = true;
             error_message = undefined;
+            console.log(
+                `ws${["archipelago.gg", "archipelago.today"].includes(host) ? "s" : ""}://${host}:${port}`,
+            );
             client
                 .login(
                     `ws${["archipelago.gg", "archipelago.today"].includes(host) ? "s" : ""}://${host}:${port}`,
@@ -178,7 +181,7 @@
                 <h2 class="text-2xl text-red-600 text-center">
                     {error_message}
                 </h2>
-                {#if error_message.includes("SecurityError: The operation is insecure.")}
+                {#if error_message.includes("SecurityError")}
                     <h3 class="text-2xl text-orange-600 text-center">
                         This may be due to logging in to an unsecure connection.
                     </h3>
