@@ -114,12 +114,12 @@
         <div class="flex flex-col justify-center items-center w-full">
             <div class="flex flex-col justify-evenly items-center w-full">
                 <h1 class="text-4xl mb-3">Logged in!</h1>
-                <div class="flex flex-row justify-evenly items-center m-10">
+                <div class="flex flex-row justify-evenly items-center m-5">
                     <div
                         class="flex flex-col justify-evenly items-center w-3/5 m-5"
                     >
                         <div
-                            class="flex flex-row justify-evenly items-center w-full m-10"
+                            class="flex flex-row justify-evenly items-center w-full m-5"
                         >
                             <h2 class="text-2xl text-center">
                                 Logged in as {client.name}
