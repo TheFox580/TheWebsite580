@@ -15,37 +15,48 @@
 
 <svelte:head>
     <link rel="stylesheet" href="/styles/default.css" />
-    <title>{data.username}'s MCC Stats</title>
+    <title>{data.username ? data.username : "None"}'s MCC Stats</title>
 </svelte:head>
 
-<div
-    style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
-    class="flex flex-row justify-center items-center text-white"
->
-    <div class="flex flex-col justify-evenly items-center w-screen" id="top">
-        <MainInfos {data}></MainInfos>
-        <BigNumbers {data}></BigNumbers>
-        {#if data.collections}
-            <CurrentCosmetics
-                data={data.collections.equippedCosmetics}
-                username={data.username}
-            ></CurrentCosmetics>
-        {/if}
-        {#if data.social}
-            <Friends data={data.social.friends}></Friends>
-        {/if}
-        {#if data.badges}
-            <BigBadges data={data.badges}></BigBadges>
-        {/if}
-        {#if data.collections}
-            <AllCosmetics data={data.collections.cosmetics}></AllCosmetics>
-        {/if}
-        {#if data.infinibag && data.collections}
-            <Infinibag
-                data={data.infinibag}
-                fish_data={data.collections.fish}
-                cosmetic_data={data.collections.cosmetics}
-            ></Infinibag>
-        {/if}
+{#if data.username}
+    <div
+        style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+        class="flex flex-row justify-center items-center text-white"
+    >
+        <div
+            class="flex flex-col justify-evenly items-center w-screen"
+            id="top"
+        >
+            <MainInfos {data}></MainInfos>
+            <BigNumbers {data}></BigNumbers>
+            {#if data.collections}
+                <CurrentCosmetics
+                    data={data.collections.equippedCosmetics}
+                    username={data.username}
+                ></CurrentCosmetics>
+            {/if}
+            {#if data.social}
+                <Friends data={data.social.friends}></Friends>
+            {/if}
+            {#if data.badges}
+                <BigBadges data={data.badges}></BigBadges>
+            {/if}
+            {#if data.collections}
+                <AllCosmetics data={data.collections.cosmetics}></AllCosmetics>
+            {/if}
+            {#if data.infinibag && data.collections}
+                <Infinibag
+                    data={data.infinibag}
+                    fish_data={data.collections.fish}
+                    cosmetic_data={data.collections.cosmetics}
+                ></Infinibag>
+            {/if}
+        </div>
     </div>
-</div>
+{:else}
+    <div class="flex flex-col justify-center items-center h-screen">
+        <h1 class="text-center text-6xl">
+            This user hasn't joined MCC Island yet.
+        </h1>
+    </div>
+{/if}
