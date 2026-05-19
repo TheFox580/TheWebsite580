@@ -28,7 +28,6 @@
     client.messages.on("connected", () => {
         loading_client_data = true;
         setTimeout(() => {
-          console.log(client.)
             connected = true;
             completed = client.room.checkedLocations.length;
             to_complete = client.room.allLocations.length;
