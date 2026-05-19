@@ -17,13 +17,10 @@
     });
 
     function formatted(time: number): string {
-        if (time > 100) {
-            const milli = parseInt(time.toString().slice(3));
-            const secs = Math.floor((time - milli) / 100);
-            const min = Math.floor(secs / 60);
-            return `${min < 10 ? "0" : ""}${min}:${secs % 60 < 10 ? "0" : ""}${secs % 60}.${milli < 10 ? "0" : ""}${milli}`;
-        }
-        return `00:00.${time < 10 ? "0" : ""}${time.toString()}`;
+        const milli = time % 100;
+        const secs = Math.floor((time - milli) / 100);
+        const min = Math.floor(secs / 60);
+        return `${min < 10 ? "0" : ""}${min}:${secs % 60 < 10 ? "0" : ""}${secs % 60}.${milli < 10 ? "0" : ""}${milli}`;
     }
 </script>
 
