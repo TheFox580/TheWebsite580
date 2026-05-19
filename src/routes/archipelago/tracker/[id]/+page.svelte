@@ -2,25 +2,58 @@
     import type { PlayerSlotInfo } from "$lib/interfaces/archipelago/PlayerSlotInfo";
     import { onMount } from "svelte";
     import type { PageData } from "./$types";
-    import { Client } from "archipelago.js";
+    import type { HintsInfo } from "$lib/interfaces/archipelago/HintsInfo";
+    import { Client, Hint, ItemsManager } from "archipelago.js";
     import PlayerSlot from "$lib/components/archipelago/PlayerSlot.svelte";
     import RoomProgression from "$lib/components/archipelago/RoomProgression.svelte";
+    import Logs from "$lib/components/archipelago/Logs.svelte";
+    import ProgressBar from "$lib/components/archipelago/ProgressBar.svelte";
+    import HintsTab from "$lib/components/archipelago/HintsTab.svelte";
+    import { getRoomTrackerInfo } from "$lib/functions/archipelago/getRoomTrackerInfo";
 
     const client = new Client();
 
     let tracker_loaded: boolean = $state(false);
     let login_status: boolean = $state(false);
+    let loading_client_data: boolean = $state(false);
     let connected: boolean = $state(false);
     let error_message: string | undefined = $state(undefined);
 
-    let logs: string[] = $state([]);
+    let completed: number = $state(0);
+    let to_complete: number = $state(0);
 
-    client.messages.on("message", (content) => {
-        logs.push(content);
+    let items: ItemsManager = $state();
+    let hints_info: HintsInfo = $state({ hint_cost: 0, hint_points: 0 });
+
+    client.messages.on("connected", () => {
+        loading_client_data = true;
+        setTimeout(() => {
+          console.log(client.)
+            connected = true;
+            completed = client.room.checkedLocations.length;
+            to_complete = client.room.allLocations.length;
+            items = client.items;
+            hints_info.hint_cost = client.room.hintCost;
+            hints_info.hint_points = client.room.hintPoints;
+        }, 2 * 1000);
     });
 
-    client.messages.on("connected", async () => {
-        connected = true;
+    client.messages.on("itemSent", () => {
+        setTimeout(() => {
+            completed = client.room.checkedLocations.length;
+            to_complete = client.room.allLocations.length;
+            items = client.items;
+            hints_info.hint_cost = client.room.hintCost;
+            hints_info.hint_points = client.room.hintPoints;
+        }, 2 * 1000);
+    });
+
+    client.messages.on("itemHinted", () => {
+        setTimeout(() => {
+            hints = client.items.hints;
+            hints_info.hint_cost = client.room.hintCost;
+            hints_info.hint_points = client.room.hintPoints;
+        }, 2 * 1000);
     });
 
     function login() {
@@ -62,23 +95,14 @@
         }
     }
 
-    function getErrorMessage(message: string): boolean {
-        console.log(message);
-        console.log(message.split(":")[0]);
+    function getErrorMessage(message: string): string {
+        message = message.toString();
 
-        return false;
-    }
-
-    function sendMessage() {
-        if (connected) {
-            const text_box = <HTMLInputElement>(
-                document.getElementById("talk_to_server")
-            );
-            if (text_box.value !== "") {
-                client.messages.say(text_box.value);
-                text_box.value = "";
-            }
+        if (message.includes("Failed to connect to Archipelago server.")) {
+            return "ServerError";
         }
+
+        return "";
     }
 
     const { data } = $props<{
@@ -87,22 +111,15 @@
 
     let roomTrackerInfo: PlayerSlotInfo[] = $state();
 
-    async function getRoomTrackerInfo() {
-        const res = await fetch(
-            `https://thefox580-backend.zoelliotmitong.workers.dev/api/archipelago/tracker/${data.id}`,
-        );
-        roomTrackerInfo = (await res.json()).players;
-        tracker_loaded = true;
-    }
-
     onMount(async () => {
         const tracker_refresh = setInterval(
             async () => {
-                await getRoomTrackerInfo();
+                roomTrackerInfo = await getRoomTrackerInfo(data.id);
             },
             10 * 60 * 1000,
         );
-        await getRoomTrackerInfo();
+        roomTrackerInfo = await getRoomTrackerInfo(data.id);
+        tracker_loaded = true;
     });
 </script>
 
@@ -112,48 +129,58 @@
 </svelte:head>
 
 {#if connected}
-    <div class="flex w-screen h-screen items-center justify-center">
+    <div class="flex w-screen items-center justify-center">
         <div class="flex flex-col justify-center items-center w-full">
             <div class="flex flex-col justify-evenly items-center w-full">
-                <h1 class="text-4xl mb-3">Logged in!</h1>
-                <div class="flex flex-row justify-evenly items-center m-5">
+                <div
+                    class="flex flex-row justify-evenly items-center w-1/5 mt-10 mb-3"
+                >
+                    <h1 class="text-4xl text-center mx-2">Logged in!</h1>
+                    <button
+                        title="Disconnect"
+                        class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mx-2"
+                        onclick={() => {
+                            client.socket.disconnect();
+                            connected = false;
+                            login_status = false;
+                            error_message = undefined;
+                        }}>Disconnect</button
+                    >
+                </div>
+                <div
+                    class="flex flex-row justify-evenly items-center m-5 w-full"
+                >
                     <div
                         class="flex flex-col justify-evenly items-center w-3/5 m-5"
                     >
                         <div
                             class="flex flex-row justify-evenly items-center w-full m-5"
                         >
-                            <h2 class="text-2xl text-center">
+                            <h2 class="text-2xl text-center w-1/4 mx-2">
                                 Logged in as {client.name}
                             </h2>
-                            <h2 class="text-2xl text-center">
+                            <h2 class="text-2xl text-center w-1/4 mx-2">
                                 Game: {client.game}
                             </h2>
                             <div
-                                class="flex flex-col items-center jusify-center"
+                                class="flex flex-col items-center jusify-center w-1/4 mx-2"
                             >
-                                <h2 class="text-2xl text-center mb-2">
-                                    Checks: {client.room.checkedLocations
-                                        .length} / {client.room.allLocations
-                                        .length}
-                                </h2>
-                                <div
-                                    class="w-full h-5 bg-black rounded-xl border-2 border-gray-500"
-                                >
-                                    <div
-                                        class="w-{client.room.checkedLocations
-                                            .length}/{client.room.allLocations
-                                            .length} h-full bg-green-500 rounded-xl"
-                                    ></div>
-                                </div>
+                                {#key to_complete}
+                                    <ProgressBar
+                                        max={to_complete}
+                                        current={completed}
+                                        inList={false}
+                                    ></ProgressBar>
+                                {/key}
                             </div>
                             <div
-                                class="flex flex-col items-center jusify-center w-1/4"
+                                class="flex flex-col items-center jusify-center w-1/4 mx-2"
                             >
                                 <button
                                     class="cursor-pointer px-3 py-1 bg-blue-500 rounded-2xl text-center mb-2"
                                     onclick={async () => {
-                                        await getRoomTrackerInfo();
+                                        roomTrackerInfo =
+                                            await getRoomTrackerInfo(data.id);
                                     }}>Refresh tracker data</button
                                 >
                                 <h3 class="text-xl text-center">
@@ -161,51 +188,34 @@
                                 </h3>
                             </div>
                         </div>
-                        <div
-                            id="logger"
-                            class="overflow-y-auto w-full h-150 bg-gray-600 flex flex-col items-start justify-end rounded-3xl border-gray-400 border-4 p-2 mb-3"
-                        >
-                            {#each logs as log}
-                                <p class="text-white">{log}</p>
-                            {/each}
-                        </div>
-                        <div
-                            class="w-full bg-gray-600 border-gray-400 border-2 p-2 flex items-start justify-evenly rounded-2xl"
-                        >
-                            <input
-                                id="talk_to_server"
-                                type="text"
-                                class="w-4/5 h-full py-1 text-white"
-                                value=""
-                                placeholder="Type your message"
-                                onkeypress={(key) => {
-                                    if (key.key === "Enter") {
-                                        sendMessage();
-                                    }
-                                }}
-                            />
-                            <button
-                                class="cursor-pointer px-3 py-1 bg-blue-500 rounded-2xl text-center"
-                                onclick={sendMessage}>Send Message</button
-                            >
-                        </div>
+                        <Logs messages={client.messages}></Logs>
                     </div>
                     <div
                         class="flex flex-col justify-center items-center w-2/5 m-5"
                     >
-                        <RoomProgression progression={roomTrackerInfo}
-                        ></RoomProgression>
-
-                        <h1 class="text-6xl text-center mb-10">
-                            Other players :
-                        </h1>
-                        {#each roomTrackerInfo as player}
-                            {#if player.name !== client.name}
-                                <PlayerSlot slot_info={player}></PlayerSlot>
-                            {/if}
-                        {/each}
+                        {#key roomTrackerInfo}
+                            <RoomProgression progression={roomTrackerInfo}
+                            ></RoomProgression>
+                        {/key}
+                        {#if roomTrackerInfo.length > 1}
+                            <h1 class="text-6xl text-center mb-10">
+                                Other players :
+                            </h1>
+                            {#each roomTrackerInfo as player}
+                                {#if player.name !== client.name}
+                                    <PlayerSlot slot_info={player}></PlayerSlot>
+                                {/if}
+                            {/each}
+                        {/if}
                     </div>
                 </div>
+                {#key items}
+                    <HintsTab
+                        {items}
+                        self_id={client.players.self.slot}
+                        {hints_info}
+                    ></HintsTab>
+                {/key}
             </div>
         </div>
     </div>
@@ -231,8 +241,11 @@
                         error_message = undefined;
                     }}>Go Back</button
                 >
-            {:else}
+            {:else if !loading_client_data}
                 <h1 class="text-4xl">Logging into the server...</h1>
+            {:else}
+                <h1 class="text-4xl">Logged in!</h1>
+                <h2 class="text-2xl">Loading room info...</h2>
             {/if}
         </div>
     </div>
@@ -280,6 +293,11 @@
                             id="username"
                             value=""
                             required
+                            onkeypress={(key) => {
+                                if (key.key === "Enter") {
+                                    login();
+                                }
+                            }}
                             class="border-gray-400 border-2 rounded-xl my-1 p-1"
                         />
                     </div>
@@ -294,6 +312,11 @@
                             placeholder="Room Password"
                             id="password"
                             value=""
+                            onkeypress={(key) => {
+                                if (key.key === "Enter") {
+                                    login();
+                                }
+                            }}
                             class="border-gray-400 border-2 rounded-xl my-1 p-1"
                         />
                     </div>

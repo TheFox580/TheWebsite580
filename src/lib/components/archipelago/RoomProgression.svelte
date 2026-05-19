@@ -13,7 +13,7 @@
     let nb_total_checks = $state(0);
 
     for (const player of progression) {
-        if (player.completion.done === player.completion.todo) {
+        if (player.completion.done >= player.completion.todo) {
             nb_finish++;
         }
 
@@ -26,9 +26,13 @@
     <h1 class="text-6xl text-center mb-10">Room Progression :</h1>
 
     <h3 class="text-3xl text-center mb-3">Completions :</h3>
-    <ProgressBar max={nb_finish} current={nb_player}></ProgressBar>
+    <ProgressBar max={nb_player} current={nb_finish} inList={true}
+    ></ProgressBar>
 
     <h3 class="text-3xl text-center mb-3">Checks :</h3>
-    <ProgressBar max={nb_total_checks} current={nb_checks_completed}
+    <ProgressBar
+        max={nb_total_checks}
+        current={nb_checks_completed}
+        inList={false}
     ></ProgressBar>
 </div>

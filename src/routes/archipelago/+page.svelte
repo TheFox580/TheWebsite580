@@ -1,24 +1,55 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { error } from "@sveltejs/kit";
+    import Logs from "$lib/components/archipelago/Logs.svelte";
+    import ProgressBar from "$lib/components/archipelago/ProgressBar.svelte";
+    import HintsTab from "$lib/components/archipelago/HintsTab.svelte";
     import { Client } from "archipelago.js";
+    import type { Hint, ItemsManager } from "archipelago.js";
+    import type { HintsInfo } from "$lib/interfaces/archipelago/HintsInfo";
 
     const client = new Client();
 
     let with_tracker: boolean = $state(true);
 
     let login_status: boolean = $state(false);
+    let loading_client_data: boolean = $state(false);
     let connected: boolean = $state(false);
     let error_message: string | undefined = $state(undefined);
 
-    let logs: string[] = $state([]);
+    let completed: number = $state(0);
+    let to_complete: number = $state(0);
 
-    client.messages.on("message", (content) => {
-        logs.push(content);
+    let items: ItemsManager = $state();
+    let hints_info: HintsInfo = $state({ hint_cost: 0, hint_points: 0 });
+
+    client.messages.on("connected", () => {
+        loading_client_data = true;
+        setTimeout(() => {
+            connected = true;
+            completed = client.room.checkedLocations.length;
+            to_complete = client.room.allLocations.length;
+            items = client.items;
+            hints_info.hint_cost = client.room.hintCost;
+            hints_info.hint_points = client.room.hintPoints;
+        }, 2 * 1000);
     });
 
-    client.messages.on("connected", async () => {
-        connected = true;
+    client.messages.on("itemSent", () => {
+        setTimeout(() => {
+            completed = client.room.checkedLocations.length;
+            to_complete = client.room.allLocations.length;
+            items = client.items;
+            hints_info.hint_cost = client.room.hintCost;
+            hints_info.hint_points = client.room.hintPoints;
+        }, 2 * 1000);
+    });
+
+    client.messages.on("itemHinted", () => {
+        setTimeout(() => {
+            items = client.items;
+            hints_info.hint_cost = client.room.hintCost;
+            hints_info.hint_points = client.room.hintPoints;
+        }, 2 * 1000);
     });
 
     function login() {
@@ -32,9 +63,6 @@
         if (host !== "" && port !== "" && username !== "") {
             login_status = true;
             error_message = undefined;
-            console.log(
-                `ws${["archipelago.gg", "archipelago.today"].includes(host) ? "s" : ""}://${host}:${port}`,
-            );
             client
                 .login(
                     `ws${["archipelago.gg", "archipelago.today"].includes(host) ? "s" : ""}://${host}:${port}`,
@@ -84,23 +112,14 @@
         }
     }
 
-    function getErrorMessage(message: string): boolean {
-        console.log(message);
-        console.log(message.split(":")[0]);
+    function getErrorMessage(message: string): string {
+        message = message.toString();
 
-        return false;
-    }
-
-    function sendMessage() {
-        if (connected) {
-            const text_box = <HTMLInputElement>(
-                document.getElementById("talk_to_server")
-            );
-            if (text_box.value !== "") {
-                client.messages.say(text_box.value);
-                text_box.value = "";
-            }
+        if (message.includes("Failed to connect to Archipelago server.")) {
+            return "ServerError";
         }
+
+        return "";
     }
 </script>
 
@@ -110,70 +129,67 @@
 </svelte:head>
 
 {#if connected}
-    <div class="flex w-screen h-screen items-center justify-center">
+    <div class="flex w-screen items-center justify-center">
         <div class="flex flex-col justify-center items-center w-full">
             <div class="flex flex-col justify-evenly items-center w-full">
-                <h1 class="text-4xl mb-3">Logged in!</h1>
-                <div class="flex flex-row justify-evenly items-center m-5">
+                <div
+                    class="flex flex-row justify-evenly items-center w-1/5 mt-10 mb-3"
+                >
+                    <h1 class="text-4xl text-center mx-2">Logged in!</h1>
+                    <button
+                        title="Disconnect"
+                        class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mx-2"
+                        onclick={() => {
+                            client.socket.disconnect();
+                            connected = false;
+                            login_status = false;
+                            error_message = undefined;
+                        }}>Disconnect</button
+                    >
+                </div>
+                <div
+                    class="flex flex-row justify-evenly items-center m-5 w-full"
+                >
                     <div
-                        class="flex flex-col justify-evenly items-center w-3/5 m-5"
+                        class="flex flex-col justify-evenly items-center w-4/5 m-5"
                     >
                         <div
                             class="flex flex-row justify-evenly items-center w-full m-5"
                         >
-                            <h2 class="text-2xl text-center">
+                            <h2 class="text-2xl text-center w-1/3">
                                 Logged in as {client.name}
                             </h2>
-                            <h2 class="text-2xl text-center">
+                            <h2 class="text-2xl text-center w-1/3">
                                 Game: {client.game}
                             </h2>
                             <div
-                                class="flex flex-col items-center jusify-center"
+                                class="flex flex-col items-center jusify-center w-1/3"
                             >
-                                <h2 class="text-2xl text-center mb-2">
-                                    Checks: {client.room.checkedLocations
-                                        .length} / {client.room.allLocations
-                                        .length}
-                                </h2>
-                                <div
-                                    class="w-full h-5 bg-black rounded-xl border-2 border-gray-500"
-                                >
-                                    <div
-                                        class="w-{client.room.checkedLocations
-                                            .length}/{client.room.allLocations
-                                            .length} h-full bg-green-500 rounded-xl"
-                                    ></div>
-                                </div>
+                                {#key to_complete}
+                                    <ProgressBar
+                                        max={to_complete}
+                                        current={completed}
+                                        inList={false}
+                                    ></ProgressBar>
+                                {/key}
                             </div>
                         </div>
-                        <div
-                            id="logger"
-                            class="overflow-y-auto w-full h-150 bg-gray-600 flex flex-col items-start justify-end rounded-3xl border-gray-400 border-4 p-2 mb-3"
-                        >
-                            {#each logs as log}
-                                <p class="text-white">{log}</p>
-                            {/each}
-                        </div>
-                        <div
-                            class="w-full bg-gray-600 border-gray-400 border-2 p-2 flex items-start justify-evenly rounded-2xl"
-                        >
-                            <input
-                                id="talk_to_server"
-                                type="text"
-                                class="w-4/5 h-full py-1 text-white"
-                                value=""
-                                placeholder="Type your message"
-                                onkeypress={(key) => {
-                                    if (key.key === "Enter") {
-                                        sendMessage();
-                                    }
-                                }}
-                            />
-                            <button
-                                class="cursor-pointer px-3 py-1 bg-blue-500 rounded-2xl text-center"
-                                onclick={sendMessage}>Send Message</button
-                            >
-                        </div>
+                        <Logs messages={client.messages}></Logs>
+                    </div>
+                </div>
+                <div
+                    class="flex flex-row justify-center items-center m-5 w-full"
+                >
+                    <div
+                        class="flex flex-col justify-center items-center w-full m-5"
+                    >
+                        {#key items}
+                            <HintsTab
+                                {items}
+                                self_id={client.players.self.slot}
+                                {hints_info}
+                            ></HintsTab>
+                        {/key}
                     </div>
                 </div>
             </div>
@@ -196,6 +212,7 @@
                     <h3 class="text-2xl text-orange-600 text-center">
                         or that the room may be offline / changed port.
                     </h3>
+                {/if}
                 <button
                     title="Go Back"
                     class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mt-2"
@@ -204,8 +221,11 @@
                         error_message = undefined;
                     }}>Go Back</button
                 >
-            {:else}
+            {:else if !loading_client_data}
                 <h1 class="text-4xl">Logging into the server...</h1>
+            {:else}
+                <h1 class="text-4xl">Logged in!</h1>
+                <h2 class="text-2xl">Loading room info...</h2>
             {/if}
         </div>
     </div>
@@ -220,6 +240,7 @@
                         class="cursor-pointer px-3 py-1 bg-gray-400 rounded-2xl mr-3"
                         onclick={() => {
                             with_tracker = !with_tracker;
+                            error_message = undefined;
                         }}>Toggle login type</button
                     >
                     <span>Login with{with_tracker ? "" : "out"} Tracker</span>
@@ -266,6 +287,11 @@
                                 value=""
                                 required
                                 class="border-gray-400 border-2 rounded-xl my-1 p-1"
+                                onkeypress={(key) => {
+                                    if (key.key === "Enter") {
+                                        login();
+                                    }
+                                }}
                             />
                         </div>
                         <div
@@ -279,6 +305,11 @@
                                 placeholder="Room Password"
                                 id="password"
                                 value=""
+                                onkeypress={(key) => {
+                                    if (key.key === "Enter") {
+                                        login();
+                                    }
+                                }}
                                 class="border-gray-400 border-2 rounded-xl my-1 p-1"
                             />
                         </div>
@@ -292,6 +323,11 @@
                                 placeholder="https://archipelago.gg/tracker/..."
                                 id="tracker"
                                 value=""
+                                onkeypress={(key) => {
+                                    if (key.key === "Enter") {
+                                        redirectTracker();
+                                    }
+                                }}
                                 class="border-gray-400 border-2 rounded-xl my-1 p-1 w-75/100"
                             />
                         </div>

@@ -15,5 +15,6 @@
     <ProgressBar
         max={slot_info.completion.todo}
         current={slot_info.completion.done}
+        inList={true}
     ></ProgressBar>
 </div>
