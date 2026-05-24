@@ -4,7 +4,6 @@
     import ProgressBar from "$lib/components/archipelago/ProgressBar.svelte";
     import HintsTab from "$lib/components/archipelago/HintsTab.svelte";
     import { Client } from "archipelago.js";
-    import type { Hint, ItemsManager } from "archipelago.js";
     import type { HintsInfo } from "$lib/interfaces/archipelago/HintsInfo";
 
     const client = new Client();
@@ -19,8 +18,11 @@
     let completed: number = $state(0);
     let to_complete: number = $state(0);
 
-    let items: ItemsManager = $state();
-    let hints_info: HintsInfo = $state({ hint_cost: 0, hint_points: 0 });
+    let { hints_info = $bindable() } = $props<{
+        hints_info: HintsInfo;
+    }>();
+
+    hints_info = { hint_cost: 0, hint_points: 0 };
 
     client.messages.on("connected", () => {
         loading_client_data = true;
@@ -28,7 +30,6 @@
             connected = true;
             completed = client.room.checkedLocations.length;
             to_complete = client.room.allLocations.length;
-            items = client.items;
             hints_info.hint_cost = client.room.hintCost;
             hints_info.hint_points = client.room.hintPoints;
         }, 2 * 1000);
@@ -38,16 +39,12 @@
         setTimeout(() => {
             completed = client.room.checkedLocations.length;
             to_complete = client.room.allLocations.length;
-            items = client.items;
-            hints_info.hint_cost = client.room.hintCost;
             hints_info.hint_points = client.room.hintPoints;
         }, 2 * 1000);
     });
 
     client.messages.on("itemHinted", () => {
         setTimeout(() => {
-            items = client.items;
-            hints_info.hint_cost = client.room.hintCost;
             hints_info.hint_points = client.room.hintPoints;
         }, 2 * 1000);
     });
@@ -183,13 +180,7 @@
                     <div
                         class="flex flex-col justify-center items-center w-full m-5"
                     >
-                        {#key items}
-                            <HintsTab
-                                {items}
-                                self_id={client.players.self.slot}
-                                {hints_info}
-                            ></HintsTab>
-                        {/key}
+                        <HintsTab {client} {hints_info}></HintsTab>
                     </div>
                 </div>
             </div>

@@ -22,8 +22,12 @@
     let completed: number = $state(0);
     let to_complete: number = $state(0);
 
-    let items: ItemsManager = $state();
-    let hints_info: HintsInfo = $state({ hint_cost: 0, hint_points: 0 });
+    let { hints_info = $bindable(), data } = $props<{
+        hints_info: HintsInfo;
+        data: PageData;
+    }>();
+
+    hints_info = { hint_cost: 0, hint_points: 0 };
 
     client.messages.on("connected", () => {
         loading_client_data = true;
@@ -31,7 +35,6 @@
             connected = true;
             completed = client.room.checkedLocations.length;
             to_complete = client.room.allLocations.length;
-            items = client.items;
             hints_info.hint_cost = client.room.hintCost;
             hints_info.hint_points = client.room.hintPoints;
         }, 2 * 1000);
@@ -41,18 +44,14 @@
         setTimeout(() => {
             completed = client.room.checkedLocations.length;
             to_complete = client.room.allLocations.length;
-            items = client.items;
-            hints_info.hint_cost = client.room.hintCost;
             hints_info.hint_points = client.room.hintPoints;
-        }, 2 * 1000);
+        }, 5 * 1000);
     });
 
     client.messages.on("itemHinted", () => {
         setTimeout(() => {
-            hints = client.items.hints;
-            hints_info.hint_cost = client.room.hintCost;
             hints_info.hint_points = client.room.hintPoints;
-        }, 2 * 1000);
+        }, 5 * 1000);
     });
 
     function login() {
@@ -103,10 +102,6 @@
 
         return "";
     }
-
-    const { data } = $props<{
-        data: PageData;
-    }>();
 
     let roomTrackerInfo: PlayerSlotInfo[] = $state();
 
@@ -208,13 +203,7 @@
                         {/if}
                     </div>
                 </div>
-                {#key items}
-                    <HintsTab
-                        {items}
-                        self_id={client.players.self.slot}
-                        {hints_info}
-                    ></HintsTab>
-                {/key}
+                <HintsTab {client} bind:hints_info></HintsTab>
             </div>
         </div>
     </div>

@@ -1,29 +1,68 @@
 <script lang="ts">
-    import type { Hint, Item, ItemsManager } from "archipelago.js";
+    import type { Client, Hint, Item, ItemsManager } from "archipelago.js";
     import HintComp from "$lib/components/archipelago/Hint.svelte";
     import type { HintsInfo } from "$lib/interfaces/archipelago/HintsInfo";
 
-    const { items, self_id, hints_info } = $props<{
-        items: ItemsManager;
-        self_id: number;
+    const { client, hints_info } = $props<{
+        client: Client;
         hints_info: HintsInfo;
     }>();
 
-    const hints: Hint[] = items.hints;
-    const items_infos: ItemsManager = items;
+    const clientInfos: Client = client;
 
-    let get_hints: Hint[] = [];
-    let send_hints: Hint[] = [];
+    const self_id: number = $state(clientInfos.players.self.slot);
 
-    for (const hint of hints) {
-        const hint_info: Hint = hint;
-        const item: Item = hint_info.item;
+    let items: ItemsManager = $state(clientInfos.items);
+    let hints: Hint[] = $state(items.hints);
+    let get_hints: Hint[] = $state([]);
+    let send_hints: Hint[] = $state([]);
+    let itemList: string[] = $state([]);
 
-        if (!hint_info.found) {
-            if (item.receiver.slot === self_id) get_hints.push(hint);
-            if (item.sender.slot === self_id) send_hints.push(hint);
+    const itemTable = clientInfos.package.findPackage(
+        clientInfos.game,
+    )?.itemTable;
+    if (itemTable !== undefined) {
+        Object.entries(itemTable).forEach(([key, value]) => {
+            itemList.push(key);
+        });
+    }
+
+    function refreshHints() {
+        for (const hint of hints) {
+            const item: Item = hint.item;
+
+            if (!hint.found) {
+                if (item.receiver.slot === self_id && !get_hints.includes(hint))
+                    get_hints.push(hint);
+                if (item.sender.slot === self_id && !send_hints.includes(hint))
+                    send_hints.push(hint);
+            }
         }
     }
+
+    function hint(item: string) {
+        clientInfos.messages.say("!hint " + item);
+    }
+
+    clientInfos.messages.on("itemHinted", () => {
+        setTimeout(() => {
+            items = clientInfos.items;
+            hints = items.hints;
+            hints_info.hint_points = clientInfos.room.hintPoints;
+            refreshHints();
+        }, 2 * 1000);
+    });
+
+    clientInfos.messages.on("itemSent", () => {
+        setTimeout(() => {
+            items = clientInfos.items;
+            hints = items.hints;
+            hints_info.hint_points = client.room.hintPoints;
+            refreshHints();
+        }, 2 * 1000);
+    });
+
+    refreshHints();
 </script>
 
 <div class="flex flex-row justify-center items-center m-5 w-full">
@@ -47,9 +86,11 @@
                         </tr>
                     </thead>
                     <tbody class="w-full border-gray-400 border-2">
-                        {#each get_hints as hint}
-                            <HintComp {hint} get={true}></HintComp>
-                        {/each}
+                        {#key get_hints}
+                            {#each get_hints as hint}
+                                <HintComp {hint} get={true}></HintComp>
+                            {/each}
+                        {/key}
                     </tbody>
                 </table>
             </div>
@@ -72,9 +113,11 @@
                         </tr>
                     </thead>
                     <tbody class="w-full border-gray-400 border-2">
-                        {#each send_hints as hint}
-                            <HintComp {hint} get={false}></HintComp>
-                        {/each}
+                        {#key send_hints}
+                            {#each send_hints as hint}
+                                <HintComp {hint} get={false}></HintComp>
+                            {/each}
+                        {/key}
                     </tbody>
                 </table>
             </div>
@@ -92,10 +135,32 @@
                 </h2>
             </div>
             <div class="flex flex-col justify-center items-center w-1/2">
-                <label for="hints">Hints Selection</label>
-                <select name="hints" id="hints">
-                    <option value="Test"></option>
+                <label for="hints" class="text-center text-3xl my-2"
+                    >Hints Selection</label
+                >
+                <select
+                    name="hints"
+                    id="hints"
+                    class="text-center text-2xl border-2 border-white w-full my-2"
+                >
+                    {#each itemList as item}
+                        <option id="hint_asked" value={item}>{item}</option>
+                    {/each}
                 </select>
+                <button
+                    title="Hint Item"
+                    class="cursor-pointer px-3 py-1 bg-blue-500 rounded-2xl mx-2 my-2"
+                    onclick={() => {
+                        const select: HTMLSelectElement = <HTMLSelectElement>(
+                            document.getElementById("hints")
+                        );
+                        const value = select.options[select.selectedIndex].text;
+                        console.log(value);
+                        if (value) {
+                            hint(value);
+                        }
+                    }}>Hint Item</button
+                >
             </div>
         </div>
     </div>
