@@ -3,7 +3,7 @@
     import { onMount } from "svelte";
     import type { PageData } from "./$types";
     import type { HintsInfo } from "$lib/interfaces/archipelago/HintsInfo";
-    import { Client, Hint, ItemsManager } from "archipelago.js";
+    import { Client } from "archipelago.js";
     import PlayerSlot from "$lib/components/archipelago/PlayerSlot.svelte";
     import RoomProgression from "$lib/components/archipelago/RoomProgression.svelte";
     import Logs from "$lib/components/archipelago/Logs.svelte";
@@ -203,7 +203,7 @@
                         {/if}
                     </div>
                 </div>
-                <HintsTab {client} bind:hints_info></HintsTab>
+                <HintsTab {client} {hints_info}></HintsTab>
             </div>
         </div>
     </div>
@@ -252,6 +252,7 @@
                             id="hostname"
                             value="archipelago.gg"
                             required
+                            readonly
                             class="border-gray-400 border-2 rounded-xl my-1 p-1"
                         />
                     </div>
