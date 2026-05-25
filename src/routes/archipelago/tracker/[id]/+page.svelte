@@ -113,6 +113,11 @@
             10 * 60 * 1000,
         );
         roomTrackerInfo = await getRoomTrackerInfo(data.id);
+        if (roomTrackerInfo.length === 0) {
+            login_status = true;
+            error_message =
+                "Error: This tracker has no player. Make sure the link is correct.";
+        }
         tracker_loaded = true;
     });
 </script>
@@ -221,14 +226,16 @@
                         or that the room may be offline / changed port.
                     </h3>
                 {/if}
-                <button
-                    title="Go Back"
-                    class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mt-2"
-                    onclick={() => {
-                        login_status = false;
-                        error_message = undefined;
-                    }}>Go Back</button
-                >
+                {#if error_message !== "Error: This tracker has no player. Make sure the link is correct."}
+                    <button
+                        title="Go Back"
+                        class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mt-2"
+                        onclick={() => {
+                            login_status = false;
+                            error_message = undefined;
+                        }}>Go Back</button
+                    >
+                {/if}
             {:else if !loading_client_data}
                 <h1 class="text-4xl">Logging into the server...</h1>
             {:else}
