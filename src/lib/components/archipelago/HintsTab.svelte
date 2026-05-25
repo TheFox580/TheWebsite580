@@ -28,16 +28,70 @@
     }
 
     function refreshHints() {
+        const userGetHintMap: Map<number, Hint[]> = new Map();
+        const userSendHintMap: Map<number, Hint[]> = new Map();
+
+        Object.entries(clientInfos.players.slots).forEach(([key, value]) => {
+            userGetHintMap.set(parseInt(key), []);
+            userSendHintMap.set(parseInt(key), []);
+        });
+
+        let currentHints;
+
         for (const hint of hints) {
             const item: Item = hint.item;
 
             if (!hint.found) {
-                if (item.receiver.slot === self_id && !get_hints.includes(hint))
-                    get_hints.push(hint);
-                if (item.sender.slot === self_id && !send_hints.includes(hint))
-                    send_hints.push(hint);
+                if (
+                    item.receiver.slot === self_id &&
+                    !get_hints.includes(hint)
+                ) {
+                    currentHints = userGetHintMap.get(item.sender.slot);
+                    if (currentHints !== undefined) {
+                        currentHints.push(hint);
+                        userGetHintMap.set(item.sender.slot, currentHints);
+                    }
+                }
+                if (
+                    item.sender.slot === self_id &&
+                    !send_hints.includes(hint)
+                ) {
+                    currentHints = userSendHintMap.get(item.receiver.slot);
+                    if (currentHints !== undefined) {
+                        currentHints.push(hint);
+                        userSendHintMap.set(item.receiver.slot, currentHints);
+                    }
+                }
             }
         }
+
+        userGetHintMap.forEach((value, key, map) => {
+            value.sort(sortHint);
+
+            for (const hint of value) {
+                get_hints.push(hint);
+            }
+        });
+
+        userSendHintMap.forEach((value, key, map) => {
+            value.sort(sortHint);
+
+            for (const hint of value) {
+                send_hints.push(hint);
+            }
+        });
+
+        console.log(userGetHintMap, userSendHintMap);
+    }
+
+    function sortHint(a: Hint, b: Hint): number {
+        const try1 = a.item.name.localeCompare(b.item.name);
+
+        if (try1 !== 0) {
+            return a.item.name.localeCompare(b.item.name);
+        }
+
+        return a.item.locationName.localeCompare(b.item.locationName);
     }
 
     function hint(item: string) {
@@ -69,7 +123,9 @@
     <div class="flex flex-col justify-center items-center w-3/5 m-5">
         <div class="flex flex-row justify-center items-center w-full m-5">
             <div class="flex flex-col justify-center items-center w-1/2 mx-1">
-                <h1 class="text-4xl text-center mb-3">Items you need :</h1>
+                <h1 class="text-4xl text-center mb-3">
+                    Items you need ({get_hints.length}) :
+                </h1>
                 <table class="w-full">
                     <thead
                         class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
@@ -95,7 +151,9 @@
                 </table>
             </div>
             <div class="flex flex-col justify-center items-center w-1/2 mx-1">
-                <h1 class="text-4xl text-center mb-3">Items others need :</h1>
+                <h1 class="text-4xl text-center mb-3">
+                    Items others need ({send_hints.length}) :
+                </h1>
                 <table class="w-full">
                     <thead
                         class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
