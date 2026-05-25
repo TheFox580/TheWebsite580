@@ -37,6 +37,8 @@
         });
 
         let currentHints;
+        get_hints = [];
+        send_hints = [];
 
         for (const hint of hints) {
             const item: Item = hint.item;
