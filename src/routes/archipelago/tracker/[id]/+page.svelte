@@ -69,12 +69,7 @@
                 .login(`${host}:${port}`, username, "", {
                     slotData: false,
                     password: password ? password : "",
-                    tags: [
-                        "TextClient",
-                        "Tracker",
-                        "TheWebsite580",
-                        "BetaTest",
-                    ],
+                    tags: ["TextClient", "Tracker", "TheWebsite580"],
                     version: {
                         build: 0,
                         major: 1,
