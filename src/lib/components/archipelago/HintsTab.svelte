@@ -75,7 +75,7 @@
                 currentHints = userReceivedHintMap.get(item.sender.slot);
                 if (currentHints !== undefined) {
                     currentHints.push(hint);
-                    userGetHintMap.set(item.sender.slot, currentHints);
+                    userReceivedHintMap.set(item.sender.slot, currentHints);
                 }
             }
         }
