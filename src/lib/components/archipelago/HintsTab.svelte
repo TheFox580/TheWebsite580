@@ -16,6 +16,7 @@
     let hints: Hint[] = $state(items.hints);
     let get_hints: Hint[] = $state([]);
     let send_hints: Hint[] = $state([]);
+    let received: Hint[] = $state([]);
     let itemList: string[] = $state([]);
 
     const itemTable = clientInfos.package.findPackage(
@@ -30,15 +31,18 @@
     function refreshHints() {
         const userGetHintMap: Map<number, Hint[]> = new Map();
         const userSendHintMap: Map<number, Hint[]> = new Map();
+        const userReceivedHintMap: Map<number, Hint[]> = new Map();
 
         Object.entries(clientInfos.players.slots).forEach(([key, value]) => {
             userGetHintMap.set(parseInt(key), []);
             userSendHintMap.set(parseInt(key), []);
+            userReceivedHintMap.set(parseInt(key), []);
         });
 
         let currentHints;
         get_hints = [];
         send_hints = [];
+        received = [];
 
         for (const hint of hints) {
             const item: Item = hint.item;
@@ -64,6 +68,15 @@
                         userSendHintMap.set(item.receiver.slot, currentHints);
                     }
                 }
+            } else if (
+                item.receiver.slot === self_id &&
+                !received.includes(hint)
+            ) {
+                currentHints = userReceivedHintMap.get(item.sender.slot);
+                if (currentHints !== undefined) {
+                    currentHints.push(hint);
+                    userGetHintMap.set(item.sender.slot, currentHints);
+                }
             }
         }
 
@@ -83,7 +96,13 @@
             }
         });
 
-        console.log(userGetHintMap, userSendHintMap);
+        userReceivedHintMap.forEach((value, key, map) => {
+            value.sort(sortHint);
+
+            for (const hint of value) {
+                received.push(hint);
+            }
+        });
     }
 
     function sortHint(a: Hint, b: Hint): number {
@@ -122,9 +141,37 @@
 </script>
 
 <div class="flex flex-row justify-center items-center m-5 w-full">
-    <div class="flex flex-col justify-center items-center w-3/5 m-5">
+    <div class="flex flex-col justify-center items-center w-5/7 m-5">
         <div class="flex flex-row justify-center items-center w-full m-5">
-            <div class="flex flex-col justify-center items-center w-1/2 mx-1">
+            <div class="flex flex-col justify-center items-center w-1/3 mx-1">
+                <h1 class="text-4xl text-center mb-3">
+                    Items you received ({get_hints.length}) :
+                </h1>
+                <table class="w-full">
+                    <thead
+                        class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
+                    >
+                        <tr
+                            class="w-full flex flex-row items-center justify-center"
+                        >
+                            <th class="text-center font-bold w-1/3"
+                                >Item received</th
+                            >
+                            <th class="text-center font-bold w-1/3">Found at</th
+                            >
+                            <th class="text-center font-bold w-1/3">Sender</th>
+                        </tr>
+                    </thead>
+                    <tbody class="w-full border-gray-400 border-2">
+                        {#key received}
+                            {#each received as hint}
+                                <HintComp {hint} get={true}></HintComp>
+                            {/each}
+                        {/key}
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex flex-col justify-center items-center w-1/3 mx-1">
                 <h1 class="text-4xl text-center mb-3">
                     Items you need ({get_hints.length}) :
                 </h1>
@@ -152,7 +199,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="flex flex-col justify-center items-center w-1/2 mx-1">
+            <div class="flex flex-col justify-center items-center w-1/3 mx-1">
                 <h1 class="text-4xl text-center mb-3">
                     Items others need ({send_hints.length}) :
                 </h1>
@@ -183,7 +230,7 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-col justify-center items-center w-2/5 m-5">
+    <div class="flex flex-col justify-center items-center w-2/7 m-5">
         <h1 class="text-center text-6xl mb-10">Hints info :</h1>
         <div class="flex flex-row justify-center items-center w-full">
             <div class="flex flex-col justify-center items-center w-1/2">
