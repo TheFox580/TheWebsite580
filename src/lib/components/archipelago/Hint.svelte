@@ -19,6 +19,8 @@
     <td class="text-center font-bold w-1/3">{item.name}</td>
     <td class="text-center font-bold w-1/3">{item.locationName}</td>
     {#if get}
-        <td class="text-center font-bold w-1/3">{item.sender.name}</td>
+        <td class="text-center font-bold w-1/3"
+            >{item.sender.name.replaceAll("_", " ")}</td
+        >
     {/if}
 </tr>
