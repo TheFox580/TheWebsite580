@@ -1,5 +1,6 @@
 <script lang="ts">
-    import type { Hint, Item } from "archipelago.js";
+    import type { Hint } from "archipelago.js";
+    import Item from "$lib/components/archipelago/Item.svelte";
 
     const { hint, get } = $props<{
         hint: Hint;
@@ -7,20 +8,6 @@
     }>();
 
     const hint_infos: Hint = hint;
-    const item: Item = hint_infos.item;
 </script>
 
-<tr
-    class="w-full flex flex-row items-center justify-center bg-gray-800 border-2 border-gray-400"
->
-    {#if !get}
-        <td class="text-center font-bold w-1/3">{item.receiver.name}</td>
-    {/if}
-    <td class="text-center font-bold w-1/3">{item.name}</td>
-    <td class="text-center font-bold w-1/3">{item.locationName}</td>
-    {#if get}
-        <td class="text-center font-bold w-1/3"
-            >{item.sender.name.replaceAll("_", " ")}</td
-        >
-    {/if}
-</tr>
+<Item item={hint_infos.item} get={true}></Item>

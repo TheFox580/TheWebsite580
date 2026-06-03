@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { Client, Hint, Item, ItemsManager } from "archipelago.js";
     import HintComp from "$lib/components/archipelago/Hint.svelte";
+    import ItemComp from "$lib/components/archipelago/Item.svelte";
     import type { HintsInfo } from "$lib/interfaces/archipelago/HintsInfo";
 
     const { client, hints_info } = $props<{
@@ -16,7 +17,7 @@
     let hints: Hint[] = $state(items.hints);
     let get_hints: Hint[] = $state([]);
     let send_hints: Hint[] = $state([]);
-    let received: Hint[] = $state([]);
+    let received: Item[] = $state(items.received);
     let itemList: string[] = $state([]);
 
     const itemTable = clientInfos.package.findPackage(
@@ -31,7 +32,7 @@
     function refreshHints() {
         const userGetHintMap: Map<number, Hint[]> = new Map();
         const userSendHintMap: Map<number, Hint[]> = new Map();
-        const userReceivedHintMap: Map<number, Hint[]> = new Map();
+        const userReceivedHintMap: Map<number, Item[]> = new Map();
 
         Object.entries(clientInfos.players.slots).forEach(([key, value]) => {
             userGetHintMap.set(parseInt(key), []);
@@ -39,10 +40,9 @@
             userReceivedHintMap.set(parseInt(key), []);
         });
 
-        let currentHints;
+        let currentHints: Hint[] | undefined | Item[];
         get_hints = [];
         send_hints = [];
-        received = [];
 
         for (const hint of hints) {
             const item: Item = hint.item;
@@ -68,17 +68,18 @@
                         userSendHintMap.set(item.receiver.slot, currentHints);
                     }
                 }
-            } else if (
-                item.receiver.slot === self_id &&
-                !received.includes(hint)
-            ) {
-                currentHints = userReceivedHintMap.get(item.sender.slot);
-                if (currentHints !== undefined) {
-                    currentHints.push(hint);
-                    userReceivedHintMap.set(item.sender.slot, currentHints);
-                }
             }
         }
+
+        for (const hint of received) {
+            currentHints = userReceivedHintMap.get(hint.receiver.slot);
+            if (currentHints !== undefined) {
+                currentHints.push(hint);
+                userReceivedHintMap.set(hint.receiver.slot, currentHints);
+            }
+        }
+
+        received = [];
 
         userGetHintMap.forEach((value, key, map) => {
             value.sort(sortHint);
@@ -97,7 +98,7 @@
         });
 
         userReceivedHintMap.forEach((value, key, map) => {
-            value.sort(sortHint);
+            value.sort(sortItem);
 
             for (const hint of value) {
                 received.push(hint);
@@ -105,14 +106,18 @@
         });
     }
 
-    function sortHint(a: Hint, b: Hint): number {
-        const try1 = a.item.name.localeCompare(b.item.name);
+    function sortItem(a: Item, b: Item): number {
+        const try1 = a.name.localeCompare(b.name);
 
         if (try1 !== 0) {
-            return a.item.name.localeCompare(b.item.name);
+            return a.name.localeCompare(b.name);
         }
 
-        return a.item.locationName.localeCompare(b.item.locationName);
+        return a.locationName.localeCompare(b.locationName);
+    }
+
+    function sortHint(a: Hint, b: Hint): number {
+        return sortItem(a.item, b.item);
     }
 
     function hint(item: string) {
@@ -145,7 +150,7 @@
         <div class="flex flex-row justify-center items-center w-full m-5">
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
                 <h1 class="text-4xl text-center mb-3">
-                    Items you received ({get_hints.length}) :
+                    Items you received ({received.length}) :
                 </h1>
                 <table class="w-full">
                     <thead
@@ -164,8 +169,8 @@
                     </thead>
                     <tbody class="w-full border-gray-400 border-2">
                         {#key received}
-                            {#each received as hint}
-                                <HintComp {hint} get={true}></HintComp>
+                            {#each received as item}
+                                <ItemComp {item} get={true}></ItemComp>
                             {/each}
                         {/key}
                     </tbody>
@@ -262,7 +267,6 @@
                             document.getElementById("hints")
                         );
                         const value = select.options[select.selectedIndex].text;
-                        console.log(value);
                         if (value) {
                             hint(value);
                         }
