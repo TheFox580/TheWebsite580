@@ -11,10 +11,15 @@
     class="w-full flex flex-row items-center justify-center bg-gray-800 border-2 border-gray-400"
 >
     {#if !get}
-        <td class="text-center font-bold w-1/3">{item.receiver.name}</td>
+        <td class="text-center font-bold w-1/3"
+            >{item.receiver.name.replaceAll("_", " ")}</td
+        >
     {/if}
-    <td class="text-center font-bold w-1/3">{item.name}</td>
-    <td class="text-center font-bold w-1/3">{item.locationName}</td>
+    <td class="text-center font-bold w-1/3">{item.name.replaceAll("_", " ")}</td
+    >
+    <td class="text-center font-bold w-1/3"
+        >{item.locationName.replaceAll("_", " ")}</td
+    >
     {#if get}
         <td class="text-center font-bold w-1/3"
             >{item.sender.name.replaceAll("_", " ")}</td
