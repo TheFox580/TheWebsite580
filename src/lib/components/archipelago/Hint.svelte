@@ -10,4 +10,4 @@
     const hint_infos: Hint = hint;
 </script>
 
-<Item item={hint_infos.item} get={true}></Item>
+<Item item={hint_infos.item} {get}></Item>
