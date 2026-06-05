@@ -16,9 +16,9 @@
     </div>
 </div>
 <div
-    class="flex flex-col justify-center items-center my-20 text-2xl bg-orange-600 py-5 rounded-4xl"
+    class="flex flex-col justify-center items-center my-20 text-2xl bg-orange-600 py-5 rounded-4xl h-50"
 >
-    <h2 class="text-3xl">
+    <h2 class="text-5xl">
         <a href="/donate" target="_blank"
             >Click here to donate for Streamers Against Cancer 4 <strong
                 >↗</strong
