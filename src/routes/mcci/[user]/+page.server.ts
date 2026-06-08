@@ -1,17 +1,17 @@
-import { NOXCREW_API } from "$env/static/private"
+import { NOXCREW_API } from "$env/static/private";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async ({params, fetch}) => {
-    const user = params.user;
+export const load: PageServerLoad = async ({ params, fetch }) => {
+  const user = params.user;
 
-    const response = await fetch(`https://api.mccisland.net/graphql`, {
-        method:"POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-API-KEY": NOXCREW_API,
-        },
-        body: JSON.stringify({
-            query: `{
+  const response = await fetch(`https://api.mccisland.net/graphql`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-KEY": NOXCREW_API,
+    },
+    body: JSON.stringify({
+      query: `{
                 playerByUsername(username:"${user}") {
                     uuid
                     username
@@ -202,11 +202,11 @@ export const load: PageServerLoad = async ({params, fetch}) => {
                         }
                     }
                 }
-            }`
-        })
-    });
+            }`,
+    }),
+  });
 
-    const data = await response.json();
+  const data = await response.json();
 
-    return {data}.data.data.playerByUsername;
+  return { data }.data.data.playerByUsername;
 };
