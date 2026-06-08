@@ -1,3 +1,7 @@
+<script lang="ts">
+    const showDonationBanner: boolean = $state(false);
+</script>
+
 <svelte:head>
     <link rel="stylesheet" href="/styles/default.css" />
     <title>TheFox580's website!</title>
@@ -15,17 +19,19 @@
         </p>
     </div>
 </div>
-<div
-    class="flex flex-col justify-center items-center my-20 text-2xl bg-orange-600 py-5 rounded-4xl h-50"
->
-    <h2 class="text-5xl">
-        <a href="/donate" target="_blank"
-            >Click here to donate for Streamers Against Cancer 4 <strong
-                >↗</strong
-            ></a
-        >
-    </h2>
-</div>
+{#if showDonationBanner}
+    <div
+        class="flex flex-col justify-center items-center my-20 text-2xl bg-orange-600 py-5 rounded-4xl h-50"
+    >
+        <h2 class="text-5xl">
+            <a href="/donate" target="_blank"
+                >Click here to donate for Streamers Against Cancer 4 <strong
+                    >↗</strong
+                ></a
+            >
+        </h2>
+    </div>
+{/if}
 <div class="flex flex-col justify-center items-center my-20 text-2xl">
     <h2 class="text-3xl">
         <a href="/mcsr">Click here <strong>↗</strong></a> to get to my
