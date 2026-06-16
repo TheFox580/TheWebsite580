@@ -145,9 +145,9 @@
     refreshHints();
 </script>
 
-<div class="flex flex-row justify-center items-center m-5 w-full">
+<div class="flex flex-row justify-center items-start m-5 w-full">
     <div class="flex flex-col justify-center items-center w-5/7 m-5">
-        <div class="flex flex-row justify-center items-center w-full m-5">
+        <div class="flex flex-row justify-center items-start w-full m-5">
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
                 <h1 class="text-4xl text-center mb-3">
                     Items you received ({received.length}) :
