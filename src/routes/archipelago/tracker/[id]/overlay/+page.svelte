@@ -30,18 +30,25 @@
 </svelte:head>
 
 <div
-    class="flex flex-col items-center justify-center mx-10 bg-gray-400 rounded-2xl px-5 py-2"
+    class="flex flex-col items-center justify-center mx-10 bg-gray-400 rounded-2xl px-5 py-2 my-5"
 >
     {#if !tracker_loaded}
         <h1 class="text-center text-5xl">Loading tracker info...</h1>
     {:else}
         <RoomProgression progression={roomTrackerInfo}></RoomProgression>
         <div class="flex flex-row items-center justify-evenly w-full">
-            {#each roomTrackerInfo as player}
-                <div class="w-full mx-5">
-                    <PlayerSlot slot_info={player}></PlayerSlot>
-                </div>
-            {/each}
+            <div
+                class="grid grid-cols-{Math.min(
+                    roomTrackerInfo.length,
+                    4,
+                )} gap-2.5 auto-rows-auto"
+            >
+                {#each roomTrackerInfo as player}
+                    <div class="w-full mx-5">
+                        <PlayerSlot slot_info={player}></PlayerSlot>
+                    </div>
+                {/each}
+            </div>
         </div>
     {/if}
 </div>
