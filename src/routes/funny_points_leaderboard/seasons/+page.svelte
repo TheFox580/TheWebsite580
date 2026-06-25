@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { getSeason } from "$lib/functions/funny_points_leaderboard/GetSeasons";
+    import type { SeasonDate } from "$lib/interfaces/funny_points_leaderboard/Date";
     import type { Season } from "$lib/interfaces/funny_points_leaderboard/Season";
     import type { PageData } from "./$types";
 
@@ -6,7 +8,20 @@
         data: PageData;
     }>();
 
-    let seasons: Season[] = data.seasons;
+    let seasons: SeasonDate[] = data.seasons;
+    console.log(seasons);
+
+    let last_season: Season = getSeason(
+        seasons.filter(
+            (season) => season.start_time.getTime() < new Date().getTime(),
+        )[
+            seasons.filter(
+                (season) => season.start_time.getTime() < new Date().getTime(),
+            ).length - 1
+        ].season,
+    );
+
+    console.log(last_season);
 </script>
 
 <svelte:head>
@@ -22,17 +37,20 @@
     <h1 class="text-6xl m-10">All Funny Points Ranked Seasons</h1>
     <ul class="mt-15">
         {#each seasons as season}
-            <li>
-                <a
-                    href={season.id === seasons.length
-                        ? "/funny_points_leaderboard"
-                        : `/funny_points_leaderboard/${season.url_name}`}
-                    class="text-4xl"
-                    >{season.name}{season.id === seasons.length
-                        ? " (Current Season)"
-                        : ""}</a
-                >
-            </li>
+            {#if season.season <= last_season.id}
+                <li>
+                    <a
+                        href={season.season === last_season.id
+                            ? "/funny_points_leaderboard"
+                            : `/funny_points_leaderboard/${getSeason(season.season).url_name}`}
+                        class="text-4xl"
+                        >{getSeason(season.season).name}{season.season ===
+                        last_season.id
+                            ? " (Current Season)"
+                            : ""}</a
+                    >
+                </li>
+            {/if}
         {/each}
     </ul>
 </div>

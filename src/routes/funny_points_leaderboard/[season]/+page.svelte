@@ -1,5 +1,6 @@
 <script lang="ts">
     import DiscordMessage from "$lib/components/funny_points_leaderboard/DiscordMessage.svelte";
+    import { z, timeToGo } from "$lib/functions/funny_points_leaderboard/Time";
     import type { PageData } from "./$types";
     import type { Point } from "$lib/interfaces/funny_points_leaderboard/Point";
     import type { SeasonDate } from "$lib/interfaces/funny_points_leaderboard/Date";
@@ -12,46 +13,6 @@
     const points: Point[] = data.points;
     const players: Score[] = data.players;
     const date: SeasonDate = data.date;
-
-    function z(n: number): string {
-        return (n < 10 ? "0" : "") + n;
-    }
-
-    function timeToGo(date: Date): string {
-        // Convert string to date object
-        var diff = date.getTime() - new Date().getTime();
-
-        // Allow for previous times
-        var sign = diff < 0 ? "-" : "";
-        if (diff < 0) {
-            return "Resets soon";
-        }
-        diff = Math.abs(diff);
-
-        // Get time components
-        var days = (diff / 8.64e7) | 0;
-        var hours = ((diff % 8.64e7) / 3.6e6) | 0;
-        var mins = ((diff % 3.6e6) / 6e4) | 0;
-        var secs = Math.floor((diff % 6e4) / 1e3);
-
-        if (days > 0) {
-            // Return formatted string
-            return (
-                "Resets in " +
-                z(days) +
-                "d " +
-                z(hours) +
-                "h " +
-                z(mins) +
-                "m " +
-                z(secs) +
-                "s"
-            );
-        }
-
-        // Return formatted string
-        return "Resets in " + z(hours) + "h " + z(mins) + "m " + z(secs) + "s";
-    }
 
     function getFontSize(placement: number) {
         switch (placement) {
@@ -136,7 +97,9 @@
         class="text-2xl font-bold"
         style="color:rgb(255, {notRedColor}, {notRedColor})"
     >
-        {reset}
+        {startTime.getTime() < new Date().getTime()
+            ? reset
+            : "This season has not started yet."}
     </h2>
 </div>
 <div id="main-content">

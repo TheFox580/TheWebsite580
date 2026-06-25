@@ -15,15 +15,13 @@ import type {
 import type { PageServerLoad } from "./$types";
 import { MONGO_DB_URL } from "$env/static/private";
 import { MongoClient, ServerApiVersion } from "mongodb";
-import { getSeasons } from "$lib/functions/funny_points_leaderboard/GetSeasons";
+import { getSeason } from "$lib/functions/funny_points_leaderboard/GetSeasons";
 
 export const load: PageServerLoad = async () => {
-  let last_season: Season = getSeasons()[getSeasons().length - 1];
-
   let points: Point[] = [];
   let players: Score[] = [];
   let date: SeasonDate = {
-    season: last_season.id,
+    season: 0,
     start_time: new Date("0-0-0T00:00:00Z"),
     end_time: new Date("0-0-0T00:00:00Z"),
   };
@@ -42,20 +40,18 @@ export const load: PageServerLoad = async () => {
 
     const date_collection = db.collection<SeasonDate>("dates");
 
-    const date_result = await date_collection.findOne<SeasonDateDB>({
-      season: last_season.id,
-    });
+    const all_dates = date_collection.find({ start_time: { $lt: new Date() } });
 
-    if (!date_result) {
-      console.log("No Season Date found.");
-    } else {
-      date = (({ _id, ...object }) => object)(date_result);
+    for await (const date_found of all_dates) {
+      date = (({ _id, ...object }) => object)(date_found);
     }
+
+    let last_season = getSeason(date.season);
 
     const players_collection = db.collection<Scores>("scores");
 
     const players_result = await players_collection.findOne<ScoresDB>({
-      season: last_season.id,
+      season: date.season,
     });
 
     if (!players_result) {
@@ -85,6 +81,5 @@ export const load: PageServerLoad = async () => {
     await client.close();
   }
 
-  console.log(players);
   return { points, date, players };
 };
