@@ -1,5 +1,5 @@
 <script lang="ts">
-    const showDonationBanner: boolean = $state(false);
+    const showDonationBanner: boolean = $state(true);
     const donationTitle: string = $state("Cube Championship: Pride 2026");
 </script>
 

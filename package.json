@@ -40,7 +40,6 @@
     "@vercel/speed-insights": "^2.0.0",
     "archipelago.js": "^2.1.0",
     "dotenv": "^17.4.2",
-    "emoji.json": "^16.0.0",
     "express": "^5.2.1",
     "mongodb": "^7.3.0"
   }
