@@ -3,7 +3,7 @@
     const donationTitle: string = "Cube Championship: Pride 2026";
     import { z, timeToGo } from "$lib/functions/funny_points_leaderboard/Time";
 
-    const timeEvent: Date = new Date("2026-06-28T20:00:00Z");
+    const timeEvent: Date = new Date("2026-06-28T21:00:00Z");
 
     let timeLeft = $state(timeToGo(timeEvent));
 
