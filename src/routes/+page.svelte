@@ -1,6 +1,27 @@
 <script lang="ts">
-    const showDonationBanner: boolean = $state(true);
-    const donationTitle: string = $state("Cube Championship: Pride 2026");
+    let showDonationBanner: boolean = $state(false);
+    const donationTitle: string = "Cube Championship: Pride 2026";
+    import { z, timeToGo } from "$lib/functions/funny_points_leaderboard/Time";
+
+    const timeEvent: Date = new Date("2026-06-28T13:08:30Z");
+
+    let timeLeft = $state(timeToGo(timeEvent));
+
+    function isEventOver() {
+        return timeEvent.getTime() - new Date().getTime() <= 0;
+    }
+
+    if (!isEventOver()) {
+        //If the event isn't over yet
+        showDonationBanner = true;
+        setInterval(() => {
+            timeLeft = timeToGo(timeEvent);
+            if (isEventOver()) {
+                //If the event is over
+                showDonationBanner = false;
+            }
+        });
+    }
 </script>
 
 <svelte:head>
@@ -24,11 +45,12 @@
     <div
         class="flex flex-col justify-center items-center my-20 text-2xl bg-orange-600 py-5 rounded-4xl h-50"
     >
-        <h2 class="text-5xl">
+        <h2 class="text-5xl mb-2">
             <a href="/donate" target="_blank"
                 >Click here to donate for {donationTitle} <strong>↗</strong></a
             >
         </h2>
+        <h3 class="text-3xl">{timeLeft}</h3>
     </div>
 {/if}
 <div class="flex flex-col justify-center items-center my-20 text-2xl">
