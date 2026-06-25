@@ -22,5 +22,5 @@ export function timeToGo(date: Date): string {
   var secs = Math.floor((diff % 6e4) / 1e3);
 
   // Return formatted string
-  return `Ends in ${days > 0 ? z(days) + ":" : ""}${hours > 0 ? z(hours) + ":" : ""}${z(mins)}:${z(secs)}`;
+  return `Ends in ${days > 0 ? z(days) + ":" : ""}${days + hours > 0 ? z(hours) + ":" : ""}${z(mins)}:${z(secs)}`;
 }
