@@ -1,5 +1,6 @@
 <script lang="ts">
     const showDonationBanner: boolean = $state(false);
+    const donationTitle: string = $state("Cube Championship: Pride 2026");
 </script>
 
 <svelte:head>
@@ -25,9 +26,7 @@
     >
         <h2 class="text-5xl">
             <a href="/donate" target="_blank"
-                >Click here to donate for Streamers Against Cancer 4 <strong
-                    >↗</strong
-                ></a
+                >Click here to donate for {donationTitle} <strong>↗</strong></a
             >
         </h2>
     </div>
