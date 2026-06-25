@@ -9,7 +9,6 @@
     }>();
 
     let seasons: SeasonDate[] = data.seasons;
-    console.log(seasons);
 
     let last_season: Season = getSeason(
         seasons.filter(
@@ -20,8 +19,6 @@
             ).length - 1
         ].season,
     );
-
-    console.log(last_season);
 </script>
 
 <svelte:head>
