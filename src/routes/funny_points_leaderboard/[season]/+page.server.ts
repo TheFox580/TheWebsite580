@@ -13,19 +13,16 @@ import type {
   ScoresDB,
 } from "$lib/interfaces/funny_points_leaderboard/Score";
 import type { PageServerLoad } from "./$types";
-import { getSeasons } from "$lib/functions/funny_points_leaderboard/GetSeasons";
+import { getSeason } from "$lib/functions/funny_points_leaderboard/GetSeasons";
 import { MONGO_DB_URL } from "$env/static/private";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { error } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ params }) => {
-  const seasons: Season[] = getSeasons();
-
-  const looking_for = params.season;
-  const season = seasons.find((season) => season.url_name === looking_for);
+  const season = getSeason(parseInt(params.season.split("_")[1]));
 
   if (!season) {
-    throw error(404, { message: `${looking_for} does not exist` });
+    throw error(404, { message: `${params.season} does not exist` });
   }
 
   let points: Point[] = [];
