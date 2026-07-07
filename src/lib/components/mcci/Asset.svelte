@@ -125,12 +125,6 @@
             } else if (data.asset.name.includes("Crab")) {
                 postCategoryURL += `fish/crab_collection/${data.asset.name.replaceAll(" ", "_").toLowerCase()}.png`;
             } else if (data.asset.name.includes("Lure")) {
-                console.log(data.asset.name);
-                console.log(
-                    LURES.filter(
-                        (lure) => lure.type === data.asset.name.split(" ")[1],
-                    ),
-                );
                 let lure = LURES.filter(
                     (lure) => lure.type === data.asset.name.split(" ")[1],
                 )[0];
@@ -214,6 +208,8 @@
                 postCategoryURL += `quest_token/${data.asset.name.replace(" Token", "").replace("Task ", "").toLowerCase()}.png`;
             } else if (data.asset.name.includes("Cluster")) {
                 postCategoryURL += `material/cluster_${data.asset.name.split(" ")[0].replaceAll(" ", "_").toLowerCase()}.png`;
+            } else if (data.asset.name === "Material Gloop") {
+                postCategoryURL += `material/goop.webp`;
             } else {
                 postCategoryURL += `material/${data.asset.name.replaceAll(" ", "_").toLowerCase()}.png`;
             }
