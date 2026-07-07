@@ -15,8 +15,8 @@
 </script>
 
 <div
-    class="w-full h-{bar_height} rounded-2xl border-neutral-500 border-2"
-    style="background-color:{background_color}"
+    class="w-full rounded-2xl border-neutral-500 border-2"
+    style="background-color:{background_color}; height: {4 * bar_height}px"
 >
     <div
         class="h-full rounded-xl w-{progress}/{total}"
