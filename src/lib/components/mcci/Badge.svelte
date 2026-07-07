@@ -106,7 +106,7 @@
         data.badge.name.includes("Challenge") ||
         category === "general";
 
-    let badgeColor: string = "oklch(64.6% 0.222 41.116)";
+    let badgeColor: string = $state("oklch(64.6% 0.222 41.116)");
 
     if (!stageCompleted) {
         if (unobtainable) {
