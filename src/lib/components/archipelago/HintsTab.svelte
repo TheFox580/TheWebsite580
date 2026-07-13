@@ -110,7 +110,7 @@
         const try1 = a.name.localeCompare(b.name);
 
         if (try1 !== 0) {
-            return a.name.localeCompare(b.name);
+            return try1;
         }
 
         return a.locationName.localeCompare(b.locationName);
