@@ -149,7 +149,7 @@
     <div class="flex flex-col justify-center items-center w-5/7 m-5">
         <div class="flex flex-row justify-center items-start w-full m-5">
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
-                <h1 class="text-4xl text-center mb-3">
+                <h1 class="text-3xl text-center mb-3">
                     Items you received ({received.length}) :
                 </h1>
                 <table class="w-full">
@@ -177,7 +177,7 @@
                 </table>
             </div>
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
-                <h1 class="text-4xl text-center mb-3">
+                <h1 class="text-3xl text-center mb-3">
                     Items you need ({get_hints.length}) :
                 </h1>
                 <table class="w-full">
@@ -205,7 +205,7 @@
                 </table>
             </div>
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
-                <h1 class="text-4xl text-center mb-3">
+                <h1 class="text-3xl text-center mb-3">
                     Items others need ({send_hints.length}) :
                 </h1>
                 <table class="w-full">
@@ -236,24 +236,24 @@
         </div>
     </div>
     <div class="flex flex-col justify-center items-center w-2/7 m-5">
-        <h1 class="text-center text-6xl mb-10">Hints info :</h1>
+        <h1 class="text-center text-5xl mb-10">Hints info :</h1>
         <div class="flex flex-row justify-center items-center w-full">
             <div class="flex flex-col justify-center items-center w-1/2">
-                <h2 class="text-center text-3xl mb-5">
+                <h2 class="text-center text-2xl mb-5">
                     Hint Points: {hints_info.hint_points}
                 </h2>
-                <h2 class="text-center text-3xl">
+                <h2 class="text-center text-2xl">
                     Hint Cost: {hints_info.hint_cost}
                 </h2>
             </div>
             <div class="flex flex-col justify-center items-center w-1/2">
-                <label for="hints" class="text-center text-3xl my-2"
+                <label for="hints" class="text-center text-2xl my-2"
                     >Hints Selection</label
                 >
                 <select
                     name="hints"
                     id="hints"
-                    class="text-center text-2xl border-2 border-white w-full my-2"
+                    class="text-center text-xl border-2 border-white w-full my-2"
                 >
                     {#each itemList as item}
                         <option id="hint_asked" value={item}>{item}</option>
