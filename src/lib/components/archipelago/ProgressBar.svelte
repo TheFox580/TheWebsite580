@@ -25,6 +25,10 @@
         }
     }
 
+    function getBGColor(progression: number): string {
+      return progression < 70 ? "#FFFFFF" : "#000000"
+    }
+
     function invertColor(hex: string): string {
         if (hex.indexOf("#") === 0) {
             hex = hex.slice(1);
@@ -56,18 +60,20 @@
         ? 'mb-5'
         : ''} relative"
 >
-    <div class="flex items-center justify-center absolute w-full h-full">
-        <p
-            class="text-center"
-            style="color: {invertColor(getColorOnPercentage(progression))}"
-        >
-            Progression: {current} / {max} ({progression}%)
-        </p>
-    </div>
-    <div
-        class="w-{current}/{max} h-5 rounded-xl"
-        style="width: {progression}%; background-color: {getColorOnPercentage(
-            progression,
-        )}"
-    ></div>
+    {#key progression}
+        <div class="flex items-center justify-center absolute w-full h-full">
+            <p
+                class="text-center"
+                style="color: {getBGColor(progression)}"
+            >
+                Progression: {current} / {max} ({progression}%)
+            </p>
+        </div>
+        <div
+            class="w-{current}/{max} h-5 rounded-xl"
+            style="width: {progression}%; background-color: {getColorOnPercentage(
+                progression,
+            )}"
+        ></div>
+    {/key}
 </div>
