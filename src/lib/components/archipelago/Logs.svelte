@@ -35,11 +35,11 @@
     });
 
     messages.on("connected", (text: string, player:Player, tags:string[]) => {
-      logs.unshift({type: "goal", text: `${player.name} playing ${player.game} connected to the server. Tags: ${tags}`, item: null});
+      logs.unshift({type: "goal", text: `${player.name} (Team ${player.team}) playing ${player.game} connected to the server. Tags: [${tags}]`, item: null});
     });
 
     messages.on("disconnected", (text: string, player:Player) => {
-      logs.unshift({type: "goal", text: `${player.name} playing ${player.game} disconnected from the server.`, item: null});
+      logs.unshift({type: "goal", text: `${player.name} (Team ${player.team}) playing ${player.game} disconnected from the server.`, item: null});
     });
 
     function sendMessage() {
