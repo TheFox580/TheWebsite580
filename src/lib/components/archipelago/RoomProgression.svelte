@@ -26,13 +26,17 @@
     <h1 class="text-6xl text-center mb-10">Room Progression :</h1>
 
     <h3 class="text-3xl text-center mb-3">Completions :</h3>
-    <ProgressBar max={nb_player} current={nb_finish} inList={true}
-    ></ProgressBar>
+    {#key nb_finish}
+        <ProgressBar max={nb_player} current={nb_finish} inList={true}
+        ></ProgressBar>
+    {/key}
 
     <h3 class="text-3xl text-center mb-3">Checks :</h3>
-    <ProgressBar
-        max={nb_total_checks}
-        current={nb_checks_completed}
-        inList={false}
-    ></ProgressBar>
+    {#key nb_checks_completed}
+        <ProgressBar
+            max={nb_total_checks}
+            current={nb_checks_completed}
+            inList={false}
+        ></ProgressBar>
+    {/key}
 </div>

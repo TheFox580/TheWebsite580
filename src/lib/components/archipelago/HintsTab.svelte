@@ -149,9 +149,11 @@
     <div class="flex flex-col justify-center items-center w-5/7 m-5">
         <div class="flex flex-row justify-center items-start w-full m-5">
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
-                <h1 class="text-3xl text-center mb-3">
-                    Items you received ({received.length}) :
-                </h1>
+                {#key received.length}
+                    <h1 class="text-3xl text-center mb-3">
+                        Items you received ({received.length}) :
+                    </h1>
+                {/key}
                 <table class="w-full">
                     <thead
                         class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
@@ -177,9 +179,11 @@
                 </table>
             </div>
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
-                <h1 class="text-3xl text-center mb-3">
-                    Items you need ({get_hints.length}) :
-                </h1>
+                {#key get_hints.length}
+                    <h1 class="text-3xl text-center mb-3">
+                        Items you need ({get_hints.length}) :
+                    </h1>
+                {/key}
                 <table class="w-full">
                     <thead
                         class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
@@ -205,9 +209,11 @@
                 </table>
             </div>
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
-                <h1 class="text-3xl text-center mb-3">
-                    Items others need ({send_hints.length}) :
-                </h1>
+                {#key send_hints.length}
+                    <h1 class="text-3xl text-center mb-3">
+                        Items others need ({send_hints.length}) :
+                    </h1>
+                {/key}
                 <table class="w-full">
                     <thead
                         class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"

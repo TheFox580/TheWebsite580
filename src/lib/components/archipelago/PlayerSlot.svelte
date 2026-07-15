@@ -12,9 +12,11 @@
         <p class="text-center">Slot: {slot_info.name}</p>
         <p class="text-center">Game: {slot_info.game}</p>
     </div>
-    <ProgressBar
-        max={slot_info.completion.todo}
-        current={slot_info.completion.done}
-        inList={true}
-    ></ProgressBar>
+    {#key slot_info.completion.done}
+        <ProgressBar
+            max={slot_info.completion.todo}
+            current={slot_info.completion.done}
+            inList={true}
+        ></ProgressBar>
+    {/key}
 </div>

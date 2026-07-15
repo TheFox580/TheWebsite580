@@ -73,7 +73,7 @@
                     version: {
                         build: 0,
                         major: 1,
-                        minor: 0,
+                        minor: 1,
                     },
                 })
                 .catch((message) => (error_message = message));
@@ -103,7 +103,7 @@
         return "";
     }
 
-    let roomTrackerInfo: PlayerSlotInfo[] = $state();
+    let roomTrackerInfo: PlayerSlotInfo[] = $state([]);
 
     onMount(async () => {
         const tracker_refresh = setInterval(
@@ -164,7 +164,7 @@
                             <div
                                 class="flex flex-col items-center jusify-center w-1/4 mx-2"
                             >
-                                {#key to_complete}
+                                {#key completed}
                                     <ProgressBar
                                         max={to_complete}
                                         current={completed}
@@ -187,7 +187,7 @@
                                 </h3>
                             </div>
                         </div>
-                        <Logs messages={client.messages}></Logs>
+                        <Logs user={client.name} messages={client.messages}></Logs>
                     </div>
                     <div
                         class="flex flex-col justify-center items-center w-2/5 m-5"

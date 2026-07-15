@@ -1,17 +1,25 @@
 <script lang="ts">
-    import type { MessageManager } from "archipelago.js";
+    import type { Item, ItemsManager, MessageManager, Player } from "archipelago.js";
     import Message from "./Message.svelte";
+    import type { IMessage } from "$lib/interfaces/archipelago/Message";
 
-    const { messages } = $props<{
+    const { user, messages } = $props<{
+        user: string;
         messages: MessageManager;
     }>();
 
-    let logs: string[] = $state([]);
+    let logs: IMessage[] = $state([]);
 
-    messages.on("message", (content: string) => {
-        for (const message of content.split("\n")) {
-            logs.unshift(message);
-        }
+    messages.on("chat", (text: string, player: Player) => {
+        logs.unshift({type: "message", text: `${player.name}: ${text}`, item: null});
+    });
+
+    messages.on("serverChat", (text: string) => {
+          logs.unshift({type: "message", text: `Server: ${text}`, item: null});
+    });
+
+    messages.on("itemSent", (text: string, item:Item) => {
+        logs.unshift({type: "item", text: text, item: item});
     });
 
     function sendMessage() {
@@ -30,7 +38,9 @@
     class="overflow-auto w-full h-100 bg-gray-600 flex flex-col-reverse rounded-3xl border-gray-400 border-4 p-2 mb-3"
 >
     {#each logs as log}
-        <Message message={log}></Message>
+        {#key log}
+            <Message {user} message={log}></Message>
+        {/key}
     {/each}
 </div>
 

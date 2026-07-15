@@ -162,7 +162,7 @@
                             <div
                                 class="flex flex-col items-center jusify-center w-1/3"
                             >
-                                {#key to_complete}
+                                {#key completed}
                                     <ProgressBar
                                         max={to_complete}
                                         current={completed}
@@ -171,7 +171,7 @@
                                 {/key}
                             </div>
                         </div>
-                        <Logs messages={client.messages}></Logs>
+                        <Logs user={client.name} messages={client.messages}></Logs>
                     </div>
                 </div>
                 <div

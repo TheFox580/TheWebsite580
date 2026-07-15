@@ -60,7 +60,7 @@
         ? 'mb-5'
         : ''} relative"
 >
-    {#key progression}
+    {#key current}
         <div class="flex items-center justify-center absolute w-full h-full">
             <p
                 class="text-center"
