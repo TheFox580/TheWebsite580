@@ -16,10 +16,10 @@
 
     function getColor(): string{
       switch (realMessage.item?.flags){
-        case 1: return "purple-400"
-        case 2: return "blue-400"
-        case 3: return "red-400"
-        default: return "cyan-400"
+        case 1: return "oklch(71.4% 0.203 305.504)"
+        case 2: return "oklch(70.7% 0.165 254.624)"
+        case 3: return "oklch(70.4% 0.191 22.216)"
+        default: return "oklch(78.9% 0.154 211.53)"
       }
     }
 
@@ -31,10 +31,10 @@
             <span class="{realMessage.item?.sender.name === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.item?.sender.alias}</span>
             {#if isSelf()}
                 <span>found their</span>
-                <span class="text-{getColor()}">{realMessage.item?.name}</span>
+                <span style="color: {getColor()}">{realMessage.item?.name}</span>
             {:else}
                 <span>sent</span>
-                <span class="text-{getColor()}">{realMessage.item?.name}</span>
+                <span style="color: {getColor()}">{realMessage.item?.name}</span>
                 <span>to</span>
                 <span class="{realMessage.item?.receiver.name === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.item?.receiver.alias}</span>
             {/if}
