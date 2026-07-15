@@ -22,6 +22,14 @@
         logs.unshift({type: "item", text: text, item: item});
     });
 
+    messages.on("itemHinted", (text: string, item:Item) => {
+        logs.unshift({type: "hint", text: text, item: item});
+    });
+
+    messages.on("itemCheated", (text: string, item:Item) => {
+        logs.unshift({type: "cheat", text: text, item: item});
+    });
+
     function sendMessage() {
         const text_box = <HTMLInputElement>(
             document.getElementById("talk_to_server")
