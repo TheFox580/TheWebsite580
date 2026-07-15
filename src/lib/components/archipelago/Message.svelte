@@ -16,10 +16,10 @@
 
     function getColor(): string{
       switch (realMessage.item?.flags){
-        case 1: return "oklch(71.4% 0.203 305.504)"
-        case 2: return "oklch(70.7% 0.165 254.624)"
-        case 4: return "oklch(70.4% 0.191 22.216)"
-        default: return "oklch(78.9% 0.154 211.53)"
+        case 1: return "oklch(71.4% 0.203 305.504)" // Progression
+        case 2: return "oklch(62.3% 0.214 259.815)" // Useful
+        case 4: return "oklch(70.4% 0.191 22.216)" // Trap
+        default: return "oklch(78.9% 0.154 211.53)" // Normal
       }
     }
 
