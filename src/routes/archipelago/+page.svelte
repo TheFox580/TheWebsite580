@@ -72,7 +72,7 @@
                         version: {
                             build: 0,
                             major: 1,
-                            minor: 0,
+                            minor: 1,
                         },
                     },
                 )
