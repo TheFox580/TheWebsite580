@@ -30,6 +30,18 @@
         logs.unshift({type: "cheat", text: text, item: item});
     });
 
+    messages.on("goaled", (text: string, player:Player) => {
+      logs.unshift({type: "goal", text: `${player.name} has completed ${player.game} for Team ${player.team}`, item: null});
+    });
+
+    messages.on("connected", (text: string, player:Player, tags:string[]) => {
+      logs.unshift({type: "goal", text: `${player.name} playing ${player.game} connected to the server. Tags: ${tags}`, item: null});
+    });
+
+    messages.on("disconnected", (text: string, player:Player) => {
+      logs.unshift({type: "goal", text: `${player.name} playing ${player.game} disconnected from the server.`, item: null});
+    });
+
     function sendMessage() {
         const text_box = <HTMLInputElement>(
             document.getElementById("talk_to_server")
