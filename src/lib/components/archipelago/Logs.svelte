@@ -31,15 +31,19 @@
     });
 
     messages.on("goaled", (text: string, player:Player) => {
-      logs.unshift({type: "goal", text: `${player.name} has completed ${player.game} for Team ${player.team}`, item: null});
+      logs.unshift({type: "message", text: `${player.name} has completed ${player.game} for Team ${player.team}`, item: null});
     });
 
     messages.on("connected", (text: string, player:Player, tags:string[]) => {
-      logs.unshift({type: "goal", text: `${player.name} (Team ${player.team}) playing ${player.game} connected to the server. Tags: [${tags}]`, item: null});
+      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) playing ${player.game} connected to the server. Tags: [${tags}]`, item: null});
     });
 
     messages.on("disconnected", (text: string, player:Player) => {
-      logs.unshift({type: "goal", text: `${player.name} (Team ${player.team}) playing ${player.game} disconnected from the server.`, item: null});
+      logs.unshift({type: "message", text: `${player.name+1} (Team ${player.team}) playing ${player.game} disconnected from the server.`, item: null});
+    });
+
+    messages.on("tagsUpdated", (text: string, player:Player, tags:string[]) => {
+      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) updated their tags. Tags: [${tags}]`, item: null});
     });
 
     function sendMessage() {
