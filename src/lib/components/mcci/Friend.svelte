@@ -11,14 +11,15 @@
         isOnline = data.status.online ? "Online" : "Offline";
     }
 
-    let onlineColor: string = "text-neutral-500";
+    let onlineColor: string = "oklch(55.6% 0 none)";
 
     if (data.status) {
-        onlineColor = data.status.online ? "text-green-600" : "text-red-600";
+        onlineColor = data.status.online ? "oklch(62.7% 0.194 149.214)" : "oklch(57.7% 0.245 27.325)";
     }
 </script>
 
-<div class="flex rounded-[10px] border-4 p-2.5 border-neutral-500">
+<div class="flex rounded-[10px] border-4 p-2.5"
+    style="border-color: {onlineColor}">
     <CustomImage
         src="https://minotar.net/helm/{data.uuid.replaceAll('-', '')}/75"
         alt={data.username}
@@ -28,7 +29,7 @@
         <a href="/mcci/{data.username}" class="font-bold hover:underline"
             >{data.username}</a
         >
-        <span class="font-bold {onlineColor}">{isOnline}</span>
+        <span class="font-bold" style="color: {onlineColor}">{isOnline}</span>
     </div>
 </div>
 
