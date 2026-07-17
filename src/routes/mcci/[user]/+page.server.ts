@@ -153,6 +153,24 @@ export const load: PageServerLoad = async ({ params, fetch }) => {
                             }
                         }
                     }
+                    statistics {
+                      playtime: rotationValue(statisticKey: "playtime", rotation: LIFETIME)
+                      games_played: rotationValue(statisticKey: "games_played", rotation: LIFETIME)
+                      sky_battle_playtime: rotationValue(statisticKey: "sky_battle_playtime", rotation: LIFETIME)
+                      sky_battle_games_played: rotationValue(statisticKey: "sky_battle_games_played", rotation: LIFETIME)
+                      tgttos_playtime: rotationValue(statisticKey: "tgttos_playtime", rotation: LIFETIME)
+                      tgttos_games_played: rotationValue(statisticKey: "tgttos_games_played", rotation: LIFETIME)
+                      hitw_playtime: rotationValue(statisticKey: "hitw_playtime", rotation: LIFETIME)
+                      hitw_games_played: rotationValue(statisticKey: "hitw_games_played", rotation: LIFETIME)
+                      battle_box_playtime: rotationValue(statisticKey: "battle_box_playtime", rotation: LIFETIME)
+                      battle_box_games_played: rotationValue(statisticKey: "battle_box_games_played", rotation: LIFETIME)
+                      battle_box_arena_playtime: rotationValue(statisticKey: "battle_box_arena_playtime", rotation: LIFETIME)
+                      battle_box_arena_games_played: rotationValue(statisticKey: "battle_box_arena_games_played", rotation: LIFETIME)
+                      dynaball_playtime: rotationValue(statisticKey: "dynaball_playtime", rotation: LIFETIME)
+                      dynaball_games_played: rotationValue(statisticKey: "dynaball_games_played", rotation: LIFETIME)
+                      rocket_spleef_playtime: rotationValue(statisticKey: "rocket_spleef_playtime", rotation: LIFETIME)
+                      rocket_spleef_games_played: rotationValue(statisticKey: "rocket_spleef_games_played", rotation: LIFETIME)
+                    }
                     infinibag {
                         asset {
                             name

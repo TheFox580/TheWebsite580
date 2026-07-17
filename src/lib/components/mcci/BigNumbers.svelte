@@ -18,7 +18,7 @@
         return null;
     }
 
-    let faction: Object | null = getFaction();
+    const faction: Object | null = getFaction();
 </script>
 
 <div class="flex flex-row items-center justify-center w-9/10">

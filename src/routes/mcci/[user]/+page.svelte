@@ -7,6 +7,7 @@
     import BigBadges from "$lib/components/mcci/BigBadges.svelte";
     import AllCosmetics from "$lib/components/mcci/AllCosmetics.svelte";
     import Infinibag from "$lib/components/mcci/Infinibag.svelte";
+    import Statistics from "$lib/components/mcci/Statistics.svelte";
 
     const { data } = $props<{
         data: PageData;
@@ -29,6 +30,9 @@
         >
             <MainInfos {data}></MainInfos>
             <BigNumbers {data}></BigNumbers>
+            {#if data.statistics}
+                <Statistics data={data.statistics}></Statistics>
+            {/if}
             {#if data.collections}
                 <CurrentCosmetics
                     data={data.collections.equippedCosmetics}
