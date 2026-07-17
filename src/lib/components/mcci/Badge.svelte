@@ -134,15 +134,15 @@
     ></CustomImage>
     <div class="flex flex-col ml-2.5 justify-center w-full">
         <span class="font-bold text-white align-text-top"
-            >{data.badge.name}
+            >{data.stageProgress.length == stageCompleted ? (unobtainable ? "✅" : "✔️") : (!stageCompleted ? (unobtainable ? "⛔" :"❌") : "🟠")} {data.badge.name}
             {data.stageProgress.length > 1 && stageCompleted > 0
                 ? ` ${decimalToRoman(Math.min(data.stageProgress.length, stageCompleted + 1))} / ${decimalToRoman(data.stageProgress.length)}`
                 : ""}</span
         >
         <span class="font-bold mb-1.5" style="color:{badgeColor}"
             >{stageCompleted === 0
-                ? `0/${formatInt(data.stageProgress[0].progress.obtainable)}`
-                : `${formatInt(data.stageProgress[Math.min(data.stageProgress.length - 1, stageCompleted)].progress.obtained)} / ${formatInt(data.stageProgress[Math.min(data.stageProgress.length - 1, stageCompleted)].progress.obtainable)}`}</span
+                ? `0/${formatInt(data.stageProgress[0].progress.obtainable)} | 0%`
+                : `${formatInt(data.stageProgress[Math.min(data.stageProgress.length - 1, stageCompleted)].progress.obtained)} / ${formatInt(data.stageProgress[Math.min(data.stageProgress.length - 1, stageCompleted)].progress.obtainable)} | ${percentCompleted}%`}</span
         >
         <ProgressBar
             progress={data.stageProgress[

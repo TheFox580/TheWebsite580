@@ -217,12 +217,12 @@
         <h2 class="font-bold text-2xl mb-5">Color caption:</h2>
         <p class="font-bold flex flex-col justify-center text-center mb-20">
             <span class="text-red-800"
-                >Not obtained and no longer obtainable</span
+                >⛔ Not obtained and no longer obtainable</span
             >
-            <span class="text-red-600">Not obtained yet</span>
-            <span class="text-orange-600">Completing this badge / stage</span>
-            <span class="text-green-600">Obtained this badge</span>
-            <span class="text-green-900">Obtained and no longer obtainable</span
+            <span class="text-red-600">❌ Not obtained yet</span>
+            <span class="text-orange-600">🟠 Completing this badge / stage</span>
+            <span class="text-green-600">✔️ Obtained this badge</span>
+            <span class="text-green-900">✅ Obtained and no longer obtainable</span
             >
         </p>
         {#each badges as category}
