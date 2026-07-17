@@ -5,13 +5,13 @@
         data: Object;
     }>();
 
-    let isOnline: string = "Unknown";
+    let isOnline: string = $state("Unknown");
 
     if (data.status) {
         isOnline = data.status.online ? "Online" : "Offline";
     }
 
-    let onlineColor: string = "oklch(55.6% 0 none)";
+    let onlineColor: string = $state("oklch(55.6% 0 none)");
 
     if (data.status) {
         onlineColor = data.status.online ? "oklch(62.7% 0.194 149.214)" : "oklch(57.7% 0.245 27.325)";
