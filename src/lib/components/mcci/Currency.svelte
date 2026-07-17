@@ -21,7 +21,7 @@
         return res.split("").reverse().join("");
     }
 
-    let MAX_ROYAL_REP: number = 22380;
+    let MAX_ROYAL_REP: number = 22380; //It actually isn't correct cause i need to account for th higher tiers giving more tokens
 </script>
 
 <div class="flex flex-row justify-start items-center mb-2.5">
@@ -32,7 +32,7 @@
     ></CustomImage>
     <span class="font-bold"
         >{formatInt(data)}
-        {currency === "Royal Reputation" ? `/ ${formatInt(MAX_ROYAL_REP)}` : ""}
+        <!-- {currency === "Royal Reputation" ? `/ ${formatInt(MAX_ROYAL_REP)}` : ""} -->
         {currency}</span
     >
 </div>
