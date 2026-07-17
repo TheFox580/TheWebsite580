@@ -41,7 +41,7 @@
         customClass="w-[3em] h-[3em] mt-1.25 {isOwned ? '' : 'grayscale'}"
     ></CustomImage>
     <div class="flex flex-col ml-2.5">
-        <span class="mb-2.5 font-bold">{data.name}</span>
+        <span class="mb-2.5 font-bold">{isOwned ? "✅" : "❌"} {data.name}</span>
         <div class="flex flex-row w-[{1 * data.type.length}] h-[1.25em]">
             <CustomImage
                 src="https://islandcdn.themysterys.com/icons/rarity/{data.rarity.toLowerCase()}.png"
