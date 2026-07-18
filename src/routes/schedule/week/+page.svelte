@@ -11,8 +11,6 @@
 
     const correct_week: WeekSchedule = $state(weeks[0]); //This week
 
-    console.log(correct_week);
-
     function getDay(week_day: number){
       while (week_day < 1) week_day += 7;
       while (week_day > 7) week_day -= 7;

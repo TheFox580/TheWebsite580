@@ -11,10 +11,6 @@
     const current_streams: DaySchedule[] = data.current_streams;
     const next_streams: DaySchedule[] = data.next_streams;
 
-    console.log(old_streams);
-    console.log(current_streams);
-    console.log(next_streams);
-
     function getDay(week_day: number){
       while (week_day < 1) week_day += 7;
       while (week_day > 7) week_day -= 7;
