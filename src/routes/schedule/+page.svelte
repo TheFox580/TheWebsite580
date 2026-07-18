@@ -61,7 +61,7 @@
                     <p class="text-2xl text-green-400">🟢 Upcoming</p>
                     <p class="text-4xl">{next_stream.title}</p>
                     <p class="text-3xl">{next_stream.category}</p>
-                    <p class="text-2xl">{getMonth(new Date(next_stream.time).getMonth())} {new Date(next_stream.time).getDate()} from {z(new Date(next_stream.time).getHours())}:{z(new Date(next_stream.time).getMinutes())} to {z(new Date((next_stream.time+next_stream.estimated_length*60)*1000).getHours())}:{z(new Date((next_stream.time+next_stream.estimated_length*60)*1000).getMinutes())}</p>
+                    <p class="text-2xl">{getMonth(new Date(next_stream.time*1000).getMonth())} {new Date(next_stream.time*1000).getDate()} from {z(new Date(next_stream.time*1000).getHours())}:{z(new Date(next_stream.time*1000).getMinutes())} to {z(new Date((next_stream.time+next_stream.estimated_length*60)*1000).getHours())}:{z(new Date((next_stream.time+next_stream.estimated_length*60)*1000).getMinutes())}</p>
                 </div>
                 <img src="/img/schedule/{next_stream.image_name}" alt={next_stream.image_name} class="w-60 rounded-xl h-36"/>
             </div>
