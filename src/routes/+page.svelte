@@ -1,7 +1,15 @@
 <script lang="ts">
     let showDonationBanner: boolean = $state(false);
     const donationTitle: string = "Cube Championship: Pride 2026";
-    import { z, timeToGo } from "$lib/functions/funny_points_leaderboard/Time";
+    import { timeToGo } from "$lib/functions/funny_points_leaderboard/Time";
+    import type { LiveInfos } from "$lib/interfaces/twitch/liveInfos";
+    import { onMount } from "svelte";
+
+    const mainUserId = "126869447";
+    const altUserId = "975679501";
+    const frUserId = "689519040";
+
+    let liveInfos: LiveInfos = $state({isLive: false, game_name: "", is_mature: false, title: "", user_id: "", user_name: "", viewers: -1});
 
     const timeEvent: Date = new Date("2026-06-28T21:00:00Z");
 
@@ -22,6 +30,17 @@
             }
         });
     }
+
+    onMount(async () => {
+      liveInfos = (await (await fetch("https://thefox580-backend.zoelliotmitong.workers.dev/api/live/" + mainUserId)).json()).liveInfos;
+      if (liveInfos.isLive === false){
+        liveInfos = (await (await fetch("https://thefox580-backend.zoelliotmitong.workers.dev/api/live/" + altUserId)).json()).liveInfos;
+        if (liveInfos.isLive === false){
+          liveInfos = (await (await fetch("https://thefox580-backend.zoelliotmitong.workers.dev/api/live/" + frUserId)).json()).liveInfos;
+        }
+      }
+      console.log(liveInfos);
+    })
 </script>
 
 <svelte:head>
@@ -41,6 +60,29 @@
         </p>
     </div>
 </div>
+{#if liveInfos.isLive}
+    <a href="https://www.twitch.tv/{liveInfos.user_name}" target="_blank">
+        <div class="w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4 border-red-600 bg-red-900"
+            style="height: 100%;">
+            <div class="w-8/10 h-full text-white flex flex-col items-center mx-5 text-center">
+                <p class="text-2xl text-red-600 font-bold">🔴 LIVE on {liveInfos.user_name}</p>
+                <p class="text-2xl text-red-600 font-bold">{liveInfos.viewers} viewers</p>
+                <p class="text-4xl">{liveInfos.title}</p>
+                <p class="text-3xl">{liveInfos.game_name}</p>
+            </div>
+        </div>
+    </a>
+{:else}
+    <a href="https://thewebsite580.vercel.app/schedule" target="_blank">
+        <div class="w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4 border-green-600 bg-green-900 grayscale"
+            style="height: 100%;">
+            <div class="w-8/10 h-full text-white flex flex-col items-center mx-5 text-center">
+                <p class="text-2xl text-green-600 font-bold">🟢 Currently Offiline</p>
+                <p class="text-3xl">Click to check the schedule</p>
+            </div>
+        </div>
+    </a>
+{/if}
 {#if showDonationBanner}
     <div
         class="flex flex-col justify-center items-center my-20 text-2xl bg-orange-600 py-5 rounded-4xl h-50"
