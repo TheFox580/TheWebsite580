@@ -1,7 +1,8 @@
 <script lang="ts">
-    import type { DaySchedule, WeekSchedule } from "$lib/interfaces/schedule/Schedule";
+    import type { Stream, WeekSchedule } from "$lib/interfaces/schedule/Schedule";
     import type { PageData } from "./$types";
     import { z } from "$lib/functions/funny_points_leaderboard/Time";
+    import { getDay, getMonth, isFuture, isNow, isPast } from "$lib/functions/schedule/streamsInfo";
 
     const { data } = $props<{
         data: PageData;
@@ -10,63 +11,6 @@
     const weeks: WeekSchedule[] = data.weeks;
 
     const correct_week: WeekSchedule = $state(weeks[0]); //This week
-
-    function getDay(week_day: number){
-      while (week_day < 1) week_day += 7;
-      while (week_day > 7) week_day -= 7;
-      switch (week_day){
-        case 1: return "Monday";
-        case 2: return "Tuesday";
-        case 3: return "Wednesday";
-        case 4: return "Thrusday";
-        case 5: return "Friday";
-        case 6: return "Satruday";
-        case 7: return "Sunday";
-        default: return "None"
-      }
-    }
-
-    function getMonth(month: number){
-      while (month < 0) month += 12;
-      while (month > 11) month -= 12;
-      switch (month){
-        case 0: return "January";
-        case 1: return "February";
-        case 2: return "March";
-        case 3: return "April";
-        case 4: return "May";
-        case 5: return "June";
-        case 6: return "July";
-        case 7: return "August";
-        case 8: return "September";
-        case 9: return "October";
-        case 10: return "November";
-        case 11: return "December";
-        default: return "None"
-      }
-    }
-
-    function isNow(stream: DaySchedule): boolean{
-      const end_time = new Date(stream.time.getTime()+stream.estimated_length*60*1000);
-      const now = new Date();
-
-      return stream.time <= now && now < end_time;
-    }
-
-    function isPast(stream: DaySchedule): boolean{
-      const end_time = new Date(stream.time.getTime()+stream.estimated_length*60*1000);
-      const now = new Date();
-
-      return end_time <= now;
-    }
-
-    function isFuture(stream: DaySchedule): boolean{
-      const now = new Date();
-
-      return now < stream.time;
-    }
-
-
 </script>
 
 <svelte:head>
@@ -87,7 +31,7 @@
             <a href="https://www.twitch.tv/{stream.channel}" target="_blank">
                 <div class="{isNow(stream) ? "live" : (isPast(stream) ? "past" : "future")} w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
                     style="height: {Math.round((1/correct_week.days.length)*100)}%;">
-                    <div class="w-8/10 h-full text-white flex flex-col items-center mx-5 text-center">
+                    <div class="w-8/10 h-full text-white flex flex-col items-center justify-center mx-5 text-center">
                         {#if isNow(stream)}
                             <p class="text-2xl text-red-600 font-bold">🔴 LIVE</p>
                         {:else if isFuture(stream)}
@@ -97,7 +41,7 @@
                         {/if}
                         <p class="text-4xl">{stream.title}</p>
                         <p class="text-3xl">{stream.category}</p>
-                        <p class="text-2xl">{getMonth(stream.time.getMonth())} {stream.time.getDate()} from {z(stream.time.getHours())}:{z(stream.time.getMinutes())} to {z(new Date(stream.time.getTime()+stream.estimated_length*60*1000).getHours())}:{z(new Date(stream.time.getTime()+stream.estimated_length*60*1000).getMinutes())}</p>
+                        <p class="text-2xl">{getMonth(new Date(stream.time).getMonth())} {new Date(stream.time).getDate()} from {z(new Date(stream.time).getHours())}:{z(new Date(stream.time).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
                     </div>
                    <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
                 </div>

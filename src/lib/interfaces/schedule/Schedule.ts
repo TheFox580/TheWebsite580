@@ -1,5 +1,5 @@
-export interface DaySchedule {
-  time: Date;
+export interface Stream {
+  time: number;
   title: string;
   category: string;
   estimated_length: number;
@@ -10,5 +10,5 @@ export interface DaySchedule {
 export interface WeekSchedule {
   start_week: Date;
   end_week: Date;
-  days: DaySchedule[];
+  days: Stream[];
 }
