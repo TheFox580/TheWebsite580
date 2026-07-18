@@ -4,9 +4,7 @@ import type {
 } from "$lib/interfaces/funny_points_leaderboard/Point";
 import type {
   SeasonDate,
-  SeasonDateDB,
 } from "$lib/interfaces/funny_points_leaderboard/Date";
-import type { Season } from "$lib/interfaces/funny_points_leaderboard/Season";
 import type {
   Score,
   Scores,

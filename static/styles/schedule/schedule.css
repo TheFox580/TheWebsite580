@@ -1,0 +1,26 @@
+html {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.past {
+    background-color: oklch(39.3% 0.095 152.535);
+    border-color: oklch(72.3% 0.219 149.579);
+    filter: grayscale(100%);
+}
+
+.live {
+    background-color: oklch(39.6% 0.141 25.723);
+    border-color: oklch(63.7% 0.237 25.331);
+}
+
+.future {
+    background-color: oklch(39.3% 0.095 152.535);
+    border-color: oklch(72.3% 0.219 149.579);
+    filter: grayscale(25%);
+}
