@@ -39,7 +39,6 @@
           liveInfos = (await (await fetch("https://thefox580-backend.zoelliotmitong.workers.dev/api/live/" + frUserId)).json()).liveInfos;
         }
       }
-      console.log(liveInfos);
     })
 </script>
 
