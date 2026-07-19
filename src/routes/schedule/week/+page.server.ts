@@ -26,6 +26,11 @@ export const load: PageServerLoad = async () => {
 
     for await (const week_db of week_schedule) {
       const week = (({ _id, ...object }) => object)(week_db);
+      for (const stream of week.days) {
+        const index = week.days.indexOf(stream);
+        const new_week = (({ _id, ...object }) => object)(stream); //yeah but it still has it cause it sucks and everything needs IDs fuck this
+        week.days[index] = new_week;
+      }
       weeks.push(week);
     }
 
