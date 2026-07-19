@@ -3,36 +3,15 @@
     import { onDestroy, onMount } from "svelte";
     import { cubicOut } from "svelte/easing";
 
+    const { items } = $props<{
+        items: Object[];
+    }>();
+
     let wheel: Wheel | null = null;
     let choice_winner: string = $state("")
     let is_spinning: boolean = false;
     const wheel_content = {
-      items: [
-        {
-          label: 'Portal 2',
-          backgroundColor: getColor(0),
-        },
-        {
-          label: 'Worms W.M.D.',
-          backgroundColor: getColor(1),
-        },
-        {
-          label: 'Stick Fight: The Game',
-          backgroundColor: getColor(2),
-        },
-        {
-          label: 'Hollow Knight',
-          backgroundColor: getColor(3),
-        },
-        {
-          label: 'Uno Infinity',
-          backgroundColor: getColor(4),
-        },
-        {
-          label: 'The Stanley Parable: Ultra Deluxe',
-          backgroundColor: getColor(5),
-        },
-      ]
+      items
     };
 
     onMount(() => {
@@ -62,14 +41,6 @@
       }
     }
 
-    function getColor(current_int: number): string{
-      const result = current_int % 4;
-      if (result === 0) return "red";
-      else if (result === 1) return "blue";
-      else if (result === 2) return "green";
-      return "yellow";
-    }
-
     function refreshValues(){
       if (wheel != null) {
         let items: any[] = [];
@@ -95,12 +66,7 @@
             <button class="bg-blue-700 py-1 px-4 my-1 mx-2 rounded-xl cursor-pointer" onclick={spinWheel}>Spin the wheel</button>
             <button class="bg-blue-700 py-1 px-4 my-1 mx-2 rounded-xl cursor-pointer" onclick={refreshValues}>Refresh Values</button></div>
         <h3 class="text-4xl mt-5">Wheel Values: </h3>
-        <textarea name="values" id="values" class="bg-white text-black h-6/10 w-full mt-2" placeholder="Replace me with text">Portal 2
-Worms W.M.D.
-Stick Fight: The Game
-Hollow Knight
-Uno Infinity
-The Stanley Parable: Ultra Deluxe</textarea>
+        <textarea name="values" id="values" class="bg-white text-black h-6/10 w-full mt-2" placeholder="Replace me with text"></textarea>
         {#if choice_winner != ""}
             <h3 class="text-4xl mt-2">Winner is: "{choice_winner}"</h3>
         {:else}

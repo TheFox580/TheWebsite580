@@ -4,6 +4,7 @@
     import { getScoresForGame } from "$lib/functions/lan/getGameInfos"
     import type { Game, GameResult, Games } from "$lib/interfaces/lan/Games";
     import type { Player } from "$lib/interfaces/lan/Players";
+    import { getColor } from "$lib/functions/lan/extra";
 
     let menu: string = $state("Scores")
 
@@ -108,7 +109,32 @@
         </div>
     {:else if menu === "Roue"}
         <div class="w-full h-8/10">
-            <Wheel></Wheel>
+            <Wheel items={[
+              {
+                label: 'Portal 2',
+                backgroundColor: getColor(0),
+              },
+              {
+                label: 'Worms W.M.D.',
+                backgroundColor: getColor(1),
+              },
+              {
+                label: 'Stick Fight: The Game',
+                backgroundColor: getColor(2),
+              },
+              {
+                label: 'Hollow Knight',
+                backgroundColor: getColor(3),
+              },
+              {
+                label: 'Uno Infinity',
+                backgroundColor: getColor(4),
+              },
+              {
+                label: 'The Stanley Parable: Ultra Deluxe',
+                backgroundColor: getColor(5),
+              },
+            ]}></Wheel>
         </div>
     {/if}
 </div>
