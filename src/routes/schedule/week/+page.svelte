@@ -41,7 +41,7 @@
                         {/if}
                         <p class="text-4xl">{stream.title}</p>
                         <p class="text-3xl">{stream.category}</p>
-                        <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
+                        <p class="text-2xl">{getDay(new Date(stream.time*1000).getDay())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
                     </div>
                    <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
                 </div>
