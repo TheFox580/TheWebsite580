@@ -1,4 +1,5 @@
 <script lang="ts">
+    import StreamEmbed from "$lib/components/twitch/StreamEmbed.svelte";
     let showDonationBanner: boolean = $state(false);
     const donationTitle: string = "Cube Championship: Pride 2026";
     import { timeToGo } from "$lib/functions/funny_points_leaderboard/Time";
@@ -71,6 +72,7 @@
             </div>
         </div>
     </a>
+    <StreamEmbed username={liveInfos.user_name}></StreamEmbed>
 {:else}
     <a href="https://thewebsite580.vercel.app/schedule" target="_blank">
         <div class="w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4 border-green-600 bg-green-900 grayscale"
@@ -81,6 +83,7 @@
             </div>
         </div>
     </a>
+    <StreamEmbed username={"TheFox580"}></StreamEmbed>
 {/if}
 {#if showDonationBanner}
     <div
