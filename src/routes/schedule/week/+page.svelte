@@ -11,6 +11,8 @@
     const weeks: WeekSchedule[] = data.weeks;
 
     const correct_week: WeekSchedule = $state(weeks[0]); //This week
+
+    correct_week.days.sort((a, b) => a.time < b.time ? -1 : (b.time < a.time ? 1 : 0));
 </script>
 
 <svelte:head>
