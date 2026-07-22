@@ -51,13 +51,8 @@
 <div class="flex flex-col justify-center items-center my-20 text-2xl">
     <div class="w-6/10 text-center">
         <h1 class="font-bold text-5xl mb-20">Hey, you're here !</h1>
-        <p>Welcome on my website...</p>
-        <p>It is currently going under some renovation, come back later !</p>
-        <p>
-            If you want to check out the old (bad) (and broken, even though I
-            tried fixing it as best as i could) version, you can
-            <a href="/archived">click here <strong>↗</strong></a>
-        </p>
+        <p>Welcome on my website.</p>
+        <p>I keep adding more random stuff to it, so it's gonna change a lot :3.</p>
     </div>
 </div>
 {#if liveInfos.isLive}
