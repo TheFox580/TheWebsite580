@@ -9,10 +9,13 @@
         data: PageData;
     }>();
 
-    const streams: Stream[] = $state(data.streams);
-
+    const old_streams: Stream[] = $state(data.old_streams);
+    const current_streams: Stream[] = $state(data.current_streams);
+    const next_streams: Stream[] = $state(data.next_streams);
     let menu: string = $state("scheduled");
     let message_added: string = $state("")
+
+    console.log(old_streams, current_streams, next_streams)
 
     //const backend_url = "http://127.0.0.1:8787";
     const backend_url = "https://thefox580-backend.zoelliotmitong.workers.dev";
@@ -25,10 +28,18 @@
     }
 
     function sortStreams(){
-      streams.sort((a, b) => {
+      old_streams.sort((a, b) => {
+        return (a.time < b.time ? -1 : (b.time < a.time ? 1 : (a.estimated_length < b.estimated_length ? -1 : (b.estimated_length < a.estimated_length ? 1 : 0))))
+      })
+      current_streams.sort((a, b) => {
+        return (a.time < b.time ? -1 : (b.time < a.time ? 1 : (a.estimated_length < b.estimated_length ? -1 : (b.estimated_length < a.estimated_length ? 1 : 0))))
+      })
+      next_streams.sort((a, b) => {
         return (a.time < b.time ? -1 : (b.time < a.time ? 1 : (a.estimated_length < b.estimated_length ? -1 : (b.estimated_length < a.estimated_length ? 1 : 0))))
       })
     }
+
+    sortStreams();
 
     async function addStream(){
 
@@ -59,7 +70,7 @@
           },
           body: JSON.stringify(stream)
           });
-        streams.push(stream);
+        next_streams.push(stream);
         sortStreams();
         message_added = `"${stream.title}" has been added. Check "Stream Schedule" to see it.`
       }
@@ -120,34 +131,81 @@
     </div>
     <div class="w-auto h-auto">
         {#if menu === "scheduled"}
-          {#each streams as stream, index}
-              <div class="flex flex-row items-center w-full h-auto">
-                <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
-                    <div class="{isNow(stream) ? "live" : (isPast(stream) ? "past" : "future")} w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
-                        >
-                        <div class="w-8/10 h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
-                            {#if isNow(stream)}
-                                <p class="text-2xl text-red-600 font-bold">🔴 LIVE</p>
-                            {:else if isFuture(stream)}
-                                <p class="text-2xl text-green-400">🟢 Upcoming</p>
-                            {:else}
-                                <p class="text-2xl text-green-400">🟢 Done</p>
-                            {/if}
-                            <p class="text-4xl">{stream.title}</p>
-                            <p class="text-3xl">{stream.category}</p>
-                            <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
+        <div class="w-full flex flex-col items-center justify-center px-2 py-5 my-5">
+                <p class="text-2xl text-red-600 font-bold">🔴 LIVE</p>
+                <div class="w-9/10">
+                    {#each current_streams as stream, index}
+                        <div class="flex flex-row items-center w-full h-auto">
+                          <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
+                              <div class="live w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
+                                  >
+                                  <div class="w-8/10 h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                      <p class="text-4xl">{stream.title}</p>
+                                      <p class="text-3xl">{stream.category}</p>
+                                      <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
+                                  </div>
+                                  <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
+                              </div>
+                          </a>
+                          <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
+                              removeStream(stream);
+                              current_streams.splice(index, 1);
+                              sortStreams();
+                          }}>Delete Stream</button>
                         </div>
-                        <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
-                    </div>
-                </a>
-                <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
-                    removeStream(stream);
-                    streams.splice(index, 1);
-                    sortStreams();
-                }}>Delete Stream</button>
-
-              </div>
-          {/each}
+                    {/each}
+                </div>
+        </div>
+          <div class="w-full flex flex-col items-center justify-center px-2 py-5 my-5">
+                  <p class="text-2xl text-green-400 font-bold">🟢 Upcoiming</p>
+                  <div class="w-9/10">
+                      {#each next_streams as stream, index}
+                          <div class="flex flex-row items-center w-full h-auto">
+                            <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
+                                <div class="future w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
+                                    >
+                                    <div class="w-8/10 h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                        <p class="text-4xl">{stream.title}</p>
+                                        <p class="text-3xl">{stream.category}</p>
+                                        <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
+                                    </div>
+                                    <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
+                                </div>
+                            </a>
+                            <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
+                                removeStream(stream);
+                                next_streams.splice(index, 1);
+                                sortStreams();
+                            }}>Delete Stream</button>
+                          </div>
+                      {/each}
+                  </div>
+          </div>
+          <div class="w-full flex flex-col items-center justify-center px-2 py-5 my-5">
+                  <p class="text-2xl text-green-400 font-bold grayscale">🟢 Done</p>
+                  <div class="w-9/10">
+                      {#each old_streams as stream, index}
+                          <div class="flex flex-row items-center w-full h-auto">
+                            <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
+                                <div class="past w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
+                                    >
+                                    <div class="w-8/10 h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                        <p class="text-4xl">{stream.title}</p>
+                                        <p class="text-3xl">{stream.category}</p>
+                                        <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
+                                    </div>
+                                    <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
+                                </div>
+                            </a>
+                            <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
+                                removeStream(stream);
+                                old_streams.splice(index, 1);
+                                sortStreams();
+                            }}>Delete Stream</button>
+                          </div>
+                      {/each}
+                  </div>
+          </div>
         {:else}
         <div class="w-120 h-full flex flex-col items-center justify-center">
             <p class="text-4xl my-5">Add a new stream:</p>

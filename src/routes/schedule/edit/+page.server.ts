@@ -16,7 +16,10 @@ export const load: PageServerLoad = async ({ params, locals }) => {
   if (!allowedIDs.includes(session?.providerAccountId)) {
     redirect(303, "/schedule");
   }
-  const streams: Stream[] = [];
+
+  const old_streams: Stream[] = [];
+  const current_streams: Stream[] = [];
+  const next_streams: Stream[] = [];
 
   let client = new MongoClient(MONGO_DB_URL, {
     serverApi: {
@@ -37,7 +40,13 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
     for await (const stream_db of streams_db) {
       const stream = (({ _id, ...object }) => object)(stream_db);
-      streams.push(stream);
+      if ((stream.time * 1000) > new Date().getTime()) {
+        next_streams.push(stream);
+      }
+      else if ((stream.time + stream.estimated_length * 60) * 1000 < new Date().getTime()) {
+        old_streams.push(stream);
+      }
+      else current_streams.push(stream);
     }
 
   } finally {
@@ -46,6 +55,8 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
   return {
     session,
-    streams
+    old_streams,
+    current_streams,
+    next_streams,
   };
 };
