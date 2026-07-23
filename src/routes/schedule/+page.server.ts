@@ -29,7 +29,7 @@ export const load: PageServerLoad = async () => {
     for await (const old_stream_db of old_streams_db) {
       const old_stream = (({ _id, ...object }) => object)(old_stream_db);
       if ((old_stream.time + old_stream.estimated_length * 60) * 1000 < new Date().getTime()) {
-        if (old_streams.length >= 3) old_streams.shift(); //Only get the last 3 streams
+        if (old_streams.length >= 2) old_streams.shift(); //Only get the last 2 streams
         old_streams.push(old_stream);
       }
       else current_streams.push(old_stream);
