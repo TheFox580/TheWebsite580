@@ -44,7 +44,7 @@
             <div class="live w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
                 style="height: {Math.round((1/old_streams.length + current_streams.length + next_streams.length)*100)}%;">
                 <div class="w-8/10 h-full text-white flex flex-col items-center justify-center mx-5 text-center">
-                    <p class="text-2xl text-red-600 font-bold">🔴 LIVE</p>
+                    <p class="text-2xl text-red-600 font-bold">🔴 LIVE on {current_stream.channel}</p>
                     <p class="text-4xl">{current_stream.title}</p>
                     <p class="text-3xl">{current_stream.category}</p>
                     <p class="text-2xl">{getMonth(new Date(current_stream.time*1000).getMonth())} {new Date(current_stream.time*1000).getDate()} from {z(new Date(current_stream.time*1000).getHours())}:{z(new Date(current_stream.time*1000).getMinutes())} to {z(new Date((current_stream.time+current_stream.estimated_length*60)*1000).getHours())}:{z(new Date((current_stream.time+current_stream.estimated_length*60)*1000).getMinutes())}</p>
