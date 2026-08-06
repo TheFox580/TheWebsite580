@@ -59,6 +59,122 @@
         },
 
       */
+
+      {
+        game_id: 7,
+        is_seeding: true,
+        is_loser_final: false,
+        is_winner_final: false,
+        player_standings: [
+          {player_id: 1, points_diff: 4, won: true},
+          {player_id: 2, points_diff: 2, won: false},
+          {player_id: 3, points_diff: 1, won: false},
+        ]
+      },
+      {
+        game_id: 3,
+        is_seeding: true,
+        is_loser_final: false,
+        is_winner_final: false,
+        player_standings: [
+          {player_id: 1, points_diff: 2, won: false},
+          {player_id: 2, points_diff: 1, won: false},
+          {player_id: 3, points_diff: 4, won: true},
+        ]
+      },
+      {
+        game_id: 6,
+        is_seeding: true,
+        is_loser_final: false,
+        is_winner_final: false,
+        player_standings: [
+          {player_id: 1, points_diff: 1, won: false},
+          {player_id: 2, points_diff: 4, won: true},
+          {player_id: 3, points_diff: 2, won: false},
+        ]
+      },
+      {
+        game_id: 5,
+        is_seeding: true,
+        is_loser_final: false,
+        is_winner_final: false,
+        player_standings: [
+          {player_id: 1, points_diff: 2, won: false},
+          {player_id: 2, points_diff: 1, won: false},
+          {player_id: 3, points_diff: 4, won: true},
+        ]
+      },
+      {
+        game_id: 2,
+        is_seeding: true,
+        is_loser_final: false,
+        is_winner_final: false,
+        player_standings: [
+          {player_id: 1, points_diff: 1, won: false},
+          {player_id: 2, points_diff: 2, won: false},
+          {player_id: 3, points_diff: 4, won: true},
+        ]
+      },
+      {
+        game_id: 8,
+        is_seeding: false,
+        is_loser_final: true,
+        is_winner_final: false,
+        player_standings: [
+          {player_id: 1, points_diff: 0, won: false},
+          {player_id: 2, points_diff: 1, won: true},
+        ]
+      },
+      {
+        game_id: 3,
+        is_seeding: false,
+        is_loser_final: true,
+        is_winner_final: false,
+        player_standings: [
+          {player_id: 1, points_diff: 1, won: true},
+          {player_id: 2, points_diff: 0, won: false},
+        ]
+      },
+      {
+        game_id: 5,
+        is_seeding: false,
+        is_loser_final: true,
+        is_winner_final: false,
+        player_standings: [
+          {player_id: 1, points_diff: 1, won: true},
+          {player_id: 2, points_diff: 0, won: false},
+        ]
+      },
+      {
+        game_id: 8,
+        is_seeding: false,
+        is_loser_final: false,
+        is_winner_final: true,
+        player_standings: [
+          {player_id: 1, points_diff: 0, won: false},
+          {player_id: 3, points_diff: 1, won: true},
+        ]
+      },
+      {
+        game_id: 6,
+        is_seeding: false,
+        is_loser_final: false,
+        is_winner_final: true,
+        player_standings: [
+          {player_id: 1, points_diff: 0, won: false},
+          {player_id: 3, points_diff: 1, won: true},
+        ]
+      },
+      {
+        game_id: 3,
+        is_seeding: false,
+        is_loser_final: false,
+        is_winner_final: true,
+        player_standings: [
+          {player_id: 1, points_diff: 0, won: false},
+          {player_id: 3, points_diff: 1, won: true},
+        ]
+      },
     ];
 
 </script>
@@ -94,7 +210,7 @@
                 <div class="w-full h-auto flex flex-col items-center">
                     {#each game_results as game_result, index}
                         <div class="w-full h-auto flex flex-col items-center mb-10">
-                            <h3 class="text-4xl mb-3">Jeu {index+1} : {games.find((game) => game.game_id === game_result.game_id)?.name} ({game_result.is_seeding ? "Seeding" : (game_result.is_loser_final ? "Finale perdante" : "Finale g agante")})</h3>
+                            <h3 class="text-4xl mb-3">Jeu {index+1} : {games.find((game) => game.game_id === game_result.game_id)?.name} ({game_result.is_seeding ? "Seeding" : (game_result.is_loser_final ? "Finale perdante" : "Finale gagante")})</h3>
                             <h4 class="text-3xl mb-3">Mode de jeu: {games.find((game) => game.game_id === game_result.game_id)?.game_mode}</h4>
                             {#each getScoresForGame(players, game_result) as player, index}
                                 <h5 class="text-2xl mt-1">{index+1 === 1 ? "🥇" : (index+1 === 2 ? "🥈" : (index+1 === 3 ? "🥉" : ""))} {index+1}. {player.name}: <span style="color: {player.points > 0 ? 'lime' : (player.points < 0 ? 'red' : 'orange')}">{player.points} point{player.points != 1 ? "s" : ""}</span></h5>
