@@ -1,7 +1,7 @@
 <script lang="ts">
     import StreamEmbed from "$lib/components/twitch/StreamEmbed.svelte";
     let showDonationBanner: boolean = $state(false);
-    const donationTitle: string = "Cube Championship: Pride 2026";
+    const donationTitle: string = "Streamers for Dreamers 2026";
     import { timeToGo } from "$lib/functions/funny_points_leaderboard/Time";
     import type { LiveInfos } from "$lib/interfaces/twitch/liveInfos";
     import { onMount } from "svelte";
@@ -12,7 +12,7 @@
 
     let liveInfos: LiveInfos = $state({isLive: false, game_name: "", is_mature: false, title: "", user_id: "", user_name: "", viewers: -1});
 
-    const timeEvent: Date = new Date("2026-06-28T21:00:00Z");
+    const timeEvent: Date = new Date("2026-08-16T17:00:00Z");
 
     let timeLeft = $state(timeToGo(timeEvent));
 
@@ -55,6 +55,18 @@
         <p>I keep adding more random stuff to it, so it's gonna change a lot :3.</p>
     </div>
 </div>
+{#if showDonationBanner}
+    <div
+        class="flex flex-col justify-center items-center my-20 text-2xl bg-orange-600 py-5 rounded-4xl h-50"
+    >
+        <h2 class="text-5xl mb-2">
+            <a href="/donate" target="_blank"
+                >Click here to donate for {donationTitle} <strong>↗</strong></a
+            >
+        </h2>
+        <h3 class="text-3xl">{timeLeft}</h3>
+    </div>
+{/if}
 {#if liveInfos.isLive}
     <a href="https://www.twitch.tv/{liveInfos.user_name}" target="_blank">
         <div class="w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4 border-red-600 bg-red-900"
@@ -79,18 +91,6 @@
         </div>
     </a>
     <StreamEmbed username={"TheFox580"}></StreamEmbed>
-{/if}
-{#if showDonationBanner}
-    <div
-        class="flex flex-col justify-center items-center my-20 text-2xl bg-orange-600 py-5 rounded-4xl h-50"
-    >
-        <h2 class="text-5xl mb-2">
-            <a href="/donate" target="_blank"
-                >Click here to donate for {donationTitle} <strong>↗</strong></a
-            >
-        </h2>
-        <h3 class="text-3xl">{timeLeft}</h3>
-    </div>
 {/if}
 <div class="flex flex-col justify-center items-center my-20 text-2xl">
     <h2 class="text-3xl">

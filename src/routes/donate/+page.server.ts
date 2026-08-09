@@ -2,6 +2,14 @@ import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
+  //SFD 2026
+
+  redirect(
+    303,
+    "https://donate.tiltify.com/582785d6-164e-418d-8b6a-dd76ab5ac43d/amount"
+  )
+
+
   // CC: Pride 2026
 
   redirect(
