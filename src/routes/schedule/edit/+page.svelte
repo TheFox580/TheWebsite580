@@ -15,8 +15,6 @@
     let menu: string = $state("scheduled");
     let message_added: string = $state("")
 
-    console.log(old_streams, current_streams, next_streams)
-
     //const backend_url = "http://127.0.0.1:8787";
     const backend_url = "https://thefox580-backend.zoelliotmitong.workers.dev";
 
@@ -87,6 +85,10 @@
       });
       sortStreams();
     }
+
+    function isEmptyOrSpaces(str:string): boolean{
+        return str === null || str.match(/^ *$/) !== null;
+    }
 </script>
 
 
@@ -139,12 +141,14 @@
                           <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
                               <div class="live w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
                                   >
-                                  <div class="w-8/10 h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                  <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
                                       <p class="text-4xl">{stream.title}</p>
                                       <p class="text-3xl">{stream.category}</p>
                                       <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
                                   </div>
-                                  <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
+                                  {#if !isEmptyOrSpaces(stream.image_name)}
+                                    <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
+                                  {/if}
                               </div>
                           </a>
                           <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
@@ -164,12 +168,14 @@
                             <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
                                 <div class="future w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
                                     >
-                                    <div class="w-8/10 h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                    <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
                                         <p class="text-4xl">{stream.title}</p>
                                         <p class="text-3xl">{stream.category}</p>
                                         <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
                                     </div>
-                                    <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
+                                    {#if !isEmptyOrSpaces(stream.image_name)}
+                                      <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
+                                    {/if}
                                 </div>
                             </a>
                             <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
@@ -189,12 +195,14 @@
                             <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
                                 <div class="past w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
                                     >
-                                    <div class="w-8/10 h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                    <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
                                         <p class="text-4xl">{stream.title}</p>
                                         <p class="text-3xl">{stream.category}</p>
                                         <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
                                     </div>
-                                    <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
+                                    {#if !isEmptyOrSpaces(stream.image_name)}
+                                      <img src="/img/schedule/{stream.image_name}" alt={stream.image_name} class="w-60 rounded-xl h-36"/>
+                                    {/if}
                                 </div>
                             </a>
                             <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
