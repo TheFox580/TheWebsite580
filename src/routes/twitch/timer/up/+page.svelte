@@ -47,5 +47,5 @@
 <button
   class="w-full h-screen flex flex-col justify-center items-center"
   onclick={toggleTimer}>
-    <p class="text-7xl" style="color:{color};">{getFormattedTime()}</p>
+    <p class="text-7xl" style="color:{color}; text-shadow: 2px 2px 3px black;">{getFormattedTime()}</p>
 </button>
