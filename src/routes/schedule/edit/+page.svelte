@@ -215,101 +215,103 @@
                   </div>
           </div>
         {:else}
-        <div class="w-120 h-full flex flex-col items-center justify-center">
-            <p class="text-4xl my-5">Add a new stream:</p>
-            <div
-                class="flex flex-row justify-between items-center w-full"
-            >
-                <label for="title">Title : </label>
-                <input
-                    type="text"
-                    placeholder="Stream Title"
-                    id="title"
-                    value=""
-                    required
-                    class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                />
-            </div>
-            <div
-                class="flex flex-row justify-between items-center w-full"
-            >
-                <label for="category">Category : </label>
-                <input
-                    type="text"
-                    placeholder="Category from Twitch"
-                    id="category"
-                    value=""
-                    required
-                    class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                />
-            </div>
-            <div
-                class="flex flex-row justify-between items-center w-full"
-            >
-                <label for="stream-time">Stream time : </label>
-                <input
-                    type="datetime-local"
-                    placeholder="Stream Time"
-                    id="stream-time"
-                    value=""
-                    required
-                    class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                />
-            </div>
-            <div
-                class="flex flex-row justify-between items-center w-full"
-            >
-                <label for="duration"
-                    >Estimated Duration (in minutes) :</label
-                >
-                <input
-                    type="numeric"
-                    placeholder="Estimated duration"
-                    id="duration"
-                    value=""
-                    required
-                    class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                />
-            </div>
-            <div
-                class="flex flex-row justify-between items-center w-full"
-            >
-                <label for="image">Image name : </label>
-                <input
-                    type="text"
-                    placeholder="Image from /static/img"
-                    id="image"
-                    value=""
-                    required
-                    class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                />
-            </div>
-            <div
-                class="flex flex-row justify-between items-center w-full"
-            >
-                <label for="channel">Channel name : </label>
-                <input
-                    type="text"
-                    placeholder="Twitch Username"
-                    id="channel"
-                    value=""
-                    required
-                    class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                />
-            </div>
-        </div>
-        <div class="flex flex-col justify-center items-center mx-2">
-            <button
-                title="Add stream"
-                class="cursor-pointer px-3 py-1 bg-green-500 rounded-2xl mt-2"
-                onclick={async () => {
-                  await addStream();
-                }}
-                >Add stream</button
-            >
-            {#if message_added}
-                <p class="text-2xl text-green-500">{message_added}</p>
-            {/if}
+        <div class="w-full h-full flex flex-col items-center justify-center">
+          <div class="w-120 h-full flex flex-col items-center justify-center">
+              <p class="text-4xl my-5">Add a new stream:</p>
+              <div
+                  class="flex flex-row justify-between items-center w-full"
+              >
+                  <label for="title">Title : </label>
+                  <input
+                      type="text"
+                      placeholder="Stream Title"
+                      id="title"
+                      value=""
+                      required
+                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
+                  />
+              </div>
+              <div
+                  class="flex flex-row justify-between items-center w-full"
+              >
+                  <label for="category">Category : </label>
+                  <input
+                      type="text"
+                      placeholder="Category from Twitch"
+                      id="category"
+                      value=""
+                      required
+                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
+                  />
+              </div>
+              <div
+                  class="flex flex-row justify-between items-center w-full"
+              >
+                  <label for="stream-time">Stream time : </label>
+                  <input
+                      type="datetime-local"
+                      placeholder="Stream Time"
+                      id="stream-time"
+                      value=""
+                      required
+                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
+                  />
+              </div>
+              <div
+                  class="flex flex-row justify-between items-center w-full"
+              >
+                  <label for="duration"
+                      >Estimated Duration (in minutes) :</label
+                  >
+                  <input
+                      type="numeric"
+                      placeholder="Estimated duration"
+                      id="duration"
+                      value=""
+                      required
+                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
+                  />
+              </div>
+              <div
+                  class="flex flex-row justify-between items-center w-full"
+              >
+                  <label for="image">Image name : </label>
+                  <input
+                      type="text"
+                      placeholder="Image from /static/img"
+                      id="image"
+                      value=""
+                      required
+                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
+                  />
+              </div>
+              <div
+                  class="flex flex-row justify-between items-center w-full"
+              >
+                  <label for="channel">Channel name : </label>
+                  <input
+                      type="text"
+                      placeholder="Twitch Username"
+                      id="channel"
+                      value=""
+                      required
+                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
+                  />
+              </div>
+          </div>
+          <div class="flex flex-col justify-center items-center mx-2">
+              <button
+                  title="Add stream"
+                  class="cursor-pointer px-3 py-1 bg-green-500 rounded-2xl mt-2"
+                  onclick={async () => {
+                    await addStream();
+                  }}
+                  >Add stream</button
+              >
+              {#if message_added}
+                  <p class="text-2xl text-green-500 py-2">{message_added}</p>
+              {/if}
+          </div>
         </div>
         {/if}
     </div>
