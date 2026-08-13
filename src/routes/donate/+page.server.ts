@@ -6,16 +6,18 @@ export const load: PageServerLoad = async () => {
 
   redirect(
     303,
-    "https://donate.tiltify.com/582785d6-164e-418d-8b6a-dd76ab5ac43d/amount"
+    "https://donate.tiltify.com/d14c43c3-1065-4634-928f-5335074d0dae/amount"
   )
 
-
+  /*
   // CC: Pride 2026
 
   redirect(
     303,
     "https://donate.tiltify.com/554ca6b6-5254-405e-b3c6-e46129df0194/incentives",
   );
+  */
+
   /*
   // SAC 2026
 
