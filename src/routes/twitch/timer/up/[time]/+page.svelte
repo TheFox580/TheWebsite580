@@ -1,11 +1,15 @@
 <script lang="ts">
-
+  import type { PageData } from "./$types";
   import { z } from "$lib/functions/funny_points_leaderboard/Time";
+
+  const { data } = $props<{
+      data: PageData;
+  }>();
 
   let isTimerOn: boolean = $state(false);
 
   let timer: NodeJS.Timeout;
-  let time: number = $state(0);
+  let time: number = $state(data.time);
 
   let color: string = $state("oklch(62.3% 0.214 259.815)")
 
