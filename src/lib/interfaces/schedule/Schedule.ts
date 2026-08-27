@@ -5,6 +5,8 @@ export interface Stream {
   estimated_length: number;
   image_name: string;
   channel: string;
+  timezone: string;
+  id: string;
 }
 
 export interface WeekSchedule {

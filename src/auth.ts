@@ -3,6 +3,7 @@ import type { DefaultSession } from "@auth/sveltekit";
 import type { Provider } from "@auth/sveltekit/providers";
 import Twitch from "@auth/sveltekit/providers/twitch";
 import TwitchBot from "$lib/extra/providers/twitchbot";
+import TwitchSchedule from "$lib/extra/providers/twitchschedule";
 import {
   AUTH_TWITCH_ID,
   AUTH_TWITCH_SECRET,
@@ -23,7 +24,7 @@ declare module "@auth/sveltekit" {
   }
 }
 
-const providers: Provider[] = [Twitch, TwitchBot];
+const providers: Provider[] = [Twitch, TwitchBot, TwitchSchedule];
 
 export const providerMap = providers.map((provider) => {
   if (typeof provider === "function") {

@@ -4,19 +4,22 @@
     import { SignOut } from "@auth/sveltekit/components";
     import { getMonth, isFuture, isNow, isPast } from "$lib/functions/schedule/streamsInfo";
     import { z } from "$lib/functions/funny_points_leaderboard/Time";
+    import { dev } from "$app/environment";
 
     const { data } = $props<{
         data: PageData;
     }>();
 
+    const current_timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
     const old_streams: Stream[] = $state(data.old_streams);
     const current_streams: Stream[] = $state(data.current_streams);
     const next_streams: Stream[] = $state(data.next_streams);
+
     let menu: string = $state("scheduled");
     let message_added: string = $state("")
 
-    //const backend_url = "http://127.0.0.1:8787";
-    const backend_url = "https://thefox580-backend.zoelliotmitong.workers.dev";
+    const backend_url = dev ? "http://127.0.0.1:8787" : "https://thefox580-backend.zoelliotmitong.workers.dev"
 
     function formatDate(date: string): string{
       const now: Date = new Date();
@@ -58,18 +61,21 @@
           estimated_length,
           image_name,
           time,
-          title
+          title,
+          current_timezone
         }
         await fetch(backend_url + "/api/schedule", {
           method: "POST",
           headers: {
             "x-twitch-id": data.session.providerAccountId,
+            "x-twitch-access_token": data.session.access_token,
             "content-type": "application/json",
           },
           body: JSON.stringify(stream)
           });
         next_streams.push(stream);
         sortStreams();
+
         message_added = `"${stream.title}" has been added. Check "Stream Schedule" to see it.`
       }
     }
@@ -79,6 +85,7 @@
         method: "DELETE",
         headers: {
           "x-twitch-id": data.session.providerAccountId,
+          "x-twitch-access_token": data.session.access_token,
           "content-type": "application/json",
         },
         body: JSON.stringify(stream)
