@@ -5,6 +5,8 @@
     import type { LiveInfos } from "$lib/interfaces/twitch/liveInfos";
     import { onMount } from "svelte";
 
+    const mcci_fixed = false;
+
     const mainUserId = "126869447";
     const altUserId = "975679501";
     const frUserId = "689519040";
@@ -77,19 +79,21 @@
         > at the end of the URL.
     </h3>
 </div>
-<div class="flex flex-col justify-center items-center my-5 text-2xl">
-    <h2 class="text-3xl">
-        <a href="/mcci/TheFox580">Click here <strong>↗</strong></a> to get to my
-        <a href="http://mccisland.net" target="_blank"
-            >MCC Island <strong>↗</strong></a
-        >
-        statistics.
-    </h2>
-    <h3 class="text-2xl mt-5">
-        To get you own stats, enter <code class="bg-neutral-600 rounded"
-            >/mcci/[your username]</code
-        > at the end of the URL.
-    </h3>
-</div>
+{#if mcci_fixed}
+    <div class="flex flex-col justify-center items-center my-5 text-2xl">
+        <h2 class="text-3xl">
+            <a href="/mcci/TheFox580">Click here <strong>↗</strong></a> to get to my
+            <a href="http://mccisland.net" target="_blank"
+                >MCC Island <strong>↗</strong></a
+            >
+            statistics.
+        </h2>
+        <h3 class="text-2xl mt-5">
+            To get you own stats, enter <code class="bg-neutral-600 rounded"
+                >/mcci/[your username]</code
+            > at the end of the URL.
+        </h3>
+    </div>
+{/if}
 
 <EightyEightByThirtyOne></EightyEightByThirtyOne>
