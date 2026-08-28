@@ -1,21 +1,6 @@
-// TODO: Dans l'ordre
-/*
-
-!  =>  Important
-*  =>  Ca serait cool mais on s'en fout si c'est pas fait (mais les points bonus)
-
-! La mort
-! La direction dans laquelle le joueur va doit être visible
-  |
-  --> (show rect at current location and circle at new locartion?)
-! Redémarer la partie
-
-* Options (Couleurs custom? Couleurs locked jusqu'a un certain nombre de victoire?)
-* Le score ?
-* Voir les inputs à venir de chaque joueur?
-
-
-*/
+var posList = [];
+var canvas;
+var ctx;
 
 const Direction = Object.freeze({
   UP: 0,
@@ -51,7 +36,7 @@ class Player {
     jumpKey = "e",
     name = "Player",
     color = new Color(0, 0, 0),
-    position = [0, 0],
+    position = [0, 0]
   ) {
     this.#upKey = upKey;
     this.#leftKey = leftKey;
@@ -66,6 +51,8 @@ class Player {
     this.position = position;
     this.#startCoords = position;
     this.winCount = 0;
+    this.roundWinCount = 0;
+    this.dead = false;
   }
 
   getDirectionFromKeyPress(key) {
@@ -91,14 +78,13 @@ class Player {
     if (this.directionList.length > 0) {
       var newDirection = this.directionList.shift();
       if (newDirection !== -1) {
-        if (this.currentDirection != Direction.JUMP) {
-          if (isValidInput(this.currentDirection, newDirection)) {
-            this.currentDirection = newDirection;
-          }
-        } else {
+        if (newDirection != Direction.JUMP) {
           if (isValidInput(this.lastNonJumpDirection, newDirection)) {
             this.currentDirection = newDirection;
+            this.lastNonJumpDirection = newDirection;
           }
+        } else {
+          this.currentDirection = newDirection;
         }
       }
     } else if (this.currentDirection == Direction.JUMP) {
@@ -155,13 +141,15 @@ class Player {
     this.position = this.#startCoords;
     this.currentDirection = Direction.RIGHT;
     this.lastNonJumpDirection = Direction.RIGHT;
+    this.directionList = [];
+    this.dead = false;
   }
 
   setColour(colour) {
     this.color = new Color(
       parseInt(colour[0]),
       parseInt(colour[1]),
-      parseInt(colour[2]),
+      parseInt(colour[2])
     );
   }
 }
@@ -176,18 +164,96 @@ class Color {
 
 function drawCanvas() {
   let startButton = document.getElementById("start");
-  if (startButton.getAttribute("disabled")) {
-    let ctx = canvas.getContext("2d");
+  if (startButton.disabled) {
     ctx.lineWidth = 1;
     for (player of playerList) {
       player.updateDirection();
-      moveTo(player);
-      drawPlayerRect(player, ctx);
+      drawPlayerRect(player);
+      movePlayer(player);
+      drawPlayerArc(player);
     }
+
+    for (player of playerList) {
+      for (pos of posList) {
+        if (
+          (pos.x === player.getCurrentPosition().x &&
+            pos.y === player.getCurrentPosition().y) ||
+          player.getCurrentPosition().x <= -1 ||
+          player.getCurrentPosition().x >= 80 ||
+          player.getCurrentPosition().y <= -1 ||
+          player.getCurrentPosition().y >= 60
+        ) {
+          player.dead = true;
+        }
+      }
+    }
+
+    updateScore();
 
     setTimeout(() => {
       window.requestAnimationFrame(drawCanvas);
-    }, 1000);
+    }, 100); // Vitesse du jeu, plus petit = plus rapide (max(1, valeur entrée))
+  }
+}
+
+function updateScore() {
+  let alive = 0;
+  let gameOver = false;
+  for (player of playerList) {
+    if (!player.dead) {
+      alive++;
+    }
+  }
+
+  if (alive === 1) {
+    for (let index = 0; index < playerList.length; index++) {
+      const player = playerList[index];
+
+      player.updateDirection();
+      drawPlayerRect(player);
+      movePlayer(player);
+      drawPlayerArc(player);
+
+      if (!player.dead) {
+        player.roundWinCount++;
+        if (player.roundWinCount === 3) {
+          player.winCount++;
+          player.roundWinCount = 0;
+          gameOver = true;
+
+          let score = document.getElementById(`p${index + 1}_score`);
+          score.textContent = String(player.winCount);
+        }
+      } else {
+        alert(player.name + " est mort");
+      }
+    }
+
+    if (gameOver) {
+      let startButton = document.getElementById("start");
+      startButton.disabled = false;
+    }
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    posList = [];
+    for (player of playerList) {
+      player.resetPlayer();
+    }
+  } else if (alive === 0) {
+    for (player of playerList) {
+      player.updateDirection();
+      drawPlayerRect(player);
+      movePlayer(player);
+      drawPlayerArc(player);
+    }
+
+    alert("égalité! Tous les joueurs sont morts");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    posList = [];
+    for (player of playerList) {
+      player.resetPlayer();
+    }
   }
 }
 
@@ -213,7 +279,7 @@ function isValidInput(currentDirection, nextDirection) {
   return true;
 }
 
-function moveTo(player = new Player()) {
+function movePlayer(player = new Player()) {
   let currentPos = player.getCurrentPosition();
   let nextPos = structuredClone(currentPos);
   let direction = player.getCurrentDirection();
@@ -240,17 +306,46 @@ function moveTo(player = new Player()) {
       nextPos.x += Number(isJump);
       break;
   }
-
-  player.setNewPosition(nextPos);
+  if (!player.dead) {
+    player.setNewPosition(nextPos);
+    posList.push(currentPos);
+  }
 }
 
-function drawPlayerRect(player, ctx) {
-  ctx.fillStyle = `rgba(${player.color.r}, ${player.color.g}, ${player.color.b}, 0.8)`;
+function drawPlayerArc(player) {
+  ctx.fillStyle = `rgb(${player.color.r}, ${player.color.g}, ${player.color.b})`;
+  ctx.beginPath();
+  let x = player.getCurrentPosition().x * 10;
+  let y = player.getCurrentPosition().y * 10;
+  let dir = player.getCurrentDirection();
+  switch (dir) {
+    case Direction.RIGHT:
+      ctx.arc(x, y + 5, 5, 0, 2 * Math.PI);
+      ctx.fill();
+      break;
+    case Direction.UP:
+      ctx.arc(x + 5, y + 10, 5, 0, 2 * Math.PI);
+      ctx.fill();
+      break;
+    case Direction.DOWN:
+      ctx.arc(x + 5, y, 5, 0, 2 * Math.PI);
+      ctx.fill();
+      break;
+
+    case Direction.LEFT:
+      ctx.arc(x + 10, y + 5, 5, 0, 2 * Math.PI);
+      ctx.fill();
+      break;
+  }
+}
+
+function drawPlayerRect(player) {
+  ctx.fillStyle = `rgb(${player.color.r}, ${player.color.g}, ${player.color.b})`;
   ctx.fillRect(
     player.getCurrentPosition().x * 10,
     player.getCurrentPosition().y * 10,
     10,
-    10,
+    10
   );
 }
 
@@ -262,8 +357,9 @@ let player1 = new Player(
   "e",
   "Player 1",
   new Color(0, 0, 255),
-  [1, 28],
+  [1, 28]
 );
+
 let player2 = new Player(
   "o",
   "k",
@@ -272,17 +368,30 @@ let player2 = new Player(
   "p",
   "Player 2",
   new Color(255, 0, 0),
-  [1, 30],
+  [1, 30]
 );
 
 var playerList = [player1, player2];
 
 document.addEventListener(
   "DOMContentLoaded",
-  () => {
-    var canvas = document.getElementById("canvas");
+    () => {
 
-    document.styleSheets[0].disabled = false;
+    var script = document.createElement('script');
+    script.src = 'https://code.jquery.com/jquery-4.0.0.min.js'; // Check https://jquery.com/ for the current version
+    document.getElementsByTagName('head')[0].appendChild(script);
+
+    //$(function () {
+    //  $("#settings").dialog({
+    //    autoOpen: false,
+    //    resizable: false,
+    //    modal: true,
+    //    width: "600px",
+    //  });
+    //});
+
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
 
     document.addEventListener(
       "keypress",
@@ -296,7 +405,7 @@ document.addEventListener(
           player2.addDirection(newDir);
         }
       },
-      false,
+      false
     );
 
     let startButton = document.getElementById("start");
@@ -304,65 +413,64 @@ document.addEventListener(
     startButton.addEventListener(
       "click",
       () => {
-        canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        posList = [];
         for (player of playerList) {
           player.resetPlayer();
         }
-        startButton.setAttribute("disabled", "true");
-        window.requestAnimationFrame(drawCanvas);
+        startButton.disabled = true;
+        setTimeout(() => {
+          window.requestAnimationFrame(drawCanvas);
+        }, 100);
       },
-      false,
+      false
     );
 
     let updatePLayerSettingsButton = document.getElementById(
-      "updateSettingsButton",
+      "updateSettingsButton"
     );
 
     updatePLayerSettingsButton.addEventListener(
       "click",
       () => {
-        for (child of updatePLayerSettingsButton.parentElement.parentElement
-          .children) {
-          if (child.id == "PlayerSettings") {
-            for (playerSetting of child.children) {
-              let player = playerList[parseInt(playerSetting.id[1]) - 1];
+        let playerSettings = document.getElementById("PlayerSettings");
+        for (playerSetting of playerSettings.children) {
+          let player = playerList[parseInt(playerSetting.id[1]) - 1];
 
-              player.newKey(
-                Direction.UP,
-                playerSetting.children["Forward"].children[1].value,
-              );
+          player.newKey(
+            Direction.UP,
+            playerSetting.children["Forward"].children[1].value
+          );
 
-              player.newKey(
-                Direction.DOWN,
-                playerSetting.children["Down"].children[1].value,
-              );
+          player.newKey(
+            Direction.DOWN,
+            playerSetting.children["Down"].children[1].value
+          );
 
-              player.newKey(
-                Direction.LEFT,
-                playerSetting.children["Left"].children[1].value,
-              );
+          player.newKey(
+            Direction.LEFT,
+            playerSetting.children["Left"].children[1].value
+          );
 
-              player.newKey(
-                Direction.RIGHT,
-                playerSetting.children["Right"].children[1].value,
-              );
+          player.newKey(
+            Direction.RIGHT,
+            playerSetting.children["Right"].children[1].value
+          );
 
-              player.newKey(
-                Direction.JUMP,
-                playerSetting.children["Jump"].children[1].value,
-              );
+          player.newKey(
+            Direction.JUMP,
+            playerSetting.children["Jump"].children[1].value
+          );
 
-              player.name = playerSetting.children["Name"].children[1].value;
-              for (playerName of document.getElementsByClassName(
-                "p" + playerSetting.id[1] + "_name",
-              )) {
-                playerName.textContent = player.name;
-              }
-            }
+          player.name = playerSetting.children["Name"].children[1].value;
+          for (playerName of document.getElementsByClassName(
+            "p" + playerSetting.id[1] + "_name"
+          )) {
+            playerName.textContent = player.name;
           }
         }
       },
-      false,
+      false
     );
 
     let p1_coulour = document.getElementById("p1_colour");
@@ -374,10 +482,10 @@ document.addEventListener(
         let colour = style.getPropertyValue("background-color");
         player1.setColour(colour.slice(4, colour.length - 1).split(","));
 
-        let idoposite =
+        let idopposite =
           button.id.slice(0, 1) + "2" + button.id.slice(2, button.id.length);
-        let oposite = document.getElementById(idoposite);
-        oposite.setAttribute("disabled", "true");
+        let opposite = document.getElementById(idopposite);
+        opposite.disabled = true;
       });
     }
 
@@ -390,12 +498,28 @@ document.addEventListener(
         let colour = style.getPropertyValue("background-color");
         player2.setColour(colour.slice(4, colour.length - 1).split(","));
 
-        let idoposite =
+        let idopposite =
           button.id.slice(0, 1) + "1" + button.id.slice(2, button.id.length);
-        let oposite = document.getElementById(idoposite);
-        oposite.setAttribute("disabled", "true");
+        let opposite = document.getElementById(idopposite);
+        opposite.disabled = true;
       });
     }
+
+    //let settingsButton = $("#settings_button")[0];
+    //settingsButton.addEventListener(
+    //  "click",
+    //  () => {
+    //    $("#settings")
+    //      .dialog({
+    //        autoOpen: false,
+    //        resizable: false,
+    //        modal: true,
+    //        width: "600px",
+    //      })
+    //      .dialog("open");
+    //  },
+    //  false
+    //);
   },
-  false,
+  false
 );
