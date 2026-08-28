@@ -10,8 +10,6 @@ export function getAllPlayersInfos(players: Player[], game_results: GameResult[]
 
   full_players.sort(sortPlayer);
 
-  console.log(full_players);
-
   return full_players;
 }
 

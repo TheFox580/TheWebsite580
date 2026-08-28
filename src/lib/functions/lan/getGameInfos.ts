@@ -10,8 +10,6 @@ export function getScoresForGame(players: Player[], game_result: GameResult): Fu
 
   full_players.sort(sortScore);
 
-  console.log(full_players);
-
   return full_players;
 }
 

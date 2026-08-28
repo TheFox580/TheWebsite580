@@ -18,7 +18,6 @@
         ).json();
 
         currentSeason = res.data.season;
-        console.log(currentSeason);
 
         let startTime = new Date(currentSeason.startsAt * 1000);
         let endTime = new Date(currentSeason.endsAt * 1000);

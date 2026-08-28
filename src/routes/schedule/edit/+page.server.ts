@@ -9,8 +9,6 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
   const allowedIDs: string[] = ALLOWED_EDIT_SCHEDULE.split(" ");
 
-  console.log(session)
-
     if (!session?.providerAccountId) {
     redirect(303, "/schedule");
   }

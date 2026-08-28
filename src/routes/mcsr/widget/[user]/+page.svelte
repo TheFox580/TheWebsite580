@@ -199,10 +199,6 @@
             let diff: number =
                 (usableData.eloRate ? usableData.eloRate : 0) - elo;
 
-            console.log(usableData.eloRate ? usableData.eloRate : 0);
-            console.log(elo);
-            console.log(diff);
-
             if (diff > 0) {
                 win++;
             } else if (diff < 0) {
