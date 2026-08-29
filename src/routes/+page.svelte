@@ -53,7 +53,7 @@
       </a>
       <StreamEmbed username={liveInfos.user_name}></StreamEmbed>
   {:else}
-      <a href="https://thewebsite580.vercel.app/schedule" target="_blank">
+      <a href="/schedule" target="_blank">
           <div class="w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4 border-green-600 bg-green-900 grayscale"
               style="height: 100%;">
               <div class="w-8/10 h-full text-white flex flex-col items-center mx-5 text-center">
