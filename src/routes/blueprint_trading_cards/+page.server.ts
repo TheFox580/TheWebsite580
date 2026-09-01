@@ -5,7 +5,7 @@ import { providerMap } from "../../auth";
 export const load: PageServerLoad = async ({ params, locals }) => {
   const session = await locals.auth();
 
-  if (session?.user?.id) {
+  if (session.provider === "twitch" && session?.user?.id) {
     redirect(303, "blueprint_trading_cards/inventory");
   }
 

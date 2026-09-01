@@ -5,10 +5,9 @@ import Twitch from "@auth/sveltekit/providers/twitch";
 import TwitchBot from "$lib/extra/providers/twitchbot";
 import TwitchSchedule from "$lib/extra/providers/twitchschedule";
 import {
-  AUTH_TWITCH_ID,
-  AUTH_TWITCH_SECRET,
   AUTH_SECRET,
 } from "$env/static/private";
+import Discord from "@auth/sveltekit/providers/discord";
 
 declare module "@auth/sveltekit" {
   interface Session {
@@ -24,7 +23,7 @@ declare module "@auth/sveltekit" {
   }
 }
 
-const providers: Provider[] = [Twitch, TwitchBot, TwitchSchedule];
+const providers: Provider[] = [Twitch, TwitchBot, TwitchSchedule, Discord];
 
 export const providerMap = providers.map((provider) => {
   if (typeof provider === "function") {
@@ -48,6 +47,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
         token.expires_at = account.expires_at;
         token.refresh_token = account.refresh_token;
         token.providerAccountId = account.providerAccountId;
+        token.provider = account.provider;
       }
       return token;
     },
@@ -58,6 +58,7 @@ export const { handle, signIn, signOut } = SvelteKitAuth({
         session.expires_in = token.expires_in;
         session.refresh_token = token.refresh_token;
         session.providerAccountId = token.providerAccountId;
+        session.provider = token.provider;
       }
       return session;
     },

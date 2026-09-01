@@ -2,7 +2,8 @@
     import type { WeekSchedule } from "$lib/interfaces/schedule/Schedule";
     import type { PageData } from "./$types";
     import { z } from "$lib/functions/funny_points_leaderboard/Time";
-    import { getDay, getMonth, isFuture, isNow, isPast } from "$lib/functions/schedule/streamsInfo";
+    import { isFuture, isNow, isPast } from "$lib/functions/schedule/streamsInfo";
+    import { getDay, getMonth } from "$lib/functions/utils/dateStuff";
 
     const { data } = $props<{
         data: PageData;

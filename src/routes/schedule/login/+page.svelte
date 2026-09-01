@@ -10,7 +10,23 @@
 
 <div class="w-screen h-screen bg-black">
     <div class="w-full h-full flex flex-col justify-center items-center">
-        {#if data.user_name}
+        {#if !data.logged_in}
+            <span class="text-2xl text-center text-white">You are signed out</span>
+            <SignIn
+                provider={data.providerMap.find(
+                    (provider) => provider.id === "twitch-schedule",
+                ).id}
+                signInPage="api/twitch/signin"
+                options={{ redirectTo: "/schedule/edit" }}
+                class="mt-5.5"
+            >
+                <span
+                    slot="submitButton"
+                    class="p-2.5 border-4 border-purple-800 rounded-xl bg-purple-500 text-center text-white cursor-pointer"
+                    >Sign In with Custom Schedule Editor</span
+                >
+            </SignIn>
+        {:else if data.user_name}
             <span class="text-2xl text-center text-white"
                 >Signed in as {data.session.user.name}</span
             >

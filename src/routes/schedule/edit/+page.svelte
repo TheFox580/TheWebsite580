@@ -2,7 +2,8 @@
     import type { Stream } from "$lib/interfaces/schedule/Schedule";
     import type { PageData } from "./$types";
     import { SignOut } from "@auth/sveltekit/components";
-    import { getMonth, isFuture, isNow, isPast } from "$lib/functions/schedule/streamsInfo";
+    import { isFuture, isNow, isPast } from "$lib/functions/schedule/streamsInfo";
+    import { getMonth } from "$lib/functions/utils/dateStuff";
     import { z } from "$lib/functions/funny_points_leaderboard/Time";
     import { dev } from "$app/environment";
 
@@ -97,7 +98,6 @@
         return str === null || str.match(/^ *$/) !== null;
     }
 </script>
-
 
 <svelte:head>
     <link rel="stylesheet" href="/styles/schedule/schedule.css" />

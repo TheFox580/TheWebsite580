@@ -2,7 +2,7 @@
     import type { Stream } from "$lib/interfaces/schedule/Schedule";
     import type { PageData } from "./$types";
     import { z } from "$lib/functions/funny_points_leaderboard/Time";
-    import { getMonth } from "$lib/functions/schedule/streamsInfo";
+    import { getMonth } from "$lib/functions/utils/dateStuff";
 
     const { data } = $props<{
         data: PageData;

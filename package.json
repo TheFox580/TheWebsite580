@@ -39,6 +39,7 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "archipelago.js": "^2.1.0",
+    "better-auth": "^1.7.2",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "jquery": "^4.0.0",

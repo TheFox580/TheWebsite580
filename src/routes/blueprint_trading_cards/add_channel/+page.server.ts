@@ -8,7 +8,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 
   let res = { created: false };
 
-  if (session?.user?.id) {
+  if (session.provider === "twitch-bot" && session?.user?.id) {
     const user_id = session.providerAccountId;
 
     let client = new MongoClient(MONGO_DB_URL, {
