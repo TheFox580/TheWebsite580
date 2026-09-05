@@ -5,7 +5,7 @@
     import type { LiveInfos } from "$lib/interfaces/twitch/liveInfos";
     import { onMount } from "svelte";
 
-    const mcci_fixed = false;
+    const mcci_fixed = true; //? Techically it is fixed :3
 
     const mainUserId = "126869447";
     const altUserId = "975679501";
@@ -73,11 +73,6 @@
         >
         statistics.
     </h2>
-    <h3 class="text-2xl mt-5">
-        To get you own widget, enter <code class="bg-neutral-600 rounded"
-            >/mcsr/widget/[your username]</code
-        > at the end of the URL.
-    </h3>
 </div>
 {#if mcci_fixed}
     <div class="flex flex-col justify-center items-center my-5 text-2xl">
@@ -88,11 +83,6 @@
             >
             statistics.
         </h2>
-        <h3 class="text-2xl mt-5">
-            To get you own stats, enter <code class="bg-neutral-600 rounded"
-                >/mcci/[your username]</code
-            > at the end of the URL.
-        </h3>
     </div>
 {/if}
 
