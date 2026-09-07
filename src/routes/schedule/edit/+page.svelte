@@ -4,7 +4,7 @@
     import { SignOut } from "@auth/sveltekit/components";
     import { isFuture, isNow, isPast } from "$lib/functions/schedule/streamsInfo";
     import { getMonth } from "$lib/functions/utils/dateStuff";
-    import { z } from "$lib/functions/funny_points_leaderboard/Time";
+    import { z } from "$lib/functions/utils/numberFormatting";
     import { dev } from "$app/environment";
 
     const { data } = $props<{

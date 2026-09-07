@@ -1,13 +1,10 @@
 <script lang="ts">
     import type { Timestamp } from "$lib/interfaces/mcsr/Timestamp";
+    import { z } from "$lib/functions/utils/numberFormatting";
 
     const { data } = $props<{
         data: Timestamp;
     }>();
-
-    function z(n: number): string {
-        return (n < 10 ? "0" : "") + n;
-    }
 
     function getTimeUntilNow(time: Date): string {
         let now: Date = new Date();

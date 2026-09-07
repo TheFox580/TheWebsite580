@@ -6,6 +6,7 @@
 
     import type { SeasonInfo } from "$lib/interfaces/mcsr/SeasonInfo";
     import { onMount } from "svelte";
+    import { z } from "$lib/functions/utils/numberFormatting";
 
     let currentSeason: SeasonInfo = $state({});
 
@@ -28,10 +29,6 @@
             notRedColor = Math.max(0, Math.round((timeLeft / totalTime) * 255));
         }, 1000);
     });
-
-    function z(n: number): string {
-        return (n < 10 ? "0" : "") + n;
-    }
 
     function getTimeUntilNow(time: Date): DateInfo {
         let now: Date = new Date();

@@ -1,6 +1,4 @@
-export function z(n: number): string {
-  return (n < 10 ? "0" : "") + n;
-}
+import { z } from "../utils/numberFormatting";
 
 export function timeToGo(date: Date): string {
   // Convert string to date object

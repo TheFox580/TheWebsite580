@@ -1,6 +1,7 @@
 <script lang="ts">
     import { getLastMatchs } from "$lib/functions/mcsr/GetLastMatches";
     import type { MatchInfo } from "$lib/interfaces/mcsr/MatchInfo";
+    import { z } from "$lib/functions/utils/numberFormatting";
 
     const { uuid } = $props<{
         uuid: string;
@@ -26,10 +27,6 @@
         { result: 3, text: "green-600" },
         { result: 4, text: "green-600" },
     ];
-
-    function z(n: number): string {
-        return (n < 10 ? "0" : "") + n;
-    }
 
     function formatTimestamp(time: Date): string {
         let diff = -time.getTimezoneOffset() / 60;

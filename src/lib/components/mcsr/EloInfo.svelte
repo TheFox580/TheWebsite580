@@ -3,6 +3,7 @@
     import { format } from "vitest/internal/browser";
     import Rank from "./Rank.svelte";
     import { onMount } from "svelte";
+    import { z } from "$lib/functions/utils/numberFormatting";
 
     const { data } = $props<{
         data: MCSRData;
@@ -82,10 +83,6 @@
         } else {
             return "None";
         }
-    }
-
-    function z(n: number): string {
-        return (n < 10 ? "0" : "") + n;
     }
 
     function formatTime(time: number): string {

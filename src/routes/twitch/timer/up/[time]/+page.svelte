@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-  import { z } from "$lib/functions/funny_points_leaderboard/Time";
+  import { z } from "$lib/functions/utils/numberFormatting";
 
   const { data } = $props<{
       data: PageData;

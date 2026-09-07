@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { Stream } from "$lib/interfaces/schedule/Schedule";
     import type { PageData } from "./$types";
-    import { z } from "$lib/functions/funny_points_leaderboard/Time";
+    import { z } from "$lib/functions/utils/numberFormatting";
     import { getMonth } from "$lib/functions/utils/dateStuff";
 
     const { data } = $props<{

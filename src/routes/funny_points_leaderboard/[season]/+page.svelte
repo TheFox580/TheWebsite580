@@ -1,6 +1,7 @@
 <script lang="ts">
     import DiscordMessage from "$lib/components/funny_points_leaderboard/DiscordMessage.svelte";
-    import { z, timeToGo } from "$lib/functions/funny_points_leaderboard/Time";
+    import { timeToGo } from "$lib/functions/funny_points_leaderboard/Time";
+    import { z } from "$lib/functions/utils/numberFormatting";
     import type { PageData } from "./$types";
     import type { Point } from "$lib/interfaces/funny_points_leaderboard/Point";
     import type { SeasonDate } from "$lib/interfaces/funny_points_leaderboard/Date";
