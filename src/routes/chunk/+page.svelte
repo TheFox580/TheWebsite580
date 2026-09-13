@@ -81,7 +81,7 @@
         <h1 class="mb-5">Fox's chunk mining progress</h1>
         <h2 class="text-3xl">{formatNumber(last_data ? last_data.blocks_mined : 0)} / {formatNumber(max_blocks)} blocks mined</h2>
     </div>
-    <div class="h-4/5 h-160 flex flex-col items-center justify-center" style="width: {innerWidth}px;">
+    <div class="flex flex-col items-center justify-center my-5" style="width: {innerWidth}px; height: {innerHeight/1.5}px;">
         {#if last_data}
         <div class= "w-full h-10 flex flex-row items-center justify-center text-white text-3xl">
             <h2>Blocks mined over time</h2>
