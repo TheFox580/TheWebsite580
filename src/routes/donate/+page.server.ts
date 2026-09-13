@@ -2,12 +2,14 @@ import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
+  /*
   //SFD 2026
 
   redirect(
     303,
     "https://donate.tiltify.com/d14c43c3-1065-4634-928f-5335074d0dae/amount"
   )
+  */
 
   /*
   // CC: Pride 2026
@@ -26,4 +28,8 @@ export const load: PageServerLoad = async () => {
     "https://donate.tiltify.com/6310da27-c997-43d7-8671-c4ace2722009/incentives",
   );
   */
+
+  //Default
+    redirect(303,
+    "https://streamlabs.com/thefox5801/tip")
 };
