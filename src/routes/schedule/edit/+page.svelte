@@ -168,7 +168,7 @@
                 </div>
         </div>
           <div class="w-full flex flex-col items-center justify-center px-2 py-5 my-5">
-                  <p class="text-2xl text-green-400 font-bold">🟢 Upcoiming</p>
+                  <p class="text-2xl text-green-400 font-bold">🟢 Upcoming</p>
                   <div class="w-9/10">
                       {#each next_streams as stream, index}
                           <div class="flex flex-row items-center w-full h-auto">
