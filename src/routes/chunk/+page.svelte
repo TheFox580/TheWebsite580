@@ -79,7 +79,7 @@
 <div class="w-full h-screen flex flex-col items-center justify-center bg-black text-center">
     <div class="h-1/5 flex flex-col items-center justify-center text-white text-5xl">
         <h1 class="mb-5">Fox's chunk mining progress</h1>
-        <h2 class="text-3xl">{formatNumber(last_data ? last_data.blocks_mined : 0)} / {formatNumber(max_blocks)} blocks mined</h2>
+        <h2 class="text-3xl">{formatNumber(last_data ? last_data.blocks_mined : 0)} / {formatNumber(max_blocks)} blocks mined ({Math.round(((last_data ? last_data.blocks_mined : 0)/max_blocks)*100*100)/100}%)</h2>
     </div>
     <div class="flex flex-col items-center justify-center my-5" style="width: {innerWidth}px; height: {innerHeight/1.5}px;">
         {#if last_data}
