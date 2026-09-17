@@ -6,6 +6,7 @@ html {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    overflow-x: hidden;
 }
 
 a {
