@@ -1,4 +1,3 @@
-
 import type { PageServerLoad } from "./$types";
 import { MONGO_DB_URL } from "$env/static/private";
 import { MongoClient, ServerApiVersion } from "mongodb";
