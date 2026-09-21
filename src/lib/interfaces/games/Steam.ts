@@ -1,3 +1,5 @@
+import type { ObjectId } from "mongodb";
+
 export interface SteamGame {
     appid: string;
     name: string;
@@ -11,10 +13,16 @@ export interface SteamGame {
     img_icon_url: string;
     img_logo_url: string;
     rtime_last_played: number;
-    content_descriptorids?: number[];
+    content_descriptorids?: string[];
 }
 
 export interface SteamDB {
+    _id?: ObjectId;
+    time: Date;
+    info: SteamGame[];
+}
+
+export interface SteamDBPurified {
     time: Date;
     info: SteamGame[];
 }

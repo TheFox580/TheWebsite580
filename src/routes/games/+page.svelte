@@ -132,7 +132,17 @@
                 />
         </div>
     </div>
-    <SteamGames bind:gamesList={games}/>
+    {#if games.length > 0}
+
+        <div class="flex flex-col items-center justify-start">
+            <p class="text-3xl text-white text-center">{games.length} games {searching_game !== "" ? `starting with "${searching_game}"` : searching_game} found.</p>
+        </div>
+        <SteamGames bind:gamesList={games}/>
+    {:else}
+    <div class="flex flex-col items-center justify-start">
+        <p class="text-3xl text-white text-center">No games starting with "{searching_game}" found.</p>
+    </div>
+    {/if}
 </div>
 
 
