@@ -1,7 +1,7 @@
 <script lang="ts">
     import type { SteamGame } from "$lib/interfaces/games/Steam";
     import SteamGames from "$lib/components/games/SteamGames.svelte";
-    import { getTimePassed } from "$lib/functions/utils/dateStuff";
+    import type { PageData } from "./$types";
 
     const { data } = $props<{
         data: PageData;
@@ -15,7 +15,7 @@
     const total_time_played = (() => {
         let time_played = 0;
 
-        for (const game of default_games){
+        for (const game of games){
             time_played += game.playtime_forever;
         }
 
@@ -25,7 +25,7 @@
     const two_weeks_time_played = (() => {
         let time_played = 0;
 
-        for (const game of default_games){
+        for (const game of games){
             time_played += game.playtime_2weeks ?? 0;
         }
 
@@ -35,7 +35,7 @@
     function sortGames(){
         switch (selected_sort){
             case "steam_id": {
-                games = default_games.sort((a, b) => a.appid - b.appid);
+                games = default_games.sort((a, b) => parseInt(a.appid) - parseInt(b.appid));
                 break;
             }
             case "name": {
@@ -132,7 +132,17 @@
                 />
         </div>
     </div>
-    <SteamGames bind:gamesList={games}/>
+    {#if games.length > 0}
+
+        <div class="flex flex-col items-center justify-start">
+            <p class="text-3xl text-white text-center">{games.length} games {searching_game !== "" ? `starting with "${searching_game}"` : searching_game} found.</p>
+        </div>
+        <SteamGames bind:gamesList={games}/>
+    {:else}
+    <div class="flex flex-col items-center justify-start">
+        <p class="text-3xl text-white text-center">No games starting with "{searching_game}" found.</p>
+    </div>
+    {/if}
 </div>
 
 

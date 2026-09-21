@@ -2,7 +2,7 @@
     import type { SteamGame } from "$lib/interfaces/games/Steam";
     import { getTimePassed } from "$lib/functions/utils/dateStuff";
 
-    const { game = $bindable(), steam_id }: { gamesList: SteamGame, steam_id: string } = $props();
+    const { game = $bindable(), steam_id }: { game: SteamGame, steam_id: string } = $props();
 
     const GAME_DESCRIPTOR = {
         "1": "Some Nudity or Sexual Content",
@@ -12,8 +12,10 @@
         "5": "General Mature Content"
     };
 
-    let last_played: string = "Never";
-    let last_time_played: number = $derived(game.rtime_last_played);
+    let last_played: string = $state("Never");
+    let last_time_played: number = $state(0);
+
+    if (game.rtime_last_played !== 0) last_time_played = game.rtime_last_played;
 
     if (last_time_played){
         const last_played_date = new Date(last_time_played*1000);
