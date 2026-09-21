@@ -10,8 +10,7 @@
         data: PageData;
     }>();
 
-    let tracker_loaded: boolean = $state(false);
-    let roomTrackerInfo: PlayerSlotInfo[] = $state();
+    let roomTrackerInfo: PlayerSlotInfo[] | undefined = $state();
 
     onMount(async () => {
         const tracker_refresh = setInterval(
@@ -21,7 +20,6 @@
             10 * 60 * 1000,
         );
         roomTrackerInfo = await getRoomTrackerInfo(data.id);
-        tracker_loaded = true;
     });
 </script>
 
@@ -32,7 +30,7 @@
 <div
     class="flex flex-col items-center justify-center mx-10 bg-gray-400 rounded-2xl px-5 py-2 my-5"
 >
-    {#if !tracker_loaded}
+    {#if !roomTrackerInfo}
         <h1 class="text-center text-5xl">Loading tracker info...</h1>
     {:else}
         <RoomProgression progression={roomTrackerInfo}></RoomProgression>
