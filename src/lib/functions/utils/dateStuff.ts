@@ -32,3 +32,12 @@ export function getMonth(month: number){
     default: return "None"
   }
 }
+
+export function getTimePassed(seconds: number): string {
+
+    if (seconds < 60) return `${seconds} second${seconds == 1 ? "" : "s"}`;
+    else if (seconds < 3600) return `${Math.floor(seconds/60)} minute${Math.floor(seconds/60) == 1 ? "" : "s"}`;
+    else if (seconds < 86400) return `${Math.floor(seconds/3600)} hour${Math.floor(seconds/3600) == 1 ? "" : "s"}`;
+    else if (seconds < 31556952) return `${Math.floor(seconds/(86400))} day${Math.floor(seconds/86400) == 1 ? "" : "s"}`;
+    else return `${Math.floor(seconds/31556952)} year${Math.floor(seconds/31556952) == 1 ? "" : "s"}`;
+}
