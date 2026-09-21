@@ -20,7 +20,7 @@
     let menu: string = $state("scheduled");
     let message_added: string = $state("")
 
-    const backend_url = dev ? "http://127.0.0.1:8787" : "https://thefox580-backend.zoelliotmitong.workers.dev"
+    const backend_url = dev ? "http://localhost:8787" : "https://thefox580-backend.zoelliotmitong.workers.dev"
 
     function formatDate(date: string): string{
       const now: Date = new Date();
@@ -69,7 +69,7 @@
           method: "POST",
           headers: {
             "x-twitch-id": data.session.providerAccountId,
-            "x-twitch-access_token": data.session.access_token,
+            "x-twitch-access-token": data.session.access_token,
             "content-type": "application/json",
           },
           body: JSON.stringify(stream)
@@ -86,7 +86,7 @@
         method: "DELETE",
         headers: {
           "x-twitch-id": data.session.providerAccountId,
-          "x-twitch-access_token": data.session.access_token,
+          "x-twitch-access-token": data.session.access_token,
           "content-type": "application/json",
         },
         body: JSON.stringify(stream)
