@@ -33,6 +33,7 @@
     {#if !roomTrackerInfo}
         <h1 class="text-center text-5xl">Loading tracker info...</h1>
     {:else}
+    {#key roomTrackerInfo}
         <RoomProgression progression={roomTrackerInfo}></RoomProgression>
         <div class="flex flex-row items-center justify-evenly w-full">
             <div
@@ -48,5 +49,6 @@
                 {/each}
             </div>
         </div>
+    {/key}
     {/if}
 </div>
