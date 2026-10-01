@@ -4,7 +4,7 @@ import type { Stream } from "$lib/interfaces/schedule/Schedule";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import { MONGO_DB_URL, ALLOWED_EDIT_SCHEDULE } from "$env/static/private";
 
-export const load: PageServerLoad = async ({ params, locals }) => {
+export const load: PageServerLoad = async ({ locals }) => {
     const session = await locals.auth();
 
     const allowedIDs: string[] = ALLOWED_EDIT_SCHEDULE.split(" ");
