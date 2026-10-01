@@ -1,6 +1,6 @@
 import type { PageServerLoad } from "./$types";
 import { providerMap } from "../../../auth";
-import { MONGO_DB_URL } from "$env/static/private";
+import { ADMIN_TWITCH_IDS, AUTH_TWITCH_SUB_ID, MONGO_DB_URL } from "$env/static/private";
 import { MongoClient, ServerApiVersion } from "mongodb";
 import type { Stream } from "$lib/interfaces/schedule/Schedule";
 import type { ChatterPreferences } from "$lib/interfaces/twitch/ChatterPreferences";
@@ -21,17 +21,32 @@ export const load: PageServerLoad = async ({ locals }) => {
 
   if (!session) {
     return {
-      session,
       providerMap
    };
   }
 
 
-  if (!session.provider.startsWith("twitch")) {
+  if (!session?.provider === "twitch-sub") {
     return {
       session,
       providerMap
     };
+  }
+
+  let is_subbed = 0;
+
+  for (const channel_id of ADMIN_TWITCH_IDS.split(" ")) {
+    const check_sub = await fetch("https://api.twitch.tv/helix/subscriptions/user?broadcaster_id=" + channel_id + "&user_id=" + session?.providerAccountId, {
+      headers: {
+        "Authorization": "Bearer " + session.access_token,
+        "Client-Id": AUTH_TWITCH_SUB_ID
+      }
+    });
+    if (check_sub.ok) {
+      is_subbed = parseInt((await check_sub.json()).data[0].tier[0]);
+
+      if (is_subbed >= 3) break;
+    }
   }
 
   const client = new MongoClient(MONGO_DB_URL, {
@@ -60,5 +75,5 @@ export const load: PageServerLoad = async ({ locals }) => {
     await client.close();
     }
 
-  return { preferences };
+  return { preferences, is_subbed };
 };

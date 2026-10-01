@@ -30,18 +30,20 @@
 <svelte:head>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={preferences.message_font.replaceAll(" ", "+")}&display=swap">
+    {#if preferences && preferences.message_font && preferences.message_font.replaceAll(" ", "")}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={preferences.message_font.replaceAll(" ", "+")}&display=swap">
+    {/if}
     <title>Editing Chat Preferences</title>
 </svelte:head>
 
 <div class="w-full h-screen flex bg-black text-white">
 
-    {#if !data.session}
+    {#if !data.session || !data.session.provider === 'twitch-sub'}
         <div class="w-full flex flex-col justify-center items-center">
             <span class="text-2xl text-center text-white">You are signed out</span>
             <SignIn
                 provider={data.providerMap.find(
-                    (provider) => provider.id === "twitch",
+                    (provider) => provider.id === "twitch-sub",
                 ).id}
                 signInPage="api/twitch/signin"
                 class="mt-5.5"
@@ -54,104 +56,113 @@
             </SignIn>
         </div>
     {:else}
-    <div class="w-full h-full flex flex-col">
-        <div class="w-full h-6 flex justify-center items-center my-5">
-            <span class="mr-5 text-center text-white"
-                >Signed in as {data.session.user.name}</span
-            >
-            <SignOut
-                signOutPage="api/twitch/signout"
-            >
-                <span
-                    slot="submitButton"
-                    class="p-2.5 border-4 border-purple-800 rounded-xl bg-purple-500 text-center text-white cursor-pointer"
-                    >Sign Out</span
+        <div class="w-full h-full flex flex-col">
+            <div class="w-full h-6 flex justify-center items-center my-5">
+                <span class="mr-5 text-center text-white"
+                    >Signed in as {data.session.user.name} | {data.is_subbed ? `Tier ${data.is_subbed} Sub` : "Not Subscribed"}</span
                 >
-            </SignOut>
-        </div>
-
-
-        <div class="w-auto h-full flex flex-col items-center justify-center">
-            <div class="flex flew-row items-center justify-center my-2">
-                <span class="mr-2">Message color: </span>
-                <input
-                    class="cursor-pointer"
-                    type="color"
-                    bind:value={preferences.message_color}
-                    />
-            </div>
-            <div class="flex flew-row items-center justify-center my-2">
-                <span class="mr-2">Background color: </span>
-                <input
-                    class="cursor-pointer"
-                    type="color"
-                    bind:value={preferences.background_color}
-                    />
-            </div>
-            <div class="flex flew-row items-center justify-center my-2">
-                <a
-                    href="https://docs.google.com/document/d/18ij8A03lbyhuUOT2HQRJm3WmxGqWcNDemyyT7-3CsMY/edit?usp=sharing"
-                    target="_blank"
-                    class="mr-2 hover:underline"
-                >Message Font: </a>
-                <input
-                    class="border-white border-2 rounded-full px-1 w-80"
-                    type="text"
-                    bind:value={preferences.message_font}
-                />
-            </div>
-            <div class="flex flew-row items-center justify-center my-2">
-                <span class="mr-2">English TTS Voice: </span>
-                <select
-                    bind:value={preferences.tts_voice.en}
-                    name="english_tts_voice"
-                    id="english_tts_voice"
-                    class="text-center text-xl border-2 border-white w-80 rounded-full mx-2"
+                <SignOut
+                    signOutPage="api/twitch/signout"
                 >
-                    {#each english_tts_voices as tts_voice}
-                        <option id="{tts_voice.lang}" value="{tts_voice.lang}">{tts_voice.lang !== "" ? tts_voice.lang.split("-")[1] + " | " + tts_voice.lang.split("-")[2].split("Neural")[0] : tts_voice.lang} ({tts_voice.gender})</option>
-                    {/each}
-                </select>
-            </div>
-            <div class="flex flew-row items-center justify-center my-2">
-                <span class="mr-2">French TTS Voice: </span>
-                <select
-                    bind:value={preferences.tts_voice.fr}
-                    name="english_tts_voice"
-                    id="english_tts_voice"
-                    class="text-center text-xl border-2 border-white w-80 rounded-full mx-2"
-                >
-                    {#each french_tts_voices as tts_voice}
-                        <option id="{tts_voice.lang}" value="{tts_voice.lang}">{tts_voice.lang !== "" ? tts_voice.lang.split("-")[1] + " | " + tts_voice.lang.split("-")[2].split("Neural")[0] : tts_voice.lang} ({tts_voice.gender})</option>
-                    {/each}
-                </select>
-            </div>
-            <div class="flex flew-col items-center justify-center my-2">
-                <button
-                    class="py-2 px-2 rounded-full cursor-pointer bg-green-500"
-                    onclick={() => {
-                      savePreferences();
-                    }}>Save Preferences</button>
+                    <span
+                        slot="submitButton"
+                        class="p-2.5 border-4 border-purple-800 rounded-xl bg-purple-500 text-center text-white cursor-pointer"
+                        >Sign Out</span
+                    >
+                </SignOut>
             </div>
 
-            {#key preferences}
 
-                <div style="background-color: {preferences.background_color};" class="w-auto flex flex-col mt-5 mx-2 p-2.5 border-red-500 border-4 rounded-2xl">
-                    <div class="w-full flex flex-row items-center justify-center">
-                        <div class="w-[{(28+2)*2}px] flex flex-row items-center justify-center mr-2">
-                            <img src="https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/2" alt="Broadcaster badge" class="h-[28px] mr-1"/>
-                            <img src="https://static-cdn.jtvnw.net/badges/v1/9a2c846d-c5b9-41e8-b60c-7bcfc1cd0599/2" alt="1 month subscriber badge" class="h-[28px] mr-1"/>
-                        </div>
-                        <p class="text-white text-xl border-4 rounded-xl px-2 py-1 mr-2 text-center items-center justify-center">They / Them</p>
-                        <p class="text-red-500 font-bold text-xl">{data.session.user.name}</p>
-                    </div>
-                    <div class="flex items-center justify-center text-center mt-2.5">
-                        <span style="color:{preferences.message_color}; {preferences.message_font !== "" ? `font-family: "${preferences.message_font}"` : ""}" class="text-center text-wrap wrap-anywhere mr-1 text-xl">This is an example message on the overlay <img class="inline-grid mr-2 h-[36px] align-middle" src="https://cdn.7tv.app/emote/01GYX4MQV80005HW5M02HH0TMX/3x.avif" alt="WAHOO Emote"></span>
-                    </div>
+            <div class="w-auto h-full flex flex-col items-center justify-center">
+                <div class="flex flew-row items-center justify-center my-2">
+                    <span class="mr-2">Message color: </span>
+                    <input
+                        class="cursor-pointer"
+                        type="color"
+                        bind:value={preferences.message_color}
+                        title="Change Message Color"
+                        />
                 </div>
-            {/key}
+                <div class="flex flew-row items-center justify-center my-2">
+                    <span class="mr-2"
+                        title="{data.is_subbed ? "Change Background Color" : "You must be subscribed to change your background color"}">Background color*: </span>
+                    <input
+                        disabled={data.is_subbed ? "" : "disabled"}
+                        class="{data.is_subbed ? "cursor-pointer" : "cursor-not-allowed"}"
+                        type="color"
+                        bind:value={preferences.background_color}
+                        title="{data.is_subbed ? "Change Background Color" : "You must be subscribed to change your background color"}"
+                        />
+                </div>
+                <div class="flex flew-row items-center justify-center my-2">
+                    <a
+                        href="https://docs.google.com/document/d/18ij8A03lbyhuUOT2HQRJm3WmxGqWcNDemyyT7-3CsMY/edit?usp=sharing"
+                        target="_blank"
+                        class="mr-2 hover:underline"
+                        title="{data.is_subbed ? "Change Message Font" : "You must be subscribed to change your message font"}"
+                    >Message Font*: </a>
+                    <input
+                        disabled={data.is_subbed ? "" : "disabled"}
+                        class="border-white text-center border-2 rounded-full px-1 w-80 {data.is_subbed ? "" : "cursor-not-allowed"}"
+                        title="{data.is_subbed ? "Change Message Font" : "You must be subscribed to change your message font"}"
+                        type="text"
+                        bind:value={preferences.message_font}
+                    />
+                </div>
+                <div class="flex flew-row items-center justify-center my-2">
+                    <span class="mr-2">English TTS Voice: </span>
+                    <select
+                        bind:value={preferences.tts_voice.en}
+                        name="english_tts_voice"
+                        id="english_tts_voice"
+                        class="text-center text-xl border-2 border-white w-80 rounded-full mx-2"
+                    >
+                        {#each english_tts_voices as tts_voice}
+                            <option id="{tts_voice.lang}" value="{tts_voice.lang}">{tts_voice.lang !== "" ? tts_voice.lang.split("-")[1] + " | " + tts_voice.lang.split("-")[2].split("Neural")[0] : tts_voice.lang} ({tts_voice.gender})</option>
+                        {/each}
+                    </select>
+                </div>
+                <div class="flex flew-row items-center justify-center my-2">
+                    <span class="mr-2">French TTS Voice: </span>
+                    <select
+                        bind:value={preferences.tts_voice.fr}
+                        name="english_tts_voice"
+                        id="english_tts_voice"
+                        class="text-center text-xl border-2 border-white w-80 rounded-full mx-2"
+                    >
+                        {#each french_tts_voices as tts_voice}
+                            <option id="{tts_voice.lang}" value="{tts_voice.lang}">{tts_voice.lang !== "" ? tts_voice.lang.split("-")[1] + " | " + tts_voice.lang.split("-")[2].split("Neural")[0] : tts_voice.lang} ({tts_voice.gender})</option>
+                        {/each}
+                    </select>
+                </div>
+                <div class="flex flew-col items-center justify-center my-2">
+                    <button
+                        class="py-2 px-2 rounded-full cursor-pointer bg-green-500"
+                        onclick={() => {
+                        savePreferences();
+                        }}>Save Preferences</button>
+                </div>
+
+                {#key preferences}
+
+                    <div style="background-color: {preferences.background_color};" class="w-auto flex flex-col mt-5 mx-2 p-2.5 border-red-500 border-4 rounded-2xl">
+                        <div class="w-full flex flex-row items-center justify-center">
+                            <div class="w-[{(28+2)*2}px] flex flex-row items-center justify-center mr-2">
+                                <img src="https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/2" alt="Broadcaster badge" class="h-[28px] mr-1"/>
+                                {#if data.is_subbed}
+                                    <img src="https://static-cdn.jtvnw.net/badges/v1/9a2c846d-c5b9-41e8-b60c-7bcfc1cd0599/2" alt="1 month subscriber badge" class="h-[28px] mr-1"/>
+                                {/if}
+                            </div>
+                            <p class="text-white text-xl border-4 rounded-xl px-2 py-1 mr-2 text-center items-center justify-center">They / Them</p>
+                            <p class="text-red-500 font-bold text-xl">{data.session.user.name}</p>
+                        </div>
+                        <div class="flex items-center justify-center text-center mt-2.5">
+                            <span style="color:{preferences.message_color}; {preferences.message_font !== "" ? `font-family: "${preferences.message_font}"` : ""}" class="text-center text-wrap wrap-anywhere mr-1 text-xl">This is an example message on the overlay <img class="inline-grid mr-2 h-[36px] align-middle" src="https://cdn.7tv.app/emote/01GYX4MQV80005HW5M02HH0TMX/3x.avif" alt="WAHOO Emote"></span>
+                        </div>
+                    </div>
+                {/key}
+            </div>
         </div>
-    </div>
     {/if}
 
 </div>
