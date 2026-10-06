@@ -1,7 +1,7 @@
 import type { PageServerLoad } from "./$types";
 import type { MinedData } from "$lib/interfaces/chunk/MinedData";
 import { MongoClient, ServerApiVersion } from "mongodb";
-import { MONGO_DB_URL, ALLOWED_EDIT_SCHEDULE } from "$env/static/private";
+import { MONGO_DB_URL, ADMIN_TWITCH_IDS } from "$env/static/private";
 
 export const load: PageServerLoad = async ({ params, locals }) => {
     const mined_data = [];

@@ -2,12 +2,12 @@ import { redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 import type { Stream } from "$lib/interfaces/schedule/Schedule";
 import { MongoClient, ServerApiVersion } from "mongodb";
-import { MONGO_DB_URL, ALLOWED_EDIT_SCHEDULE } from "$env/static/private";
+import { MONGO_DB_URL, ADMIN_TWITCH_IDS } from "$env/static/private";
 
-export const load: PageServerLoad = async ({ params, locals }) => {
+export const load: PageServerLoad = async ({ locals }) => {
     const session = await locals.auth();
 
-    const allowedIDs: string[] = ALLOWED_EDIT_SCHEDULE.split(" ");
+    const allowedIDs: string[] = ADMIN_TWITCH_IDS.split(" ");
 
     if (session.provider != "twitch-schedule") {
         redirect(303, "/schedule");

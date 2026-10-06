@@ -2,7 +2,6 @@
     import type { Stream } from "$lib/interfaces/schedule/Schedule";
     import type { PageData } from "./$types";
     import { SignOut } from "@auth/sveltekit/components";
-    import { isFuture, isNow, isPast } from "$lib/functions/schedule/streamsInfo";
     import { getMonth } from "$lib/functions/utils/dateStuff";
     import { z } from "$lib/functions/utils/numberFormatting";
     import { dev } from "$app/environment";
