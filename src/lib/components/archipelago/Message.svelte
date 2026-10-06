@@ -43,6 +43,7 @@
             <span class="text-green-400 mb-1">{realMessage.item?.locationName}</span>
             <span>in</span>
             <span><span class="{realMessage.item?.sender.name === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.item?.sender.alias}</span>'s World.</span>
+            <span class="{realMessage.found ? "text-green-500" : "text-red-500"}">{realMessage.found ? "(found)" : "(not found)"}</span>
         {:else if realMessage.type === "cheat"}
             <span>⚠ The server / an admin has gifted</span>
             <span style="color: {getColor()}">{realMessage.item?.name}</span>

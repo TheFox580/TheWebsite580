@@ -11,39 +11,39 @@
     let logs: IMessage[] = $state([]);
 
     messages.on("chat", (text: string, player: Player) => {
-        logs.unshift({type: "message", text: `${player.name}: ${text}`, item: null});
+        logs.unshift({type: "message", text: `${player.name}: ${text}`, item: null, found: null});
     });
 
     messages.on("serverChat", (text: string) => {
-          logs.unshift({type: "message", text: `Server: ${text}`, item: null});
+          logs.unshift({type: "message", text: `Server: ${text}`, item: null, found: null});
     });
 
     messages.on("itemSent", (text: string, item:Item) => {
-        logs.unshift({type: "item", text: text, item: item});
+        logs.unshift({type: "item", text: text, item: item, found: null});
     });
 
-    messages.on("itemHinted", (text: string, item:Item) => {
-        logs.unshift({type: "hint", text: text, item: item});
+    messages.on("itemHinted", (text: string, item:Item, found: boolean) => {
+        logs.unshift({type: "hint", text: text, item: item, found: found});
     });
 
     messages.on("itemCheated", (text: string, item:Item) => {
-        logs.unshift({type: "cheat", text: text, item: item});
+        logs.unshift({type: "cheat", text: text, item: item, found: null});
     });
 
     messages.on("goaled", (text: string, player:Player) => {
-      logs.unshift({type: "message", text: `${player.name} has completed ${player.game} for Team ${player.team}`, item: null});
+      logs.unshift({type: "message", text: `${player.name} has completed ${player.game} for Team ${player.team}`, item: null, found: null});
     });
 
     messages.on("connected", (text: string, player:Player, tags:string[]) => {
-      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} connected to the server. Tags: [${tags}]`, item: null});
+      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} connected to the server. Tags: [${tags}]`, item: null, found: null});
     });
 
     messages.on("disconnected", (text: string, player:Player) => {
-      logs.unshift({type: "message", text: `${player.name+1} (Team ${player.team}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} disconnected from the server.`, item: null});
+      logs.unshift({type: "message", text: `${player.name+1} (Team ${player.team}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} disconnected from the server.`, item: null, found: null});
     });
 
     messages.on("tagsUpdated", (text: string, player:Player, tags:string[]) => {
-      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) updated their tags. Tags: [${tags}]`, item: null});
+      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) updated their tags. Tags: [${tags}]`, item: null, found: null});
     });
 
     function sendMessage() {
