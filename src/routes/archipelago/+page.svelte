@@ -171,7 +171,7 @@
                                 {/key}
                             </div>
                         </div>
-                        <Logs user={client.name} messages={client.messages}></Logs>
+                        <Logs user={client.name} messages={client.messages} deathLink={client.deathLink}></Logs>
                     </div>
                 </div>
                 <div

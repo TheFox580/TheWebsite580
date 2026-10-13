@@ -1,50 +1,55 @@
 <script lang="ts">
-    import type { Item, ItemsManager, MessageManager, Player } from "archipelago.js";
+    import type { Item, ItemsManager, MessageManager, DeathLinkManager, Player } from "archipelago.js";
     import Message from "./Message.svelte";
     import type { IMessage } from "$lib/interfaces/archipelago/Message";
 
-    const { user, messages } = $props<{
+    const { user, messages, deathLink } = $props<{
         user: string;
         messages: MessageManager;
+        deathLink: DeathLinkManager;
     }>();
 
     let logs: IMessage[] = $state([]);
 
     messages.on("chat", (text: string, player: Player) => {
-        logs.unshift({type: "message", text: `${player.name}: ${text}`, item: null, found: null});
+        logs.unshift({type: "message", text: `${player.name}: ${text}`, item: null, found: null, source: null, time: null, cause: null});
     });
 
     messages.on("serverChat", (text: string) => {
-          logs.unshift({type: "message", text: `Server: ${text}`, item: null, found: null});
+          logs.unshift({type: "message", text: `Server: ${text}`, item: null, found: null, source: null, time: null, cause: null});
     });
 
     messages.on("itemSent", (text: string, item:Item) => {
-        logs.unshift({type: "item", text: text, item: item, found: null});
+        logs.unshift({type: "item", text, item: item, found: null, source: null, time: null, cause: null});
     });
 
     messages.on("itemHinted", (text: string, item:Item, found: boolean) => {
-        logs.unshift({type: "hint", text: text, item: item, found: found});
+        logs.unshift({type: "hint", text, item, found, source: null, time: null, cause: null});
     });
 
     messages.on("itemCheated", (text: string, item:Item) => {
-        logs.unshift({type: "cheat", text: text, item: item, found: null});
+        logs.unshift({type: "cheat", text, item, found: null, source: null, time: null, cause: null});
     });
 
     messages.on("goaled", (text: string, player:Player) => {
-      logs.unshift({type: "message", text: `${player.name} has completed ${player.game} for Team ${player.team}`, item: null, found: null});
+      logs.unshift({type: "message", text: `${player.name} has completed ${player.game} for Team ${player.team}`, item: null, found: null, source: null, time: null, cause: null});
     });
 
     messages.on("connected", (text: string, player:Player, tags:string[]) => {
-      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} connected to the server. Tags: [${tags}]`, item: null, found: null});
+      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} connected to the server. Tags: [${tags}]`, item: null, found: null, source: null, time: null, cause: null});
     });
 
     messages.on("disconnected", (text: string, player:Player) => {
-      logs.unshift({type: "message", text: `${player.name+1} (Team ${player.team}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} disconnected from the server.`, item: null, found: null});
+      logs.unshift({type: "message", text: `${player.name+1} (Team ${player.team}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} disconnected from the server.`, item: null, found: null, source: null, time: null, cause: null});
     });
 
     messages.on("tagsUpdated", (text: string, player:Player, tags:string[]) => {
-      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) updated their tags. Tags: [${tags}]`, item: null, found: null});
+      logs.unshift({type: "message", text: `${player.name} (Team ${player.team+1}) updated their tags. Tags: [${tags}]`, item: null, found: null, source: null, time: null, cause: null});
     });
+
+    deathLink.on("deathReceived", (source:string, time: number, cause?: string) => {
+        logs.unshift({type: "death", text: null, found: null, item: null, source, time, cause})
+    })
 
     function sendMessage() {
         const text_box = <HTMLInputElement>(

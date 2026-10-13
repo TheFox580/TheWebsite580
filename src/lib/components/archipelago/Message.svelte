@@ -50,6 +50,10 @@
             <span>to</span>
             <span class="{realMessage.item?.receiver.name === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.item?.receiver.alias}</span>
             <span>⚠</span>
+        {:else if realMessage.type === "death"}
+        <span>[DeathLink]: </span>
+        <span><span class="{realMessage.source === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.source}</span> died.</span>
+        <span>{realMessage.cause}</span>
         {:else}
             {realMessage.text}
         {/if}
