@@ -29,6 +29,7 @@
 <svelte:head>
     <link rel="stylesheet" href="/styles/default.css" />
     <title>TheFox580's website!</title>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
 </svelte:head>
 
 <div class="flex flex-col justify-center items-center my-10 text-2xl">
