@@ -5,7 +5,7 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = async ({ params, fetch }) => {
     const user = params.user;
 
-    if (user != "TheFox580") redirect(307, "/mcci/TheFox580")
+    //if (user != "TheFox580") redirect(307, "/mcci/TheFox580")
 
     const response = await fetch(`https://api.mccisland.net/graphql`, {
         method: "POST",
