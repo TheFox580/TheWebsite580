@@ -20,6 +20,10 @@
     let received: Item[] = $state(items.received);
     let itemList: string[] = $state([]);
 
+    let receivedFilter: string = $state("");
+    let getFilter: string = $state("");
+    let sendFilter: string = $state("");
+
     const itemTable = clientInfos.package.findPackage(
         clientInfos.game,
     )?.itemTable;
@@ -27,6 +31,17 @@
         Object.entries(itemTable).forEach(([key, value]) => {
             itemList.push(key);
         });
+    }
+
+    function updateFilter(list: Item[] | Hint[], filter: string, type: "item" | "hint"){
+        if (type === "item"){
+            list = <Item[]> list;
+            const new_list = list.filter((item) => item.name.toLowerCase().includes(filter.toLowerCase()));
+            return new_list;
+        }
+        list = <Hint[]> list;
+        const new_list = list.filter((hint) => hint.item.name.toLowerCase().includes(filter.toLowerCase()));
+        return new_list;
     }
 
     function refreshHints() {
@@ -149,11 +164,12 @@
     <div class="flex flex-col justify-center items-center w-5/7 m-5">
         <div class="flex flex-row justify-center items-start w-full m-5">
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
-                {#key received.length}
-                    <h1 class="text-3xl text-center mb-3">
-                        Items you received ({received.length}) :
+                {#key updateFilter(received, receivedFilter, "item").length}
+                    <h1 class="text-3xl text-center">
+                        Items you received ({updateFilter(received, receivedFilter, "item").length}) :
                     </h1>
                 {/key}
+                <input type="text" class="my-5 mx-3 px-3 bg-neutral-500 rounded-xl w-full text-center text-xl" placeholder="Search filter" bind:value={receivedFilter}/>
                 <table class="w-full">
                     <thead
                         class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
@@ -170,8 +186,8 @@
                         </tr>
                     </thead>
                     <tbody class="w-full border-gray-400 border-2">
-                        {#key received}
-                            {#each received as item}
+                        {#key updateFilter(received, receivedFilter, "item")}
+                            {#each updateFilter(received, receivedFilter, "item") as item}
                                 <ItemComp {item} get={true}></ItemComp>
                             {/each}
                         {/key}
@@ -179,11 +195,12 @@
                 </table>
             </div>
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
-                {#key get_hints.length}
-                    <h1 class="text-3xl text-center mb-3">
-                        Items you need ({get_hints.length}) :
+                {#key updateFilter(get_hints, getFilter, "hint").length}
+                    <h1 class="text-3xl text-center">
+                        Items you need ({updateFilter(get_hints, getFilter, "hint").length}) :
                     </h1>
                 {/key}
+                <input type="text" class="my-5 mx-3 px-3 bg-neutral-500 rounded-xl w-full text-center text-xl" placeholder="Search filter" bind:value={getFilter}/>
                 <table class="w-full">
                     <thead
                         class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
@@ -200,8 +217,8 @@
                         </tr>
                     </thead>
                     <tbody class="w-full border-gray-400 border-2">
-                        {#key get_hints}
-                            {#each get_hints as hint}
+                        {#key updateFilter(get_hints, getFilter, "hint")}
+                            {#each updateFilter(get_hints, getFilter, "hint") as hint}
                                 <HintComp {hint} get={true}></HintComp>
                             {/each}
                         {/key}
@@ -209,11 +226,12 @@
                 </table>
             </div>
             <div class="flex flex-col justify-center items-center w-1/3 mx-1">
-                {#key send_hints.length}
-                    <h1 class="text-3xl text-center mb-3">
-                        Items others need ({send_hints.length}) :
+                {#key updateFilter(send_hints, sendFilter, "hint").length}
+                    <h1 class="text-3xl text-center">
+                        Items others need ({updateFilter(send_hints, sendFilter, "hint").length}) :
                     </h1>
                 {/key}
+                <input type="text" class="my-5 mx-3 px-3 bg-neutral-500 rounded-xl w-full text-center text-xl" placeholder="Search filter" bind:value={sendFilter}/>
                 <table class="w-full">
                     <thead
                         class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
@@ -231,8 +249,8 @@
                         </tr>
                     </thead>
                     <tbody class="w-full border-gray-400 border-2">
-                        {#key send_hints}
-                            {#each send_hints as hint}
+                        {#key updateFilter(send_hints, sendFilter, "hint")}
+                            {#each updateFilter(send_hints, sendFilter, "hint") as hint}
                                 <HintComp {hint} get={false}></HintComp>
                             {/each}
                         {/key}

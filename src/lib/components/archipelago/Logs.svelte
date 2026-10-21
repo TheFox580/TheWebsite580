@@ -32,7 +32,7 @@
     });
 
     messages.on("goaled", (text: string, player:Player) => {
-      logs.unshift({type: "message", text: `${player.name} has completed ${player.game} for Team ${player.team}`, item: null, found: null, source: null, time: null, cause: null});
+      logs.unshift({type: "message", text: `${player.name} has completed ${player.game} for Team ${player.team+1}`, item: null, found: null, source: null, time: null, cause: null});
     });
 
     messages.on("connected", (text: string, player:Player, tags:string[]) => {
@@ -40,7 +40,7 @@
     });
 
     messages.on("disconnected", (text: string, player:Player) => {
-      logs.unshift({type: "message", text: `${player.name+1} (Team ${player.team}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} disconnected from the server.`, item: null, found: null, source: null, time: null, cause: null});
+      logs.unshift({type: "message", text: `${player.name+1} (Team ${player.team+1}) ${tags.includes("Tracker") ? "tracking" : "playing"} ${player.game} disconnected from the server.`, item: null, found: null, source: null, time: null, cause: null});
     });
 
     messages.on("tagsUpdated", (text: string, player:Player, tags:string[]) => {
