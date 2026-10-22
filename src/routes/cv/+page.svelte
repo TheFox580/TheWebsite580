@@ -12,20 +12,24 @@
     <title>Elliot Defrance | CV</title>
 </svelte:head>
 
+<a class="fixed bottom-0 left-0 m-3 rounded-full bg-white p-2 cursor-pointer" aria-label="Télécharger le CV" href="/other/cv/CV_Elliot_Defrance_FR.pdf" download target="_blank" title="Télécharger le CV">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" color="black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download preview-icon"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+</a>
+
 <div class="w-screen h-full flex flex-row items-stretch justify-center">
     <div class="w-full h-full mx-10 my-5 flex items-stretch text-center">
         <div class="flex flex-col h-full w-2/5 bg-green-500 rounded-l-2xl items-center justify-center px-2" bind:clientHeight={divH}>
             <br class="mt-5"/>
             <h1 class="text-4xl">Elliot Defrance ({age} ans)</h1>
-            <br class="mt-5"/>
+            <br class="mt-10"/>
             <h2 class="text-3xl">Etudiant en 3ème année de Licence Informatique</h2>
             <br class="mt-5"/>
             <h3 class="text-2xl text-justify px-2">Actuellement en recherche d'un stage de 2 mois (14 mars au 22 mai 2026) en Informatique pour compléter mes études et obtenir ma licence en plus d'obtenir une expérience professionnelle pour me préparer au monde du travail dans ce domaine.</h3>
             <br class="mt-15"/>
-            <div class="w-auto flex flex-col items-start justify-start px-2">
+            <div class="w-full flex flex-col items-start justify-start px-2">
                 <div class="flex flex-row text-wrap wrap-break-word mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-at-sign preview-icon"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>
-                    <a class="ml-2" href="mailto:elliotdefrance3@gmail.com" target="_blank">elliotdefrance3@gmail.com</a>
+                    <a class="ml-2" href="mailto:stage@thefox580.me" target="_blank">stage@thefox580.me</a>
                 </div>
                 <div class="flex flex-row text-wrap wrap-break-word mb-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone preview-icon"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
@@ -40,36 +44,45 @@
                     <span class="ml-2">Permis B</span>
                 </div>
             </div>
-            <br class="mt-15"/>
-            <h2 class="text-2xl">Langues</h2>
-            <br class="mt-2.5"/>
-            <div class="flex flex-col w-auto items-start">
-                <span>- Français (Langue maternelle)</span>
-                <span>- Anglais (C1)</span>
+            <br class="mt-5"/>
+            <div class="flex flex-col w-full items-start">
+                <h2 class="text-2xl">Langues</h2>
+                <br class="mt-2.5"/>
+                <div class="ml-5 flex flex-col items-start">
+                    <span>- Français (Langue maternelle)</span>
+                    <span>- Anglais (C1)</span>
+                </div>
             </div>
-            <br class="mt-10"/>
-            <h2 class="text-2xl">Compétances</h2>
-            <br class="mt-2.5"/>
-            <div class="flex flex-col w-auto items-start">
-                <span>- Java</span>
-                <span>- HTML, CSS / Tailwind</span>
-                <span>- JavaScript / TypeScript</span>
-                <span>- Svelte</span>
-                <span>- Python</span>
-                <span>- Skript</span>
+            <br class="mt-5"/>
+            <div class="flex flex-col w-full items-start">
+                <h2 class="text-2xl">Compétances</h2>
+                <br class="mt-2.5"/>
+                <div class="ml-5 flex flex-col items-start">
+                    <span>- Java</span>
+                    <span>- HTML, CSS / Tailwind</span>
+                    <span>- JavaScript / TypeScript</span>
+                    <span>- Svelte</span>
+                    <span>- Python</span>
+                    <span>- Skript</span>
+                </div>
             </div>
-            <br class="mt-10"/>
-            <h2 class="text-2xl">Passions</h2>
-            <br class="mt-2.5"/>
-            <div class="flex flex-col w-auto items-start">
-                <span>- Jeux-vidéos</span>
-                <span>- Création de contenu</span>
+            <br class="mt-5"/>
+            <div class="flex flex-col w-full items-start">
+                <h2 class="text-2xl">Passions</h2>
+                <br class="mt-2.5"/>
+                <div class="ml-5 flex flex-col items-start">
+                    <span>- Jeux-vidéos</span>
+                    <span>- Création de contenu</span>
+                </div>
             </div>
-            <br class="mt-10"/>
-            <h2 class="text-2xl">Réseaux</h2>
-            <br class="mt-2.5"/>
-            <div class="flex flex-col w-auto items-start">
-                <a href="https://www.github.com/TheFox580" target="_blank" class="flex flex-row items-center"><img src="/img/cv/GitHub_Invertocat_White.png" class="w-10 mr-2" alt="Logo Github Blanc"/> <span>Github</span></a>
+            <br class="mt-5"/>
+            <div class="flex flex-col w-full items-start">
+                <h2 class="text-2xl">Réseaux</h2>
+                <br class="mt-2.5"/>
+                <div class="ml-5">
+                    <a href="https://www.github.com/TheFox580" target="_blank" class="flex flex-row items-center my-2"><img src="/img/cv/GitHub_Invertocat_White.png" class="w-10 mr-2" alt="Logo Github Blanc"/> <span>Github</span></a>
+                    <a href="https://www.linkedin.com/in/elliot-defrance-40a3a7446" target="_blank" class="flex flex-row items-center my-2"><img src="/img/cv/InBug-White.png" class="w-10 mr-2" alt="Logo Github Blanc"/> <span>LinkedIn</span></a>
+                </div>
             </div>
             <br class="mt-5"/>
         </div>
