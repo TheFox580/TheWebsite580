@@ -1,5 +1,5 @@
 <script lang="ts">
-    const birth = new Date(2006, 2, 4, 18, 0, 0);
+    const birth = new Date(1141491600000);
     const diff = new Date(new Date().getTime()-birth.getTime());
 
     const age = diff.getFullYear()-1970;
@@ -99,14 +99,16 @@
             <h2 class="text-3xl">Factulé des Sciences Jean Perrin - Lens (2024-2027)</h2>
             <p class="text-xl">Licence Informatique</p>
             <br class="mt-20"/>
-            <h1 class="text-5xl">Mes expériences personelles et professionelles</h1>
+            <h1 class="text-5xl">Mes expériences personelles</h1>
             <br class="mt-15"/>
-            <h2 class="text-3xl">Développeur Java (1 an)</h2>
-            <p class="text-xl">Développeur pour <a href="https://twitter.com/ItsMCMayhem" target="_blank">MC Mayhem</a>, un évènement Minecraft réunissant 40 joueurs dans 8 épreuves différentes.</p>
-            <br class="mt-5"/>
-            <h2 class="text-3xl">Lead Développeur Skript (2 ans)</h2>
-            <p class="text-xl">Lead Développeur pour <a href="https://twitter.com/FruitWarsEvent" target="_blank">Fruit Wars</a>.</p>
-            <br class="mt-5"/>
+            {#if false}
+                <h2 class="text-3xl">Développeur Java (1 an)</h2>
+                <p class="text-xl">Développeur pour <a href="https://twitter.com/ItsMCMayhem" target="_blank">MC Mayhem</a>, un évènement Minecraft réunissant 40 joueurs dans 8 épreuves différentes.</p>
+                <br class="mt-5"/>
+                <h2 class="text-3xl">Lead Développeur Skript (2 ans)</h2>
+                <p class="text-xl">Lead Développeur pour <a href="https://twitter.com/FruitWarsEvent" target="_blank">Fruit Wars</a>.</p>
+                <br class="mt-5"/>
+            {/if}
             <h2 class="text-3xl">Employé de mairie (1 mois)</h2>
             <p class="text-xl">J'ai pu apprendre le monde du travail à travers un job étudiant.</p>
         </div>
