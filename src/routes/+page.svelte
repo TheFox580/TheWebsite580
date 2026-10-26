@@ -16,11 +16,11 @@
     const timeEvent: Date = new Date("2026-08-16T17:00:00Z");
 
     onMount(async () => {
-      liveInfos = (await (await fetch("https://thefox580-backend.zoelliotmitong.workers.dev/api/live/" + mainUserId)).json()).liveInfos;
+      liveInfos = (await (await fetch("https://backend.thefox580.me/api/live/" + mainUserId)).json()).liveInfos;
       if (liveInfos.isLive === false){
-        liveInfos = (await (await fetch("https://thefox580-backend.zoelliotmitong.workers.dev/api/live/" + altUserId)).json()).liveInfos;
+        liveInfos = (await (await fetch("https://backend.thefox580.me/api/live/" + altUserId)).json()).liveInfos;
         if (liveInfos.isLive === false){
-          liveInfos = (await (await fetch("https://thefox580-backend.zoelliotmitong.workers.dev/api/live/" + frUserId)).json()).liveInfos;
+          liveInfos = (await (await fetch("https://backend.thefox580.me/api/live/" + frUserId)).json()).liveInfos;
         }
       }
     })

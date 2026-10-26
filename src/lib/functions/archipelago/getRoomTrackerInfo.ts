@@ -6,7 +6,7 @@ export async function getRoomTrackerInfo(
 ): Promise<PlayerSlotInfo[]> {
 
   const res = await fetch(
-    dev ? `http://127.0.0.1:8787/api/archipelago/tracker/${id}` : `https://thefox580-backend.zoelliotmitong.workers.dev/api/archipelago/tracker/${id}`,
+    dev ? `http://127.0.0.1:8787/api/archipelago/tracker/${id}` : `https://backend.thefox580.me/api/archipelago/tracker/${id}`,
   );
 
   const players = (await res.json()).players;

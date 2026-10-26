@@ -19,7 +19,7 @@
     let menu: string = $state("scheduled");
     let message_added: string = $state("")
 
-    const backend_url = dev ? "http://localhost:8787" : "https://thefox580-backend.zoelliotmitong.workers.dev"
+    const backend_url = dev ? "http://localhost:8787" : "https://backend.thefox580.me"
 
     function formatDate(date: string): string{
       const now: Date = new Date();

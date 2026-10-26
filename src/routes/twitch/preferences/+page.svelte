@@ -14,7 +14,7 @@
 
     let preferences: ChatterPreferences = $state(data.preferences);
 
-    const backend_url = dev ? "http://localhost:8787" : "https://thefox580-backend.zoelliotmitong.workers.dev"
+    const backend_url = dev ? "http://localhost:8787" : "https://backend.thefox580.me"
 
     async function savePreferences(){
       await fetch(backend_url + "/api/chatter_preferences", {

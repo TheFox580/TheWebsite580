@@ -30,7 +30,7 @@
     let last_data: number = $state(mined_data.findLast(mined => mined.max > 0));
     let max_blocks: number = $state(last_data ? last_data.max : 0);
 
-    const backend_url = dev ? "http://127.0.0.1:8787" : "https://thefox580-backend.zoelliotmitong.workers.dev"
+    const backend_url = dev ? "http://127.0.0.1:8787" : "https://backend.thefox580.me"
 
     async function fetchMinedData(){
         const fetchMined = await fetch(backend_url + "/api/chunk");

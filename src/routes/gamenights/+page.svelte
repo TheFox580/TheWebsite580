@@ -17,7 +17,7 @@
     let signed_up: boolean = $state(data.signed_up);
     let signed_up_amount: number = $state(data.signed_up_amount);
 
-    const backend_url = dev ? "http://127.0.0.1:8787" : "https://thefox580-backend.zoelliotmitong.workers.dev"
+    const backend_url = dev ? "http://127.0.0.1:8787" : "https://backend.thefox580.me"
 
     async function signUp(){
         signed_up = true;
