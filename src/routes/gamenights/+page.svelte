@@ -63,13 +63,13 @@
 </svelte:head>
 
 
-{#if data.session === null || data.session.provider != "discord"}
+{#if data.session === null || data.session.provider != "gamenights"}
     <div class="w-screen h-screen bg-black text-white">
         <div class="w-full h-full flex flex-col justify-center items-center">
             <span class="text-2xl text-center text-white">You are signed out</span>
             <SignIn
                 provider={data.providerMap.find(
-                    (provider) => provider.id === "discord",
+                    (provider) => provider.id === "gamenights",
                 ).id}
                 signInPage="api/discord/signin"
                 class="mt-5.5"

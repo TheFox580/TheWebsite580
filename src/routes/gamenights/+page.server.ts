@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
     let signed_up_amount: number = 0;
     let game: Game = {};
 
-    if (session?.provider === "discord") {
+    if (session?.provider === "gamenights") {
 
         const client = new MongoClient(MONGO_DB_URL, {
             serverApi: {

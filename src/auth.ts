@@ -8,7 +8,7 @@ import TwitchSub from "$lib/extra/providers/twitchsub";
 import {
   AUTH_SECRET,
 } from "$env/static/private";
-import Discord from "@auth/sveltekit/providers/discord";
+import Gamenights from "$lib/extra/providers/gamenights";
 
 declare module "@auth/sveltekit" {
   interface Session {
@@ -24,7 +24,7 @@ declare module "@auth/sveltekit" {
   }
 }
 
-const providers: Provider[] = [Twitch, TwitchBot, TwitchSchedule, TwitchSub, Discord];
+const providers: Provider[] = [Twitch, TwitchBot, TwitchSchedule, TwitchSub, Gamenights];
 
 export const providerMap = providers.map((provider) => {
   if (typeof provider === "function") {
