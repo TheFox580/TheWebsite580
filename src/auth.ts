@@ -5,10 +5,10 @@ import Twitch from "@auth/sveltekit/providers/twitch";
 import TwitchBot from "$lib/extra/providers/twitchbot";
 import TwitchSchedule from "$lib/extra/providers/twitchschedule";
 import TwitchSub from "$lib/extra/providers/twitchsub";
+import Gamenights from "$lib/extra/providers/gamenights";
 import {
   AUTH_SECRET,
 } from "$env/static/private";
-import Gamenights from "$lib/extra/providers/gamenights";
 
 declare module "@auth/sveltekit" {
   interface Session {
