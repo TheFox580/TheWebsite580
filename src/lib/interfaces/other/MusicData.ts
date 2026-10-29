@@ -16,4 +16,5 @@ export interface MusicData {
     mediaType: "AUDIO" | "VIDEO" | "PODCAST";
     tags: string[];
     repeat: "NONE" | "ONE" | "ALL";
+    shuffle: boolean;
 }
