@@ -15,4 +15,5 @@ export interface MusicData {
     playlistId: string;
     mediaType: "AUDIO" | "VIDEO" | "PODCAST";
     tags: string[];
+    repeat: "NONE" | "ONE" | "ALL";
 }
