@@ -42,8 +42,8 @@
                 } else if (wsData.type === "POSITION_CHANGED") {
                     musicData.elapsedSeconds = Math.floor(wsData.position);
                 } else if (wsData.type === "VIDEO_CHANGED") {
-                    const repeat = wsData.repeat;
-                    const shuffle = wsData.shuffle;
+                    const repeat = musicData.repeat;
+                    const shuffle = musicData.shuffle;
 
                     musicData = wsData.song;
 
