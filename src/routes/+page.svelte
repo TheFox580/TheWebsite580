@@ -53,8 +53,6 @@
 
     <div class="w-3/5 h-auto my-10 mx-3 flex flex-col items-center justify-center">
 
-        <Music/>
-
         {#if liveInfos.isLive}
               <a class="w-full" href="https://www.twitch.tv/{liveInfos.user_name}" target="_blank">
                   <div class="w-auto flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4 border-red-600 bg-red-900">
@@ -66,10 +64,12 @@
                       </div>
                   </div>
               </a>
-              <StreamEmbed username={liveInfos.user_name}></StreamEmbed>
+              <StreamEmbed username={liveInfos.user_name}/>
         {:else}
+            <Music/>
+
               <a class="w-full" href="/schedule" target="_blank">
-                  <div class="w-auto flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4 border-green-600 bg-green-900 grayscale">
+                  <div class="w-auto flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4 border-neutral-400 bg-neutral-700 grayscale">
                       <div class="w-8/10 text-white flex flex-col items-center mx-5 text-center">
                           <p class="text-2xl text-green-600 font-bold">🟢 Currently Offiline</p>
                           <p class="text-3xl">Click to check the schedule</p>
