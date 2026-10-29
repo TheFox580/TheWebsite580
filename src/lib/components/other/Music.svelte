@@ -42,7 +42,21 @@
                 } else if (wsData.type === "POSITION_CHANGED") {
                     musicData.elapsedSeconds = Math.floor(wsData.position);
                 } else if (wsData.type === "VIDEO_CHANGED") {
+                    const repeat = wsData.repeat;
+                    const shuffle = wsData.shuffle;
+
                     musicData = wsData.song;
+
+                    musicData.repeat = repeat;
+                    musicData.shuffle = shuffle;
+
+                    if (cover){
+                        if (!musicData.isPaused){
+                            cover.classList.add("cover");
+                        } else {
+                            cover.classList.remove("cover");
+                        }
+                    }
                 } else if (wsData.type === "REPEAT_CHANGED") {
                     musicData.repeat = wsData.repeat;
                 } else if (wsData.type === "SHUFFLE_CHANGED") {
