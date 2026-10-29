@@ -3,6 +3,7 @@
     import EightyEightByThirtyOne from "$lib/components/other/EightyEightByThirtyOne.svelte"
     import type { LiveInfos } from "$lib/interfaces/twitch/liveInfos";
     import { onMount } from "svelte";
+    import Music from "$lib/components/other/Music.svelte";
 
     const mainUserId = "126869447";
     const altUserId = "975679501";
@@ -51,6 +52,9 @@
     </div>
 
     <div class="w-3/5 h-auto my-10 mx-3 flex flex-col items-center justify-center">
+
+        <Music/>
+
         {#if liveInfos.isLive}
               <a class="w-full" href="https://www.twitch.tv/{liveInfos.user_name}" target="_blank">
                   <div class="w-auto flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4 border-red-600 bg-red-900">
@@ -76,6 +80,6 @@
     </div>
     <div class="w-1/5 h-auto mx-3 flex flex-col items-center justify-start">
         <h2 class="text-3xl">More links:</h2>
-        <EightyEightByThirtyOne></EightyEightByThirtyOne>
+        <EightyEightByThirtyOne/>
     </div>
 </div>
