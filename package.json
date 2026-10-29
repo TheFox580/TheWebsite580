@@ -1,7 +1,7 @@
 {
   "name": "thewebsite580",
   "private": true,
-  "version": "0.2.1",
+  "version": "0.2.2",
   "type": "module",
   "scripts": {
     "dev": "vite dev",
@@ -11,7 +11,7 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "test:unit": "vitest",
-    "test": "npm run test:unit -- --run"
+    "test": "pnpm run test:unit -- --run"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^7.0.1",
@@ -40,6 +40,7 @@
     "@vercel/speed-insights": "^2.0.0",
     "archipelago.js": "^2.1.0",
     "better-auth": "^1.7.5",
+    "botid": "^1.5.11",
     "chart.js": "^4.5.1",
     "dotenv": "^18.0.1",
     "express": "^5.2.1",
