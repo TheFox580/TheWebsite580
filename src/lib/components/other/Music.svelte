@@ -40,7 +40,11 @@
                 <div class="flex flex-col mb-2">
                     <a class="hover:underline" target="_blank" href={musicData.url}>{musicData.title}</a>
                     <a class="hover:underline" target="_blank" href={musicData.artistUrl}>{musicData.artist}</a>
-                    <a class="hover:underline" target="_blank" href={"https://music.youtube.com/playlist?list=" + musicData.playlistId}>{musicData.album}</a>
+                    {#if musicData.playlistId !== "LM"}
+                        <a class="hover:underline" target="_blank" href={"https://music.youtube.com/playlist?list=" + musicData.playlistId}>{musicData.album}</a>
+                    {:else}
+                    <p>{musicData.album}</p>
+                    {/if}
                 </div>
                 <div class="w-full flex flex-col mt-2">
                     <div class="w-full flex flew-row justify-between mb-1">
