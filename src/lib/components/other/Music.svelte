@@ -160,7 +160,8 @@
                     {/key}
                 </div>
             {:else}
-                <div>No music playing.</div>
+                <p>No music playing.</p>
+                <p>(Probably sleeping...)</p>
             {/if}
     </div>
 </div>
