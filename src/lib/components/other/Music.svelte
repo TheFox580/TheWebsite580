@@ -8,7 +8,7 @@
     let musicData: MusicData = $state(null);
     let ws : WebSocket = $state();
 
-    let cover : HTMLElement = $state();
+    //let cover : HTMLElement = $state();
 
     onMount(() => {
         if (!ws){
@@ -23,22 +23,22 @@
                     musicData.repeat = wsData.repeat;
                     musicData.shuffle = wsData.shuffle;
 
-                    if (cover && !musicData.isPaused){
-                        cover.classList.add("cover");
-                    } else {
-                        cover.classList.remove("cover");
-                    }
+                    //if (cover && !musicData.isPaused){
+                    //    cover.classList.add("cover");
+                    //} else {
+                    //    cover.classList.remove("cover");
+                    //}
                 } else if (wsData.type === "PLAYER_STATE_CHANGED") {
                     musicData.isPaused = !wsData.isPlaying;
                     musicData.elapsedSeconds = Math.floor(wsData.position);
 
-                    if (cover){
-                        if (!musicData.isPaused){
-                            cover.classList.add("cover");
-                        } else {
-                            cover.classList.remove("cover");
-                        }
-                    }
+                    //if (cover){
+                    //    if (!musicData.isPaused){
+                    //        cover.classList.add("cover");
+                    //    } else {
+                    //        cover.classList.remove("cover");
+                    //    }
+                    //}
                 } else if (wsData.type === "POSITION_CHANGED") {
                     musicData.elapsedSeconds = Math.floor(wsData.position);
                 } else if (wsData.type === "VIDEO_CHANGED") {
@@ -50,13 +50,13 @@
                     musicData.repeat = repeat;
                     musicData.shuffle = shuffle;
 
-                    if (cover){
-                        if (!musicData.isPaused){
-                            cover.classList.add("cover");
-                        } else {
-                            cover.classList.remove("cover");
-                        }
-                    }
+                    //if (cover){
+                    //    if (!musicData.isPaused){
+                    //        cover.classList.add("cover");
+                    //    } else {
+                    //        cover.classList.remove("cover");
+                    //    }
+                    //}
                 } else if (wsData.type === "REPEAT_CHANGED") {
                     musicData.repeat = wsData.repeat;
                 } else if (wsData.type === "SHUFFLE_CHANGED") {
@@ -75,7 +75,7 @@
 
     <div class="w-30 h-full mx-3">
         {#if musicData}
-            <a href={musicData.url} target="_blank" class="w-full h-full"><img src={musicData.imageSrc} alt="{musicData.album}'s Cover Art" bind:this={cover} class="w-auto h-auto rounded-xl cover"></a>
+            <a href={musicData.url} target="_blank" class="w-full h-full"><img src={musicData.imageSrc} alt="{musicData.album}'s Cover Art" class="w-auto h-auto rounded-xl"></a>
         {:else}
             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-audio-lines-off preview-icon"><path d="M10 10v11"/><path d="M10 3v1.35"/><path d="M14 14v1"/><path d="M14 8v.35"/><path d="M18 5v7.35"/><path d="M2 10v3"/><path d="m2 2 20 20"/><path d="M22 10v3"/><path d="M6 6v11"/></svg>
         {/if}
@@ -109,7 +109,7 @@
                             {/if}
                             {#if musicData.repeat === "ONE"}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-repeat-1 preview-icon mx-1">
-                                    <title>Repeating this song</title>
+                                    <title>Song is repeating</title>
                                     <path d="m17 2 4 4-4 4"/>
                                     <path d="M3 11v-1a4 4 0 0 1 4-4h14"/>
                                     <path d="m7 22-4-4 4-4"/>
@@ -118,7 +118,7 @@
                                 </svg>
                             {:else if musicData.repeat === "ALL"}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-repeat preview-icon mx-1">
-                                    <title>Repeating my playlist</title>
+                                    <title>Playlist is repeating</title>
                                     <path d="m17 2 4 4-4 4"/>
                                     <path d="M3 11v-1a4 4 0 0 1 4-4h14"/>
                                     <path d="m7 22-4-4 4-4"/>
@@ -138,7 +138,7 @@
                             {/if}
                             {#if musicData.shuffle}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shuffle preview-icon mx-1">
-                                    <title>Shuffling</title>
+                                    <title>Playlist is shuffled</title>
                                     <path d="m18 14 4 4-4 4"/>
                                     <path d="m18 2 4 4-4 4"/>
                                     <path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22"/>
