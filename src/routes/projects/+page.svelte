@@ -1,4 +1,6 @@
 <script lang="ts">
+    import NavBar from "$lib/components/other/NavBar.svelte";
+
     let innerHeight = $state(0);
 
     const worked_on = [
@@ -38,17 +40,24 @@
 </svelte:head>
 
 <div class="text-white flex flex-row text-center">
-    <div class="w-1/2 h-full flex flex-col py-5 items-center justify-start border-r-2 border-white" style="height: {innerHeight}px;">
-        <h1 class="text-4xl mb-5">Worked on:</h1>
-        {#each worked_on as work}
-            <h3 class="text-2xl mb-2"><a class="cursor-pointer hover:underline" href="{work.link}" target="_blank">{work.text} | {work.type} | {work.time}</a></h3>
-        {/each}
+
+    <div class="w-1/5 flex flex-row items-center">
+        <NavBar loc="projects"></NavBar>
     </div>
 
-    <div class="w-1/2 flex flex-col py-5 items-center justify-start border-l-2 border-white" style="height: {innerHeight}px;">
-        <h1 class="text-4xl mb-5">Ongoing:</h1>
-        {#each working_on as work}
-            <h3 class="text-2xl mb-2"><a class="cursor-pointer hover:underline" href="{work.link}" target="_blank">{work.text} | {work.type} | {work.time}</a></h3>
-        {/each}
+    <div class="w-4/5 text-white flex flex-row text-center">
+            <div class="w-1/2 h-full flex flex-col py-5 items-center justify-start border-r-2 border-white" style="height: {innerHeight}px;">
+                <h1 class="text-4xl mb-5">Worked on:</h1>
+                {#each worked_on as work}
+                    <h3 class="text-2xl mb-2"><a class="cursor-pointer hover:underline" href="{work.link}" target="_blank">{work.text} | {work.type} | {work.time}</a></h3>
+                {/each}
+            </div>
+
+            <div class="w-1/2 flex flex-col py-5 items-center justify-start border-l-2 border-white" style="height: {innerHeight}px;">
+                <h1 class="text-4xl mb-5">Ongoing:</h1>
+                {#each working_on as work}
+                    <h3 class="text-2xl mb-2"><a class="cursor-pointer hover:underline" href="{work.link}" target="_blank">{work.text} | {work.type} | {work.time}</a></h3>
+                {/each}
+            </div>
     </div>
 </div>

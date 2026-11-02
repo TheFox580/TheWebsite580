@@ -4,6 +4,7 @@
     import type { LiveInfos } from "$lib/interfaces/twitch/liveInfos";
     import { onMount } from "svelte";
     import Music from "$lib/components/other/Music.svelte";
+    import NavBar from "$lib/components/other/NavBar.svelte";
 
     const mainUserId = "126869447";
     const altUserId = "975679501";
@@ -30,7 +31,6 @@
         html {
             background-color: #000000;
             color: #ffffff;
-            font-family: Arial, sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -41,14 +41,9 @@
 </svelte:head>
 
 <div class="w-screen h-screen flex flex-row mx-3 items-center">
-    <div class="w-1/5 h-auto flex flex-col items-center justify-evenly mx-3 text-center">
-        <h2 class="my-2 text-3xl">➡ Home</h2>
-        <h2 class="my-2 text-3xl"><a class="hover:underline cursor-pointer" href="/projects">Projects</a></h2>
-        <h2 class="my-2 text-3xl"><a class="hover:underline cursor-pointer" href="/mcci/TheFox580">MCC Island Stats</a></h2>
-        <h2 class="my-2 text-3xl"><a class="hover:underline cursor-pointer" href="/mcsr">MCSR Ranked Stats</a></h2>
-        <h2 class="my-2 text-3xl"><a class="hover:underline cursor-pointer" href="/archipelago">Archipelago</a></h2>
-        <h2 class="my-2 text-3xl"><a class="hover:underline cursor-pointer" href="/cv">CV</a> / <a class="hover:underline cursor-pointer" href="/resume">Resume</a></h2>
-        <h2 class="my-2 text-3xl"><a class="hover:underline cursor-pointer" href="/gamenights">Game Nights</a></h2>
+
+    <div class="w-1/5 flex flex-row items-center">
+        <NavBar loc="home"></NavBar>
     </div>
 
     <div class="w-3/5 h-auto my-10 mx-3 flex flex-col items-center justify-center">

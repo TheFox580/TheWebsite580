@@ -3,6 +3,7 @@
     import type { PageData } from "./$types";
     import { z } from "$lib/functions/utils/numberFormatting";
     import { getMonth } from "$lib/functions/utils/dateStuff";
+    import NavBar from "$lib/components/other/NavBar.svelte";
 
     const { data } = $props<{
         data: PageData;
@@ -24,56 +25,61 @@
 </svelte:head>
 
 
-<div class="w-full h-full">
-    <div class="bg-neutral-500 flex flex-col items-center justify-center py-2 px-5 my-5 rounded-2xl border-neutral-300 border-4">
-        <p class="text-4xl text-center">Stream Schedule</p>
+<div class="w-screen h-full flex flex-row">
+    <div class="w-1/5 flex flex-row items-center">
+        <NavBar loc="schedule"></NavBar>
     </div>
-    {#each old_streams as old_stream}
-        <a href="https://www.twitch.tv/{old_stream.channel}" target="_blank">
-            <div class="past w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
-                style="height: {Math.round((1/old_streams.length + current_streams.length + next_streams.length)*100)}%;">
-                <div class="w-{!isEmptyOrSpaces(old_stream.image_name) ? "8/10" : "full"} h-full text-white flex flex-col items-center justify-center mx-5 text-center">
-                    <p class="text-2xl text-green-400">🟢 Done</p>
-                    <p class="text-4xl">{old_stream.title}</p>
-                    <p class="text-3xl">{old_stream.category}</p>
-                    <p class="text-2xl">{getMonth(new Date(old_stream.time*1000).getMonth())} {new Date(old_stream.time*1000).getDate()} from {z(new Date(old_stream.time*1000).getHours())}:{z(new Date(old_stream.time*1000).getMinutes())} to {z(new Date((old_stream.time+old_stream.estimated_length*60)*1000).getHours())}:{z(new Date((old_stream.time+old_stream.estimated_length*60)*1000).getMinutes())}</p>
+    <div class="w-4/5 mx-5">
+        <div class="bg-neutral-500 flex flex-col items-center justify-center py-2 px-5 my-5 rounded-2xl border-neutral-300 border-4">
+            <p class="text-4xl text-center">Stream Schedule</p>
+        </div>
+        {#each old_streams as old_stream}
+            <a href="https://www.twitch.tv/{old_stream.channel}" target="_blank">
+                <div class="past w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
+                    style="height: {Math.round(1/(old_streams.length + current_streams.length + next_streams.length)*100)}%;">
+                    <div class="w-{!isEmptyOrSpaces(old_stream.image_name) ? "8/10" : "full"} h-full text-white flex flex-col items-center justify-center mx-5 text-center">
+                        <p class="text-2xl text-green-400">🟢 Done</p>
+                        <p class="text-4xl">{old_stream.title}</p>
+                        <p class="text-3xl">{old_stream.category}</p>
+                        <p class="text-2xl">{getMonth(new Date(old_stream.time*1000).getMonth())} {new Date(old_stream.time*1000).getDate()} from {z(new Date(old_stream.time*1000).getHours())}:{z(new Date(old_stream.time*1000).getMinutes())} to {z(new Date((old_stream.time+old_stream.estimated_length*60)*1000).getHours())}:{z(new Date((old_stream.time+old_stream.estimated_length*60)*1000).getMinutes())}</p>
+                    </div>
+                    {#if !isEmptyOrSpaces(old_stream.image_name)}
+                      <img src="/img/schedule/{old_stream.image_name}" alt={old_stream.image_name} class="w-60 rounded-xl h-36"/>
+                    {/if}
                 </div>
-                {#if !isEmptyOrSpaces(old_stream.image_name)}
-                  <img src="/img/schedule/{old_stream.image_name}" alt={old_stream.image_name} class="w-60 rounded-xl h-36"/>
-                {/if}
-            </div>
-        </a>
-    {/each}
-    {#each current_streams as current_stream}
-        <a href="https://www.twitch.tv/{current_stream.channel}" target="_blank">
-            <div class="live w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
-                style="height: {Math.round((1/old_streams.length + current_streams.length + next_streams.length)*100)}%;">
-                  <div class="w-{!isEmptyOrSpaces(current_stream.image_name) ? "8/10" : "full"} h-full text-white flex flex-col items-center justify-center mx-5 text-center">
-                    <p class="text-2xl text-red-600 font-bold">🔴 LIVE on {current_stream.channel}</p>
-                    <p class="text-4xl">{current_stream.title}</p>
-                    <p class="text-3xl">{current_stream.category}</p>
-                    <p class="text-2xl">{getMonth(new Date(current_stream.time*1000).getMonth())} {new Date(current_stream.time*1000).getDate()} from {z(new Date(current_stream.time*1000).getHours())}:{z(new Date(current_stream.time*1000).getMinutes())} to {z(new Date((current_stream.time+current_stream.estimated_length*60)*1000).getHours())}:{z(new Date((current_stream.time+current_stream.estimated_length*60)*1000).getMinutes())}</p>
+            </a>
+        {/each}
+        {#each current_streams as current_stream}
+            <a href="https://www.twitch.tv/{current_stream.channel}" target="_blank">
+                <div class="live w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
+                    style="height: {Math.round(1/(old_streams.length + current_streams.length + next_streams.length)*100)}%;">
+                      <div class="w-{!isEmptyOrSpaces(current_stream.image_name) ? "8/10" : "full"} h-full text-white flex flex-col items-center justify-center mx-5 text-center">
+                        <p class="text-2xl text-red-600 font-bold">🔴 LIVE on {current_stream.channel}</p>
+                        <p class="text-4xl">{current_stream.title}</p>
+                        <p class="text-3xl">{current_stream.category}</p>
+                        <p class="text-2xl">{getMonth(new Date(current_stream.time*1000).getMonth())} {new Date(current_stream.time*1000).getDate()} from {z(new Date(current_stream.time*1000).getHours())}:{z(new Date(current_stream.time*1000).getMinutes())} to {z(new Date((current_stream.time+current_stream.estimated_length*60)*1000).getHours())}:{z(new Date((current_stream.time+current_stream.estimated_length*60)*1000).getMinutes())}</p>
+                    </div>
+                    {#if !isEmptyOrSpaces(current_stream.image_name)}
+                      <img src="/img/schedule/{current_stream.image_name}" alt={current_stream.image_name} class="w-60 rounded-xl h-36"/>
+                    {/if}
                 </div>
-                {#if !isEmptyOrSpaces(current_stream.image_name)}
-                  <img src="/img/schedule/{current_stream.image_name}" alt={current_stream.image_name} class="w-60 rounded-xl h-36"/>
-                {/if}
-            </div>
-        </a>
-    {/each}
-    {#each next_streams as next_stream}
-        <a href="https://www.twitch.tv/{next_stream.channel}" target="_blank">
-            <div class="future w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
-                style="height: {Math.round((1/old_streams.length + next_streams.length + next_streams.length)*100)}%;">
-                <div class="w-{!isEmptyOrSpaces(next_stream.image_name) ? "8/10" : "full"} h-full text-white flex flex-col items-center justify-center mx-5 text-center">
-                    <p class="text-2xl text-green-400">🟢 Upcoming</p>
-                    <p class="text-4xl">{next_stream.title}</p>
-                    <p class="text-3xl">{next_stream.category}</p>
-                    <p class="text-2xl">{getMonth(new Date(next_stream.time*1000).getMonth())} {new Date(next_stream.time*1000).getDate()} from {z(new Date(next_stream.time*1000).getHours())}:{z(new Date(next_stream.time*1000).getMinutes())} to {z(new Date((next_stream.time+next_stream.estimated_length*60)*1000).getHours())}:{z(new Date((next_stream.time+next_stream.estimated_length*60)*1000).getMinutes())}</p>
+            </a>
+        {/each}
+        {#each next_streams as next_stream}
+            <a href="https://www.twitch.tv/{next_stream.channel}" target="_blank">
+                <div class="future w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
+                    style="height: {Math.round(1/(old_streams.length + next_streams.length + next_streams.length)*100)}%;">
+                    <div class="w-{!isEmptyOrSpaces(next_stream.image_name) ? "8/10" : "full"} h-full text-white flex flex-col items-center justify-center mx-5 text-center">
+                        <p class="text-2xl text-green-400">🟢 Upcoming</p>
+                        <p class="text-4xl">{next_stream.title}</p>
+                        <p class="text-3xl">{next_stream.category}</p>
+                        <p class="text-2xl">{getMonth(new Date(next_stream.time*1000).getMonth())} {new Date(next_stream.time*1000).getDate()} from {z(new Date(next_stream.time*1000).getHours())}:{z(new Date(next_stream.time*1000).getMinutes())} to {z(new Date((next_stream.time+next_stream.estimated_length*60)*1000).getHours())}:{z(new Date((next_stream.time+next_stream.estimated_length*60)*1000).getMinutes())}</p>
+                    </div>
+                    {#if !isEmptyOrSpaces(next_stream.image_name)}
+                      <img src="/img/schedule/{next_stream.image_name}" alt={next_stream.image_name} class="w-60 rounded-xl h-36"/>
+                    {/if}
                 </div>
-                {#if !isEmptyOrSpaces(next_stream.image_name)}
-                  <img src="/img/schedule/{next_stream.image_name}" alt={next_stream.image_name} class="w-60 rounded-xl h-36"/>
-                {/if}
-            </div>
-        </a>
-    {/each}
+            </a>
+        {/each}
+    </div>
 </div>

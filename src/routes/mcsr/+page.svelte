@@ -7,6 +7,7 @@
     import EloInfo from "$lib/components/mcsr/EloInfo.svelte";
     import LastMatch from "$lib/components/mcsr/LastMatch.svelte";
     import LastTenMatches from "$lib/components/mcsr/LastTenMatches.svelte";
+    import NavBar from "$lib/components/other/NavBar.svelte";
 
     let data: MCSRData = $state({});
 
@@ -23,29 +24,34 @@
     <title>MCSR Stats</title>
 </svelte:head>
 
-<div
-    class="flex flex-col justify-evenly items-center mt-5 p-10 rounded-2xl bg-neutral-400 w-full"
->
-    {#if data.uuid}
-        <Head></Head>
-        <div class="w-full h-1 bg-gray-700 mt-5"></div>
-        <div class="flex flex-row justify-evenly items-center m-2.5">
-            <div class="flex flex-col justify-evenly items-center m-2.5">
-                <LoginInfo data={data.timestamp}></LoginInfo>
-                <SeasonInfo></SeasonInfo>
+<div class="w-screen h-screen flex flex-row">
+    <div class="w-1/5 flex flex-row items-center">
+        <NavBar loc="mcsr"></NavBar>
+    </div>
+    <div
+        class="w-4/5 m-5 flex flex-col justify-evenly items-center mt-5 rounded-2xl bg-neutral-400 w-full"
+    >
+        {#if data.uuid}
+            <Head></Head>
+            <div class="w-full h-1 bg-gray-700 mt-5"></div>
+            <div class="flex flex-row justify-evenly items-center m-2.5">
+                <div class="flex flex-col justify-evenly items-center m-2.5">
+                    <LoginInfo data={data.timestamp}></LoginInfo>
+                    <SeasonInfo></SeasonInfo>
+                </div>
+                <div class="w-1 h-50 bg-gray-500 mt-5 mx-5 overflow-hidden"></div>
+                <EloInfo {data}></EloInfo>
             </div>
-            <div class="w-1 h-50 bg-gray-500 mt-5 mx-5 overflow-hidden"></div>
-            <EloInfo {data}></EloInfo>
-        </div>
-        <div class="w-full h-1 bg-gray-700 mt-5"></div>
-        <div class="flex flex-row justify-around items-center m-1.25">
-            <LastMatch uuid={data.uuid}></LastMatch>
-            <div class="w-1 h-50 bg-gray-500 mt-5 mx-5 overflow-hidden"></div>
-            <LastTenMatches uuid={data.uuid}></LastTenMatches>
-        </div>
-    {:else}
-        <div class="flex flex-row justify-evenly items-center">
-            <h1 class="text-4xl font-bold">Loading data...</h1>
-        </div>
-    {/if}
+            <div class="w-full h-1 bg-gray-700 mt-5"></div>
+            <div class="flex flex-row justify-around items-center m-1.25">
+                <LastMatch uuid={data.uuid}></LastMatch>
+                <div class="w-1 h-50 bg-gray-500 mt-5 mx-5 overflow-hidden"></div>
+                <LastTenMatches uuid={data.uuid}></LastTenMatches>
+            </div>
+        {:else}
+            <div class="flex flex-row justify-evenly items-center">
+                <h1 class="text-4xl font-bold">Loading data...</h1>
+            </div>
+        {/if}
+    </div>
 </div>
