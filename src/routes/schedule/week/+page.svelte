@@ -44,8 +44,7 @@
             </div>
             {#each correct_week.days as stream}
                 <a href="https://www.twitch.tv/{stream.channel}" target="_blank">
-                    <div class="{isNow(stream) ? "live" : (isPast(stream) ? "past" : "future")} w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
-                        style="height: {Math.round((1/correct_week.days.length)*100)}%;">
+                    <div class="{isNow(stream) ? "live" : (isPast(stream) ? "past" : "future")} w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4">
                         <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-full text-white flex flex-col items-center justify-center mx-5 text-center">
                             {#if isNow(stream)}
                                 <p class="text-2xl text-red-600 font-bold">🔴 LIVE</p>

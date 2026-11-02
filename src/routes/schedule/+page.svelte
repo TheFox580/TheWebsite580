@@ -68,7 +68,7 @@
         {#each next_streams as next_stream}
             <a href="https://www.twitch.tv/{next_stream.channel}" target="_blank">
                 <div class="future w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4"
-                    style="height: {Math.round(1/(old_streams.length + next_streams.length + next_streams.length)*100)}%;">
+                    style="height: {Math.round(1/(old_streams.length + current_streams.length + next_streams.length)*100)}%;">
                     <div class="w-{!isEmptyOrSpaces(next_stream.image_name) ? "8/10" : "full"} h-full text-white flex flex-col items-center justify-center mx-5 text-center">
                         <p class="text-2xl text-green-400">🟢 Upcoming</p>
                         <p class="text-4xl">{next_stream.title}</p>

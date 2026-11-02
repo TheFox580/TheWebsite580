@@ -142,11 +142,20 @@
         <div class="w-full flex flex-col items-center justify-center px-2 py-5 my-5">
                 <p class="text-2xl text-red-600 font-bold">🔴 LIVE</p>
                 <div class="w-9/10">
+                    {#if current_streams.length > 0}
+                    {:else}
+                    <div class="flex flex-row items-center w-full h-auto">
+                        <div class="live w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4">
+                            <div class="w-full h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                <p class="text-4xl font-bold underline">No Ongoing Streams</p>
+                            </div>
+                        </div>
+                    </div>
+                    {/if}
                     {#each current_streams as stream, index}
                         <div class="flex flex-row items-center w-full h-auto">
                           <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
-                              <div class="live w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
-                                  >
+                              <div class="live w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4">
                                   <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
                                       <p class="text-4xl">{stream.title}</p>
                                       <p class="text-3xl">{stream.category}</p>
@@ -157,11 +166,15 @@
                                   {/if}
                               </div>
                           </a>
-                          <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
-                              removeStream(stream);
-                              current_streams.splice(index, 1);
-                              sortStreams();
-                          }}>Delete Stream</button>
+                          <div class="flex flex-col">
+                              <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
+                                  removeStream(stream);
+                                  current_streams.splice(index, 1);
+                                  sortStreams();
+                              }}>Delete Stream</button>
+                              <button class="bg-blue-500 py-4 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full" onclick={() => {
+                              }}>Edit Stream</button>
+                          </div>
                         </div>
                     {/each}
                 </div>
@@ -184,11 +197,15 @@
                                     {/if}
                                 </div>
                             </a>
-                            <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
-                                removeStream(stream);
-                                next_streams.splice(index, 1);
-                                sortStreams();
-                            }}>Delete Stream</button>
+                            <div class="flex flex-col">
+                                <button class="bg-red-500 py-1 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full" onclick={() => {
+                                    removeStream(stream);
+                                    next_streams.splice(index, 1);
+                                    sortStreams();
+                                }}>Delete Stream</button>
+                                <button class="bg-blue-500 py-4 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full" onclick={() => {
+                                }}>Edit Stream</button>
+                            </div>
                           </div>
                       {/each}
                   </div>
@@ -211,11 +228,15 @@
                                     {/if}
                                 </div>
                             </a>
-                            <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
-                                removeStream(stream);
-                                old_streams.splice(index, 1);
-                                sortStreams();
-                            }}>Delete Stream</button>
+                            <div class="flex flex-col">
+                                <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
+                                    removeStream(stream);
+                                    old_streams.splice(index, 1);
+                                    sortStreams();
+                                }}>Delete Stream</button>
+                                <button class="bg-blue-500 py-4 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full" onclick={() => {
+                                }}>Edit Stream</button>
+                            </div>
                           </div>
                       {/each}
                   </div>
