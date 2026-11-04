@@ -15,6 +15,8 @@
     const players: Score[] = data.players;
     const date: SeasonDate = data.date;
 
+    const banner_on: boolean = false;
+
     function getFontSize(placement: number) {
         switch (placement) {
             case 1:
@@ -82,13 +84,15 @@
     />
 </svelte:head>
 
-<div class="flex items-center justify-center w-screen">
-    <img
-        src="https://cdn.discordapp.com/banners/1327430536494321807/4ecc6d3434c7f8ecc3a6a5a361ce6260.webp?size=1024"
-        alt="Goofy Gang Discord Server Banner"
-        class="w-4/10 rounded-[10px] my-2.5"
-    />
-</div>
+{#if banner_on}
+    <div class="flex items-center justify-center w-screen">
+        <img
+            src="https://cdn.discordapp.com/banners/1327430536494321807/4ecc6d3434c7f8ecc3a6a5a361ce6260.webp?size=1024"
+            alt="Goofy Gang Discord Server Banner"
+            class="w-4/10 rounded-[10px] my-2.5"
+        />
+    </div>
+{/if}
 
 <div id="title">
     <h1 class="font-bold text-3xl mt-5 mb-2.5">
