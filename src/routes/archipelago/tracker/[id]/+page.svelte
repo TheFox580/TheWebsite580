@@ -37,6 +37,8 @@
             to_complete = client.room.allLocations.length;
             hints_info.hint_cost = client.room.hintCost;
             hints_info.hint_points = client.room.hintPoints;
+
+            client.deathLink.enableDeathLink()
         }, 2 * 1000);
     });
 
