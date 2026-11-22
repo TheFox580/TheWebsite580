@@ -8,7 +8,8 @@
     let musicData: MusicData = $state(null);
     let ws : WebSocket = $state();
 
-    //let cover : HTMLElement = $state();
+    let cover: null | HTMLImageElement = $state(null);
+    let cover_rotation: number = $state(0);
 
     onMount(() => {
         if (!ws){
@@ -22,26 +23,13 @@
                     musicData = wsData.song;
                     musicData.repeat = wsData.repeat;
                     musicData.shuffle = wsData.shuffle;
-
-                    //if (cover && !musicData.isPaused){
-                    //    cover.classList.add("cover");
-                    //} else {
-                    //    cover.classList.remove("cover");
-                    //}
                 } else if (wsData.type === "PLAYER_STATE_CHANGED") {
                     musicData.isPaused = !wsData.isPlaying;
                     musicData.elapsedSeconds = Math.floor(wsData.position);
-
-                    //if (cover){
-                    //    if (!musicData.isPaused){
-                    //        cover.classList.add("cover");
-                    //    } else {
-                    //        cover.classList.remove("cover");
-                    //    }
-                    //}
                 } else if (wsData.type === "POSITION_CHANGED") {
                     musicData.elapsedSeconds = Math.floor(wsData.position);
                 } else if (wsData.type === "VIDEO_CHANGED") {
+                    cover_rotation = 0;
                     const repeat = musicData.repeat;
                     const shuffle = musicData.shuffle;
 
@@ -49,19 +37,21 @@
 
                     musicData.repeat = repeat;
                     musicData.shuffle = shuffle;
-
-                    //if (cover){
-                    //    if (!musicData.isPaused){
-                    //        cover.classList.add("cover");
-                    //    } else {
-                    //        cover.classList.remove("cover");
-                    //    }
-                    //}
                 } else if (wsData.type === "REPEAT_CHANGED") {
                     musicData.repeat = wsData.repeat;
                 } else if (wsData.type === "SHUFFLE_CHANGED") {
                     musicData.shuffle = wsData.shuffle;
                 }
+            });
+
+            setInterval(() => {
+              if (cover){
+                if (!musicData.isPaused){
+                  cover_rotation %= 360;
+                  cover_rotation += 0.1;
+                  cover.style.transform = `rotate(${cover_rotation}deg)`;
+                }
+              }
             });
         }
     });
@@ -75,7 +65,7 @@
 
     <div class="w-30 h-full mx-3">
         {#if musicData}
-            <a href={musicData.url} target="_blank" class="w-full h-full"><img src={musicData.imageSrc} alt="{musicData.album}'s Cover Art" class="w-auto h-auto rounded-xl"></a>
+            <a href={musicData.url} target="_blank" class="w-full h-full"><img src={musicData.imageSrc} alt="{musicData.album}'s Cover Art" class="w-auto h-auto rounded-full" bind:this={cover}/></a>
         {:else}
             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-audio-lines-off preview-icon"><path d="M10 10v11"/><path d="M10 3v1.35"/><path d="M14 14v1"/><path d="M14 8v.35"/><path d="M18 5v7.35"/><path d="M2 10v3"/><path d="m2 2 20 20"/><path d="M22 10v3"/><path d="M6 6v11"/></svg>
         {/if}
