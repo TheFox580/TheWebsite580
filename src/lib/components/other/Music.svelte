@@ -1,9 +1,10 @@
 <script lang="ts">
     import { onDestroy, onMount } from "svelte";
     import type { MusicData } from "$lib/interfaces/other/MusicData";
-    import { z, formatNumber } from "$lib/functions/utils/numberFormatting";
+    import { z } from "$lib/functions/utils/numberFormatting";
     import ProgressBar from "../mcci/ProgressBar.svelte";
     import { dev } from "$app/environment";
+    import { AudioLinesOff, Play } from "@o7/icon/lucide";
 
     let musicData: MusicData = $state(null);
     let ws : WebSocket = $state();
@@ -61,17 +62,17 @@
     })
 </script>
 
-<div class="w-120 h-auto bg-neutral-700 border-4 border-neutral-400 rounded-xl py-2 px-3 text-center flex flex-row items-center justify-center">
+<div class="w-120 h-auto bg-mocha-inner-bg border-4 border-mocha-border rounded-xl py-2 px-3 text-center flex flex-row items-center justify-center">
 
     <div class="w-30 h-full mx-3">
         {#if musicData}
             <a href={musicData.url} target="_blank" class="w-full h-full"><img src={musicData.imageSrc} alt="{musicData.album}'s Cover Art" class="w-auto h-auto rounded-full" bind:this={cover}/></a>
         {:else}
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-audio-lines-off preview-icon"><path d="M10 10v11"/><path d="M10 3v1.35"/><path d="M14 14v1"/><path d="M14 8v.35"/><path d="M18 5v7.35"/><path d="M2 10v3"/><path d="m2 2 20 20"/><path d="M22 10v3"/><path d="M6 6v11"/></svg>
+            <AudioLinesOff/>
         {/if}
     </div>
 
-    <div class="w-85 h-full mx-3 flex flex-col items-center justify-evenly">
+    <div class="w-85 h-full mx-3 flex flex-col items-center justify-evenly text-mocha-text">
             {#if musicData}
                 <div class="flex flex-col mb-2">
                     <a class="hover:underline" target="_blank" href={musicData.url}>{musicData.title}</a>
@@ -143,8 +144,8 @@
                         <ProgressBar
                             total={musicData.songDuration}
                             progress={musicData.elapsedSeconds}
-                            background_color={"#000000"}
-                            foreground_color={"#ffffff"}
+                            background_color={"#6c7086"}
+                            foreground_color={"#9399b2"}
                             bar_height={3}
                         />
                     {/key}
@@ -155,18 +156,3 @@
             {/if}
     </div>
 </div>
-
-<style>
-    @keyframes rotate{
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    img.cover{
-        animation: rotate 10s infinite linear;
-    }
-</style>

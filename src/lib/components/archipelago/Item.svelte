@@ -8,7 +8,7 @@
 </script>
 
 <tr
-    class="w-full flex flex-row items-center justify-center bg-gray-800 border-2 border-gray-400"
+    class="w-full flex flex-row items-center justify-center bg-mocha-inner-bg border-2 border-mocha-border"
 >
     {#if !get}
         <td class="text-center font-bold w-1/3"

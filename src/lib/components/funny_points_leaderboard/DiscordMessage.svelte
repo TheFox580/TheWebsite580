@@ -33,6 +33,7 @@
         flex-direction: column;
         width: 70%;
         background-color: #555555;
+        color: white;
         font-size: 125%;
     }
 

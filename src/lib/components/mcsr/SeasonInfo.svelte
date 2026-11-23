@@ -20,12 +20,17 @@
 
         currentSeason = res.data.season;
 
+        console.log(res.data);
+
         let startTime = new Date(currentSeason.startsAt * 1000);
         let endTime = new Date(currentSeason.endsAt * 1000);
-        let totalTime = endTime.getTime() - startTime.getTime();
+
+        console.log(startTime, endTime);
+
+        let totalTime = Math.round((endTime.getTime() - startTime.getTime()) / 1000);
         setInterval(() => {
             reset = timeToGo(endTime);
-            let timeLeft = endTime.getTime() - new Date().getTime();
+            let timeLeft = totalTime - Math.round((new Date().getTime() - startTime.getTime()) / 1000);
             notRedColor = Math.max(0, Math.round((timeLeft / totalTime) * 255));
         }, 1000);
     });

@@ -169,10 +169,10 @@
                         Items you received ({updateFilter(received, receivedFilter, "item").length}) :
                     </h1>
                 {/key}
-                <input type="text" class="my-5 mx-3 px-3 bg-neutral-500 rounded-xl w-full text-center text-xl" placeholder="Search filter" bind:value={receivedFilter}/>
+                <input type="text" class="my-5 mx-3 px-3 bg-mocha-inner-bg rounded-xl w-full text-center text-xl" placeholder="Search filter" bind:value={receivedFilter}/>
                 <table class="w-full">
                     <thead
-                        class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
+                        class="w-full rounded-t-3xl bg-mocha-inner-bg border-mocha-border border-4"
                     >
                         <tr
                             class="w-full flex flex-row items-center justify-center"
@@ -185,7 +185,7 @@
                             <th class="text-center font-bold w-1/3">Sender</th>
                         </tr>
                     </thead>
-                    <tbody class="w-full border-gray-400 border-2">
+                    <tbody class="w-full border-mocha-border border-2">
                         {#key updateFilter(received, receivedFilter, "item")}
                             {#each updateFilter(received, receivedFilter, "item") as item}
                                 <ItemComp {item} get={true}></ItemComp>
@@ -200,10 +200,10 @@
                         Items you need ({updateFilter(get_hints, getFilter, "hint").length}) :
                     </h1>
                 {/key}
-                <input type="text" class="my-5 mx-3 px-3 bg-neutral-500 rounded-xl w-full text-center text-xl" placeholder="Search filter" bind:value={getFilter}/>
+                <input type="text" class="my-5 mx-3 px-3 bg-mocha-inner-bg rounded-xl w-full text-center text-xl" placeholder="Search filter" bind:value={getFilter}/>
                 <table class="w-full">
                     <thead
-                        class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
+                        class="w-full rounded-t-3xl bg-mocha-inner-bg border-mocha-border border-4"
                     >
                         <tr
                             class="w-full flex flex-row items-center justify-center"
@@ -216,7 +216,7 @@
                             <th class="text-center font-bold w-1/3">Sender</th>
                         </tr>
                     </thead>
-                    <tbody class="w-full border-gray-400 border-2">
+                    <tbody class="w-full border-mocha-border border-2">
                         {#key updateFilter(get_hints, getFilter, "hint")}
                             {#each updateFilter(get_hints, getFilter, "hint") as hint}
                                 <HintComp {hint} get={true}></HintComp>
@@ -231,10 +231,10 @@
                         Items others need ({updateFilter(send_hints, sendFilter, "hint").length}) :
                     </h1>
                 {/key}
-                <input type="text" class="my-5 mx-3 px-3 bg-neutral-500 rounded-xl w-full text-center text-xl" placeholder="Search filter" bind:value={sendFilter}/>
+                <input type="text" class="my-5 mx-3 px-3 bg-mocha-inner-bg rounded-xl w-full text-center text-xl" placeholder="Search filter" bind:value={sendFilter}/>
                 <table class="w-full">
                     <thead
-                        class="w-full rounded-t-3xl bg-gray-900 border-gray-400 border-4"
+                        class="w-full rounded-t-3xl bg-mocha-inner-bg border-mocha-border border-4"
                     >
                         <tr
                             class="w-full flex flex-row items-center justify-center"
@@ -248,7 +248,7 @@
                             >
                         </tr>
                     </thead>
-                    <tbody class="w-full border-gray-400 border-2">
+                    <tbody class="w-full border-mocha-border border-2">
                         {#key updateFilter(send_hints, sendFilter, "hint")}
                             {#each updateFilter(send_hints, sendFilter, "hint") as hint}
                                 <HintComp {hint} get={false}></HintComp>
@@ -277,7 +277,7 @@
                 <select
                     name="hints"
                     id="hints"
-                    class="text-center text-xl border-2 border-white w-full my-2"
+                    class="text-center text-xl border-2 bg-mocha-inner-bg border-mocha-border w-full my-2"
                 >
                     {#each itemList as item}
                         <option id="hint_asked" value={item}>{item}</option>
@@ -285,7 +285,7 @@
                 </select>
                 <button
                     title="Hint Item"
-                    class="cursor-pointer px-3 py-1 bg-blue-500 rounded-2xl mx-2 my-2"
+                    class="cursor-pointer px-3 py-1 bg-blue-500 rounded-2xl mx-2 my-2 text-white"
                     onclick={() => {
                         const select: HTMLSelectElement = <HTMLSelectElement>(
                             document.getElementById("hints")

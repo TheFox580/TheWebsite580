@@ -1,2 +1,15 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
+
+@theme {
+    --color-mocha-bg: oklch(0.243 0.030 283.911);
+    --color-mocha-border: oklch(0.477 0.034 278.643);
+    --color-mocha-inner-bg: oklch(0.324 0.032 281.978);
+    --color-mocha-text: oklch(0.879 0.043 272.277);
+    --color-mocha-green: oklch(0.858 0.109 142.715);
+    --color-mocha-red: oklch(0.756 0.130 2.764);
+    --color-mocha-blue: oklch(0.766 0.111 259.885);
+    --color-mocha-orange: oklch(0.824 0.101 52.629);
+    --color-mocha-mauve: oklch(0.787 0.119 304.769);
+    --color-mocha-rosewater: oklch(0.923 0.024 30.492);
+}

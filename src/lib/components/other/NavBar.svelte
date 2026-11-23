@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { MoveRight } from "@o7/icon/lucide";
 
     const { loc } = $props<{
         loc: string;
@@ -17,10 +18,13 @@
     ]
 </script>
 
-<div class="w-full h-auto flex flex-col items-center justify-evenly mx-3 text-center">
+<div class="w-full h-auto flex flex-col items-center justify-evenly mx-3 text-center text-mocha-text">
     {#each locs as uri}
         {#if uri.id === loc}
-            <h2 class="my-2 text-3xl">➡ {uri.name}</h2>
+            <div class="my-2 flex flex-row items-center">
+                <MoveRight/>
+                <h2 class="mx-2 text-3xl">{uri.name}</h2>
+            </div>
         {:else}
             <h2 class="my-2 text-3xl"><a class="hover:underline cursor-pointer" href="{uri.loc}">{uri.name}</a></h2>
         {/if}

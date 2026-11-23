@@ -13,18 +13,18 @@
     }
 
     function getColor(): string{
-      if (realMessage.item?.progression) return "oklch(71.4% 0.203 305.504)"
-      if (realMessage.item?.useful) return "oklch(62.3% 0.214 259.815)"
-      if (realMessage.item?.trap) return "oklch(70.4% 0.191 22.216)"
-      return "oklch(78.9% 0.154 211.53)" // Filler
+      if (realMessage.item?.progression) return "oklch(0.817 0.091 277.309)";
+      if (realMessage.item?.useful) return "oklch(0.766 0.111 259.885)";
+      if (realMessage.item?.trap) return "oklch(0.756 0.130 2.764)";
+      return "oklch(0.847 0.083 210.255)"; // Filler
     }
 
 </script>
 
 <div>
-    <span class=" text-white">
+    <span class="text-mocha-text">
         {#if realMessage.type === "item"}
-            <span class="{realMessage.item?.sender.name === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.item?.sender.alias}</span>
+            <span class="{realMessage.item?.sender.name === user ? "text-mocha-mauve" : "text-mocha-rosewater"} mb-1">{realMessage.item?.sender.alias}</span>
             {#if isSelf()}
                 <span>found their</span>
                 <span style="color: {getColor()}">{realMessage.item?.name}</span>
@@ -32,27 +32,27 @@
                 <span>sent</span>
                 <span style="color: {getColor()}">{realMessage.item?.name}</span>
                 <span>to</span>
-                <span class="{realMessage.item?.receiver.name === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.item?.receiver.alias}</span>
+                <span class="{realMessage.item?.receiver.name === user ? "text-mocha-mauve" : "text-mocha-rosewater"} mb-1">{realMessage.item?.receiver.alias}</span>
             {/if}
-            <span>(<span class="text-green-400 mb-1">{realMessage.item?.locationName}</span>)</span>
+            <span>(<span class="text-mocha-green mb-1">{realMessage.item?.locationName}</span>)</span>
         {:else if realMessage.type === "hint"}
             <span>[Hint]: </span>
-            <span><span class="{realMessage.item?.receiver.name === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.item?.receiver.alias}</span>'s</span>
+            <span><span class="{realMessage.item?.receiver.name === user ? "text-mocha-mauve" : "text-mocha-rosewater"} mb-1">{realMessage.item?.receiver.alias}</span>'s</span>
             <span style="color: {getColor()}">{realMessage.item?.name}</span>
             <span>is at</span>
-            <span class="text-green-400 mb-1">{realMessage.item?.locationName}</span>
+            <span class="text-mocha-green mb-1">{realMessage.item?.locationName}</span>
             <span>in</span>
-            <span><span class="{realMessage.item?.sender.name === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.item?.sender.alias}</span>'s World.</span>
-            <span class="{realMessage.found ? "text-green-500" : "text-red-500"}">{realMessage.found ? "(found)" : "(not found)"}</span>
+            <span><span class="{realMessage.item?.sender.name === user ? "text-mocha-mauve" : "text-mocha-rosewater"} mb-1">{realMessage.item?.sender.alias}</span>'s World.</span>
+            <span class="{realMessage.found ? "text-mocha-green" : "text-mocha-red"}">{realMessage.found ? "(found)" : "(not found)"}</span>
         {:else if realMessage.type === "cheat"}
             <span>⚠ The server / an admin has gifted</span>
             <span style="color: {getColor()}">{realMessage.item?.name}</span>
             <span>to</span>
-            <span class="{realMessage.item?.receiver.name === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.item?.receiver.alias}</span>
+            <span class="{realMessage.item?.receiver.name === user ? "text-mocha-mauve" : "text-mocha-rosewater"} mb-1">{realMessage.item?.receiver.alias}</span>
             <span>⚠</span>
         {:else if realMessage.type === "death"}
         <span>[DeathLink]: </span>
-        <span><span class="{realMessage.source === user ? "text-fuchsia-600" : "text-amber-100"} mb-1">{realMessage.source}</span> died.</span>
+        <span><span class="{realMessage.source === user ? "text-mocha-mauve" : "text-mocha-rosewater"} mb-1">{realMessage.source}</span> died.</span>
         <span>{realMessage.cause}</span>
         {:else}
             {realMessage.text}

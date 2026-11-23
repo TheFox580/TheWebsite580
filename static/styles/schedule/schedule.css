@@ -1,6 +1,6 @@
 html {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,9 +9,8 @@ html {
 }
 
 .past {
-    background-color: oklch(39.3% 0.095 152.535);
-    border-color: oklch(72.3% 0.219 149.579);
-    filter: grayscale(100%);
+    background-color: #313244;
+    border-color: #585b70;
 }
 
 .live {
@@ -20,7 +19,6 @@ html {
 }
 
 .future {
-    background-color: oklch(39.3% 0.095 152.535);
-    border-color: oklch(72.3% 0.219 149.579);
-    filter: grayscale(25%);
+    background-color: oklch(0.4763 0.109 142.72);
+    border-color: oklch(0.6632 0.109 142.72);
 }

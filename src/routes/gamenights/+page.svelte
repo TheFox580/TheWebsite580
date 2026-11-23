@@ -65,9 +65,9 @@
 
 
 {#if data.session === null || data.session.provider != "gamenights"}
-    <div class="w-screen h-screen bg-black text-white">
+    <div class="w-screen h-screen bg-mocha-bg text-mocha-text">
         <div class="w-full h-full flex flex-col justify-center items-center">
-            <span class="text-2xl text-center text-white">You are signed out</span>
+            <span class="text-2xl text-center text-mocha-text">You are signed out</span>
             <SignIn
                 provider={data.providerMap.find(
                     (provider) => provider.id === "gamenights",
@@ -85,16 +85,16 @@
         </div>
     </div>
 {:else}
-    <div class="w-full h-screen flex flex-row bg-black text-white">
+    <div class="w-full h-screen flex flex-row bg-mocha-bg text-mocha-text">
 
         <div class="w-1/5 flex flex-row items-center">
             <NavBar loc="gamenights"></NavBar>
         </div>
 
-        <div class="w-4/5 full h-screen flex flex-col bg-black text-white">
+        <div class="w-4/5 full h-screen flex flex-col bg-mocha-bg text-mocha-text">
 
             <div class="w-full h-6 flex justify-center items-center my-5">
-                <span class="mr-2.5 text-2xl text-center text-white">Signed in as {data.session.user.name}</span>
+                <span class="mr-2.5 text-2xl text-center text-mocha-text">Signed in as {data.session.user.name}</span>
                 <img src="{data.session.user.image}" alt="{data.session.user.name}'s PFP" class="h-12 mr-2.5 rounded-full">
                 <SignOut
                     signOutPage="api/discord/signout"
@@ -106,7 +106,7 @@
                         >Sign Out</span
                     >
                 </SignOut>
-                <a class="ml-10 py-1.5 px-3 rounded-3xl cursor-pointer"
+                <a class="ml-10 py-1.5 px-3 rounded-3xl cursor-pointer text-white"
                     style="background-color: #5865F2;"
                     href="https://discord.gg/suZvdCCp3k"
                     target="_blank">Join the Discord server</a>
@@ -122,12 +122,12 @@
                     <img src="/img/gamenights/{game.img}" alt="{game.img}" class="mb-10 h-69"/>
                     <div class="flex flex-row items-center justify-center">
                         {#if signed_up}
-                            <button class="py-1.5 px-3 bg-red-500 rounded-3xl cursor-pointer"
+                            <button class="py-1.5 px-3 bg-red-500 rounded-3xl cursor-pointer text-white"
                                 onclick={() => {
                                     signOut()
                                 }}>Leave the sign up pool</button>
                         {:else}
-                            <button class="py-1.5 px-3 bg-green-500 rounded-3xl cursor-pointer"
+                            <button class="py-1.5 px-3 bg-green-500 rounded-3xl cursor-pointer text-white"
                                 onclick={() => {
                                     signUp()
                                 }}>Sign up in the pool</button>

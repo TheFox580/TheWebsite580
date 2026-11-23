@@ -56,7 +56,7 @@
 </script>
 
 <div
-    class="w-full h-full bg-black rounded-2xl border-2 border-gray-500 {inList
+    class="w-full h-full bg-mocha-inner-bg rounded-2xl border-2 border-mocha-border {inList
         ? 'mb-5'
         : ''} relative"
 >

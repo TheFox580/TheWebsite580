@@ -16,6 +16,7 @@
     {img: "eva.ac-badge.png", url: "https://eva.ac"},
     {img: "minecraft.gif", url: "https://minecraft.net"},
     {img: "Archipelago.png", url: "https://archipelago.gg"},
+    {img: "portal.png", url: "https://thinkwithportals.com"},
   ]
 
 </script>
@@ -24,7 +25,7 @@
   <div class="grid grid-cols-2 gap-2.5 auto-rows-auto my-10">
     {#each EightyEightByThirtyOnes as EightyEightByThirtyOne}
       <div class="eightyeightbythirtyone w-[90px] h-[33px]">
-        <a href={EightyEightByThirtyOne.url} class="w-[88px] h-[31px]" target={EightyEightByThirtyOne.url !== "" ? "_blank" : ""}>
+        <a href={EightyEightByThirtyOne.url} class="w-[88px] h-[31px]" target={EightyEightByThirtyOne.url ?? "_blank"}>
           <img src="/img/88x31/{EightyEightByThirtyOne.img}" alt="Imgae of {EightyEightByThirtyOne.img}">
         </a>
       </div>
@@ -35,9 +36,9 @@
 
 <style>
     .eightyeightbythirtyone {
-      border: solid black 2px;
+      border: solid var(--color-mocha-bg) 2px;
     }
     .eightyeightbythirtyone:hover {
-        border: solid white 2px;
+        border: solid var(--color-mocha-border) 2px;
     }
 </style>

@@ -64,7 +64,7 @@
 
 <div
     id="logger"
-    class="overflow-auto w-full h-100 bg-gray-600 flex flex-col-reverse rounded-3xl border-gray-400 border-4 p-2 mb-3"
+    class="overflow-auto w-full h-100 bg-mocha-inner-bg flex flex-col-reverse rounded-3xl border-mocha-border border-4 p-2 mb-3"
 >
     {#each logs as log}
         {#key log}
@@ -74,12 +74,12 @@
 </div>
 
 <div
-    class="flex w-full bg-gray-600 border-gray-400 border-2 p-2 items-center justify-evenly rounded-2xl"
+    class="flex w-full bg-mocha-inner-bg border-mocha-border border-2 p-2 items-center justify-evenly rounded-2xl"
 >
     <input
         id="talk_to_server"
         type="text"
-        class="w-4/5 h-full leading-[100%] py-1 text-white"
+        class="w-4/5 h-full leading-[100%] py-1"
         value=""
         placeholder="Type your message"
         onkeypress={(key) => {
@@ -89,7 +89,7 @@
         }}
     />
     <button
-        class="cursor-pointer px-3 py-1 bg-blue-500 rounded-2xl text-center"
+        class="cursor-pointer px-3 py-1 bg-blue-500 rounded-2xl text-center text-white"
         onclick={sendMessage}>Send Message</button
     >
 </div>

@@ -5,6 +5,7 @@
     import { getMonth } from "$lib/functions/utils/dateStuff";
     import { z } from "$lib/functions/utils/numberFormatting";
     import { dev } from "$app/environment";
+    import { Radio, RadioOff, Calendar } from "@o7/icon/lucide";
 
     const { data } = $props<{
         data: PageData;
@@ -16,7 +17,7 @@
     const current_streams: Stream[] = $state(data.current_streams);
     const next_streams: Stream[] = $state(data.next_streams);
 
-    let menu: string = $state("scheduled");
+    let menu: string = $state("edit");
     let message_added: string = $state("")
 
     const backend_url = dev ? "http://localhost:8787" : "https://backend.thefox580.me"
@@ -105,7 +106,7 @@
 
 <div class="w-full h-screen flex flex-col">
     <div class="w-full h-6 flex justify-center items-center my-5">
-        <span class="mr-5 text-center text-white"
+        <span class="mr-5 text-center text-mocha-text"
             >Signed in as {data.session.user.name}</span
         >
         <SignOut
@@ -121,7 +122,7 @@
     </div>
     <div class="w-full h-6 flex justify-center items-center my-5">
         <button
-            class="rounded-xl mx-3 py-2 px-1 bg-blue-600 cursor-pointer"
+            class="rounded-xl mx-3 py-2 px-1 bg-blue-600 cursor-pointer text-white"
             style="filter: grayscale({menu === "scheduled" ? "0" : "1"});"
             onclick={() => {
               menu = "scheduled";
@@ -129,7 +130,7 @@
             }}
         >Scheduled Streams</button>
         <button
-            class="rounded-xl mx-3 py-2 px-1 bg-blue-600 cursor-pointer"
+            class="rounded-xl mx-3 py-2 px-1 bg-blue-600 cursor-pointer text-white"
             style="filter: grayscale({menu === "editing" ? "0" : "1"});"
             onclick={() => {
               menu = "editing";
@@ -140,23 +141,25 @@
     <div class="w-auto h-auto">
         {#if menu === "scheduled"}
         <div class="w-full flex flex-col items-center justify-center px-2 py-5 my-5">
-                <p class="text-2xl text-red-600 font-bold">🔴 LIVE</p>
+                <div class="flex flex-row items-center text-mocha-red">
+                    <Radio/>
+                    <p class="ml-3 text-2xl">Live</p>
+                </div>
                 <div class="w-9/10">
-                    {#if current_streams.length > 0}
-                    {:else}
-                    <div class="flex flex-row items-center w-full h-auto">
-                        <div class="live w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4">
-                            <div class="w-full h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
-                                <p class="text-4xl font-bold underline">No Ongoing Streams</p>
+                    {#if current_streams.length <=0}
+                        <div class="flex flex-row items-center w-full h-auto">
+                            <div class="live w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4">
+                                <div class="w-full h-auto text-mocha-red flex flex-col items-center justify-center mx-5 text-center">
+                                    <p class="text-4xl font-bold underline">No Ongoing Streams</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     {/if}
                     {#each current_streams as stream, index}
                         <div class="flex flex-row items-center w-full h-auto">
                           <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
                               <div class="live w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4">
-                                  <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                  <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-red-600 flex flex-col items-center justify-center mx-5 text-center">
                                       <p class="text-4xl">{stream.title}</p>
                                       <p class="text-3xl">{stream.category}</p>
                                       <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
@@ -167,12 +170,12 @@
                               </div>
                           </a>
                           <div class="flex flex-col">
-                              <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
+                              <button class="bg-red-600 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full text-white" onclick={() => {
                                   removeStream(stream);
                                   current_streams.splice(index, 1);
                                   sortStreams();
                               }}>Delete Stream</button>
-                              <button class="bg-blue-500 py-4 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full" onclick={() => {
+                              <button class="bg-blue-600 py-4 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full text-white" onclick={() => {
                               }}>Edit Stream</button>
                           </div>
                         </div>
@@ -180,14 +183,17 @@
                 </div>
         </div>
           <div class="w-full flex flex-col items-center justify-center px-2 py-5 my-5">
-                  <p class="text-2xl text-green-400 font-bold">🟢 Upcoming</p>
+                  <div class="flex flex-row items-center text-mocha-green">
+                      <Calendar/>
+                      <p class="ml-3 text-2xl">Upcoming</p>
+                  </div>
                   <div class="w-9/10">
                       {#each next_streams as stream, index}
                           <div class="flex flex-row items-center w-full h-auto">
                             <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
                                 <div class="future w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
                                     >
-                                    <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                    <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-mocha-text flex flex-col items-center justify-center mx-5 text-center">
                                         <p class="text-4xl">{stream.title}</p>
                                         <p class="text-3xl">{stream.category}</p>
                                         <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
@@ -198,12 +204,12 @@
                                 </div>
                             </a>
                             <div class="flex flex-col">
-                                <button class="bg-red-500 py-1 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full" onclick={() => {
+                                <button class="bg-red-600 py-1 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full text-white" onclick={() => {
                                     removeStream(stream);
                                     next_streams.splice(index, 1);
                                     sortStreams();
                                 }}>Delete Stream</button>
-                                <button class="bg-blue-500 py-4 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full" onclick={() => {
+                                <button class="bg-blue-600 py-4 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full text-white" onclick={() => {
                                 }}>Edit Stream</button>
                             </div>
                           </div>
@@ -211,14 +217,17 @@
                   </div>
           </div>
           <div class="w-full flex flex-col items-center justify-center px-2 py-5 my-5">
-                  <p class="text-2xl text-green-400 font-bold grayscale">🟢 Done</p>
+                  <div class="flex flex-row items-center">
+                      <RadioOff/>
+                      <p class="ml-3 text-2xl text-mocha-text">Done</p>
+                  </div>
                   <div class="w-9/10">
                       {#each old_streams as stream, index}
                           <div class="flex flex-row items-center w-full h-auto">
                             <a href="https://www.twitch.tv/{stream.channel}" target="_blank" class="w-full mx-2">
                                 <div class="past w-full flex flex-row items-center justify-center px-2 py-5 my-5 rounded-2xl border-4"
                                     >
-                                    <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-white flex flex-col items-center justify-center mx-5 text-center">
+                                    <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-auto text-mocha-text flex flex-col items-center justify-center mx-5 text-center">
                                         <p class="text-4xl">{stream.title}</p>
                                         <p class="text-3xl">{stream.category}</p>
                                         <p class="text-2xl">{getMonth(new Date(stream.time*1000).getMonth())} {new Date(stream.time*1000).getDate()} from {z(new Date(stream.time*1000).getHours())}:{z(new Date(stream.time*1000).getMinutes())} to {z(new Date((stream.time+stream.estimated_length*60)*1000).getHours())}:{z(new Date((stream.time+stream.estimated_length*60)*1000).getMinutes())}</p>
@@ -229,12 +238,12 @@
                                 </div>
                             </a>
                             <div class="flex flex-col">
-                                <button class="bg-red-500 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full" onclick={() => {
+                                <button class="bg-red-600 py-1 px-2 mx-2 rounded-xl cursor-pointer h-full text-white" onclick={() => {
                                     removeStream(stream);
                                     old_streams.splice(index, 1);
                                     sortStreams();
                                 }}>Delete Stream</button>
-                                <button class="bg-blue-500 py-4 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full" onclick={() => {
+                                <button class="bg-blue-600 py-4 px-2 mx-2 my-3 rounded-xl cursor-pointer h-full text-white" onclick={() => {
                                 }}>Edit Stream</button>
                             </div>
                           </div>
@@ -242,104 +251,104 @@
                   </div>
           </div>
         {:else}
-        <div class="w-full h-full flex flex-col items-center justify-center">
-          <div class="w-120 h-full flex flex-col items-center justify-center">
-              <p class="text-4xl my-5">Add a new stream:</p>
-              <div
-                  class="flex flex-row justify-between items-center w-full"
-              >
-                  <label for="title">Title : </label>
-                  <input
-                      type="text"
-                      placeholder="Stream Title"
-                      id="title"
-                      value=""
-                      required
-                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                  />
-              </div>
-              <div
-                  class="flex flex-row justify-between items-center w-full"
-              >
-                  <label for="category">Category : </label>
-                  <input
-                      type="text"
-                      placeholder="Category from Twitch"
-                      id="category"
-                      value=""
-                      required
-                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                  />
-              </div>
-              <div
-                  class="flex flex-row justify-between items-center w-full"
-              >
-                  <label for="stream-time">Stream time : </label>
-                  <input
-                      type="datetime-local"
-                      placeholder="Stream Time"
-                      id="stream-time"
-                      value=""
-                      required
-                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                  />
-              </div>
-              <div
-                  class="flex flex-row justify-between items-center w-full"
-              >
-                  <label for="duration"
-                      >Estimated Duration (in minutes) :</label
+            <div class="w-full h-full flex flex-col items-center justify-center">
+              <div class="w-120 h-full flex flex-col items-center justify-center">
+                  <p class="text-4xl my-5">Add a new stream:</p>
+                  <div
+                      class="flex flex-row justify-between items-center w-full"
                   >
-                  <input
-                      type="numeric"
-                      placeholder="Estimated duration"
-                      id="duration"
-                      value=""
-                      required
-                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                  />
+                      <label for="title">Title : </label>
+                      <input
+                          type="text"
+                          placeholder="Stream Title"
+                          id="title"
+                          value=""
+                          required
+                          class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                      />
+                  </div>
+                  <div
+                      class="flex flex-row justify-between items-center w-full"
+                  >
+                      <label for="category">Category : </label>
+                      <input
+                          type="text"
+                          placeholder="Category from Twitch"
+                          id="category"
+                          value=""
+                          required
+                          class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                      />
+                  </div>
+                  <div
+                      class="flex flex-row justify-between items-center w-full"
+                  >
+                      <label for="stream-time">Stream time : </label>
+                      <input
+                          type="datetime-local"
+                          placeholder="Stream Time"
+                          id="stream-time"
+                          value=""
+                          required
+                          class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                      />
+                  </div>
+                  <div
+                      class="flex flex-row justify-between items-center w-full"
+                  >
+                      <label for="duration"
+                          >Estimated Duration (in minutes) :</label
+                      >
+                      <input
+                          type="numeric"
+                          placeholder="Estimated duration"
+                          id="duration"
+                          value=""
+                          required
+                          class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                      />
+                  </div>
+                  <div
+                      class="flex flex-row justify-between items-center w-full"
+                  >
+                      <label for="image">Image name : </label>
+                      <input
+                          type="text"
+                          placeholder="Image from /static/img"
+                          id="image"
+                          value=""
+                          required
+                          class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                      />
+                  </div>
+                  <div
+                      class="flex flex-row justify-between items-center w-full"
+                  >
+                      <label for="channel">Channel name : </label>
+                      <input
+                          type="text"
+                          placeholder="Twitch Username"
+                          id="channel"
+                          value=""
+                          required
+                          class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                      />
+                  </div>
               </div>
-              <div
-                  class="flex flex-row justify-between items-center w-full"
-              >
-                  <label for="image">Image name : </label>
-                  <input
-                      type="text"
-                      placeholder="Image from /static/img"
-                      id="image"
-                      value=""
-                      required
-                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                  />
+              <div class="flex flex-col justify-center items-center mx-2">
+                  <button
+                      title="Add stream"
+                      class="cursor-pointer px-3 py-1 bg-green-600 text-white rounded-2xl mt-2"
+                      onclick={async () => {
+                        await addStream();
+                      }}
+                      >Add stream</button
+                  >
+                  {#if message_added}
+                      <p class="text-2xl text-mocha-green py-2">{message_added}</p>
+                  {/if}
               </div>
-              <div
-                  class="flex flex-row justify-between items-center w-full"
-              >
-                  <label for="channel">Channel name : </label>
-                  <input
-                      type="text"
-                      placeholder="Twitch Username"
-                      id="channel"
-                      value=""
-                      required
-                      class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                  />
-              </div>
-          </div>
-          <div class="flex flex-col justify-center items-center mx-2">
-              <button
-                  title="Add stream"
-                  class="cursor-pointer px-3 py-1 bg-green-500 rounded-2xl mt-2"
-                  onclick={async () => {
-                    await addStream();
-                  }}
-                  >Add stream</button
-              >
-              {#if message_added}
-                  <p class="text-2xl text-green-500 py-2">{message_added}</p>
-              {/if}
-          </div>
-        </div>
+            </div>
         {/if}
     </div>
 </div>

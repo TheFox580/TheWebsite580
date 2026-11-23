@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { AtSign, Globe, Car } from "@o7/icon/lucide";
+
     const birth = new Date(1141491600000);
     const diff = new Date(new Date().getTime()-birth.getTime());
 
@@ -26,19 +28,19 @@
             <br class="mt-10"/>
             <h2 class="text-3xl">3rd year of Computer Science</h2>
             <br class="mt-5"/>
-            <h3 class="text-2xl text-justify px-2">Currently searching for a 2-month intership (March 14 to May 22 2026) in Computer Science to get my degree as well as a professional experience to prepare myself for the work life.</h3>
+            <h3 class="text-2xl text-justify px-2">Currently searching for a 2-month intership (March 14th to May 22nd 2026) in Computer Science to get my degree as well as a professional experience to prepare myself for the work life.</h3>
             <br class="mt-15"/>
             <div class="w-full flex flex-col items-start justify-start px-2">
                 <div class="flex flex-row text-wrap wrap-break-word mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-at-sign preview-icon"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>
+                    <AtSign/>
                     <a class="ml-2" href="mailto:stage@thefox580.me" target="_blank">stage@thefox580.me</a>
                 </div>
                 <div class="flex flex-row text-wrap wrap-break-word mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe preview-icon"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    <Globe/>
                     <a class="ml-2" href="/" target="_blank">thefox580.me</a>
                 </div>
                 <div class="flex flex-row text-wrap wrap-break-word mb-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-car preview-icon"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+                    <Car/>
                     <span class="ml-2">Driving licence</span>
                 </div>
             </div>

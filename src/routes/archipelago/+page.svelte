@@ -5,6 +5,7 @@
     import HintsTab from "$lib/components/archipelago/HintsTab.svelte";
     import { Client } from "archipelago.js";
     import type { HintsInfo } from "$lib/interfaces/archipelago/HintsInfo";
+    import NavBar from "$lib/components/other/NavBar.svelte";
 
     const client = new Client();
 
@@ -127,223 +128,237 @@
     <title>Archipelago Tracker</title>
 </svelte:head>
 
-{#if connected}
-    <div class="flex w-screen items-center justify-center">
-        <div class="flex flex-col justify-center items-center w-full">
-            <div class="flex flex-col justify-evenly items-center w-full">
-                <div
-                    class="flex flex-row justify-evenly items-center w-1/5 mt-10 mb-3"
-                >
-                    <h1 class="text-4xl text-center mx-2">Logged in!</h1>
-                    <button
-                        title="Disconnect"
-                        class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mx-2"
-                        onclick={() => {
-                            client.socket.disconnect();
-                            connected = false;
-                            login_status = false;
-                            error_message = undefined;
-                        }}>Disconnect</button
-                    >
-                </div>
-                <div
-                    class="flex flex-row justify-evenly items-center m-5 w-full"
-                >
-                    <div
-                        class="flex flex-col justify-evenly items-center w-4/5 m-5"
-                    >
-                        <div
-                            class="flex flex-row justify-evenly items-center w-full m-5"
-                        >
-                            <h2 class="text-2xl text-center w-1/3">
-                                Logged in as {client.name}
-                            </h2>
-                            <h2 class="text-2xl text-center w-1/3">
-                                Game: {client.game}
-                            </h2>
-                            <div
-                                class="flex flex-col items-center jusify-center w-1/3"
-                            >
-                                {#key completed}
-                                    <ProgressBar
-                                        max={to_complete}
-                                        current={completed}
-                                        inList={false}
-                                    ></ProgressBar>
-                                {/key}
-                            </div>
-                        </div>
-                        <Logs user={client.name} messages={client.messages} deathLink={client.deathLink}></Logs>
-                    </div>
-                </div>
-                <div
-                    class="flex flex-row justify-center items-center m-5 w-full"
-                >
-                    <div
-                        class="flex flex-col justify-center items-center w-full m-5"
-                    >
-                        <HintsTab {client} {hints_info}></HintsTab>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-{:else if login_status}
-    <div class="flex w-screen h-screen items-center justify-center">
-        <div class="flex flex-col items-center justify-center">
-            {#if error_message}
-                <h1 class="text-4xl text-red-600 text-center">
-                    An error has occured
-                </h1>
-                <h2 class="text-2xl text-red-600 text-center">
-                    {error_message}
-                </h2>
-                {#if getErrorMessage(error_message)}
-                    <h3 class="text-2xl text-orange-600 text-center">
-                        This may be due to logging in to an unsecure connection.
-                    </h3>
-                    <h3 class="text-2xl text-orange-600 text-center">
-                        or that the room may be offline / changed port.
-                    </h3>
-                {/if}
-                <button
-                    title="Go Back"
-                    class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mt-2"
-                    onclick={() => {
-                        login_status = false;
-                        error_message = undefined;
-                    }}>Go Back</button
-                >
-            {:else if !loading_client_data}
-                <h1 class="text-4xl">Logging into the server...</h1>
-            {:else}
-                <h1 class="text-4xl">Logged in!</h1>
-                <h2 class="text-2xl">Loading room info...</h2>
-            {/if}
-        </div>
-    </div>
-{:else}
-    <div class="flex w-screen h-screen items-center justify-center">
-        <div class="flex flex-row items-center justify-center w-full">
+<div class="w-screen flex flex-row">
+    {#if connected}
+        <div class="flex w-full items-center justify-center">
             <div class="flex flex-col justify-center items-center w-full">
-                <div
-                    class="flex flex-row justify-center items-center w-full mb-2"
-                >
-                    <button
-                        class="cursor-pointer px-3 py-1 bg-gray-400 rounded-2xl mr-3"
-                        onclick={() => {
-                            with_tracker = !with_tracker;
-                            error_message = undefined;
-                        }}>Toggle login type</button
+                <div class="flex flex-col justify-evenly items-center w-full">
+                    <div
+                        class="flex flex-row justify-evenly items-center w-1/5 mt-10 mb-3"
                     >
-                    <span>Login with{with_tracker ? "" : "out"} Tracker</span>
-                </div>
-                <div class="w-100">
-                    {#if !with_tracker}
-                        <div
-                            class="flex flex-row justify-between items-center w-full"
+                        <h1 class="text-4xl text-center mx-2">Logged in!</h1>
+                        <button
+                            title="Disconnect"
+                            class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mx-2 text-white"
+                            onclick={() => {
+                                client.socket.disconnect();
+                                connected = false;
+                                login_status = false;
+                                error_message = undefined;
+                            }}>Disconnect</button
                         >
-                            <label for="hostname">Host Name : </label>
-                            <input
-                                type="text"
-                                placeholder="Room Adress"
-                                id="hostname"
-                                value="archipelago.gg"
-                                required
-                                class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                            />
-                        </div>
+                    </div>
+                    <div
+                        class="flex flex-row justify-evenly items-center m-5 w-full"
+                    >
                         <div
-                            class="flex flex-row justify-between items-center w-full"
+                            class="flex flex-col justify-evenly items-center w-4/5 m-5"
                         >
-                            <label for="port">Port : </label>
-                            <input
-                                type="text"
-                                placeholder="Port Number"
-                                inputmode="numeric"
-                                pattern="[0-9]{5}"
-                                id="port"
-                                maxlength="5"
-                                value=""
-                                required
-                                class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                            />
-                        </div>
-                        <div
-                            class="flex flex-row justify-between items-center w-full"
-                        >
-                            <label for="username">Username : </label>
-                            <input
-                                type="text"
-                                placeholder="Slot Name"
-                                id="username"
-                                value=""
-                                required
-                                class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                                onkeypress={(key) => {
-                                    if (key.key === "Enter") {
-                                        login();
-                                    }
-                                }}
-                            />
-                        </div>
-                        <div
-                            class="flex flex-row justify-between items-center w-full"
-                        >
-                            <label for="password"
-                                >Password : <i>(Optional)</i></label
+                            <div
+                                class="flex flex-row justify-evenly items-center w-full m-5"
                             >
-                            <input
-                                type="password"
-                                placeholder="Room Password"
-                                id="password"
-                                value=""
-                                onkeypress={(key) => {
-                                    if (key.key === "Enter") {
-                                        login();
-                                    }
-                                }}
-                                class="border-gray-400 border-2 rounded-xl my-1 p-1"
-                            />
+                                <h2 class="text-2xl text-center w-1/3">
+                                    Logged in as {client.name}
+                                </h2>
+                                <h2 class="text-2xl text-center w-1/3">
+                                    Game: {client.game}
+                                </h2>
+                                <div
+                                    class="flex flex-col items-center jusify-center w-1/3"
+                                >
+                                    {#key completed}
+                                        <ProgressBar
+                                            max={to_complete}
+                                            current={completed}
+                                            inList={false}
+                                        ></ProgressBar>
+                                    {/key}
+                                </div>
+                            </div>
+                            <Logs user={client.name} messages={client.messages} deathLink={client.deathLink}></Logs>
                         </div>
-                    {:else}
-                        <div
-                            class="flex flex-row justify-between items-center w-full"
-                        >
-                            <label for="tracker">Tracker :</label>
-                            <input
-                                type="text"
-                                placeholder="https://archipelago.gg/tracker/..."
-                                id="tracker"
-                                value=""
-                                onkeypress={(key) => {
-                                    if (key.key === "Enter") {
-                                        redirectTracker();
-                                    }
-                                }}
-                                class="border-gray-400 border-2 rounded-xl my-1 p-1 w-75/100"
-                            />
-                        </div>
-                    {/if}
-                </div>
-                <div class="flex flex-col justify-center items-center mx-2">
-                    <button
-                        title="Start tracking"
-                        class="cursor-pointer px-3 py-1 bg-green-500 rounded-2xl mt-2"
-                        onclick={() => {
-                            if (with_tracker) {
-                                redirectTracker();
-                            } else {
-                                login();
-                            }
-                        }}
-                        >{with_tracker ? "Next step" : "Start tracking"}</button
+                    </div>
+                    <div
+                        class="flex flex-row justify-center items-center m-5 w-full"
                     >
-                    {#if error_message}
-                        <p class="text-red-600 mt-1">{error_message}</p>
-                    {/if}
+                        <div
+                            class="flex flex-col justify-center items-center w-full m-5"
+                        >
+                            <HintsTab {client} {hints_info}></HintsTab>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-{/if}
+    {:else if login_status}
+        <div class="w-1/5 flex flex-row items-center">
+            <NavBar loc="archipelago"></NavBar>
+        </div>
+
+        <div class="w-4/5">
+          <div class="flex w-full h-screen items-center justify-center">
+              <div class="flex flex-col items-center justify-center">
+                  {#if error_message}
+                      <h1 class="text-4xl text-mocha-red text-center">
+                          An error has occured
+                      </h1>
+                      <h2 class="text-2xl text-mocha-red text-center">
+                          {error_message}
+                      </h2>
+                      {#if getErrorMessage(error_message)}
+                          <h3 class="text-2xl text-mocha-orange text-center">
+                              This may be due to logging in to an unsecure connection.
+                          </h3>
+                          <h3 class="text-2xl text-mocha-orange text-center">
+                              or that the room may be offline / changed port.
+                          </h3>
+                      {/if}
+                      <button
+                          title="Go Back"
+                          class="cursor-pointer px-3 py-1 bg-red-500 rounded-2xl mt-2 text-white"
+                          onclick={() => {
+                              login_status = false;
+                              error_message = undefined;
+                          }}>Go Back</button
+                      >
+                  {:else if !loading_client_data}
+                      <h1 class="text-4xl">Logging into the server...</h1>
+                  {:else}
+                      <h1 class="text-4xl">Logged in!</h1>
+                      <h2 class="text-2xl">Loading room info...</h2>
+                  {/if}
+              </div>
+          </div>
+        </div>
+      {:else}
+          <div class="w-1/5 flex flex-row items-center">
+              <NavBar loc="archipelago"></NavBar>
+          </div>
+
+          <div class="w-4/5">
+          <div class="flex w-full h-screen items-center justify-center">
+              <div class="flex flex-row items-center justify-center w-full">
+                  <div class="flex flex-col justify-center items-center w-full">
+                      <div
+                          class="flex flex-row justify-center items-center w-full mb-2"
+                      >
+                          <button
+                              class="cursor-pointer px-3 py-1 bg-gray-400 rounded-2xl mr-3 text-white"
+                              onclick={() => {
+                                  with_tracker = !with_tracker;
+                                  error_message = undefined;
+                              }}>Toggle login type</button
+                          >
+                          <span>Login with{with_tracker ? "" : "out"} Tracker</span>
+                      </div>
+                      <div class="w-100">
+                          {#if !with_tracker}
+                              <div
+                                  class="flex flex-row justify-between items-center w-full"
+                              >
+                                  <label for="hostname">Host Name : </label>
+                                  <input
+                                      type="text"
+                                      placeholder="Room Adress"
+                                      id="hostname"
+                                      value="archipelago.gg"
+                                      required
+                                      class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                                  />
+                              </div>
+                              <div
+                                  class="flex flex-row justify-between items-center w-full"
+                              >
+                                  <label for="port">Port : </label>
+                                  <input
+                                      type="text"
+                                      placeholder="Port Number"
+                                      inputmode="numeric"
+                                      pattern="[0-9]{5}"
+                                      id="port"
+                                      maxlength="5"
+                                      value=""
+                                      required
+                                      class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                                  />
+                              </div>
+                              <div
+                                  class="flex flex-row justify-between items-center w-full"
+                              >
+                                  <label for="username">Username : </label>
+                                  <input
+                                      type="text"
+                                      placeholder="Slot Name"
+                                      id="username"
+                                      value=""
+                                      required
+                                      class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                                      onkeypress={(key) => {
+                                          if (key.key === "Enter") {
+                                              login();
+                                          }
+                                      }}
+                                  />
+                              </div>
+                              <div
+                                  class="flex flex-row justify-between items-center w-full"
+                              >
+                                  <label for="password"
+                                      >Password : <i>(Optional)</i></label
+                                  >
+                                  <input
+                                      type="password"
+                                      placeholder="Room Password"
+                                      id="password"
+                                      value=""
+                                      onkeypress={(key) => {
+                                          if (key.key === "Enter") {
+                                              login();
+                                          }
+                                      }}
+                                      class="border-mocha-border border-2 rounded-xl my-1 p-1"
+                                  />
+                              </div>
+                          {:else}
+                              <div
+                                  class="flex flex-row justify-between items-center w-full"
+                              >
+                                  <label for="tracker">Tracker :</label>
+                                  <input
+                                      type="text"
+                                      placeholder="https://archipelago.gg/tracker/..."
+                                      id="tracker"
+                                      value=""
+                                      onkeypress={(key) => {
+                                          if (key.key === "Enter") {
+                                              redirectTracker();
+                                          }
+                                      }}
+                                      class="border-mocha-border border-2 rounded-xl my-1 p-1 w-75/100"
+                                  />
+                              </div>
+                          {/if}
+                      </div>
+                      <div class="flex flex-col justify-center items-center mx-2">
+                          <button
+                              title="Start tracking"
+                              class="cursor-pointer px-3 py-1 bg-green-500 rounded-2xl mt-2 text-white"
+                              onclick={() => {
+                                  if (with_tracker) {
+                                      redirectTracker();
+                                  } else {
+                                      login();
+                                  }
+                              }}
+                              >{with_tracker ? "Next step" : "Start tracking"}</button
+                          >
+                          {#if error_message}
+                              <p class="text-mocha-red mt-1">{error_message}</p>
+                          {/if}
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+    {/if}
+</div>

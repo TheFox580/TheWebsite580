@@ -5,6 +5,7 @@
     import { isFuture, isNow, isPast } from "$lib/functions/schedule/streamsInfo";
     import { getDay, getMonth } from "$lib/functions/utils/dateStuff";
     import NavBar from "$lib/components/other/NavBar.svelte";
+    import { Radio, RadioOff, Calendar } from "@o7/icon/lucide";
 
     const { data } = $props<{
         data: PageData;
@@ -35,23 +36,32 @@
     </div>
     <div class="w-4/5 mx-5 flex flex-col">
         {#if !correct_week}
-            <div class="bg-neutral-500 flex flex-col items-center justify-center py-2 px-5 my-5 rounded-2xl border-neutral-300 border-4">
+            <div class="bg-mocha-inner-bg flex flex-col items-center justify-center py-2 px-5 my-5 rounded-2xl border-mocha-border border-4">
                 <p class="text-4xl text-center">No streams scheduled.</p>
             </div>
         {:else}
-            <div class="bg-neutral-500 flex flex-col items-center justify-center py-2 px-5 my-5 rounded-2xl border-neutral-300 border-4">
+            <div class="bg-mocha-inner-bg flex flex-col items-center justify-center py-2 px-5 my-5 rounded-2xl border-mocha-border border-4">
                 <p class="text-4xl text-center">{correct_week.days.length} stream{correct_week.days.length != 1 ? "s" : ""} scheduled from {getDay(correct_week.start_week.getDay())} {correct_week.start_week.getDate()} to {getDay(correct_week.end_week.getDay())} {correct_week.end_week.getDate()}</p>
             </div>
             {#each correct_week.days as stream}
                 <a href="https://www.twitch.tv/{stream.channel}" target="_blank">
                     <div class="{isNow(stream) ? "live" : (isPast(stream) ? "past" : "future")} w-full flex flex-row items-center justify-center p-2 my-5 rounded-2xl border-4">
-                        <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-full text-white flex flex-col items-center justify-center mx-5 text-center">
+                        <div class="w-{!isEmptyOrSpaces(stream.image_name) ? "8/10" : "full"} h-full text-mocha-text flex flex-col items-center justify-center mx-5 text-center">
                             {#if isNow(stream)}
-                                <p class="text-2xl text-red-600 font-bold">🔴 LIVE</p>
+                                <div class="flex flex-row items-center text-mocha-red">
+                                    <Radio/>
+                                    <p class="ml-3 text-2xl">Live</p>
+                                </div>
                             {:else if isFuture(stream)}
-                                <p class="text-2xl text-green-400">🟢 Upcoming</p>
+                                <div class="flex flex-row items-center text-mocha-green">
+                                    <Calendar/>
+                                    <p class="ml-3 text-2xl">Upcoming</p>
+                                </div>
                             {:else}
-                                <p class="text-2xl text-green-400">🟢 Done</p>
+                                <div class="flex flex-row items-center">
+                                    <RadioOff/>
+                                    <p class="ml-3 text-2xl text-mocha-text">Done</p>
+                                </div>
                             {/if}
                             <p class="text-4xl">{stream.title}</p>
                             <p class="text-3xl">{stream.category}</p>

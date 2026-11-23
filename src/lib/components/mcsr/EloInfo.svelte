@@ -128,11 +128,11 @@
         <span class="mt-2.5">Current Placement: #{usableData.eloRank}</span>
         <div class="flex flex-col justify-center items-start mt-2.5">
             <Rank
-                text="Current Rank"
+                text={"Current Rank"}
                 rank={getRankByElo(usableData.eloRate ? usableData.eloRate : 0)}
             ></Rank>
             <Rank
-                text="Next Rank"
+                text={"Next Rank"}
                 rank={getNextRank(
                     getRankByElo(usableData.eloRate ? usableData.eloRate : 0),
                 )}

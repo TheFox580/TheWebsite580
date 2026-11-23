@@ -162,7 +162,8 @@
                                 : ""}</span
                         >
                         to
-                        <a href="#{point.username}" style="color: white"
+                        <a href="#{point.username}" style="color:
+                            color: var(--color-mocha-text);"
                             >{point.username}</a
                         ></span
                     >
@@ -187,10 +188,12 @@
     .stick {
         position: sticky;
         top: 0;
+        color: var(--color-mocha-text);
     }
 
     #title {
         text-align: center;
+        color: var(--color-mocha-text);
     }
 
     #main-content {
@@ -221,11 +224,12 @@
         flex-direction: column;
         align-items: start;
         justify-content: center;
-        background-color: rgb(70, 70, 70);
+        background-color: var(--color-mocha-inner-bg);
         border-radius: 5px;
         border-style: solid;
         border-width: 5px;
-        border-color: rgb(100, 100, 100);
+        color: var(--color-mocha-text);
+        border-color: var(--color-mocha-border);
     }
 
     .title {
@@ -237,9 +241,9 @@
         padding-bottom: 30px;
         background: linear-gradient(
             to bottom,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 1) 75%,
-            rgba(0, 0, 0, 0) 100%
+            rgba(30, 30, 46, 1) 0%,
+            rgba(30, 30, 46, 1) 75%,
+            rgba(30, 30, 46, 0) 100%
         );
         top: 0;
     }
@@ -248,11 +252,12 @@
         margin-bottom: 30px;
         padding: 2%;
         font-size: large;
-        background-color: rgb(70, 70, 70);
+        background-color: var(--color-mocha-inner-bg);
         border-radius: 5px;
         border-style: solid;
         border-width: 5px;
-        border-color: rgb(100, 100, 100);
+        border-color: var(--color-mocha-border);
+        color: var(--color-mocha-text);
     }
 
     .username:hover {
@@ -272,10 +277,10 @@
     }
 
     .added {
-        color: lime;
+        color: var(--color-mocha-green);
     }
 
     .removed {
-        color: red;
+        color: var(--color-mocha-red);
     }
 </style>

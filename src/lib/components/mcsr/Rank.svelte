@@ -1,5 +1,5 @@
 <script lang="ts">
-    const { text, elo, rank } = $props<{
+    const { text, rank } = $props<{
         text: string;
         rank: string;
     }>();

@@ -8,10 +8,10 @@
     }>();
 </script>
 
-<div class="w-screen h-screen bg-black">
+<div class="w-screen h-screen bg-mocha-bg">
     <div class="w-full h-full flex flex-col justify-center items-center">
         {#if !data.logged_in}
-            <span class="text-2xl text-center text-white">You are signed out</span>
+            <span class="text-2xl text-center text-mocha-text">You are signed out</span>
             <SignIn
                 provider={data.providerMap.find(
                     (provider) => provider.id === "twitch-schedule",
@@ -27,7 +27,7 @@
                 >
             </SignIn>
         {:else if data.user_name}
-            <span class="text-2xl text-center text-white"
+            <span class="text-2xl text-center text-mocha-text"
                 >Signed in as {data.session.user.name}</span
             >
             <SignOut
@@ -42,7 +42,7 @@
                 >
             </SignOut>
         {:else}
-            <span class="text-2xl text-center text-white">You are signed out</span>
+            <span class="text-2xl text-center text-mocha-text">You are signed out</span>
             <SignIn
                 provider={data.providerMap.find(
                     (provider) => provider.id === "twitch-schedule",
